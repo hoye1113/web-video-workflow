@@ -23,6 +23,19 @@ const MAX_IMAGES = 40;
 /** below this many characters per page a PDF is most likely scanned */
 const SPARSE_CHARS_PER_PAGE = 40;
 
+/**
+ * How much of a material was actually read.
+ *
+ * The studio reports anything but `ok`. A document that parsed to (nearly) nothing used to pass silently —
+ * the material list looked fine and the film was then made from an empty brief (user-reported gap).
+ */
+export function materialVerdict(f: PreparedMaterial): 'ok' | 'empty' | 'sparse' {
+  if (f.kind !== 'document') return 'ok';
+  if (!f.chars) return 'empty';
+  if (f.pages && f.chars / f.pages < SPARSE_CHARS_PER_PAGE) return 'sparse';
+  return 'ok';   // a short text with no page count is the director's judgement, not ours
+}
+
 const MARK = /^<!-- frametell: parsed from "(.*?)"(?: pages=(\d+))? -->/;
 const header = (source: string, pages?: number) => `<!-- frametell: parsed from "${source}"${pages ? ` pages=${pages}` : ''} -->\n\n`;
 
@@ -232,7 +245,7 @@ async function parsePdf(buf: Buffer, L: (typeof LABELS)[MaterialLang]): Promise<
       flush();
     });
     const warning = chars / Math.max(totalPages, 1) < SPARSE_CHARS_PER_PAGE
-      ? tr(`几乎没有可提取的文字（${chars} 字 / ${totalPages} 页），可能是扫描件；需要 OCR 后再用`, `almost no extractable text (${chars} characters / ${totalPages} pages); it may be a scan and needs OCR first`) : undefined;
+      ? tr(`几乎没有可提取的文字（${chars} 字 / ${totalPages} 页），可能是扫描件；先跑 uv run --with pymupdf python engine/tools/ocr-scan.py <项目目录> <这个文件名> 补一份文字再用`, `almost no extractable text (${chars} characters / ${totalPages} pages): it may be a scan — run uv run --with pymupdf python engine/tools/ocr-scan.py <project dir> <file> to transcribe it first`) : undefined;
     return { markdown: out.join('\n\n'), pages: totalPages, warning };
   } finally {
     await (pdf as unknown as { destroy?: () => Promise<void> }).destroy?.();

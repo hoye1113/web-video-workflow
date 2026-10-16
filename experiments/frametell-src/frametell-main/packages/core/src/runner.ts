@@ -9,7 +9,7 @@ import { createCatalog } from '@frametell/models';
 import { edgeTts, elevenLabsTts, volcengineTts } from '@frametell/voice';
 import { createWeb, Director, findSources, hasSources, offlineWeb, piRuntime, Project, type AgentRuntime, type DirectorOptions, type Renderer, type StudioEvent, type Storyboard, type UserRef } from '@frametell/agent';
 import type { Config, ConfigStore } from './config.js';
-import { prepareMaterials } from './materials.js';
+import { materialVerdict, prepareMaterials } from './materials.js';
 import { applyProxy } from './net.js';
 import { withRefs } from './refs.js';
 import type { LoggedEvent, ProjectMeta, ProjectSummary, RunStatus } from './types.js';
@@ -349,6 +349,21 @@ class Runner {
       // reported but does not stop the run
       const { files } = await prepareMaterials(path.join(dir, 'materials'), meta.lang ?? 'zh');
       for (const f of files) if (f.kind === 'document' && !f.parsedTo) this.emit({ type: 'error', message: this.tr(`资料 ${f.name} 读不了：${f.warning}`, `Couldn't read ${f.name}: ${f.warning}`) });
+      // 读到了、但几乎没内容（扫描件没有文字层）。以前这里一声不吭：素材列表看着正常，
+      // 直到发现片子里什么都没讲。现在明说，并给出补救办法。
+      for (const f of files) {
+        const v = materialVerdict(f);
+        if (v === 'ok') continue;
+        this.emit({
+          type: 'error',
+          message: this.tr(
+            `资料「${f.name}」几乎没读到内容：${f.chars} 字${f.pages ? ` / ${f.pages} 页` : ''}（${v === 'empty' ? '没有文字层' : '疑似扫描件'}）。`
+            + `先把它做成有文字层的 PDF，或手打几段要点当素材；扫描件可以先跑 uv run --with pymupdf python engine/tools/ocr-scan.py <项目目录> <文件名> 补一份文字。`,
+            `Almost nothing was read from "${f.name}": ${f.chars} characters${f.pages ? ` / ${f.pages} pages` : ''} (${v === 'empty' ? 'no text layer' : 'likely a scan'}). `
+            + `Export it with a text layer, type a few key points instead, or run uv run --with pymupdf python engine/tools/ocr-scan.py <project dir> <file> to transcribe the scan.`,
+          ),
+        });
+      }
       // an export reads nothing new
       const plan = o.exporting ? undefined : researchPlan(meta, cfg, this.reach);
       // an export draws the film the pages already are: it needs no model, so one that is gone (its provider removed, its

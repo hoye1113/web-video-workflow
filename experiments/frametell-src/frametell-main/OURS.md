@@ -14,6 +14,14 @@
 |---|---|
 | `packages/voice/tools/edge-tts.py` | edge-tts 的 Python 桥：JSON 请求文件进 → mp3 + 逐词时间戳出。**必须 `boundary='WordBoundary'`**（否则中文只有整句时间戳）；请求走 UTF-8 文件不走管道（Windows 控制台会按 GBK 编码）；带退避重试并区分"可重试/不可重试" |
 
+### 素材读取把关（扫描件别再静默地读成空）
+
+| 文件 | 改了什么 |
+|---|---|
+| packages/core/src/materials.ts | 新增 materialVerdict()：把读到了多少判成 ok / empty / sparse（每页少于 40 字 = 疑似扫描件）；警告文案改成**可照抄的补救命令** |
+| packages/core/src/runner.ts | 出片前**把这条判定报给用户**（以前只在解析彻底失败时才吭声，扫描件读成 0 字一声不响） |
+| packages/engine/tools/ocr-scan.py | **新增**：扫描件 → 逐页渲图 → **视觉模型转写** → 写成同格式的 <名>.pdf.md。模型与密钥读 ~/.frametell/config.json |
+
 ### 改动（按模块）
 
 **配音：加一个免密钥的 provider —— edge-tts**
