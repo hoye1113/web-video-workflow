@@ -1,0 +1,15 @@
++ packages/voice/tools/edge-tts.py
+~ apps/cli/src/cli.ts
+~ apps/cli/src/server.ts
+~ apps/desktop/src/main.ts
+~ packages/agent/src/events.ts
+~ packages/agent/src/prompts.ts
+~ packages/core/src/refs.ts
+~ packages/core/src/runner.ts
+~ packages/core/src/studio.ts
+~ packages/core/src/types.ts
+~ packages/engine/tools/script.mjs
+~ packages/ui/src/components/FilmSettings.tsx
+~ packages/ui/src/components/VoicePicker.tsx
+~ packages/voice/src/index.ts
+~ packages/voice/src/tts.ts

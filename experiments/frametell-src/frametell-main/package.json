@@ -1,0 +1,22 @@
+{
+  "name": "frametell-monorepo",
+  "private": true,
+  "description": "Frametell: tell stories, frame by frame. Turn your ideas and material into vivid explainer videos with an AI director agent.",
+  "license": "AGPL-3.0-only",
+  "type": "module",
+  "engines": {
+    "node": ">=22.19"
+  },
+  "packageManager": "pnpm@10.5.2",
+  "scripts": {
+    "dev": "pnpm --filter frametell dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "package:desktop": "node apps/desktop/scripts/package.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "22",
+    "typescript": "5.9.3"
+  }
+}

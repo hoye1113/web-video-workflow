@@ -1,0 +1,20 @@
+{
+  "opencode-go/cat-jam-free": {
+    "sec": 4.9,
+    "err": "{\"type\":\"error\",\"timestamp\":1791968892297,\"sessionID\":\"ses_ec654b35bffegwEK3cVoK2GKlb\",\"error\":{\"type\":\"provider.auth\",\"message\":\"Upstream request failed: Endpo"
+  },
+  "opencode-go/deepseek-v4.1-flash": {
+    "sec": 96.9,
+    "chars": 9536,
+    "empty": false
+  },
+  "opencode-go/qwen3.8-flash": {
+    "sec": 442.6,
+    "chars": 9806,
+    "empty": false
+  },
+  "opencode-go/glm-5.3-flash": {
+    "sec": 900.0,
+    "err": "Command '['C:\\\\Users\\\\Administrator\\\\AppData\\\\Roaming\\\\ai.opencode.desktop\\\\cli\\\\2.0.28-x64\\\\opencode-cli.exe', 'run', '--standalone', '--model', 'opencode-go/g"
+  }
+}

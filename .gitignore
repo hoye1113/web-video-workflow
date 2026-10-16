@@ -1,0 +1,45 @@
+# 依赖与构建产物（到哪里都别进仓）
+node_modules/
+dist/
+.venv/
+__pycache__/
+*.pyc
+
+# 渲染与成片：成片 mp4、抽帧、分块缓存、字幕帧
+out/
+**/out/
+chunks/
+subs/
+*.mp4
+*.wav
+*.mp3
+
+# FRAMETELL 工程目录里的 junction（指向引擎与它的 node_modules）
+experiments/ft-run/*/engine
+experiments/ft-run/*/engine_modules
+
+# 我们解压出来做比对用的原始副本
+experiments/frametell-src/_pristine/
+experiments/frametell-src/ft-*.zip
+
+# 第三方的参考仓库 / 上游引擎（按 README 里的说明另取）
+base-arch/
+experiments/anatomy-main/
+
+# 运行日志、临时
+logs/
+*.log
+.render.lock
+experiments/accept/
+experiments/slice/
+experiments/qa09*/
+experiments/flow/
+experiments/temp/
+
+# 允许这些图进仓（对比图/验收表/生成的图是我们的证据与资产）
+!projects/*/assets/*.png
+!experiments/uitest/*.png
+!experiments/uitest/*.jpg
+
+# 陈旧的测试渲染产物
+renders/

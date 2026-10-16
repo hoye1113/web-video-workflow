@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>审查 · 垂直切片产物</title>
+<style>
+  :root { --bg:#F3EEE6; --ink:#2A2A2A; --grey:#8A8A8A; --red:#C8553D; --warm:#E9B872; --line:#DED4C4; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:15px/1.7 -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; }
+  header { padding:34px 48px 22px; border-bottom:1px solid var(--line); }
+  h1 { font-size:26px; margin:0 0 6px; letter-spacing:.5px; }
+  header p { margin:0; color:var(--grey); font-size:14px; }
+  main { padding:30px 48px 80px; max-width:1500px; }
+  section { margin-bottom:54px; }
+  h2 { font-size:18px; margin:0 0 4px; }
+  h2 span { color:var(--red); }
+  .meta { color:var(--grey); font-size:13px; margin:0 0 16px; }
+  figure { margin:0 0 26px; }
+  video, img { width:100%; max-width:1280px; display:block; border:1px solid var(--line); background:#111; }
+  figcaption { margin-top:8px; font-size:13px; color:var(--grey); }
+  figcaption b { color:var(--ink); font-weight:600; }
+  .files { font:12px/1.9 ui-monospace, Consolas, monospace; color:var(--grey);
+           border-top:1px solid var(--line); padding-top:14px; margin-top:6px; }
+  .files code { color:var(--ink); background:#EAE2D6; padding:1px 5px; border-radius:3px; }
+  .note { background:#EAE2D6; border:1px solid var(--line); padding:14px 18px; font-size:14px; margin:0 0 26px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>垂直切片 · 产物审查</h1>
+  <p>第 22 镜（纯代码）+ 第 23 镜（代码 + Flow 贴图），横屏 1920×1080 / 30fps</p>
+</header>
+<main>
+
+  <section>
+    <h2>① 10 秒成片 <span>（两镜拼接）</span></h2>
+    <p class="meta">这是主产物：两块镜头硬切拼起来，验的是"相邻镜头风格一致"和"代码能不能持续地动"</p>
+    <figure>
+      <video src="experiments/slice/out/slice_2shots.mp4" controls autoplay loop muted></video>
+      <figcaption><b>slice_2shots.mp4</b> · 10.00s · 300 帧 · 631 KB</figcaption>
+    </figure>
+    <div class="files">
+      <code>experiments/slice/out/slice_2shots.mp4</code>
+    </div>
+  </section>
+
+  <section>
+    <h2>② 单镜 · 第 22 镜 <span>一只沙漏，细沙一粒粒往下落</span></h2>
+    <p class="meta">纯代码。经过 5 轮迭代（渲帧 → 看 → 改），落沙是持续粒子运动</p>
+    <figure>
+      <video src="experiments/slice/out/shot22_hourglass.mp4" controls loop muted></video>
+      <figcaption><b>shot22_hourglass.mp4</b> · 5.00s · 150 帧 · 252 KB</figcaption>
+    </figure>
+    <figure>
+      <img src="experiments/slice/loop_progress.png" alt="沙漏迭代过程">
+      <figcaption><b>迭代过程</b>：左＝第 1 轮（沙流看不见、沙堆像帐篷）→ 中＝第 3 轮 → 右＝第 5 轮（成立）</figcaption>
+    </figure>
+    <div class="files">
+      <code>experiments/slice/out/shot22_hourglass.mp4</code><br>
+      <code>experiments/slice/loop_progress.png</code><br>
+      <code>base-arch/scripts/engine/scenes/zz_hourglass.js</code>
+    </div>
+  </section>
+
+  <section>
+    <h2>③ 单镜 · 第 23 镜 <span>床沿凹下去一块，男人的手撑在上面</span></h2>
+    <p class="meta">混合方案：场景、窗光、床沿被压凹的形变都是代码算的；手是 Flow 生成 + 绿幕抠出来的贴图</p>
+    <figure>
+      <video src="experiments/slice/out/shot23_bedside.mp4" controls loop muted></video>
+      <figcaption><b>shot23_bedside.mp4</b> · 5.00s · 150 帧 · 496 KB</figcaption>
+    </figure>
+    <div class="files">
+      <code>experiments/slice/out/shot23_bedside.mp4</code><br>
+      <code>base-arch/scripts/engine/scenes/zz_bedside.js</code><br>
+      <code>base-arch/scripts/engine/assets/hand_v2.png</code>（抠好的手，670 KB）<br>
+      <code>experiments/slice/hand_raw/hand_v2.png</code>（Flow 原图，绿幕）
+    </div>
+  </section>
+
+  <section>
+    <h2>④ 参照 · 代码画 vs Flow 生成图 <span>同一题材并排</span></h2>
+    <p class="meta">左＝代码画，中/右＝Flow 生成。这个对比给出了"哪种镜头该用哪种做法"的判断依据</p>
+    <figure>
+      <img src="experiments/compare/side_by_side.png" alt="代码画 vs 生成图">
+      <figcaption><b>side_by_side.png</b> · 第 8 镜「一张离婚协议」的三种做法</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>⑤ 更早的两次链路验证 <span>参数化片段 + 艺术风格</span></h2>
+    <p class="meta">环境装好后的冒烟测试，验的是上游引擎本身能跑</p>
+    <figure>
+      <video src="base-arch/renders/y5_kinetic_type.mp4" controls loop muted></video>
+      <figcaption><b>y5_kinetic_type.mp4</b> · 7.50s · 参数化片段语法（动态文字）</figcaption>
+    </figure>
+    <figure>
+      <video src="base-arch/renders/8bit_test.mp4" controls loop muted></video>
+      <figcaption><b>8bit_test.mp4</b> · 3.00s · 艺术风格 scenes（8-bit）</figcaption>
+    </figure>
+  </section>
+
+</main>
+</body>
+</html>

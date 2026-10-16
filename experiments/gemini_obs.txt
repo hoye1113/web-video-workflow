@@ -1,0 +1,9 @@
+﻿@vom 1
+@view 1600x683
+@layers 1 focus=L1
+L1 page
+  RootWebArea "‎Google Gemini"
+    StaticText "plus"
+    @e1 textbox "问问 Gemini" [filled] placeholder="问问 Gemini" ="请生成一张横屏图片（16:9）：扁平矢量线稿插画风格，米白色背景（#F3EEE6），只用深灰色墨线勾勒轮廓，点缀少量砖红色（#C8553D）和暖黄色（#E9B872）。画面内容：一张离婚协议被摊在木质桌面上，一只男人的手刚刚把它从抽屉里抽出来，纸角微微翘起。要求极简、留白多，画面里不要出现任何文字，不要出现人脸。"
+    StaticText "arrow_upward"
+@warning geometry incomplete: some page or frame content has no top-level coordinates.

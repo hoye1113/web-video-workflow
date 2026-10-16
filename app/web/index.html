@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>代码生成视频工厂</title>
+<link rel="stylesheet" href="/web/style.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="brand"><span class="dot"></span>代码生成视频工厂</div>
+  <div class="grow"></div>
+  <label class="field-inline">
+    <span>项目</span>
+    <select id="projectSel"></select>
+  </label>
+  <input id="newName" class="in sm" placeholder="新项目名 a-z0-9_" autocomplete="off">
+  <button id="btnNewProject" class="btn ghost">新建</button>
+  <span id="saveState" class="muted"></span>
+</header>
+
+<main class="grid">
+
+  <!-- ---------------- 左：画风 + 文案 + 页面 ---------------- -->
+  <section class="col left">
+    <div class="panel">
+      <div class="panel-head"><span>画风</span><span id="styleState" class="muted"></span></div>
+      <div id="presetList" class="presets"></div>
+      <p id="styleHint" class="hint-line">选一套画风，全片只用这一套。</p>
+    </div>
+
+    <details id="scriptBox" class="panel" open>
+      <summary>口播文案</summary>
+      <textarea id="script" placeholder="把口播原文贴到这里，然后点「切成页面」" spellcheck="false"></textarea>
+      <div class="row">
+        <button id="btnShotlist" class="btn primary">切成页面</button>
+        <span id="shotlistState" class="muted"></span>
+      </div>
+    </details>
+
+    <div class="panel" id="skelPanel" style="display:none">
+      <div class="panel-head">
+        <span>叙事骨架</span>
+        <span id="skelState" class="muted"></span>
+      </div>
+      <div id="skeleton" class="skel"></div>
+      <div class="row" id="skelActions" style="padding:0 13px 13px">
+        <button id="btnApprove" class="btn primary">骨架没问题，开始出画</button>
+      </div>
+    </div>
+
+    <div class="panel grow">
+      <div class="panel-head">
+        <span>页面</span>
+        <span id="shotCount" class="muted"></span>
+      </div>
+      <ul id="shotList" class="shots"></ul>
+    </div>
+  </section>
+
+  <!-- ---------------- 中：连续预览 ---------------- -->
+  <section class="col center">
+    <div class="panel grow preview-wrap">
+      <div class="panel-head">
+        <span>连续预览</span>
+        <span class="row tight">
+          <button id="btnReload" class="btn ghost xs">刷新</button>
+          <button id="btnPlay" class="btn ghost xs">播放</button>
+        </span>
+      </div>
+      <div class="stage">
+        <iframe id="preview" src="about:blank" title="预览"></iframe>
+      </div>
+      <p id="previewHint" class="muted small">选中一个项目后在这里连续预览所有镜头。</p>
+    </div>
+  </section>
+
+  <!-- ---------------- 右：镜头详情 + 任务 ---------------- -->
+  <section class="col right">
+    <div class="panel" id="shotPanel">
+      <div class="panel-head"><span>这一镜</span><span id="shotTag" class="muted"></span></div>
+      <div id="shotForm" class="form">
+        <label>画面画什么 <input id="fTitle" class="in" placeholder="一个名词 + 一个动词"></label>
+        <div class="row">
+          <label class="half">位置 <input id="fRole" class="in" placeholder="骨架上的位置"></label>
+          <label class="half">时长 <input id="fDur" class="in" type="number" step="1" min="5" max="30"></label>
+        </div>
+        <label>这一页的旁白 <textarea id="fNarration" style="height:74px" placeholder="从文案里摘的原文"></textarea></label>
+        <div class="row">
+          <label class="half">镜头 <select id="fCamera" class="in">
+            <option>停</option><option>缓推</option><option>拉远</option><option>横移</option>
+            <option>快推</option><option>砸入</option><option>切</option>
+          </select></label>
+          <label class="half">屏上字 <input id="fText" class="in" placeholder="≤8 字"></label>
+        </div>
+        <label>画面备注 <input id="fNote" class="in" placeholder="这一页怎么画"></label>
+        <div class="row wrap">
+          <button id="btnScene" class="btn">写场景代码</button>
+          <button id="btnStills" class="btn">抽帧</button>
+          <button id="btnRender" class="btn primary">渲染这一镜</button>
+        </div>
+        <div class="row wrap">
+          <button id="btnDirector" class="btn primary">自动跑导演回路</button>
+          <select id="fRounds" class="in" style="width:auto">
+            <option value="2">2 轮</option><option value="3" selected>3 轮</option>
+            <option value="4">4 轮</option><option value="5">5 轮</option>
+          </select>
+        </div>
+        <div class="row wrap">
+          <button id="btnCode" class="btn ghost xs">查看/编辑代码</button>
+          <button id="btnVersions" class="btn ghost xs">版本</button>
+          <button id="btnDelete" class="btn ghost xs danger">删掉这一镜</button>
+        </div>
+      </div>
+      <p id="shotEmpty" class="muted small">左边选一个镜头。</p>
+    </div>
+
+    <div class="panel grow">
+      <div class="panel-head">
+        <span>任务</span>
+        <span class="row tight">
+          <button id="btnConcat" class="btn ghost xs">拼接成片</button>
+          <button id="btnClearJobs" class="btn ghost xs">清空</button>
+        </span>
+      </div>
+      <ul id="jobList" class="jobs"></ul>
+    </div>
+  </section>
+</main>
+
+<!-- 代码编辑抽屉 -->
+<div id="drawer" class="drawer">
+  <div class="drawer-head">
+    <span id="drawerTitle">场景代码</span>
+    <span class="row tight">
+      <button id="btnSaveCode" class="btn primary xs">保存并刷新预览</button>
+      <button id="btnCloseCode" class="btn ghost xs">关闭</button>
+    </span>
+  </div>
+  <textarea id="code" spellcheck="false"></textarea>
+</div>
+
+<!-- 导演回路 -->
+<div id="reviewBox" class="drawer review">
+  <div class="drawer-head">
+    <span>导演回路 · 让模型看渲出来的帧</span>
+    <span class="row tight">
+      <button id="btnReview" class="btn primary xs">看帧并给意见</button>
+      <button id="btnCloseReview" class="btn ghost xs">关闭</button>
+    </span>
+  </div>
+  <div id="reviewBody" class="review-body muted">先「抽帧」，再点「看帧并给意见」。</div>
+</div>
+
+<script src="/web/app.js"></script>
+</body>
+</html>

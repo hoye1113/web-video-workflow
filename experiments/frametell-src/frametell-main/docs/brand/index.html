@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>帧言 · Frametell brand guide</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@700;900&display=swap">
+<style>
+/* layout: a single 1080px column; each section is "small heading on the left + content on the right", assets shown at true proportions */
+:root {
+  --paper: #F5F5F0; --paper-2: #EFECE4; --surface: #FFFFFF;
+  --ink: #1C1917; --ink-2: #57534E; --ink-3: #7A736C;
+  --line: #E7E5E2; --line-2: #D6D3CF;
+  --accent: #D4A574; --accent-ink: #9C6A3A;
+  /* mark colours: corners / dot */
+  --mb: #1C1917; --ma: #D4A574;
+  --f-cn: "Noto Serif SC", "Songti SC", "STSong", serif;
+  --f-ui: Inter, "PingFang SC", "Hiragino Sans GB", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C0A09; --paper-2: #141210; --surface: #181513;
+    --ink: #F5F5F4; --ink-2: #B0A9A3; --ink-3: #8F8780;
+    --line: #292522; --line-2: #3D3834;
+    --accent: #E0B88A; --accent-ink: #E4C096;
+    --mb: #F5F5F0; --ma: #E0B88A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C0A09; --paper-2: #141210; --surface: #181513;
+  --ink: #F5F5F4; --ink-2: #B0A9A3; --ink-3: #8F8780;
+  --line: #292522; --line-2: #3D3834;
+  --accent: #E0B88A; --accent-ink: #E4C096;
+  --mb: #F5F5F0; --ma: #E0B88A;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--paper); color: var(--ink); font: 14px/1.65 var(--f-ui); padding-inline: 20px; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1080px; margin: 0 auto; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.cap { font-size: 12px; color: var(--ink-3); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.top { position: sticky; top: 0; z-index: 5; background: var(--paper); border-bottom: 1px solid var(--line); margin-inline: -20px; padding-inline: 20px; }
+.top .inner { max-width: 1080px; margin: 0 auto; height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.btn-ghost { font: 500 12px var(--f-ui); color: var(--ink-2); background: var(--surface); border: 1px solid var(--line-2); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+.btn-ghost:hover { color: var(--ink); }
+
+/* wordmark: Chinese leads, English steps back to a small size, separated by a hairline */
+.lockup { display: inline-flex; align-items: center; gap: .5em; line-height: 1; white-space: nowrap; }
+.lockup svg { flex-shrink: 0; }
+.cn { font-family: var(--f-cn); font-weight: 700; letter-spacing: .06em; color: var(--ink); }
+.lockup .en { font: 600 .36em var(--f-ui); letter-spacing: -.005em; color: var(--ink-3); border-left: 1px solid var(--line-2); padding: .35em 0 .35em .9em; }
+.lockup .by { font: 500 .24em var(--f-ui); letter-spacing: .18em; color: var(--ink-3); text-transform: uppercase; margin-left: .3em; }
+/* the 「帧言」 wordmark alone: the quotation marks are the two corners of the viewfinder */
+.qw { display: inline-flex; align-items: center; gap: .04em; line-height: 1; white-space: nowrap; }
+.qw svg { width: .5em; height: 1.2em; flex-shrink: 0; }
+
+section { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 32px; padding-block: 56px; border-top: 1px solid var(--line); }
+section > header h2 { font: 600 15px var(--f-ui); }
+section > header p { margin-top: 6px; color: var(--ink-3); font-size: 13px; }
+.body { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.prose { max-width: 62ch; color: var(--ink-2); }
+.prose strong { color: var(--ink); font-weight: 600; }
+@media (max-width: 760px) { section { grid-template-columns: 1fr; gap: 20px; padding-block: 40px; } }
+
+.hero { padding-block: 80px 64px; display: flex; flex-direction: column; gap: 28px; }
+.hero .lockup { font-size: clamp(44px, 10vw, 96px); }
+.hero .lockup svg { width: 1.05em; height: 1.05em; }
+.hero .slogan { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
+.hero .slogan .cn { font-size: clamp(18px, 2.4vw, 22px); color: var(--ink-2); letter-spacing: .14em; }
+.hero .slogan span:last-child { font: 500 15px var(--f-ui); color: var(--ink-3); }
+
+.cards2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.card .k { font-size: 12px; color: var(--ink-3); }
+.eq { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13px; color: var(--ink-3); }
+.eq b { font: 700 20px var(--f-cn); color: var(--ink); }
+.eq i { font: 600 15px var(--f-ui); font-style: normal; letter-spacing: .14em; color: var(--accent-ink); }
+@media (max-width: 600px) { .cards2 { grid-template-columns: 1fr; } }
+
+.tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.tile { border-radius: 16px; aspect-ratio: 4 / 3; display: grid; place-items: center; position: relative; border: 1px solid var(--line); max-width: 100%; }
+.tile .label { position: absolute; left: 16px; bottom: 12px; font: 500 11px var(--f-mono); }
+.tile > svg { width: 36%; height: auto; }
+.tile.light { background: #F5F5F0; --mb: #1C1917; --ma: #D4A574; }
+.tile.light .label { color: #7A736C; }
+.tile.dark { background: #0C0A09; border-color: #292522; --mb: #F5F5F0; --ma: #E0B88A; }
+.tile.dark .label { color: #8F8780; }
+.tile.caramel { background: #D4A574; border-color: transparent; --mb: #1C1917; --ma: #F5F5F0; }
+.tile.caramel .label { color: #5B3E22; }
+@media (max-width: 600px) { .tiles { grid-template-columns: 1fr; } }
+
+.construct { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: 28px; align-items: center; }
+.construct svg { width: 100%; height: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; }
+.construct ol { margin: 0; padding-left: 1.2em; color: var(--ink-2); display: flex; flex-direction: column; gap: 10px; max-width: 46ch; }
+.construct ol strong { color: var(--ink); }
+@media (max-width: 680px) { .construct { grid-template-columns: 1fr; } }
+
+.sizes { display: flex; align-items: flex-end; gap: 26px; flex-wrap: wrap; justify-content: center; }
+.sizes figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.sizes figcaption { font: 11px var(--f-mono); color: var(--ink-3); }
+
+.lockups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.lk { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 32px 24px 16px; display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.lk .stage { min-height: 130px; display: grid; place-items: center; overflow: hidden; }
+.lk.wide { grid-column: 1 / -1; }
+.stacked { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.stacked .cn { font-size: 34px; line-height: 1; }
+.stacked .en { font: 600 14px var(--f-ui); letter-spacing: 0; color: var(--ink-3); padding-left: .3em; }
+@media (max-width: 600px) { .lockups { grid-template-columns: 1fr; } }
+
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.sw { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
+.sw .chip { height: 72px; }
+.sw .meta { padding: 10px 12px; display: flex; flex-direction: column; gap: 2px; }
+.sw .meta b { font-size: 13px; font-weight: 600; }
+.sw .meta span { font: 11px var(--f-mono); color: var(--ink-3); }
+
+.type-rows { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+.type-row { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 20px; padding: 20px 24px; align-items: baseline; }
+.type-row + .type-row { border-top: 1px solid var(--line); }
+.type-row .sample { overflow-wrap: anywhere; }
+@media (max-width: 600px) { .type-row { grid-template-columns: 1fr; gap: 6px; } }
+
+.goods { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; }
+.good { grid-column: span 2; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.good.w3 { grid-column: span 3; }
+.good.w6 { grid-column: 1 / -1; }
+.good .stage { border-radius: 16px; border: 1px solid var(--line); background: var(--paper-2); display: grid; place-items: center; padding: 24px; aspect-ratio: 1; max-width: 100%; overflow: hidden; }
+.good .cap { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+@media (max-width: 760px) { .goods { grid-template-columns: repeat(2, minmax(0, 1fr)); } .good, .good.w3 { grid-column: span 1; } .good.w6 { grid-column: 1 / -1; } }
+@media (max-width: 460px) { .goods { grid-template-columns: 1fr; } .good, .good.w3 { grid-column: 1 / -1; } }
+
+.appicon { width: 72%; max-width: 180px; aspect-ratio: 1; border-radius: 22.5%; display: grid; place-items: center; box-shadow: 0 1px 2px rgb(0 0 0 / .12), 0 12px 32px -12px rgb(0 0 0 / .35); }
+.appicon svg { width: 55%; height: auto; }
+.appicon.ink { background: #141210; --mb: #F5F5F0; --ma: #E0B88A; }
+.appicon.car { background: #D4A574; --mb: #1C1917; --ma: #F5F5F0; }
+.avatar { width: 72%; max-width: 180px; aspect-ratio: 1; border-radius: 50%; background: #1C1917; display: grid; place-items: center; --mb: #F5F5F0; --ma: #E0B88A; }
+.avatar svg { width: 46%; height: auto; }
+
+.tabbar { width: 100%; max-width: 260px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px 10px 0 0; padding: 8px 12px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-2); white-space: nowrap; overflow: hidden; }
+.tabbar .x { margin-left: auto; color: var(--ink-3); }
+
+.appbar { width: 100%; height: 52px; border-radius: 12px; background: #0C0A09; border: 1px solid #292522; display: flex; align-items: center; gap: 14px; padding: 0 14px; color: #B0A9A3; font-size: 13px; overflow: hidden; --mb: #F5F5F0; --ma: #E0B88A; }
+.appbar .lockup { font-size: 17px; }
+.appbar .cn { color: #F5F5F4; }
+.appbar .sep { width: 1px; height: 18px; background: #3D3834; flex-shrink: 0; }
+.appbar .title { color: #F5F5F4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.appbar .right { margin-left: auto; display: flex; align-items: center; gap: 12px; white-space: nowrap; }
+.appbar .btn { background: #E0B88A; color: #1C1917; border-radius: 8px; padding: 5px 12px; font-weight: 600; font-size: 12px; }
+@media (max-width: 600px) { .appbar .hide-sm { display: none; } }
+
+.screen { width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; border: 1px solid var(--line); overflow: hidden; position: relative; max-width: 100%; container-type: inline-size; }
+
+/* opening: the two corners close in from off-frame into a viewfinder → the dot lights up (recording) → wordmark */
+.bumper { background: #0C0A09; display: grid; place-items: center; --mb: #F5F5F0; --ma: #E0B88A; }
+.bumper .row { display: flex; align-items: center; gap: 3cqw; }
+.bumper svg { width: 10cqw; height: auto; overflow: visible; }
+.bumper .words { display: flex; align-items: center; gap: 2.2cqw; }
+.bumper .cn { font-size: 7cqw; color: #F5F5F4; line-height: 1; }
+.bumper .en { font: 600 2.1cqw var(--f-ui); letter-spacing: -.005em; color: #8F8780; border-left: 1px solid #3D3834; padding: .9cqw 0 .9cqw 2cqw; }
+.bumper.play .c-tl { animation: inTL .8s cubic-bezier(.16,1,.3,1) both; }
+.bumper.play .c-br { animation: inBR .8s cubic-bezier(.16,1,.3,1) both; }
+.bumper.play .c-dot { transform-origin: 32px 32px; animation: dot .5s .65s cubic-bezier(.16,1,.3,1) both; }
+.bumper.play .words > * { animation: fade .7s cubic-bezier(.16,1,.3,1) both; }
+.bumper.play .words .cn { animation-delay: .95s; }
+.bumper.play .words .en { animation-delay: 1.15s; }
+@keyframes inTL { from { transform: translate(-22px, -22px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes inBR { from { transform: translate(22px, 22px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes dot { 0% { transform: scale(0); } 60% { transform: scale(1.25); } 100% { transform: scale(1); } }
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .bumper.play .c-tl, .bumper.play .c-br, .bumper.play .c-dot { animation: none; }
+  .bumper.play .words > * { animation: fadeOnly .4s both; }
+  @keyframes fadeOnly { from { opacity: 0; } to { opacity: 1; } }
+}
+
+/* closing card */
+.endcard { background: #F5F5F0; color: #1C1917; display: grid; grid-template-columns: 1.1fr 1fr; --mb: #1C1917; --ma: #D4A574; }
+.endcard .l { padding: 7cqw 0 7cqw 7cqw; display: flex; flex-direction: column; justify-content: space-between; }
+.endcard .k { font: 500 1.5cqw var(--f-ui); letter-spacing: .14em; color: #7A736C; }
+.endcard h3 { font: 900 4.4cqw/1.3 var(--f-cn); letter-spacing: .03em; }
+.endcard .meta { font-size: 1.6cqw; color: #57534E; line-height: 1.7; }
+.endcard .r { display: grid; place-items: center; padding: 6cqw; }
+.endcard .next { width: 100%; aspect-ratio: 16/9; background: #1C1917; border-radius: 1.4cqw; position: relative; display: grid; place-items: center; }
+.endcard .next span { position: absolute; left: 1.4cqw; bottom: 1.2cqw; font: 500 1.4cqw var(--f-mono); color: #B0A9A3; }
+.endcard .next .play { width: 5cqw; height: 5cqw; border-radius: 50%; background: #E0B88A; display: grid; place-items: center; }
+.endcard .next .play::after { content: ""; border-left: 1.5cqw solid #1C1917; border-top: .9cqw solid transparent; border-bottom: .9cqw solid transparent; margin-left: .4cqw; }
+.endcard .nc { position: absolute; width: 3.4cqw; height: 3.4cqw; border: .7cqw solid #D4A574; }
+.endcard .nc.tl { left: -1.6cqw; top: -1.6cqw; border-width: .7cqw 0 0 .7cqw; }
+.endcard .nc.br { right: -1.6cqw; bottom: -1.6cqw; border-width: 0 .7cqw .7cqw 0; }
+.endcard .wm { position: absolute; right: 2.4cqw; bottom: 2cqw; display: flex; align-items: center; gap: .8cqw; }
+.endcard .wm svg { width: 2.6cqw; height: auto; }
+.endcard .wm .cn { font-size: 1.9cqw; color: #1C1917; }
+
+/* video corner bug */
+.corner { background: #E9DFCC; }
+.corner .art { position: absolute; inset: 0; display: grid; place-items: center; }
+.corner .art p { font: 900 5cqw/1.4 var(--f-cn); color: #2B2622; text-align: center; letter-spacing: .06em; }
+.corner .art p small { display: block; font: 500 1.8cqw var(--f-ui); letter-spacing: .1em; color: #5B524A; }
+.corner .bug { position: absolute; right: 2.4cqw; top: 2.4cqw; display: flex; align-items: center; gap: .7cqw; opacity: .8; --mb: #1C1917; --ma: #B77A43; }
+.corner .bug svg { width: 2.8cqw; height: auto; }
+.corner .bug span { font: 700 1.9cqw var(--f-cn); color: #1C1917; letter-spacing: .06em; }
+.corner .sub { position: absolute; left: 50%; bottom: 4cqw; transform: translateX(-50%); background: rgb(12 10 9 / .72); color: #F5F5F4; font-size: 2cqw; padding: .5cqw 1.4cqw; border-radius: .6cqw; white-space: nowrap; }
+
+.banner-img { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); display: block; }
+
+/* quote card: 「」 extended to a quotation in the frame */
+.quote { background: #1C1917; display: grid; place-items: center; }
+.quote .q { position: relative; width: 70%; padding: 4cqw 5cqw; }
+.quote .q p { font: 700 3.4cqw/1.6 var(--f-cn); color: #F5F5F4; letter-spacing: .04em; }
+.quote .q small { display: block; margin-top: 2cqw; font: 500 1.7cqw var(--f-ui); color: #B0A9A3; letter-spacing: .06em; }
+.quote .qc { position: absolute; width: 4cqw; height: 4cqw; border-color: #E0B88A; border-style: solid; }
+.quote .qc.tl { left: 0; top: 0; border-width: .8cqw 0 0 .8cqw; }
+.quote .qc.br { right: 0; bottom: 0; border-width: 0 .8cqw .8cqw 0; }
+
+.rules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.rule { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; }
+.rule h3 { font: 600 13px var(--f-ui); display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.rule ul { margin: 0; padding-left: 1.1em; color: var(--ink-2); display: flex; flex-direction: column; gap: 6px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+@media (max-width: 600px) { .rules { grid-template-columns: 1fr; } }
+
+footer { border-top: 1px solid var(--line); padding-block: 28px 48px; color: var(--ink-3); font-size: 12px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- the mark: 「」 are both Chinese quotation marks and the two corners of a viewfinder; the dot in the middle means recording -->
+  <symbol id="m" viewBox="0 0 64 64">
+    <path style="fill:var(--mb)" d="M8 8H31V14.5H14.5V31H8Z"/>
+    <path style="fill:var(--mb)" d="M56 56H33V49.5H49.5V33H56Z"/>
+    <circle style="fill:var(--ma)" cx="32" cy="32" r="7.5"/>
+  </symbol>
+  <symbol id="m-sm" viewBox="0 0 64 64">
+    <path style="fill:var(--mb)" d="M6 6H32V15H15V32H6Z"/>
+    <path style="fill:var(--mb)" d="M58 58H32V49H49V32H58Z"/>
+    <circle style="fill:var(--ma)" cx="32" cy="32" r="9"/>
+  </symbol>
+  <symbol id="q-open" viewBox="0 0 20 48"><path style="fill:var(--ma)" d="M3 3H18V7.5H7.5V30H3Z"/></symbol>
+  <symbol id="q-close" viewBox="0 0 20 48"><path style="fill:var(--ma)" d="M17 45H2V40.5H12.5V18H17Z"/></symbol>
+</svg>
+
+<div class="wrap">
+  <div class="top">
+    <div class="inner">
+      <span class="lockup" style="font-size:17px"><svg width="22" height="22"><use href="#m"/></svg><span class="cn">帧言</span></span>
+      <span style="display:flex;align-items:center;gap:12px">
+        <span class="cap mono">Brand guide v0.2 · 2026-10</span>
+        <button class="btn-ghost" id="theme-toggle" type="button">Toggle light / dark</button>
+      </span>
+    </div>
+  </div>
+
+  <div class="hero">
+    <span class="cap" style="letter-spacing:.16em">BY SITOR TEAM</span>
+    <span class="lockup"><svg><use href="#m"/></svg><span class="cn">帧言</span><span class="en">Frametell</span></span>
+    <p class="slogan"><span class="cn">帧言万物</span><span>Show what you know.</span></p>
+  </div>
+
+  <section>
+    <header><h2>Name</h2><p>The Chinese and the English say the same thing</p></header>
+    <div class="body">
+      <div class="cards2">
+        <div class="card">
+          <span class="k">Chinese</span>
+          <span class="cn" style="font-size:40px;line-height:1.1">帧言</span>
+          <div class="eq"><b>真言</b><span>→</span><b>帧言</b></div>
+          <p class="prose">帧 (<i>zhēn</i>) is one frame of a film; 言 (<i>yán</i>) is to speak. Said aloud, 帧言 sounds like 真言, “true words”: what this product makes is <strong>frames that speak, and say it straight</strong>.</p>
+        </div>
+        <div class="card">
+          <span class="k">English</span>
+          <span style="font:600 30px var(--f-ui);letter-spacing:-.01em;line-height:1.4">Frametell</span>
+          <div class="eq"><i>frame</i><span>=</span><b>帧</b><span>·</span><i>tell</i><span>=</span><b>言</b></div>
+          <p class="prose">A frame is a viewfinder, and also one frame of a picture; to tell is to explain. <strong>Frame a picture and tell it clearly.</strong> The name and the mark say the same thing: 「」 is that frame. In English, a frame story is also a way of telling a story.</p>
+        </div>
+      </div>
+      <p class="prose">Write “帧言” in Chinese contexts and “Frametell” in English ones; when both appear, Chinese comes first. The endorsement <strong>by Sitor Team</strong> appears only in the full lockup, the closing card and the README.</p>
+    </div>
+  </section>
+
+  <section>
+    <header><h2>Mark</h2><p>The quotation marks are “tell”, the viewfinder is “frame”</p></header>
+    <div class="body">
+      <div class="construct">
+        <svg viewBox="0 0 64 64" role="img" aria-label="Construction of the mark">
+          <defs><pattern id="grid" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M4 0H0V4" fill="none" style="stroke:var(--line)" stroke-width=".2"/></pattern></defs>
+          <rect width="64" height="64" fill="url(#grid)"/>
+          <use href="#m"/>
+          <g fill="none" style="stroke:var(--accent-ink)" stroke-width=".3" stroke-dasharray="1 .8">
+            <rect x="8" y="8" width="48" height="48"/>
+            <line x1="8" y1="5" x2="31" y2="5"/>
+            <line x1="4.5" y1="8" x2="4.5" y2="14.5"/>
+            <circle cx="32" cy="32" r="11"/>
+          </g>
+          <g style="fill:var(--ink-3)" font-family="JetBrains Mono, monospace" font-size="2.4">
+            <text x="17" y="3.8">23</text>
+            <text x="0.6" y="12.4">6.5</text>
+            <text x="41" y="24">r7.5</text>
+            <text x="36" y="61.5">48 × 48</text>
+          </g>
+        </svg>
+        <ol>
+          <li><strong>Two corners.</strong> 「 top left and 」 bottom right: both Chinese quotation marks and the two corners of a viewfinder. Stroke 6.5, arm length 23, all within a 48 × 48 grid.</li>
+          <li><strong>One dot.</strong> The caramel dot in the middle is the recording light and the focus of the picture. Keep a ring of clear space around it (dashed) so it never touches the corners.</li>
+          <li><strong>Only two colours.</strong> Corners in ink or paper, the dot in caramel. No gradients, outlines or drop shadows.</li>
+        </ol>
+      </div>
+      <div class="tiles">
+        <div class="tile light"><svg viewBox="0 0 64 64"><use href="#m"/></svg><span class="label">On light · #1C1917 + #D4A574</span></div>
+        <div class="tile dark"><svg viewBox="0 0 64 64"><use href="#m"/></svg><span class="label">On dark · #F5F5F0 + #E0B88A</span></div>
+        <div class="tile caramel"><svg viewBox="0 0 64 64"><use href="#m"/></svg><span class="label">On caramel · #1C1917 + #F5F5F0</span></div>
+        <div class="tile" style="background:var(--surface)">
+          <div class="sizes">
+            <figure><svg width="16" height="16"><use href="#m-sm"/></svg><figcaption>16</figcaption></figure>
+            <figure><svg width="24" height="24"><use href="#m-sm"/></svg><figcaption>24</figcaption></figure>
+            <figure><svg width="32" height="32"><use href="#m"/></svg><figcaption>32</figcaption></figure>
+            <figure><svg width="48" height="48"><use href="#m"/></svg><figcaption>48</figcaption></figure>
+            <figure><svg width="72" height="72"><use href="#m"/></svg><figcaption>72</figcaption></figure>
+          </div>
+          <span class="label" style="color:var(--ink-3)">At 24px and below, use the small-size version: heavier strokes, a larger dot</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <header><h2>Lockups</h2><p>Pick one for the occasion; don't improvise</p></header>
+    <div class="body">
+      <div class="lockups">
+        <div class="lk wide">
+          <div class="stage"><span class="lockup" style="font-size:48px"><svg width="50" height="50"><use href="#m"/></svg><span class="cn">帧言</span><span class="en">Frametell</span><span class="by">by Sitor Team</span></span></div>
+          <span class="cap">Full lockup: website, README, launches, external introductions</span>
+        </div>
+        <div class="lk">
+          <div class="stage"><span class="qw cn" style="font-size:54px"><svg viewBox="0 0 20 48"><use href="#q-open"/></svg>帧言<svg viewBox="0 0 20 48"><use href="#q-close"/></svg></span></div>
+          <span class="cap">Wordmark 「帧言」 alone: the quotation marks are the mark. Posters, closing cards, social covers</span>
+        </div>
+        <div class="lk">
+          <div class="stage"><span class="stacked"><svg width="60" height="60"><use href="#m"/></svg><span class="cn">帧言</span><span class="en">Frametell</span></span></div>
+          <span class="cap">Stacked: square spaces, splash screens</span>
+        </div>
+        <div class="lk">
+          <div class="stage"><span class="lockup" style="font-size:36px"><svg width="38" height="38"><use href="#m"/></svg><span class="cn">帧言</span></span></div>
+          <span class="cap">Chinese only: the app's top bar, Chinese platforms, the video corner bug</span>
+        </div>
+        <div class="lk">
+          <div class="stage"><span class="lockup" style="font-size:36px"><svg width="38" height="38"><use href="#m"/></svg><span style="font:600 26px var(--f-ui);letter-spacing:-.01em;color:var(--ink)">Frametell</span></span></div>
+          <span class="cap">English only: outside China, GitHub, the English interface</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <header><h2>Colour</h2><p>Ink &amp; Paper; caramel only for the dot and the primary action</p></header>
+    <div class="body">
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#1C1917"></div><div class="meta"><b>Ink</b><span>#1C1917</span></div></div>
+        <div class="sw"><div class="chip" style="background:#0C0A09"></div><div class="meta"><b>Night</b><span>#0C0A09</span></div></div>
+        <div class="sw"><div class="chip" style="background:#F5F5F0"></div><div class="meta"><b>Paper</b><span>#F5F5F0</span></div></div>
+        <div class="sw"><div class="chip" style="background:#E0B88A"></div><div class="meta"><b>Caramel · bright</b><span>#E0B88A · on dark</span></div></div>
+        <div class="sw"><div class="chip" style="background:#D4A574"></div><div class="meta"><b>Caramel</b><span>#D4A574 · on light</span></div></div>
+        <div class="sw"><div class="chip" style="background:#9C6A3A"></div><div class="meta"><b>Caramel · text</b><span>#9C6A3A · text on light</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <header><h2>Type</h2><p>Brand faces only in the wordmark and large headlines</p></header>
+    <div class="body">
+      <div class="type-rows">
+        <div class="type-row"><span class="cap">Chinese wordmark</span><span class="sample cn" style="font-size:36px">帧言万物</span></div>
+        <div class="type-row"><span class="cap">English wordmark</span><span class="sample" style="font:600 26px var(--f-ui);letter-spacing:-.01em">Frametell</span></div>
+        <div class="type-row"><span class="cap">Interface body</span><span class="sample" style="font-size:15px">导演 Agent 先出分镜给你确认，再写口播、配音、逐页画面并自检。<br>The director drafts a storyboard for your sign-off, then draws every page.</span></div>
+        <div class="type-row"><span class="cap">Numbers</span><span class="sample mono" style="font-size:15px">¥ 3.42 · 04:36 · 128,400 tokens</span></div>
+      </div>
+      <p class="prose cap">Chinese: Noto Serif SC Bold. English wordmark: Inter SemiBold. Interface: Inter + PingFang SC. Numbers: JetBrains Mono.</p>
+    </div>
+  </section>
+
+  <section>
+    <header><h2>Assets</h2><p>Shown at true proportions</p></header>
+    <div class="body">
+      <div class="goods">
+        <div class="good"><div class="stage"><div class="appicon ink"><svg viewBox="0 0 64 64"><use href="#m"/></svg></div></div><span class="cap"><span>App icon · ink ground</span><span class="mono">frametell-app-icon.svg</span></span></div>
+        <div class="good"><div class="stage"><div class="appicon car"><svg viewBox="0 0 64 64"><use href="#m"/></svg></div></div><span class="cap"><span>App icon · caramel ground (alternative)</span></span></div>
+        <div class="good"><div class="stage"><div class="avatar"><svg viewBox="0 0 64 64"><use href="#m"/></svg></div></div><span class="cap"><span>Social avatar</span></span></div>
+
+        <div class="good w3">
+          <div class="stage" style="aspect-ratio:auto;padding:28px 20px 0;align-items:end"><div class="tabbar"><svg width="16" height="16"><use href="#m-sm"/></svg><span>帧言 · 宋朝的钱为什么不够用</span><span class="x">×</span></div></div>
+          <span class="cap"><span>Browser tab</span><span class="mono">favicon.svg</span></span>
+        </div>
+        <div class="good w3">
+          <div class="stage" style="aspect-ratio:auto;padding:24px 16px">
+            <div class="appbar">
+              <span class="lockup"><svg width="20" height="20"><use href="#m"/></svg><span class="cn">帧言</span></span>
+              <span class="sep"></span><span class="title">宋朝的钱为什么不够用</span>
+              <span class="right"><span class="mono hide-sm">¥ 3.42</span><span class="btn">导出</span></span>
+            </div>
+          </div>
+          <span class="cap"><span>App top bar · 52px; Frametell in the English interface</span></span>
+        </div>
+
+        <div class="good w6">
+          <div class="screen bumper play" id="bumper">
+            <div class="row">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <path class="c-tl" style="fill:var(--mb)" d="M8 8H31V14.5H14.5V31H8Z"/>
+                <path class="c-br" style="fill:var(--mb)" d="M56 56H33V49.5H49.5V33H56Z"/>
+                <circle class="c-dot" style="fill:var(--ma)" cx="32" cy="32" r="7.5"/>
+              </svg>
+              <div class="words"><span class="cn">帧言</span><span class="en">Frametell</span></div>
+            </div>
+          </div>
+          <span class="cap"><span>Opening · 1.8 s: the corners close in from off-frame → the dot lights up, recording → wordmark</span><button class="btn-ghost" id="replay" type="button">Replay</button></span>
+        </div>
+
+        <div class="good w6">
+          <div class="screen endcard">
+            <div class="l">
+              <span class="k">下一期</span>
+              <h3>交子之后：<br>纸币是怎么失控的</h3>
+              <p class="meta">本期资料：《宋史·食货志》、彭信威《中国货币史》<br>口播、画面、配音由创作者与帧言共同完成</p>
+            </div>
+            <div class="r"><div class="next"><span class="nc tl"></span><span class="nc br"></span><div class="play"></div><span>12:08</span></div></div>
+            <div class="wm"><svg viewBox="0 0 64 64"><use href="#m"/></svg><span class="cn">帧言</span></div>
+          </div>
+          <span class="cap"><span>Closing card · 1920 × 1080: next episode framed by the viewfinder, credit bottom right, can be turned off on export</span></span>
+        </div>
+
+        <div class="good w3">
+          <div class="screen corner">
+            <div class="art"><p>熙宁年间<small>一贯钱 ≈ 770 文</small></p></div>
+            <div class="bug"><svg viewBox="0 0 64 64"><use href="#m-sm"/></svg><span>帧言</span></div>
+            <div class="sub">朝廷发现，铜不够用了。</div>
+          </div>
+          <span class="cap"><span>Video corner bug · top right, 80% opacity</span></span>
+        </div>
+        <div class="good w3">
+          <div class="screen quote">
+            <div class="q"><span class="qc tl"></span><span class="qc br"></span>
+              <p>铜钱铸得越多，市面上反而越少。</p><small>Sample quotation · quote-card style</small>
+            </div>
+          </div>
+          <span class="cap"><span>Quote card · 「」 extended to a quotation in the frame</span></span>
+        </div>
+
+        <div class="good w6">
+          <picture>
+            <source media="(prefers-color-scheme: dark)" srcset="readme/banner-zh-dark.png">
+            <img class="banner-img" src="readme/banner-zh-light.png" alt="帧言 · Frametell README banner">
+          </picture>
+          <span class="cap"><span>GitHub README banner · 1280 × 640 @2x, four versions (Chinese / English × light / dark), source banner.html</span><span class="mono">readme/</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <header><h2>Usage</h2><p>A few hard lines</p></header>
+    <div class="body">
+      <div class="rules">
+        <div class="rule">
+          <h3><span class="dot" style="background:#3E8E5E"></span>Do</h3>
+          <ul>
+            <li>Leave clear space round the mark of at least one corner's stroke width (about 1/8 of the mark's width).</li>
+            <li>The corners are always top left and bottom right, matching the direction of Chinese quotation marks.</li>
+            <li>At 24px and below, switch to the small-size version.</li>
+            <li>Quotations, framing and focus cues in the picture may borrow the language of the 「」 corners.</li>
+          </ul>
+        </div>
+        <div class="rule">
+          <h3><span class="dot" style="background:#C0442B"></span>Don't</h3>
+          <ul>
+            <li>Don't complete it to four corners: four corners make a QR-code scanner frame and lose the quotation-mark meaning.</li>
+            <li>Don't turn the dot into a triangular play button or change its colour.</li>
+            <li>No gradients, glows, outlines or drop shadows.</li>
+            <li>The English name is always written Frametell: only the first letter capitalised, never FRAMETELL in all capitals anywhere. Never “帧言 Studio” or “Frametell AI”; “by Sitor Team” never goes in the interface's top bar or the video corner bug.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>帧言 · Frametell · by <a href="https://sitor.ai">Sitor Team</a> · frametell.ai</span>
+    <span class="mono">docs/brand · v0.2 · trademark and domain checks pending</span>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    document.getElementById('theme-toggle').addEventListener('click', function () {
+      var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      root.dataset.theme = dark ? 'light' : 'dark';
+    });
+    var bumper = document.getElementById('bumper');
+    document.getElementById('replay').addEventListener('click', function () {
+      bumper.classList.remove('play'); void bumper.offsetWidth; bumper.classList.add('play');
+    });
+  })();
+</script>
+</body>
+</html>

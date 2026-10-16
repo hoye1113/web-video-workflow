@@ -1,0 +1,31 @@
+// 由 video-factory 生成，勿手改；改镜头请用项目面板。
+window.PUNCH = 0;
+window.SCENE_DIR = 'demos/marriage_full/scenes';
+window.ERAS = [
+  { id: '01', dur: 13, assets: ['demos/marriage_full/assets/01_1.png'] },
+  { id: '02', dur: 10, assets: ['demos/marriage_full/assets/02_1.png'] },
+  { id: '03', dur: 13 },
+  { id: '04', dur: 11, assets: ['demos/marriage_full/assets/04_1.png'] },
+  { id: '05', dur: 15, assets: ['demos/marriage_full/assets/05_1.png'] },
+  { id: '06', dur: 12, assets: ['demos/marriage_full/assets/06_1.png'] },
+  { id: '07', dur: 14, assets: ['demos/marriage_full/assets/07_1.png'] },
+  { id: '08', dur: 14, assets: ['demos/marriage_full/assets/08_1.png'] },
+  { id: '09', dur: 12 },
+  { id: '10', dur: 17, assets: ['demos/marriage_full/assets/10_1.png'] },
+  { id: '11', dur: 16 },
+  { id: '12', dur: 13, assets: ['demos/marriage_full/assets/12_1.png'] },
+  { id: '13', dur: 13 },
+  { id: '14', dur: 11, assets: ['demos/marriage_full/assets/14_1.png'] },
+  { id: '15', dur: 11, assets: ['demos/marriage_full/assets/15_1.png'] },
+  { id: '16', dur: 17, assets: ['demos/marriage_full/assets/16_1.png'] },
+  { id: '17', dur: 17, assets: ['demos/marriage_full/assets/17_1.png'] },
+  { id: '18', dur: 13 },
+  { id: '19', dur: 12, assets: ['demos/marriage_full/assets/19_1.png'] },
+  { id: '20', dur: 12 },
+  { id: '21', dur: 15, assets: ['demos/marriage_full/assets/21_1.png'] },
+  { id: '22', dur: 14 },
+  { id: '23', dur: 14, assets: ['demos/marriage_full/assets/23_1.png'] },
+  { id: '24', dur: 11, assets: ['demos/marriage_full/assets/24_1.png'] },
+  { id: '25', dur: 14 },
+  { id: '26', dur: 15, assets: ['demos/marriage_full/assets/26_1.png'] },
+];

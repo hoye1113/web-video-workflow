@@ -1,0 +1,91 @@
+:root{
+  --bg:#191614; --panel:#231F1C; --panel2:#2C2724; --line:#3B3430;
+  --text:#EDE6DE; --muted:#948A81; --accent:#C8553D; --accent2:#E9B872;
+  --ok:#7FA65C; --warn:#D9A860;
+}
+*{box-sizing:border-box}
+html,body,#root{height:100%;margin:0;overflow:hidden}
+body{background:var(--bg);color:var(--text);
+  font:13.5px/1.65 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+button,select,textarea,input{font-family:inherit;font-size:inherit;color:inherit}
+.muted{color:var(--muted)}
+.grow{flex:1}
+
+/* 三段：顶栏 / 主区 / 底部聊天 */
+.app{display:flex;flex-direction:column;height:100vh}
+.bar{display:flex;align-items:center;gap:10px;height:46px;padding:0 14px;
+  background:var(--panel);border-bottom:1px solid var(--line);flex:none}
+.brand{font-weight:600}
+.bar select{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:4px 8px}
+.chip{background:var(--panel2);border:1px solid var(--line);border-radius:20px;padding:2px 10px;font-size:12px}
+.skel{display:flex;gap:5px;font-size:11.5px;color:var(--muted);overflow:hidden;white-space:nowrap}
+.skel b{color:var(--accent2);margin:0 3px}
+.err-inline{color:#E08A78;font-size:12px}
+
+.main{flex:1;min-height:0}
+.rz{width:6px;background:transparent}
+.rz:hover,.rz[data-resize-handle-active]{background:var(--accent)}
+
+/* 面板 */
+.panel{display:flex;flex-direction:column;height:100%;background:var(--panel);
+  border:1px solid var(--line);border-radius:10px;margin:8px;overflow:hidden}
+.panel.grow{flex:1}
+.panel-head{display:flex;justify-content:space-between;align-items:center;gap:8px;
+  padding:9px 12px;border-bottom:1px solid var(--line);font-weight:600;font-size:12.5px;flex:none}
+.colstack{display:flex;flex-direction:column;height:100%}
+
+/* 页面列表：按骨架分段分组 */
+.pages{list-style:none;margin:0;padding:6px;overflow:auto;flex:1}
+.pages .group{margin-bottom:2px}
+.group-head{display:flex;justify-content:space-between;align-items:center;
+  padding:7px 8px 3px;font-size:11px;color:var(--accent2);letter-spacing:.5px}
+.group-head .muted{color:var(--muted)}
+.pages .row{display:grid;grid-template-columns:26px 1fr auto;gap:8px;align-items:center;
+  padding:5px 8px;border-radius:6px;cursor:pointer;border:1px solid transparent}
+.pages .row:hover{background:var(--panel2)}
+.pages .row.on{background:var(--panel2);border-color:var(--accent)}
+.pages .no{color:var(--muted);font-variant-numeric:tabular-nums;font-size:11.5px}
+.pages .t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}
+.pages .m{color:var(--muted);font-size:11px;display:flex;align-items:center;gap:4px}
+.mode{font-size:10px;font-weight:600;padding:0 4px;border-radius:3px;background:var(--panel2);
+  border:1px solid var(--line);color:var(--accent2)}
+.mode.image{background:#2f2a20;border-color:#5a4a2e}
+.dot{width:6px;height:6px;border-radius:50%;background:#5A514B;display:inline-block}
+.dot.has{background:var(--ok)}
+.dot.stale{background:var(--warn)}
+.dot.failed{background:var(--accent)}
+.dot.rendered{background:var(--ok)}
+
+/* 预览 */
+.stage{flex:1;display:flex;min-height:0;background:#100E0D;padding:10px}
+.stage iframe{flex:1;border:1px solid var(--line);border-radius:8px;background:#100E0D}
+
+/* 任务 */
+.jobs{list-style:none;margin:0;padding:8px;overflow:auto;flex:1}
+.jobs li{padding:8px 9px;border-radius:7px;background:var(--panel2);margin-bottom:6px;font-size:12px}
+.jt{display:flex;justify-content:space-between;gap:8px;margin-bottom:5px}
+.ellip{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* 任务进度条。注意别叫 .bar —— 顶栏也叫 .bar，会互相覆盖（踩过） */
+.jbar{height:3px;background:#3B3430;border-radius:2px;overflow:hidden}
+.jbar i{display:block;height:100%;background:var(--accent2);transition:width .25s}
+.jbar i.ok{background:var(--ok)}
+.jbar i.bad{background:var(--accent)}
+.err{color:#E08A78;margin-top:5px;white-space:pre-wrap;font-size:11px;max-height:70px;overflow:auto}
+
+/* 底部聊天：窗口矮的时候跟着缩，别把上面的预览挤没了 */
+.bottom{flex:none;height:clamp(116px,26vh,230px);background:var(--panel);border-top:1px solid var(--line);
+  display:flex;flex-direction:column;min-height:0}
+.chat{display:flex;flex-direction:column;height:100%;padding:8px 12px 10px;gap:8px}
+.chat-log{flex:1;overflow:auto;min-height:0}
+.msg{margin:6px 0;white-space:pre-wrap}
+.msg.user{text-align:right}
+.msg.user span{background:var(--panel2);padding:5px 10px;border-radius:8px;display:inline-block;text-align:left}
+.chat .notes{margin-top:8px;font-size:11.5px;color:var(--muted)}
+.chat .notes pre{margin:4px 0 0;white-space:pre-wrap;font-size:11.5px}
+.composer{display:flex;gap:8px;flex:none}
+.composer-input{flex:1;padding:7px 10px;background:var(--panel2);border:1px solid var(--line);
+  border-radius:8px;outline:none;resize:none}
+.composer-input:focus{border-color:var(--accent)}
+.composer-send{padding:7px 18px;border:0;border-radius:8px;background:var(--accent);
+  color:#1B120F;font-weight:600;cursor:pointer}
+.composer-send:disabled{opacity:.45;cursor:default}
