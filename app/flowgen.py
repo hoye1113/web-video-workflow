@@ -92,6 +92,14 @@ class Flow:
             raise RuntimeError(f"开 bsk 会话没拿到 id：{out[:200]}")
         self.log(f"bsk 会话 {self.sid}")
 
+        # **窗口放到最大**：Flow 是响应式的，窗口一小就折叠掉一排按钮 ——
+        # 实测 1600×900 时 "Characters"/"Scenes"/"Agent" 这些才会出现，
+        # 折叠状态下连 observe 都看不到它们（用户提的，一试就灵）。
+        try:
+            _bsk("window", "resize", "--session", self.sid, "--width", "1600", "--height", "900", timeout=60)
+        except Exception:                                      # noqa: BLE001
+            pass                                               # 放不大也不致命
+
         out, _, _ = _bsk("navigate", "https://flow.google.com", "--session", self.sid, timeout=180)
         m = re.search(r"url=(\S+)", out or "")
         url = m.group(1) if m else "?"
@@ -193,6 +201,39 @@ class Flow:
         o2, e2, c2 = _bsk("click", ref, "--session", self.sid, timeout=180)
         ok = "click ok" in (o2 or "") or c2 == 0
         return {"ok": ok, "ref": ref, "out": (o2 or e2 or "")[:120]}
+
+    # ---------- 参考图（ingredients）----------
+
+    def attach(self, path):
+        """把一张参考图挂到提示框（Flow 的 Add ingredients）。
+
+        实测出来的三个细节（都踩过）：
+          ① 那个按钮带 `[has-submenu]`：点完菜单开在**新图层**里，必须**重新 observe** 才拿得到菜单项的 ref；
+             直接对它做 `upload --mode input` 会失败（"did not activate a file input"）。
+          ② 菜单项叫 **"Upload media"**；点它才会走文件选择器，这时 bsk 的 upload 才接得住。
+          ③ bsk 不肯猜目标：给它 CSS 选择器会报 "could not be safely resolved"，必须用 observe 给的 `@eN`。
+        """
+        p = Path(path)
+        if not p.exists():
+            raise RuntimeError(f"参考图不存在：{p}")
+        out, _, _ = _bsk("observe", "--session", self.sid, "--max-tokens", "12000", timeout=300)
+        m = re.search(r'@(e\d+)\s+button\s+"Add ingredients', out or "")
+        if not m:
+            raise RuntimeError("找不到 Add ingredients 按钮（Flow 界面可能变了）")
+        _bsk("click", "@" + m.group(1), "--session", self.sid, timeout=120)
+        time.sleep(2)
+        out2, _, _ = _bsk("observe", "--session", self.sid, "--max-tokens", "12000", timeout=300)
+        m2 = re.search(r'@(e\d+)\s+button\s+"Upload media"', out2 or "")
+        if not m2:
+            raise RuntimeError("点了 Add ingredients 却没看到 Upload media 菜单项（Flow 界面可能变了）")
+        o, e, c = _bsk("upload", "--file", str(p), "--session", self.sid,
+                       "--ref", "@" + m2.group(1), "--mode", "input", "--timeout", "120s", timeout=300)
+        txt = ((o or "") + (e or ""))
+        if c != 0 or "error" in txt.lower():
+            raise RuntimeError(f"挂参考图失败：{txt.strip()[:240]}")
+        self.log(f"  挂上参考图：{p.name}")
+        time.sleep(4)                       # 等它把缩略图渲染出来
+        return True
 
     # ---------- 对外 ----------
 
