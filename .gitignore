@@ -43,3 +43,10 @@ experiments/temp/
 
 # 陈旧的测试渲染产物
 renders/
+
+# FRAMETELL 的导出目录（成片/字幕/脚本 —— 都是产物，不入库）
+projects/exports/
+
+# 角色资产拆分时的临时探测图
+projects/character-assets/_probe-*.png
+projects/character-assets/_check-*.png
