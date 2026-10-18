@@ -39,6 +39,19 @@
     return { g, ...(parts || {}), hide(t, d = 0.5) { outAt = t; outDur = Math.max(0.01, d); return this; } };
   }
 
+  /** 机位关键帧插值：cam = [{t, x, y, z}, …] → { x, y, z } at lt。
+   *  用它写"停 — 推 — 停"：前面 z 不变、中间一段推到目标、后面保持不变。 */
+  function camAt(cam, lt) {
+    let cur = cam[0];
+    for (let i = 1; i < cam.length; i++) {
+      const p = cam[i - 1], q = cam[i];
+      if (lt >= q.t) { cur = q; continue; }
+      const k = ease.inOut(clamp((lt - p.t) / Math.max(0.001, q.t - p.t)));
+      return { x: lerp(p.x ?? 0, q.x ?? 0, k), y: lerp(p.y ?? 0, q.y ?? 0, k), z: lerp(p.z ?? 1, q.z ?? 1, k) };
+    }
+    return { x: cur.x ?? 0, y: cur.y ?? 0, z: cur.z ?? 1 };
+  }
+
   /* ───────────────────────── 门 ─────────────────────────
    * door(cx, baseY, w, h, o) —— 门框 + 门板（可开合）+ 门缝的光。
    * o: { open: 0..1 或 fn(lt), side: 'left'|'right'（铰链侧）, light, glow } */
@@ -267,5 +280,89 @@
         },
       };
     });
+  };
+
+  /* ───────────────────────── 场景（生成图当底） ─────────────────────────
+   * scene(src, o) —— 把一张生成图当**底**，代码只做三件事：摆位、让它动、上面加字。
+   *
+   * 关键：图会被挪到 **SVG 之下**。默认的 P.img 住在 `.txt` 层（在 SVG 之上），
+   * 拿它当底会把所有矢量组件（手、门、纸…）整块盖住。
+   *
+   * o: {
+   *   at, dur,                                    入场
+   *   x, y, w, h, fit, pos, r, shadow, border,    框（默认铺满整幅、无边框）
+   *   cam:  [{t, x, y, z}, …],                    机位关键帧；缺省 = **停-推-停**
+   *   reveal: { from, to, at, dur },              明暗揭示（亮度 from → to）
+   *   grade: { brightness, saturate, contrast },  固定调色（**情绪低谷**用）
+   *   inset: { src, x, y, w, h, at, dur, cam },   细节插入（同场景的第二张图，中段切进来）
+   * }
+   * 返回 { box, im, inset, hide(t, d) }。
+   */
+  B.scene = function (src, o = {}) {
+    const vb = this.svg.viewBox.baseVal;
+    const SW = vb.width, SH = vb.height;
+    const x = o.x ?? 0, y = o.y ?? 0, w = o.w ?? SW, h = o.h ?? SH;
+    const full = x === 0 && y === 0 && w === SW && h === SH;
+
+    // 借引擎的 img（它会登记图片、等解码 —— 绕开它渲染可能抓在解码前）
+    const base = this.img(src, x, y, w, h, {
+      at: o.at ?? 0, dur: o.dur ?? 0.8,
+      fit: o.fit || 'cover', pos: o.pos, r: o.r ?? (full ? 0 : 14),
+      shadow: o.shadow ?? !full, border: o.border ?? !full, mask: o.mask,
+    });
+    const box = base.el, im = box.querySelector('img');
+    const host = this.svg.parentNode;
+    if (host && host.contains(box)) host.insertBefore(box, this.svg);   // ← 挪到 SVG 下面当底
+
+    // 浅底图 → 深底：给框铺一层底色，让图用 multiply 跟它相乘
+    // （白底会变成底色、主体保留；这是"把日间素材放进夜间页"的关键一招）
+    if (o.ground) {
+      box.style.background = col(o.ground);
+      if (im) im.style.mixBlendMode = o.blend || 'multiply';
+    }
+
+    // 机位：缺省"停 — 推 — 停"（GRAMMAR 不许整页匀速慢推）
+    const endT = this.endT ?? 10;
+    const cam = o.cam || [
+      { t: 0, z: 1 }, { t: endT * 0.4, z: 1 },
+      { t: endT * 0.4 + 0.6, z: 1.06 }, { t: endT, z: 1.06 },
+    ];
+    const g = o.grade || {}, rv = o.reveal;
+    const filterAt = (lt) => {
+      let b = g.brightness ?? 1;
+      if (rv) b *= lerp(rv.from ?? 0.18, rv.to ?? 1, ease.out(clamp((lt - (rv.at ?? 0)) / (rv.dur ?? 1.4))));
+      return `brightness(${fmt(b)}) saturate(${fmt(g.saturate ?? 1)}) contrast(${fmt(g.contrast ?? 1)})`;
+    };
+    if (im) { im.style.transformOrigin = '50% 50%'; im.style.willChange = 'transform, filter'; }
+    this.tick((lt) => {
+      if (!im) return;
+      const c = camAt(cam, lt);
+      im.style.transform = `translate(${fmt(c.x)}px, ${fmt(c.y)}px) scale(${fmt(c.z)})`;
+      im.style.filter = filterAt(lt);
+    });
+
+    // 细节插入：同场景的第二张图，中段切进来（它留在 .txt 层 —— 特写本来就该盖住底）
+    let inset = null;
+    if (o.inset) {
+      const q = o.inset;
+      inset = this.img(q.src, q.x ?? w * 0.52, q.y ?? h * 0.1, q.w ?? w * 0.4, q.h ?? h * 0.44, {
+        at: q.at ?? endT * 0.5, dur: q.dur ?? 0.7, fit: q.fit || 'cover', pos: q.pos,
+        r: q.r ?? 12, shadow: q.shadow ?? true, border: q.border ?? true,
+      });
+      const qi = inset.el.querySelector('img');
+      if (qi) {
+        qi.style.transformOrigin = '50% 50%';
+        const qcam = q.cam || [{ t: 0, z: 1 }, { t: 999, z: 1.05 }];
+        this.tick((lt) => {
+          const c = camAt(qcam, Math.max(0, lt - (q.at ?? endT * 0.5)));
+          qi.style.transform = `translate(${fmt(c.x)}px, ${fmt(c.y)}px) scale(${fmt(c.z)})`;
+        });
+      }
+    }
+
+    return {
+      box, im, inset,
+      hide(t, d = 0.5) { base.hide(t, d); if (inset) inset.hide(t + 0.2, d); return this; },
+    };
   };
 })();

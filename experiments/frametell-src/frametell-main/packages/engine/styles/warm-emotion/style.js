@@ -21,6 +21,9 @@ const DAY = {
   // 角色锚点色（取自定妆图实测，供矢量层对齐镜头用；角色本体仍来自生成图）
   sprout: '#DEF0A8', hairF: '#F6E4D8', hairM: '#728A96', jacket: '#D2DEE4', shorts: '#7C6867',
   skinF: '#F6DED2',
+  // plate：浅底素材 multiply 上来的底（scene 的 ground 用）。
+  // 不能直接用 paper —— 太深会把主体一起吃掉；这一档是"底色够沉、主体还看得见"
+  plate: '#EFE3CF',
 };
 
 const NIGHT = {
@@ -34,6 +37,8 @@ const NIGHT = {
   inkF: '#2A2522', softF: '#332C28', mutedF: '#3B332E', faintF: '#443B35',
   sprout: '#C8D98E', hairF: '#C9A99C', hairM: '#5A6B76', jacket: '#8C99A2', shorts: '#4E4444',
   skinF: '#C9AFA2',
+  // plate：夜间的底。比 paper 浅一档 —— 浅底素材 multiply 上来时主体还看得见（scene 的 ground 用）
+  plate: '#6E5C49',
 };
 
 window.STYLE = {
