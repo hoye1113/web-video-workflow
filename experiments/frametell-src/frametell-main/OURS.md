@@ -13,6 +13,7 @@
 | 文件 | 干什么 |
 |---|---|
 | `packages/voice/tools/edge-tts.py` | edge-tts 的 Python 桥：JSON 请求文件进 → mp3 + 逐词时间戳出。**必须 `boundary='WordBoundary'`**（否则中文只有整句时间戳）；请求走 UTF-8 文件不走管道（Windows 控制台会按 GBK 编码）；带退避重试并区分"可重试/不可重试" |
+| `packages/engine/styles/warm-emotion/` | **我们的情感叙事风格包（自包含，4 个文件）**：`GRAMMAR.md`（宪法，页面 agent 与评审 agent 都读它）· `style.js`（日/夜两套色板 + `setTheme`）· `style.css`（纸面/暗角/字幕）· `kit.js`（**8 个情感组件**：门/手机/照片/背影/纸/光/距离/空位）。放在 `styles/<风格>/` 下，**不改引擎运行时**。坑：逐页换色板必须改 `PV.C`（运行时在加载时把 palette 拷进了自己的 `C`，改 `STYLE.palette` 无效）；背景只在片级算一次，夜间页要自己用 `P.light(..., { full: true, ground: 'paper' })` 铺底 |
 
 ### 素材读取把关（扫描件别再静默地读成空）
 

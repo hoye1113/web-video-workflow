@@ -1,0 +1,49 @@
+/* Warm emotion · 纸张、暗角、字幕样式。
+ * 日夜通过 <html data-theme="night"> 切换（STYLE.setTheme 会顺手设这个属性）。
+ * 夜间不是换色值：暗角更重、纸面更深、字幕底更透 —— 这是"只剩一盏灯"的核心。 */
+
+:root {
+  --ink: #3A322C;
+  --soft: #6E6157;
+  --muted: #A2937F;
+  --band-color: rgba(251, 247, 237, 0.97);
+  --grain: rgba(115, 82, 51, 0.05);
+}
+
+#frame { background: #F6EFE0; }
+
+/* 日间：四角只压一点点，像纸被翻久了 */
+#vignette {
+  background: radial-gradient(ellipse 80% 75% at 50% 45%, transparent 58%, rgba(90, 60, 35, 0.12) 100%);
+}
+
+.tx { letter-spacing: 0.02em; }
+
+.subs span {
+  color: #3A322C;
+  background: rgba(253, 249, 241, 0.94);
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(110, 75, 40, 0.10), inset 0 0 0 1.5px rgba(170, 135, 100, 0.22);
+}
+
+/* ---------- 夜间（情绪低谷）---------- */
+html[data-theme="night"] {
+  --ink: #E8DCCB;
+  --soft: #B9A98F;
+  --muted: #857A68;
+  --band-color: rgba(22, 19, 16, 0.95);
+  --grain: rgba(255, 226, 178, 0.035);
+}
+
+html[data-theme="night"] #frame { background: #1B1714; }
+
+/* 暗角加重：这是"低谷"最省力也最有效的一刀（方案 §6：配色调暗） */
+html[data-theme="night"] #vignette {
+  background: radial-gradient(ellipse 66% 58% at 50% 46%, transparent 30%, rgba(0, 0, 0, 0.46) 100%);
+}
+
+html[data-theme="night"] .subs span {
+  color: #EFE6D8;
+  background: rgba(30, 26, 22, 0.92);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.35), inset 0 0 0 1.5px rgba(196, 168, 130, 0.18);
+}
