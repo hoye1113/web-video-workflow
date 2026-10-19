@@ -151,7 +151,7 @@ PAGES = [
 
     dict(id="p24", title="妻子这端最危险的，不是哭，而是只剩情绪", asset="p24-clench.png",
          theme="day", cam="push40", reveal=(0.35, 1, 0.25, 1.4),
-         lights=[(1500, 500, 620, "screen", 0.6, "blue", "PV.clamp((lt - 0.6) / 1.6)")],
+         lights=[],
          texts=[("只剩情绪", 250, 230, 44, "l", "ink", 1.5)]),
 
     dict(id="p25", title="要不要继续，看对方有没有承担后果", asset="p25-ruler.png", theme="day",
@@ -203,18 +203,48 @@ def render(p):
     return "\n".join(L)
 
 
+def load_spec(project=None):
+    """页表从工程自己的 `page-spec.json` 读（没有就用文件里这份 emotion-full 的做例子）。
+
+    这样换题材不用改工具：**新工程放一份自己的 page-spec.json 就行**。
+    """
+    if project:
+        f = ROOT / "projects" / project / "page-spec.json"
+        if f.exists():
+            return json.loads(f.read_text(encoding="utf-8"))
+        raise SystemExit(f"没有 {f}（新工程先照 emotion-full 的复制一份）")
+    f = ROOT / "projects" / "emotion-full" / "page-spec.json"
+    if f.exists():
+        return json.loads(f.read_text(encoding="utf-8"))
+    return PAGES
+
+
 def main():
-    if "--check" in sys.argv:
+    args = sys.argv[1:]
+    proj = None
+    if "--project" in args:
+        proj = args[args.index("--project") + 1]
+    pages = load_spec(proj)
+    out = (ROOT / "projects" / proj / "pages") if proj else OUT
+
+    if "--export" in args:
+        keep = ["id", "title", "asset", "theme", "cam", "reveal", "lights", "texts"]
+        data = [{k: v for k, v in p.items() if k in keep} for p in pages]
+        f = (ROOT / "projects" / (proj or "emotion-full") / "page-spec.json")
+        f.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
+        print(f"导出页表：{f.relative_to(ROOT)}（{len(data)} 页）")
+        return
+    if "--check" in args:
         print(f'{"页":<5}{"主题":<7}{"机位":<8}{"灯":<4}{"字":<4}局面')
-        for p in PAGES:
+        for p in pages:
             print(f'{p["id"]:<5}{p["theme"]:<7}{p.get("cam", "-"):<8}'
                   f'{len(p.get("lights") or []):<4}{len(p.get("texts") or []):<4}{p["asset"]}')
         return
-    OUT.mkdir(parents=True, exist_ok=True)
-    for p in PAGES:
-        (OUT / f'{p["id"]}.js').write_text(render(p), encoding="utf-8")
-    print(f"生成 {len(PAGES)} 页 → {OUT.relative_to(ROOT)}")
-    for p in PAGES:
+    out.mkdir(parents=True, exist_ok=True)
+    for p in pages:
+        (out / f'{p["id"]}.js').write_text(render(p), encoding="utf-8")
+    print(f"生成 {len(pages)} 页 → {out.relative_to(ROOT)}")
+    for p in pages:
         miss = [x for x in [p["asset"]] if not (ROOT / "projects" / "scene-library" / x).exists()]
         if miss:
             print(f'  ⚠ {p["id"]} 的图还没生成：{", ".join(miss)}')

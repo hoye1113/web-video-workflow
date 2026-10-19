@@ -35,9 +35,11 @@ PY = pathlib.Path.home() / ".frametell" / "edge-venv" / "Scripts" / "python.exe"
 LOCALBIN = pathlib.Path.home() / ".local" / "bin"
 
 VOICE = "zh-CN-XiaoxiaoNeural"
-RATE = -8          # 慢一点，像"讲给你听"
+RATE = -4          # 语速：-4% 听着稳，又不拖（第一部用 -8% 出来 9:52，用户说太长）
 PITCH = -2         # 压低一点，稳
-TAIL = {"。": 0.5, "！": 0.5, "？": 0.5, "，": 0.28, "、": 0.24, "；": 0.34, "：": 0.30}
+# 停顿**补在音频末尾**（引擎在"有 o"这条路里不再自己加）。第一版补得偏宽（0.5/0.28）→ 全片多出 40+ 秒。
+TAIL = {"。": 0.35, "！": 0.35, "？": 0.35, "，": 0.20, "、": 0.18, "；": 0.26, "：": 0.24}
+TAIL_LAST = 0.2    # 页末那条
 
 
 def env():
@@ -117,13 +119,13 @@ def build_k(text: str, words, lead: float):
     return k
 
 
-def one_cue(text: str, pid: str, i: int):
+def one_cue(text: str, pid: str, i: int, last=False):
     """合成一条 cue → 返回 {f, d, o, k}。**不管文件在不在都重做**（元数据只能从这次合成里来）。"""
     wav = AUDIO / f"{pid}-{i}.wav"
     mp3 = AUDIO / f"{pid}-{i}.mp3"
     words = synth(text, mp3)
     lead = round(min([float(w["startTime"]) for w in words] or [0]), 3)
-    pad = TAIL.get(text.strip()[-1:], 0.25)
+    pad = TAIL_LAST if last else TAIL.get(text.strip()[-1:], 0.2)
     to_wav(mp3, wav, pad)
     mp3.unlink(missing_ok=True)
     return {"f": f"audio/{wav.name}", "d": dur_of(wav), "o": lead,
@@ -156,8 +158,9 @@ def main(argv):
             if key in cache and cache[key].get("t") == text and not force_all(argv):
                 continue
             todo += 1
+            last = i == len(p["cues"]) - 1
             print(f'  {p["id"]} [{i + 1}/{len(p["cues"])}] {text}')
-            v = one_cue(text, p["id"], i)
+            v = one_cue(text, p["id"], i, last=last)
             v["t"] = text
             cache[key] = v
             print(f'      {v["d"]}s 起声{v["o"]}s 首字k={v["k"][:4]}')

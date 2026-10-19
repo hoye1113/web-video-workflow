@@ -11,7 +11,6 @@ ENGINE.visual('p16', (P) => {
     at: 0,
     reveal: { from: 0.3, to: 1, at: 0.25, dur: 1.6 },
     cam: [[0, 1], [T * 0.38, 1], [T * 0.38 + 0.7, 1.09], [T, 1.09]].map(([t, z]) => ({ t, z })),
-    grade: { brightness: 0.94, saturate: 0.92 },
   });
 
   P.light(960, 180, 560, { at: 0.5, kind: 'lamp', color: 'orange', k: (lt) => PV.clamp((lt - 0.3) / 1.6) });
