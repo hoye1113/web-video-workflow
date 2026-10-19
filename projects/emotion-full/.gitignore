@@ -4,3 +4,4 @@ out/
 .studio/
 audio/
 voice.js
+agent-session.json

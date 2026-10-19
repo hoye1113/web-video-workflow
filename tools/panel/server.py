@@ -90,6 +90,27 @@ def status_of(proj):
             "at": int((d / "events.jsonl").stat().st_mtime) if (d / "events.jsonl").exists() else 0}
 
 
+def agent_loop():
+    """把 agent 的回复与"要你点一下"的权限请求，搬进我们自己的事件流（面板就靠事件流渲染）。"""
+    sys.path.insert(0, str(ROOT / "tools"))
+    import agent_bridge                                       # noqa: PLC0415
+    while True:
+        time.sleep(3)
+        for proj in pipeline.projects():
+            try:
+                fresh, _ = agent_bridge.new_messages(proj)
+                for txt in fresh:
+                    pipeline.emit(proj, "agent", text=txt[:1500])
+                for p in agent_bridge.pending_perms(proj):
+                    key = f'perm:{p.get("id")}'
+                    if pipeline.approvals(proj).get(key):
+                        continue
+                    pipeline.emit(proj, "perm", id=p.get("id"), action=p.get("action"),
+                                  resources=p.get("resources"), session=p.get("sessionID"))
+            except Exception:                                 # noqa: BLE001
+                pass
+
+
 class H(BaseHTTPRequestHandler):
     server_version = "vf-panel"
 
@@ -224,6 +245,25 @@ class H(BaseHTTPRequestHandler):
             conductor.set_paused(b["project"], b.get("on", True))
             AUTO["on"] = not b.get("on", True) is True or AUTO["on"]
             return self._send(200, {"ok": True, "paused": conductor.paused(b["project"])})
+        if u.path == "/api/ask":
+            # 面板 → material agent（素材阶段交给它）
+            sys.path.insert(0, str(ROOT / "tools"))
+            import agent_bridge                                   # noqa: PLC0415
+            try:
+                sid = agent_bridge.ask(b["project"], b.get("text", ""))
+                pipeline.emit(b["project"], "say", text=b.get("text", ""))
+                return self._send(200, {"ok": True, "session": sid})
+            except Exception as e:                                # noqa: BLE001
+                pipeline.emit(b["project"], "log", text=f"✗ 交给 agent 失败：{e}")
+                return self._send(500, {"error": str(e)})
+        if u.path == "/api/perm":
+            sys.path.insert(0, str(ROOT / "tools"))
+            import agent_bridge                                   # noqa: PLC0415
+            dec = "always" if b.get("decision") == "always" else (
+                "reject" if b.get("decision") == "reject" else "once")
+            agent_bridge.reply_perm(b["project"], b["id"], dec)
+            pipeline.mark(b["project"], f'perm:{b["id"]}', "ok" if dec != "reject" else "no", dec)
+            return self._send(200, {"ok": True})
         if u.path == "/api/say":
             pipeline.emit(b["project"], "say", text=b.get("text", ""),
                           refs=b.get("refs") or [])
@@ -392,7 +432,9 @@ def main():
     srv = ThreadingHTTPServer((a.host, a.port), H)
     print(f"面板：http://{a.host}:{a.port}   工程目录：{pipeline.ROOT / 'projects'}")
     threading.Thread(target=conductor_loop, daemon=True).start()
+    threading.Thread(target=agent_loop, daemon=True).start()
     print("自动推进：开（面板上可暂停；闸门没过时它不会动）")
+    print("agent 桥：开（面板消息框 → material agent）")
     try:
         srv.serve_forever()
     except KeyboardInterrupt:

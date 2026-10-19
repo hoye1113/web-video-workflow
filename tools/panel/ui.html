@@ -223,6 +223,12 @@ function renderEvents() {
     if (e.kind === 'page') return `<div class="ev page">第 ${esc((e.id||'').replace(/^p/,''))} 页 · <b>${esc(e.status)}</b> ${esc(e.detail||'')} ${t}</div>`;
     if (e.kind === 'approval') return `<div class="ev approval">${esc(e.key)} → <b>${e.verdict==='ok'?'通过':'打回'}</b> ${esc(e.note||'')} ${t}</div>`;
     if (e.kind === 'say') return `<div class="ev user">你说：${esc(e.text)} ${t}</div>`;
+    if (e.kind === 'agent') return `<div class="ev agent"><b>导演</b>：${esc(e.text)} ${t}</div>`;
+    if (e.kind === 'perm') return `<div class="ev approval">要你点一下：<b>${esc(e.action||'工具')}</b>
+      <span class="k">${esc((e.resources||[]).join(' ').slice(0,80))}</span> ${t}
+      <button onclick="perm('${esc(e.id)}','once')">允许一次</button>
+      <button onclick="perm('${esc(e.id)}','always')">总是允许</button>
+      <button onclick="perm('${esc(e.id)}','reject')">拒绝</button></div>`;
     if (e.kind === 'log') return `<details class="log"><summary>日志 ${t}</summary><pre>${esc(e.text)}</pre></details>`;
     return '';
   }).join('');
@@ -303,9 +309,15 @@ async function togglePause() {
 }
 async function say() {
   const t = $('#say').value.trim(); if (!t) return;
-  await fetch('/api/say',{method:'POST',headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({project:S.project, text:t})});
-  $('#say').value='';
+  $('#say').value = '';
+  const r = await fetch('/api/ask',{method:'POST',headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({project:S.project, text:t})}).then(r=>r.json()).catch(e=>({error:String(e)}));
+  if (r.error) alert('交给 agent 失败：' + r.error);
+}
+async function perm(id, decision) {
+  await fetch('/api/perm',{method:'POST',headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({project:S.project, id, decision})});
+  load();
 }
 async function gate(k, v) {
   const note = ($('#gn_'+k)||{}).value || '';
