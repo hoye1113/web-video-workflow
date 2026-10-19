@@ -1,0 +1,538 @@
+{
+ "at": "2026-10-19 15:30:58",
+ "count": 37,
+ "images": [
+  {
+   "file": "female-01-paper-fold.png",
+   "cast": "小芽",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 2068,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "female-02-phone-glow.png",
+   "cast": "小芽",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 974,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "female-03-long-table.png",
+   "cast": "小芽",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 3,
+   "sprout_px": 825,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "female-04-empty-chair.png",
+   "cast": "小芽",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 602,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "female-05-door-crack.png",
+   "cast": "小芽",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 307,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "female-06-bed-edge.png",
+   "cast": "小芽",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 2,
+   "sprout_px": 1381,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "female-07-hand-on-door.png",
+   "cast": "小芽",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 2590,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "female-08-empty-living.png",
+   "cast": "小芽",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 791,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "male-01-paper-fold.png",
+   "cast": "小树",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 703,
+   "used_by": [
+    "emotion-full:p17"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "male-02-phone-glow.png",
+   "cast": "小树",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 2,
+   "sprout_px": 2652,
+   "used_by": [
+    "emotion-full:p04"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "male-03-long-table.png",
+   "cast": "小树",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 2,
+   "sprout_px": 1251,
+   "used_by": [
+    "emotion-full:p09"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "male-04-empty-chair.png",
+   "cast": "小树",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 385,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "male-05-door-crack.png",
+   "cast": "小树",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 6,
+   "sprout_px": 1362,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "male-06-bed-edge.png",
+   "cast": "小树",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 787,
+   "used_by": [
+    "emotion-full:p08"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "male-07-hand-on-door.png",
+   "cast": "小树",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 2860,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "male-08-empty-living.png",
+   "cast": "小树",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 785,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p01-paper-fold.png",
+   "cast": "小树",
+   "scene": "一个男孩独自坐在桌前，双手正把一张纸沿中线折下去，纸折到一半，顶光把纸面照亮，桌面干净",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 1001,
+   "used_by": [
+    "emotion-full:p01"
+   ],
+   "status": "等审批",
+   "at": "2026-10-19 10:39:53"
+  },
+  {
+   "file": "p02-paper-window.png",
+   "cast": "小芽",
+   "scene": "一个女孩背对镜头站着，面前是一扇糊着白纸的木窗，她的一根手指从屋里这侧把纸窗顶出一个小洞，洞外透进一线冷光，屋里昏暗",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 24,
+   "sprout_px": 1008,
+   "used_by": [
+    "emotion-full:p02"
+   ],
+   "status": "等审批",
+   "at": "2026-10-19 10:44:49"
+  },
+  {
+   "file": "p03-cases.png",
+   "cast": "小树",
+   "scene": "近景：桌面上摊着一大叠纸，男孩的手从中间抽出三张，那三张放在最上面，顶光照着纸面",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 1121,
+   "used_by": [
+    "emotion-full:p03"
+   ],
+   "status": "等审批",
+   "at": "2026-10-19 11:16:42"
+  },
+  {
+   "file": "p05-kneel.png",
+   "cast": "小树",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 2,
+   "sprout_px": 601,
+   "used_by": [
+    "emotion-full:p05"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p06-sim-card.png",
+   "cast": "小树",
+   "scene": "近景：一个男孩低头，双手拿着一部旧手机，拇指正把一张小小的电话卡从手机侧边顶出来，卡片刚弹起一点，看得清卡和手，桌面上有一支笔，侧顶光。只画这一组动作（半身），主体占画面中部",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 6,
+   "sprout_px": 1076,
+   "used_by": [
+    "emotion-full:p06"
+   ],
+   "status": "等审批",
+   "at": "2026-10-19 10:58:18"
+  },
+  {
+   "file": "p07-crease.png",
+   "cast": "小树",
+   "scene": "一个男孩低着头，一根食指反复掐着纸上同一道折痕，纸面看得见压痕，侧光打在手和纸上",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 935,
+   "used_by": [
+    "emotion-full:p07"
+   ],
+   "status": "等审批",
+   "at": "2026-10-19 10:47:54"
+  },
+  {
+   "file": "p10-wine-glass.png",
+   "cast": "小树",
+   "scene": "一个男孩独自坐着，一只举着酒杯的手从画面外伸进来停在半空，酒杯还没落到桌上，暖色侧光",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 1750,
+   "used_by": [
+    "emotion-full:p10"
+   ],
+   "status": "等审批",
+   "at": "2026-10-19 10:48:53"
+  },
+  {
+   "file": "p11-cup-choice.png",
+   "cast": "小树",
+   "scene": "男孩坐在桌前，面前左边是一碗饭和一杯清水，右边放着一杯酒，他正看着那杯酒，暖色顶光",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 6444,
+   "used_by": [
+    "emotion-full:p11"
+   ],
+   "status": "等审批",
+   "at": "2026-10-19 11:17:41"
+  },
+  {
+   "file": "p12-half-door.png",
+   "cast": "小树",
+   "scene": "男孩站在门口，一只手把门带上一半停住，门缝里透进冷色的光，屋里是暖色的灯光，看到的是他的背影和半扇门",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 718,
+   "used_by": [
+    "emotion-full:p12"
+   ],
+   "status": "等审批",
+   "at": "2026-10-19 11:37:44"
+  },
+  {
+   "file": "p13-two-lights.png",
+   "cast": "小树",
+   "scene": "一个男孩站在走廊中间，左侧照来一片暖黄的光、右侧照来一片冷青的光，两种光在他身上叠在一起，脚下两道方向不同的影子，正面看镜头",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 3296,
+   "used_by": [
+    "emotion-full:p13"
+   ],
+   "status": "等审批",
+   "at": "2026-10-19 11:14:15"
+  },
+  {
+   "file": "p14-scissors.png",
+   "cast": "小树",
+   "scene": "一个男孩手持一把剪刀，停在一条绷紧的细线前面，没有剪下去，桌面和手被侧光照亮",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 1083,
+   "used_by": [
+    "emotion-full:p14"
+   ],
+   "status": "等审批",
+   "at": "2026-10-19 10:50:57"
+  },
+  {
+   "file": "p15-night-door.png",
+   "cast": "小树",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 3,
+   "sprout_px": 1907,
+   "used_by": [
+    "emotion-full:p15"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p16-keys.png",
+   "cast": "小树",
+   "scene": "夜里，一个男孩站在玄关，一根食指勾着一串钥匙垂在身侧，钥匙微微晃动，头顶只有一盏灯照着",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 11,
+   "sprout_px": 362,
+   "used_by": [
+    "emotion-full:p16"
+   ],
+   "status": "等审批",
+   "at": "2026-10-19 10:51:56"
+  },
+  {
+   "file": "p18-two-doors.png",
+   "cast": "小树",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 1775,
+   "used_by": [
+    "emotion-full:p18",
+    "emotion-full:p19"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p20-anesthesia.png",
+   "cast": "小树",
+   "scene": "男孩坐在房间里，一束温暖的顶光落在他身上，他闭着眼睛仰起头，神情放松，四周是米白的墙面",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 450,
+   "used_by": [
+    "emotion-full:p20"
+   ],
+   "status": "等审批",
+   "at": "2026-10-19 11:19:45"
+  },
+  {
+   "file": "p21-flatten.png",
+   "cast": "小树",
+   "scene": "一个男孩把一团揉皱的纸放回桌面，手还停在纸上方，纸的褶皱清清楚楚，顶光照着桌面",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 1621,
+   "used_by": [
+    "emotion-full:p21"
+   ],
+   "status": "等审批",
+   "at": "2026-10-19 10:43:07"
+  },
+  {
+   "file": "p22-two-points.png",
+   "cast": "小树",
+   "scene": "近景：男孩低头看着桌上一张纸，手里拿着一支笔，笔尖停在纸面上方，纸上有两个小墨点，侧顶光",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 2296,
+   "used_by": [
+    "emotion-full:p22"
+   ],
+   "status": "等审批",
+   "at": "2026-10-19 11:20:44"
+  },
+  {
+   "file": "p23-shreds.png",
+   "cast": "小树",
+   "scene": "一个男孩的背影踩着一地碎纸片朝门口走去，门口逆光，影子被拉长，纸片散落一地",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 13,
+   "sprout_px": 5643,
+   "used_by": [
+    "emotion-full:p23"
+   ],
+   "status": "等审批",
+   "at": "2026-10-19 10:52:49"
+  },
+  {
+   "file": "p24-clench.png",
+   "cast": "小芽",
+   "scene": "一个女孩低头站着，双手把一张纸攥得越来越紧，纸被攥出褶皱，指节发白，冷色侧光照着她的侧脸和手",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 12,
+   "sprout_px": 699,
+   "used_by": [
+    "emotion-full:p24"
+   ],
+   "status": "等审批",
+   "at": "2026-10-19 11:12:24"
+  },
+  {
+   "file": "p25-ruler.png",
+   "cast": "小树",
+   "scene": "近景：男孩的手把一把尺子压在纸上，纸上有一道折痕，尺子的刻度朝向镜头，侧光",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 1956,
+   "used_by": [
+    "emotion-full:p25"
+   ],
+   "status": "等审批",
+   "at": "2026-10-19 11:18:40"
+  },
+  {
+   "file": "p26-smooth-refold.png",
+   "cast": "小芽",
+   "scene": "一个女孩坐在桌前，双手把一张揉皱的纸抚平，又用指腹压出一道新的折痕，暖光照着桌面、手和她的侧脸",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 1784,
+   "used_by": [
+    "emotion-full:p26"
+   ],
+   "status": "等审批",
+   "at": "2026-10-19 10:54:13"
+  }
+ ]
+}
