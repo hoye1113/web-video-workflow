@@ -1,350 +1,314 @@
-"""video-factory 面板：人在网页上把片子点出来。
+"""video-factory 面板后端：照 frametell 的信息架构给我们的流程做前台。
 
-设计原则（照用户要求）：
-  ① **网页是入口**：建片、跑阶段、审产物、给反馈（通过/打回）都在网页上
-  ② **面板只调现成的工具**：不把逻辑写进面板（工具在 tools/ 和引擎里，命令行怎么跑面板就怎么调）
-  ③ **反馈落盘**：通过/打回写进 `projects/<片子>/docs/审批.json`，下次迭代读它
-  ④ 零依赖：Python 标准库 + 前端一个文件（不装包、不打包）
+    首页（一句话开工）→ 工作台（左对话 / 右画面）→ 素材库（角色 / 处境图 / 本片素材）
 
-用法：
-    python tools/panel/server.py            # → http://127.0.0.1:8899
-    python tools/panel/server.py --port 8899
+设计纪律（照 `docs/harness-架构建议.md`）：
+  · 面板只做两件事：**调 agent / 调脚本**、**读写文件状态**；编排逻辑不写在面板里
+  · 过程用事件流（`events.jsonl`）驱动；原始终端输出只作为"展开看"
+  · 审批落 `docs/审批.json`（人是唯一能点通过的人）
 
-阶段（按钮）：
-    建片 → 台词(cue 硬切) → 剧本(script.js) → 配音(voice.js) → 字幕(srt) →
-    出图(Flow，走浏览器) → 排页(pages/*.js) → 渲染(mp4) → 验收(机器判据) → 抽帧(对照表)
+跑：
+    python tools/panel/server.py            # http://127.0.0.1:8899
 """
 import argparse
-import html
 import json
-import os
 import pathlib
-import re
 import subprocess
 import sys
 import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from urllib.parse import urlparse, parse_qs
+from urllib.parse import urlparse, parse_qs, unquote
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
-ENGINE = ROOT / "experiments" / "frametell-src" / "frametell-main" / "packages" / "engine"
-PY = sys.executable or "python"
-LOCALBIN = pathlib.Path.home() / ".local" / "bin"
+sys.path.insert(0, str(ROOT / "tools"))
+import pipeline                                    # noqa: E402
 
-# 阶段表：名字 / 命令 / 在哪个目录跑 / 说明
-STEPS = [
-    ("剧本", [PY, "tools/make_script_js.py", "--from-source"], ROOT, "script-source.json → script.js"),
-    ("台词", [PY, "tools/check_cues.py"], ROOT, "审 12 字硬切（目标 0 条）"),
-    ("配音", [PY, "tools/make_voice.py"], ROOT, "TTS → audio/*.wav + voice.js（约 10 分钟）"),
-    ("排页", [PY, "tools/make_pages.py", "--project", "{proj}"], ROOT, "page-spec.json → pages/pNN.js"),
-    ("出图", [PY, "tools/gen_scenes.py"], ROOT, "Flow 生图（要走浏览器：Chrome 登录 + bsk）"),
-    ("字幕", ["node", str(ENGINE / "tools" / "script.mjs")], "PROJ", "out/口播脚本.md + out/字幕.srt"),
-    ("渲染", ["node", str(ENGINE / "tools" / "render.mjs")], "PROJ", "out/*.mp4（约 20 分钟）"),
-    ("验收", [PY, "tools/accept_emotion.py"], ROOT, "黑页 / 空页 / 字幕带"),
-    ("抽帧", [PY, "tools/qc_snap.py"], ROOT, "26 页对照表 → out/snap/qc*.jpg"),
-]
-STEP_DESC = {s[0]: s[3] for s in STEPS}
+UI = pathlib.Path(__file__).resolve().parent / "ui.html"
+LOCK = threading.Lock()          # 一次只让一个阶段在跑（生图/渲染都是重活）
+RUNNING = {"step": None, "project": None}
 
-KIND = {".png": "image", ".jpg": "image", ".jpeg": "image", ".webp": "image",
-        ".mp4": "video", ".srt": "text", ".md": "text", ".json": "text", ".js": "text",
-        ".txt": "text", ".log": "text", ".wav": "audio"}
+EDGE_VOICES = [("zh-CN-XiaoxiaoNeural", "小晓 · 女声（默认）"), ("zh-CN-XiaoyiNeural", "小艺 · 女声"),
+               ("zh-CN-YunxiNeural", "云希 · 男声"), ("zh-CN-YunyangNeural", "云扬 · 男声（播报）"),
+               ("zh-CN-YunjianNeural", "云健 · 男声（沉稳）")]
 
 
-def env():
-    e = os.environ.copy()
-    e["PATH"] = str(LOCALBIN) + os.pathsep + e.get("PATH", "")
-    e["PYTHONUTF8"] = "1"
-    e["PYTHONIOENCODING"] = "utf-8"
-    return e
+def status_of(proj):
+    """项目状态（照 frametell 首页那几个状态）。"""
+    d = pipeline.proj_dir(proj)
+    q = pipeline.queue(proj)
+    g = pipeline.gate_state(proj)
+    ev = pipeline.events(proj, limit=60)
+    running = RUNNING["step"] if RUNNING["project"] == proj else None
+    film = sorted((d / "out").glob("*.mp4")) if (d / "out").exists() else []
+    if running:
+        st = "running"
+    elif film:
+        st = "done" if g.get("film") == "ok" else "awaiting"
+    elif any(e.get("kind") == "stage" and e.get("status") == "failed" for e in ev[-6:]):
+        st = "failed"
+    elif any(t["status"] in ("queued", "retry") for t in q["tasks"]):
+        st = "running"
+    else:
+        st = "idle"
+    src = pipeline.read_json(d / "script-source.json", {}) or {}
+    pages = src.get("pages", [])
+    return {"id": proj, "title": src.get("title") or proj, "pages": len(pages),
+            "cues": sum(len(p.get("cues", [])) for p in pages),
+            "status": st, "running": running,
+            "images": sum(1 for t in q["tasks"] if t["status"] == "review"),
+            "gates": g, "film": film[-1].name if film else "",
+            "at": int((d / "events.jsonl").stat().st_mtime) if (d / "events.jsonl").exists() else 0}
 
 
-def projects():
-    d = ROOT / "projects"
-    return sorted([p.name for p in d.iterdir() if p.is_dir() and (p / "script-source.json").exists()])
+class H(BaseHTTPRequestHandler):
+    server_version = "vf-panel"
 
-
-def artifacts(proj):
-    d = ROOT / "projects" / proj
-    out = []
-    for pat in ("out/**/*", "docs/*", "audio/*.wav", "pages/*.js", "voice.js", "script-source.json",
-                "page-spec.json", "README.md"):
-        for f in d.glob(pat):
-            rel = f.relative_to(d).as_posix()
-            # 审阅不该看到中间产物：分段/字幕分段/缓存 —— 否则 151 个 seg 把该看的淹了
-            if rel.startswith(("out/chunks/", "out/subs/", "out/segments/")):
-                continue
-            if f.is_file() and f.stat().st_size > 0:
-                out.append({"rel": rel, "kind": KIND.get(f.suffix.lower(), "file"),
-                            "kb": max(1, int(f.stat().st_size / 1024)),
-                            "mtime": int(f.stat().st_mtime)})
-
-    # 该看的排前面：成片 → 抽帧表/对比图 → 字幕 → 图/页 → 其余
-    def rank(a):
-        r = a["rel"]
-        if r.startswith("out/") and r.endswith(".mp4"):
-            return 0
-        if a["kind"] == "image" and (r.startswith("out/snap/") or r.startswith("docs/")):
-            return 1
-        if r.endswith((".srt", "口播脚本.md")):
-            return 2
-        if a["kind"] == "image":
-            return 3
-        if r.startswith(("pages/", "script-source.json", "page-spec.json")):
-            return 5
-        return 4
-    return sorted(out, key=lambda a: (rank(a), -a["mtime"]))[:60]
-
-
-def approvals(proj):
-    f = ROOT / "projects" / proj / "docs" / "审批.json"
-    return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
-
-
-class Handler(BaseHTTPRequestHandler):
-    server_version = "video-factory-panel"
-
-    def log_message(self, *a):        # 安静点
+    def log_message(self, *a):
         pass
 
-    def _send(self, code, body: bytes, ctype="text/html; charset=utf-8"):
+    def _send(self, code, body, ctype="application/json; charset=utf-8"):
+        if isinstance(body, (dict, list)):
+            body = json.dumps(body, ensure_ascii=False)
+        b = body.encode("utf-8") if isinstance(body, str) else body
         self.send_response(code)
         self.send_header("Content-Type", ctype)
-        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Content-Length", str(len(b)))
         self.send_header("Cache-Control", "no-store")
         self.end_headers()
-        self.wfile.write(body)
+        self.wfile.write(b)
 
-    def _json(self, obj, code=200):
-        self._send(code, json.dumps(obj, ensure_ascii=False).encode("utf-8"), "application/json; charset=utf-8")
-
-    # ---------- 路由 ----------
+    # ---------- GET ----------
     def do_GET(self):
-        u = urlparse(self.path)
+        u, q = urlparse(self.path), None
         q = parse_qs(u.query)
+        one = lambda k, d="": (q.get(k) or [d])[0]      # noqa: E731
         if u.path == "/":
-            return self._send(200, PAGE.encode("utf-8"))
+            return self._send(200, UI.read_text(encoding="utf-8"), "text/html; charset=utf-8")
+        if u.path == "/api/projects":
+            return self._send(200, [status_of(p) for p in pipeline.projects()])
         if u.path == "/api/state":
-            proj = (q.get("project") or [""])[0]
-            return self._json({"projects": projects(), "project": proj,
-                               "steps": [{"name": s[0], "desc": s[3]} for s in STEPS],
-                               "artifacts": artifacts(proj) if proj else [],
-                               "approvals": approvals(proj) if proj else {}})
-        if u.path == "/api/run":
-            return self._run(q)
+            proj = one("project")
+            if not proj:
+                return self._send(400, {"error": "缺 project"})
+            d = pipeline.proj_dir(proj)
+            return self._send(200, {
+                "project": status_of(proj),
+                "steps": [{"name": s[0], "say": s[3], "desc": " ".join(s[1][1:3])} for s in pipeline.STEPS],
+                "gates": pipeline.GATES, "gate_state": pipeline.gate_state(proj),
+                "queue": pipeline.queue(proj)["tasks"],
+                "approvals": pipeline.approvals(proj),
+                "artifacts": artifacts(proj),
+                "page_spec": pipeline.read_json(d / "page-spec.json", []) or [],
+                "running": RUNNING if RUNNING["project"] == proj else None,
+                "voices": EDGE_VOICES,
+            })
+        if u.path == "/api/events":
+            return self._events(one("project"), float(one("since", "0") or 0))
+        if u.path == "/api/library":
+            idx = pipeline.read_json(ROOT / "projects" / "scene-library" / "index.json", {})
+            return self._send(200, idx or {"images": []})
+        if u.path == "/api/timeline":
+            return self._send(200, timeline(one("project")))
+        if u.path == "/api/env":
+            return self._send(200, pipeline.env_check(deep=(one("deep") == "1")))
         if u.path == "/api/file":
-            return self._file(q)
-        return self._json({"error": "no such route"}, 404)
+            return self._file(one("project"), one("rel"))
+        if u.path == "/api/libfile":
+            return self._libfile(one("rel"))
+        return self._send(404, {"error": "no route"})
 
+    # ---------- POST ----------
     def do_POST(self):
         u = urlparse(self.path)
         n = int(self.headers.get("Content-Length") or 0)
-        body = json.loads(self.rfile.read(n) or b"{}")
+        b = json.loads(self.rfile.read(n) or b"{}")
         if u.path == "/api/new":
-            return self._new(body)
+            return self._new(b)
+        if u.path == "/api/run":
+            return self._run(b)
+        if u.path == "/api/queue":
+            tid = pipeline.queue_add(b["project"], b["page"], b.get("cast", "小树"),
+                                     b.get("scene", ""), b.get("out"))
+            return self._send(200, {"ok": True, "id": tid})
+        if u.path == "/api/queue/retry":
+            pipeline.queue_set(b["project"], b["id"], status="retry", error="")
+            pipeline.emit(b["project"], "page", id=b.get("page", ""), status="retry", detail="打回重做")
+            return self._send(200, {"ok": True})
+        if u.path == "/api/approve":
+            pipeline.mark(b["project"], f'gate:{b["gate"]}',
+                          b.get("verdict", "ok"), b.get("note", ""))
+            if b.get("gate") == "img" and b.get("note"):
+                pipeline.emit(b["project"], "say", text=b["note"])
+            return self._send(200, {"ok": True, "gate_state": pipeline.gate_state(b["project"])})
         if u.path == "/api/mark":
-            return self._mark(body)
-        return self._json({"error": "no such route"}, 404)
+            d = pipeline.mark(b["project"], b["rel"], b.get("verdict", "ok"), b.get("note", ""))
+            return self._send(200, {"ok": True, "approvals": d})
+        if u.path == "/api/assign":
+            # 把库里的一张图指定给某一页：改 page-spec.json 的 asset，再重生成该页代码
+            proj, page, asset = b["project"], b["page"], b["asset"]
+            spec_f = pipeline.proj_dir(proj) / "page-spec.json"
+            spec = pipeline.read_json(spec_f, []) or []
+            hit = next((p for p in spec if p.get("id") == page), None)
+            if not hit:
+                return self._send(404, {"error": f"{proj} 的页表里没有 {page}"})
+            hit["asset"] = asset
+            spec_f.write_text(json.dumps(spec, ensure_ascii=False, indent=1), encoding="utf-8")
+            r = pipeline.run([pipeline.PY, "tools/make_pages.py", "--project", proj], timeout=300)
+            pipeline.emit(proj, "page", id=page, status="saved",
+                          detail=f"换成 {asset}（页代码已重生成）")
+            pipeline.mark(proj, f"library/{asset}", "ok", f"指定给 {page}")
+            return self._send(200, {"ok": r.returncode == 0, "log": (r.stdout or "") + (r.stderr or "")})
+        if u.path == "/api/say":
+            pipeline.emit(b["project"], "say", text=b.get("text", ""),
+                          refs=b.get("refs") or [])
+            return self._send(200, {"ok": True})
+        return self._send(404, {"error": "no route"})
 
-    # ---------- 动作 ----------
-    def _new(self, body):
-        name = re.sub(r"[^\w-]", "-", (body.get("name") or "").strip()) or "new-film"
-        cmd = [PY, "tools/new_film.py", name,
-               "--title", body.get("title") or "未命名", "--minutes", str(body.get("minutes") or 6)]
-        r = subprocess.run(cmd, cwd=str(ROOT), capture_output=True, text=True,
-                           encoding="utf-8", errors="replace", env=env())
-        return self._json({"ok": r.returncode == 0, "log": (r.stdout or "") + (r.stderr or ""), "project": name})
+    # ---------- 具体动作 ----------
+    def _new(self, b):
+        name = pipeline.slug(b.get("name") or b.get("topic", ""))
+        minutes = float(b.get("minutes") or 6)
+        cmd = [pipeline.PY, "tools/new_film.py", name, "--title", b.get("title") or b.get("topic") or name,
+               "--minutes", str(minutes), "--force"]
+        r = pipeline.run(cmd, timeout=300)
+        proj = pipeline.proj_dir(name)
+        # 主题与参数记进工程（人物/配音/时长），并把角色记进 README
+        meta = {"topic": b.get("topic", ""), "minutes": minutes, "voice": b.get("voice", ""),
+                "cast": b.get("cast") or ["小树", "小芽"], "style": "warm-emotion",
+                "materials": b.get("materials") or []}
+        (proj / "brief.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
+        pipeline.emit(name, "say", text=f'新片：{b.get("topic") or name}（目标 {minutes:g} 分钟）')
+        pipeline.emit(name, "stage", stage="建片", status="done", detail=f"projects/{name}")
+        return self._send(200, {"ok": r.returncode == 0, "project": name,
+                                "log": (r.stdout or "") + (r.stderr or "")})
 
-    def _mark(self, body):
-        proj, rel, verdict = body.get("project"), body.get("rel"), body.get("verdict")
-        f = ROOT / "projects" / proj / "docs" / "审批.json"
-        f.parent.mkdir(parents=True, exist_ok=True)
-        d = approvals(proj)
-        d[rel] = {"verdict": verdict, "at": time.strftime("%Y-%m-%d %H:%M:%S")}
-        f.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
-        return self._json({"ok": True, "approvals": d})
-
-    def _file(self, q):
-        proj = (q.get("project") or [""])[0]
-        rel = (q.get("rel") or [""])[0]
-        base = (ROOT / "projects" / proj).resolve()
-        f = (base / rel).resolve()
-        if not str(f).startswith(str(base)) or not f.is_file():
-            return self._json({"error": "bad path"}, 400)
-        ctype = {"png": "image/png", "jpg": "image/jpeg", "jpeg": "image/jpeg", "webp": "image/webp",
-                 "mp4": "video/mp4", "srt": "text/plain; charset=utf-8", "md": "text/plain; charset=utf-8",
-                 "json": "application/json; charset=utf-8", "js": "text/plain; charset=utf-8",
-                 "wav": "audio/wav"}.get(f.suffix.lower().lstrip("."), "application/octet-stream")
-        return self._send(200, f.read_bytes(), ctype)
-
-    def _run(self, q):
-        """跑一个阶段，把输出按 SSE 流出去（面板上实时看）。"""
-        proj = (q.get("project") or [""])[0]
-        step = (q.get("step") or [""])[0]
-        hit = [s for s in STEPS if s[0] == step]
+    def _run(self, b):
+        proj, step = b.get("project"), b.get("step")
+        hit = pipeline.STEP.get(step)
         if not proj or not hit:
-            return self._json({"error": "缺 project 或 step"}, 400)
-        _, cmd, cwd, _ = hit[0]
+            return self._send(400, {"error": "缺 project 或 step"})
+        if RUNNING["step"]:
+            return self._send(409, {"error": f'正在跑「{RUNNING["step"]}」，等它完'})
+        _, cmd, cwd, say = hit
         cmd = [x.replace("{proj}", proj) for x in cmd]
-        cwd = str(ROOT / "projects" / proj) if cwd == "PROJ" else str(ROOT)
+        cwd = pipeline.proj_dir(proj) if cwd == "PROJ" else pipeline.ROOT
+        pipeline.emit(proj, "stage", stage=step, status="start", detail=say["start"])
+
+        def worker():
+            RUNNING.update(step=step, project=proj)
+            t0 = time.time()
+            try:
+                p = subprocess.Popen([str(c) for c in cmd], cwd=str(cwd), stdout=subprocess.PIPE,
+                                     stderr=subprocess.STDOUT, text=True, encoding="utf-8",
+                                     errors="replace", env=pipeline.env(), bufsize=1)
+                for line in p.stdout:
+                    pipeline.emit(proj, "log", text=line.rstrip("\n")[:400], step=step)
+                p.wait()
+                code = p.returncode
+            except Exception as e:                              # noqa: BLE001
+                code = -1
+                pipeline.emit(proj, "log", text=f"✗ {e}", step=step)
+            pipeline.emit(proj, "stage", stage=step,
+                          status="done" if code == 0 else "failed",
+                          detail=f'{say["done"] if code == 0 else "没成"}（{time.time() - t0:.0f}s）')
+            RUNNING.update(step=None, project=None)
+
+        threading.Thread(target=worker, daemon=True).start()
+        return self._send(200, {"ok": True, "started": step})
+
+    # ---------- 事件流（SSE） ----------
+    def _events(self, proj, since):
         self.send_response(200)
         self.send_header("Content-Type", "text/event-stream; charset=utf-8")
         self.send_header("Cache-Control", "no-store")
         self.end_headers()
+        cur = since
+        beat = 0
+        while beat < 240:                     # 最多挂 4 分钟，前端会重连
+            for r in pipeline.events(proj, since=cur):
+                cur = max(cur, r.get("ts", cur))
+                try:
+                    self.wfile.write(("data: " + json.dumps(r, ensure_ascii=False) + "\n\n").encode("utf-8"))
+                    self.wfile.flush()
+                except Exception:                               # noqa: BLE001
+                    return
+            time.sleep(1.0)
+            beat += 1
 
-        def sse(obj):
-            try:
-                self.wfile.write(("data: " + json.dumps(obj, ensure_ascii=False) + "\n\n").encode("utf-8"))
-                self.wfile.flush()
-            except Exception:                                      # noqa: BLE001
-                pass
+    # ---------- 文件 ----------
+    def _file(self, proj, rel):
+        base = pipeline.proj_dir(proj).resolve()
+        f = (base / rel).resolve()
+        if not str(f).startswith(str(base)) or not f.is_file():
+            return self._send(400, {"error": "bad path"})
+        return self._send(200, f.read_bytes(), ctype(f))
 
-        sse({"line": f"$ {' '.join(str(c) for c in cmd)}", "cwd": cwd})
-        t0 = time.time()
-        try:
-            p = subprocess.Popen(cmd, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-                                 text=True, encoding="utf-8", errors="replace", env=env(), bufsize=1)
-            for line in p.stdout:
-                sse({"line": line.rstrip("\n")})
-            p.wait()
-            sse({"done": True, "code": p.returncode, "seconds": round(time.time() - t0, 1)})
-        except Exception as e:                                     # noqa: BLE001
-            sse({"line": f"✗ 面板出错：{e}", "done": True, "code": -1})
+    def _libfile(self, rel):
+        base = (ROOT / "projects" / "scene-library").resolve()
+        f = (base / rel).resolve()
+        if not str(f).startswith(str(base)) or not f.is_file():
+            return self._send(400, {"error": "bad path"})
+        return self._send(200, f.read_bytes(), ctype(f))
 
 
-PAGE = """<!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><title>video-factory 面板</title>
-<style>
- :root { --bg:#14161a; --card:#1d2026; --line:#2b3038; --ink:#e8e6e1; --dim:#9aa0aa; --warm:#d9a441; --cold:#6aa6c4; }
- * { box-sizing:border-box } body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.6 "Segoe UI",system-ui,sans-serif }
- header { padding:14px 18px; border-bottom:1px solid var(--line); display:flex; gap:14px; align-items:center; flex-wrap:wrap }
- h1 { font-size:15px; margin:0 12px 0 0; font-weight:600; letter-spacing:.5px }
- select, input, button, textarea { background:var(--card); color:var(--ink); border:1px solid var(--line); border-radius:8px; padding:6px 10px; font:inherit }
- button { cursor:pointer } button:hover { border-color:var(--warm) }
- button.primary { background:#2a2f38 } button.primary:hover { background:#333a45 }
- main { display:grid; grid-template-columns: 1fr 420px; gap:14px; padding:14px }
- .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px }
- .steps { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px }
- .steps button { padding:7px 12px }
- .steps button small { display:block; color:var(--dim); font-size:11px; font-weight:400 }
- pre { margin:0; max-height:46vh; overflow:auto; font:12px/1.5 ui-monospace,Consolas,monospace; white-space:pre-wrap; color:#cfe3d8 }
- .arts { display:grid; grid-template-columns:repeat(2,1fr); gap:10px }
- .art { border:1px solid var(--line); border-radius:10px; overflow:hidden; background:#191c21 }
- .art img, .art video { width:100%; display:block; background:#000; max-height:190px; object-fit:contain }
- .art .meta { padding:6px 8px; font-size:11px; color:var(--dim); display:flex; justify-content:space-between; gap:6px; align-items:center }
- .art .meta b { color:var(--ink); font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap }
- .verdict { display:flex; gap:4px }
- .verdict button { padding:2px 7px; font-size:11px }
- .ok { border-color:#4c8f5a !important; box-shadow:0 0 0 1px #4c8f5a inset } 
- .no { border-color:#a05252 !important; box-shadow:0 0 0 1px #a05252 inset }
- .new { display:flex; gap:8px; flex-wrap:wrap; align-items:center }
- .hint { color:var(--dim); font-size:12px; padding:2px 0 8px }
- .tag { font-size:11px; color:var(--dim) }
-</style></head><body>
-<header>
-  <h1>video-factory 面板</h1>
-  <select id="proj"></select>
-  <span class="tag" id="projinfo"></span>
-  <span style="flex:1"></span>
-  <span class="new">
-    <input id="nname" placeholder="新片目录名" size="14">
-    <input id="ntitle" placeholder="标题" size="16">
-    <input id="nmins" placeholder="分钟" size="4" value="6">
-    <button class="primary" onclick="newProject()">＋ 建片</button>
-  </span>
-</header>
-<main>
-  <div>
-    <div class="card">
-      <div class="steps" id="steps"></div>
-      <div class="hint" id="stepdesc">选一个工程，然后点阶段按钮。日志会实时流在这里。</div>
-      <pre id="log">（还没有输出）</pre>
-    </div>
-  </div>
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-      <b>产物审阅</b><span class="tag" id="artcount"></span>
-    </div>
-    <div class="hint">图片/视频直接看；✓ 通过 / ✗ 打回 会写进 docs/审批.json（下次迭代读它）</div>
-    <div class="arts" id="arts"></div>
-  </div>
-</main>
-<script>
-let state = { projects: [], project: "", artifacts: [], approvals: {} };
-const $ = (id) => document.getElementById(id);
-const esc = (s) => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+def ctype(f: pathlib.Path):
+    return {"png": "image/png", "jpg": "image/jpeg", "jpeg": "image/jpeg", "webp": "image/webp",
+            "mp4": "video/mp4", "wav": "audio/wav", "srt": "text/plain; charset=utf-8",
+            "md": "text/plain; charset=utf-8", "json": "application/json; charset=utf-8",
+            "js": "text/plain; charset=utf-8", "txt": "text/plain; charset=utf-8"}.get(
+        f.suffix.lower().lstrip("."), "application/octet-stream")
 
-async function load(keepLog) {
-  const p = $("proj").value || state.project || "";
-  const r = await fetch("/api/state?project=" + encodeURIComponent(p));
-  state = await r.json();
-  const sel = $("proj");
-  if (sel.options.length !== state.projects.length) {
-    sel.innerHTML = state.projects.map(n => `<option ${n===state.project?"selected":""}>${esc(n)}</option>`).join("");
-  }
-  $("steps").innerHTML = state.steps.map(s =>
-    `<button class="primary" onclick="run('${s.name}')" onmouseover="$('stepdesc').textContent='${esc(s.desc)}'">${s.name}<small>${esc(s.desc.slice(0,14))}</small></button>`).join("");
-  renderArts();
-}
-function renderArts() {
-  const a = state.artifacts || [];
-  $("artcount").textContent = a.length + " 个文件";
-  $("arts").innerHTML = a.map(f => {
-    const url = "/api/file?project=" + encodeURIComponent(state.project) + "&rel=" + encodeURIComponent(f.rel);
-    const v = state.approvals[f.rel]?.verdict;
-    const cls = v === "ok" ? "ok" : v === "no" ? "no" : "";
-    let body = "";
-    if (f.kind === "image") body = `<a href="${url}" target="_blank"><img src="${url}" loading="lazy"></a>`;
-    else if (f.kind === "video") body = `<video src="${url}" controls preload="metadata"></video>`;
-    else body = `<div style="padding:10px;font-size:11px;color:#9aa0aa">${esc(f.rel)}</div>`;
-    return `<div class="art ${cls}">${body}
-      <div class="meta"><b title="${esc(f.rel)}">${esc(f.rel)}</b>
-        <span>${f.kb}KB</span>
-        <span class="verdict">
-          <button onclick="mark('${esc(f.rel)}','ok')">✓</button>
-          <button onclick="mark('${esc(f.rel)}','no')">✗</button>
-        </span></div></div>`;
-  }).join("") || '<div class="hint">这个工程还没有产物。</div>';
-}
-async function mark(rel, verdict) {
-  const r = await fetch("/api/mark", {method:"POST", headers:{"Content-Type":"application/json"},
-    body: JSON.stringify({project: state.project, rel, verdict})});
-  state.approvals = (await r.json()).approvals; renderArts();
-}
-async function newProject() {
-  const name = $("nname").value, title = $("ntitle").value, minutes = $("nmins").value;
-  if (!name) { alert("给新片起个目录名"); return; }
-  $("log").textContent = "建片中…";
-  const r = await fetch("/api/new", {method:"POST", headers:{"Content-Type":"application/json"},
-    body: JSON.stringify({name, title, minutes})});
-  const d = await r.json();
-  $("log").textContent = d.log;
-  await load(true);
-  $("proj").value = d.project; state.project = d.project; await load(true);
-}
-async function run(step) {
-  if (!state.project) { alert("先选工程"); return; }
-  $("log").textContent = "";
-  $("stepdesc").textContent = step + "：跑起来了，日志在下面流…";
-  const es = new EventSource("/api/run?project=" + encodeURIComponent(state.project) + "&step=" + encodeURIComponent(step));
-  es.onmessage = (m) => {
-    const d = JSON.parse(m.data);
-    if (d.line !== undefined) $("log").textContent += d.line + "\\n";
-    if (d.done) {
-      $("log").textContent += `\\n—— 结束（退出码 ${d.code}，${d.seconds}s）\\n`;
-      $("log").scrollTop = $("log").scrollHeight;
-      es.close(); load(true);
-    }
-    $("log").scrollTop = $("log").scrollHeight;
-  };
-  es.onerror = () => { es.close(); load(true); };
-}
-$("proj").addEventListener("change", () => load(true));
-load();
-setInterval(() => { if (!eventSourceOpen()) load(true); }, 8000);
-function eventSourceOpen() { return document.querySelector("pre").dataset.streaming === "1"; }
-</script></body></html>
-"""
+
+def artifacts(proj):
+    """产物（给"画面/产物"两处用）：**成片永远排第一**，其次对照图，再其次字幕/文档。"""
+    d = pipeline.proj_dir(proj)
+    out = []
+    for pat in ("out/*.mp4", "out/snap/*.jpg", "docs/*.jpg", "out/字幕.srt", "out/口播脚本.md",
+                "docs/*.md", "pages/*.js", "script-source.json", "page-spec.json", "voice.js"):
+        for f in d.glob(pat):
+            if f.is_file() and f.stat().st_size > 0:
+                rel = f.relative_to(d).as_posix()
+                kind = ("video" if f.suffix == ".mp4" else
+                        "image" if f.suffix in (".png", ".jpg") else "text")
+                out.append({"rel": rel, "kind": kind, "kb": max(1, int(f.stat().st_size / 1024)),
+                            "mtime": int(f.stat().st_mtime)})
+
+    def rank(a):
+        r = a["rel"]
+        if r.startswith("out/") and r.endswith(".mp4"):
+            return 0
+        if a["kind"] == "image":
+            return 1
+        if r.endswith(".srt"):
+            return 2
+        return 3
+    return sorted(out, key=lambda a: (rank(a), -a["mtime"]))[:40]
+
+
+_TIMELINE_CACHE = {}
+
+
+def timeline(proj):
+    """页的起止时间（走引擎 layout；带配音时是真实语速）。缓存 60 秒。"""
+    key = proj
+    hit = _TIMELINE_CACHE.get(key)
+    if hit and time.time() - hit[0] < 60:
+        return hit[1]
+    js = (f"import {{ loadEpisode }} from '{pipeline.ENGINE.as_uri()}/tools/lib.mjs';\n"
+          "const { L } = loadEpisode();\n"
+          "console.log(JSON.stringify({duration: L.duration,\n"
+          " pages: L.pages.map(p => ({id: p.id, start: p.start, end: p.end, title: p.title,\n"
+          "   cues: p.cues.map(c => ({t: c.text, s: c.start}))}))}));\n")
+    f = pathlib.Path(pipeline.proj_dir(proj) / "out" / "_timeline.mjs")
+    f.parent.mkdir(parents=True, exist_ok=True)
+    f.write_text(js, encoding="utf-8")
+    r = pipeline.run(["node", str(f)], cwd=pipeline.proj_dir(proj), timeout=120)
+    line = [x for x in (r.stdout or "").splitlines() if x.strip().startswith("{")]
+    data = json.loads(line[-1]) if line else {"pages": [], "duration": 0,
+                                              "error": (r.stderr or "")[:200]}
+    _TIMELINE_CACHE[key] = (time.time(), data)
+    return data
 
 
 def main():
@@ -352,9 +316,8 @@ def main():
     ap.add_argument("--port", type=int, default=8899)
     ap.add_argument("--host", default="127.0.0.1")
     a = ap.parse_args()
-    srv = ThreadingHTTPServer((a.host, a.port), Handler)
-    print(f"面板起来了：http://{a.host}:{a.port}")
-    print(f"  （工程目录：{ROOT / 'projects'}；引擎：{ENGINE.name}）")
+    srv = ThreadingHTTPServer((a.host, a.port), H)
+    print(f"面板：http://{a.host}:{a.port}   工程目录：{pipeline.ROOT / 'projects'}")
     try:
         srv.serve_forever()
     except KeyboardInterrupt:
