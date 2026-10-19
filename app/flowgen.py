@@ -49,16 +49,20 @@ def daemon_ok():
         return False
 
 
-# 认生成的图：**按域名**，且**不要求已经加载完**。
-# 踩过三次：
+# 认生成的图：**按域名白名单**，且**不要求已经加载完**。
+# 踩过四次：
 #   ① 只按尺寸（naturalWidth>=800）会把界面上的广告图一起收走 —— 收回来一摞毛毡垫。
 #   ② 要求"一次至少出 2 张"会误判 —— Flow 有时只出 1 张。
 #   ③ 要求 naturalWidth>400 会漏 —— 项目里的图多了以后，新图在网格里
 #      可能在视野外，浏览器懒加载不触发，naturalWidth 一直是 0，于是"等不到新图"。
-# 所以：只按域名收 src（懒加载的 img 也有 src），尺寸在浏览器里 fetch 回来时再判。
+#   ④ **域名会变**：早先是 flow-content.google，2026-10-16 实测变成了
+#      `flow.google.com/asb/...`（内容 image/webp）。所以白名单要放宽成"两个都认"，
+#      不然会静默地"没等到新图"。
+_IMG_HOSTS = ("flow-content.google", "flow.google.com/asb", "/asb/")
 _GET_IMGS = (
-    "(()=>{const s=new Set();for(const i of document.querySelectorAll('img')){"
-    "if(i.src.includes('flow-content.google'))s.add(i.src);}"
+    "(()=>{const H=" + json.dumps(list(_IMG_HOSTS)) + ";const s=new Set();"
+    "for(const i of document.querySelectorAll('img')){"
+    "if(H.some(h=>i.src.includes(h)))s.add(i.src);}"
     "return [...s];})()"
 )
 
