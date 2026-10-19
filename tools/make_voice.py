@@ -149,13 +149,14 @@ def main(argv):
         if VOICEJS.with_suffix(".cache.json").exists() else {}
     todo = 0
     for p in pages:
-        fresh = bool(want) and p["id"] in want
+        fresh = not want or p["id"] in want          # 不给页号 = 全部页（换机器重建音频也走这条）
         if not fresh:
             continue
         for i, text in enumerate(p["cues"]):
             key = f'{p["id"]}:{i}'
-            # 缓存**按文字校验**：cue 改了就得重做，不然 voice.js 里的 t 对不上（引擎会当没配音）
-            if key in cache and cache[key].get("t") == text and not force_all(argv):
+            wav = AUDIO / f'{p["id"]}-{i}.wav'
+            # 缓存**按文字 + 音频文件**校验：cue 改了、或音频丢了（换机器/清过 audio），都得重做
+            if key in cache and cache[key].get("t") == text and wav.exists() and not force_all(argv):
                 continue
             todo += 1
             last = i == len(p["cues"]) - 1

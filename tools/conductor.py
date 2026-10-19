@@ -69,7 +69,9 @@ def step_for(proj):
     # 4) 素材索引 → 5) 排页 → 6) 配音 → 7) 字幕 → 8) 渲染
     if not index.exists() or (q["tasks"] and index.stat().st_mtime < newest(d.parent / "scene-library", "*.png")):
         return "素材", "素材库索引该更新了"
-    if spec.stat().st_mtime < max(index.stat().st_mtime if index.exists() else 0, src.stat().st_mtime):
+    # 排页看的是"页代码有没有落后于页表/素材" —— 要拿**页文件的 mtime**比。
+    # 拿页表去比索引（素材）会死循环：索引更新一次，页表永远比它旧，就会每 5 秒重排一次。
+    if newest(d / "pages", "p*.js") < max(spec.stat().st_mtime, index.stat().st_mtime if index.exists() else 0):
         return "排页", "页表/素材更新了，重排一次页代码"
     if not voice.exists() or voice.stat().st_mtime < src.stat().st_mtime:
         return "配音", "台词有新改动，重配一次"
