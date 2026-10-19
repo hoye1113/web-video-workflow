@@ -4,13 +4,13 @@
  * 屏上字：短期麻醉（只做标签）
  */
 ENGINE.visual('p20', (P) => {
-  STYLE.setTheme('night');
+  STYLE.setTheme('day');
   const T = P.endT;
 
   P.scene('../scene-library/p20-anesthesia.png', {
     at: 0,
     reveal: { from: 0.35, to: 1, at: 0.3, dur: 1.5 },
-    cam: [[0, 1], [T * 0.55, 1], [T * 0.55 + 0.7, 1.07], [T, 1.07]].map(([t, z]) => ({ t, z })),
+    cam: [[0, 1.22], [T * 0.55, 1.22], [T * 0.55 + 0.7, 1.30], [T, 1.30]].map(([t, z]) => ({ t, z })),
   });
 
   P.light(960, 240, 700, { at: 0.5, kind: 'lamp', color: 'orange', k: (lt) => PV.clamp((lt - 0.5) / 1.5) });
