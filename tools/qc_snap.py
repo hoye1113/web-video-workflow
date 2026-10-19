@@ -22,7 +22,7 @@ import { loadEpisode } from '%s';
 const { L } = loadEpisode();
 const rows = L.pages.map((p) => ({ id: p.id, start: p.start, end: p.end }));
 console.log(JSON.stringify({ duration: L.duration, pages: rows }));
-""" % (str(ENGINE / "tools" / "lib.mjs").replace("\\", "/"))
+""" % (ENGINE / "tools" / "lib.mjs").as_uri()
 
 
 def page_times():
@@ -39,18 +39,25 @@ def page_times():
 
 def main():
     d = page_times()
+    pages = d["pages"]
+    if "--pages" in sys.argv:
+        keep = set(sys.argv[sys.argv.index("--pages") + 1].split(","))
+        pages = [p for p in pages if p["id"] in keep]
+        print(f'只看 {" ".join(p["id"] for p in pages)}')
     print(f'片长 {d["duration"]:.1f}s，{len(d["pages"])} 页')
-    for i, half in enumerate((d["pages"][:13], d["pages"][13:]), 1):
+    half = pages if "--pages" in sys.argv else None
+    groups = [half] if half else [pages[:13], pages[13:]]
+    for i, group in enumerate(groups, 1):
         times = []
-        for p in half:
+        for p in group:
             span = p["end"] - p["start"]
             times += [round(p["start"] + span * f, 2) for f in (0.22, 0.55, 0.85)]
-        sheet = f"qc{i}"
+        sheet = f"qc{i}" if not half else "qcfix"
         cmd = ["node", str(ENGINE / "tools" / "snap.mjs"), "--sheet", sheet]
         if "--subs" in sys.argv:
             cmd.append("--subs")
         cmd += [str(t) for t in times]
-        print(f'  抽 {len(times)} 帧 → out/snap/{sheet}.jpg（{len(half)} 页）')
+        print(f'  抽 {len(times)} 帧 → out/snap/{sheet}.jpg（{len(group)} 页）')
         r = subprocess.run(cmd, cwd=str(EP), capture_output=True, text=True,
                            encoding="utf-8", errors="replace",
                            env={**os.environ, "PYTHONUTF8": "1"})

@@ -13,6 +13,6 @@ ENGINE.visual('p09', (P) => {
     cam: [[0, 1.09], [T * 0.34, 1.09], [T * 0.34 + 0.9, 1], [T, 1]].map(([t, z]) => ({ t, z })),
   });
 
-  P.light(960, 300, 900, { at: 0.5, kind: 'window', k: (lt) => PV.clamp(lt / 2) });
+  P.light(620, 640, 560, { at: 0.5, kind: 'window', k: (lt) => PV.clamp(lt / 2) });
   P.text("无波无澜", { x: 250, y: 230, size: 44, align: 'l', color: 'ink', at: 1.5 });
 });

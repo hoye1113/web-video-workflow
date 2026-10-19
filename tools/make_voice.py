@@ -152,7 +152,8 @@ def main(argv):
             continue
         for i, text in enumerate(p["cues"]):
             key = f'{p["id"]}:{i}'
-            if key in cache and not force_all(argv):
+            # 缓存**按文字校验**：cue 改了就得重做，不然 voice.js 里的 t 对不上（引擎会当没配音）
+            if key in cache and cache[key].get("t") == text and not force_all(argv):
                 continue
             todo += 1
             print(f'  {p["id"]} [{i + 1}/{len(p["cues"])}] {text}')

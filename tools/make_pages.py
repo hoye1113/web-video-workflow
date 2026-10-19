@@ -30,7 +30,7 @@ CAM = {
 PAGES = [
     dict(id="p01", title="背叛之后，还会不会爱老婆", asset="p01-paper-fold.png", theme="day",
          cam="push40", reveal=(0.30, 1, 0.2, 1.5),
-         lights=[(520, 240, 760, "window", 0.4, "", "PV.clamp(lt / 2)")],
+         lights=[(1000, 620, 520, "window", 0.4, "", "PV.clamp(lt / 2)")],
          texts=[("还会爱吗", 260, 240, 44, "l", "ink", 1.4)]),
 
     dict(id="p02", title="不捅破这层窗户纸，妻子会一直蒙在鼓里", asset="p02-paper-window.png",
@@ -44,8 +44,8 @@ PAGES = [
          texts=[("挑出三个", 250, 230, 44, "l", "ink", 1.3)]),
 
     dict(id="p04", title="暴露往往始于一次意外，他的第一反应是恐惧", asset="male-02-phone-glow.png",
-         theme="day", cam="push40", reveal=(0.35, 1, 0.2, 1.4), grade="brightness: 0.92, saturate: 0.94",
-         lights=[(1010, 600, 360, "screen", 1.0, "blue", "PV.clamp((lt - 1.0) / 1.2)")],
+         theme="night", cam="push40", reveal=(0.35, 1, 0.2, 1.4),
+         lights=[(1010, 620, 420, "screen", 1.0, "blue", "PV.clamp((lt - 1.0) / 1.2)")],
          texts=[("三年的关系", 250, 230, 44, "l", "ink", 1.5)]),
 
     dict(id="p05", title="妻子提离婚的当晚，他跪下来认错", asset="p05-kneel.png", theme="day",
@@ -71,7 +71,7 @@ PAGES = [
 
     dict(id="p09", title="婚姻在出事之前，早已无波无澜", asset="male-03-long-table.png", theme="day",
          cam="pull", reveal=(0.30, 1, 0.25, 1.5),
-         lights=[(960, 300, 900, "window", 0.5, "", "PV.clamp(lt / 2)")],
+         lights=[(620, 640, 560, "window", 0.5, "", "PV.clamp(lt / 2)")],
          texts=[("无波无澜", 250, 230, 44, "l", "ink", 1.5)]),
 
     dict(id="p10", title="被关注的感觉太强，让他觉得自己重新活了一次", asset="p10-wine-glass.png",
@@ -84,10 +84,11 @@ PAGES = [
          lights=[(1250, 560, 420, "lamp", 0.7, "orange", "PV.clamp((lt - 0.7) / 1.5)")],
          texts=[("拿平淡做对比", 250, 230, 44, "l", "ink", 1.4)]),
 
-    dict(id="p12", title="在外面被需要，回家只剩压力，所以他更爱逃", asset="male-05-door-crack.png",
+    dict(id="p12", title="在外面被需要，回家只剩压力，所以他更爱逃", asset="p12-half-door.png",
          theme="day", cam="push55", reveal=(0.35, 1, 0.25, 1.4),
-         lights=[(1300, 300, 520, "screen", 0.7, "blue", "PV.clamp((lt - 0.7) / 1.6)")],
-         texts=[("更容易逃避", 250, 230, 44, "l", "ink", 1.5)]),
+         lights=[(760, 430, 420, "lamp", 0.6, "orange", "PV.clamp(lt / 2)"),
+                 (975, 250, 300, "screen", 1.1, "blue", "PV.clamp((lt - 1.1) / 1.4)")],
+         texts=[("更容易逃避", 250, 230, 44, "l", "ink", 1.4)]),
 
     dict(id="p13", title="愧疚和背叛，可以同时存在", asset="p13-two-lights.png", theme="day",
          cam="push40", reveal=(0.32, 1, 0.2, 1.5),

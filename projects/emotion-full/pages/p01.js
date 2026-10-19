@@ -13,6 +13,6 @@ ENGINE.visual('p01', (P) => {
     cam: [[0, 1], [T * 0.38, 1], [T * 0.38 + 0.7, 1.09], [T, 1.09]].map(([t, z]) => ({ t, z })),
   });
 
-  P.light(520, 240, 760, { at: 0.4, kind: 'window', k: (lt) => PV.clamp(lt / 2) });
+  P.light(1000, 620, 520, { at: 0.4, kind: 'window', k: (lt) => PV.clamp(lt / 2) });
   P.text("还会爱吗", { x: 260, y: 240, size: 44, align: 'l', color: 'ink', at: 1.4 });
 });
