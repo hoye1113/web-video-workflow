@@ -12,6 +12,7 @@
 """
 import argparse
 import json
+import os
 import pathlib
 import subprocess
 import sys
@@ -27,6 +28,34 @@ import pipeline                                    # noqa: E402
 UI = pathlib.Path(__file__).resolve().parent / "ui.html"
 LOCK = threading.Lock()          # 一次只让一个阶段在跑（生图/渲染都是重活）
 RUNNING = {"step": None, "project": None}
+AUTO = {"on": True}              # 自动推进开关（人点"暂停"就关）
+
+
+def conductor_loop():
+    """后台自动推进：每 5 秒看一眼，把"没做完的下一件事"做掉。
+
+    照 frametell 的分工 —— 阶段自动走，人只说/点头/看。**闸门没过就不动**：
+    所以在"等你确认分镜"时它什么都不会做。
+    """
+    sys.path.insert(0, str(ROOT / "tools"))
+    import conductor                                          # noqa: PLC0415
+    while True:
+        time.sleep(5)
+        if not AUTO["on"] or RUNNING["step"]:
+            continue
+        for proj in pipeline.projects():
+            if conductor.paused(proj):
+                continue
+            with LOCK:
+                if RUNNING["step"]:
+                    continue
+                RUNNING.update(step="（自动）", project=proj)
+            try:
+                conductor.advance(proj, say=lambda m: pipeline.emit(proj, "log", text=m))
+            except Exception as e:                            # noqa: BLE001
+                pipeline.emit(proj, "log", text=f"推进器出错：{e}")
+            finally:
+                RUNNING.update(step=None, project=None)
 
 EDGE_VOICES = [("zh-CN-XiaoxiaoNeural", "小晓 · 女声（默认）"), ("zh-CN-XiaoyiNeural", "小艺 · 女声"),
                ("zh-CN-YunxiNeural", "云希 · 男声"), ("zh-CN-YunyangNeural", "云扬 · 男声（播报）"),
@@ -80,6 +109,17 @@ class H(BaseHTTPRequestHandler):
 
     # ---------- GET ----------
     def do_GET(self):
+        try:
+            return self._do_GET()
+        except Exception as e:                                  # noqa: BLE001
+            import traceback
+            traceback.print_exc()
+            try:
+                return self._send(500, {"error": f"{type(e).__name__}: {e}"})
+            except Exception:                                   # noqa: BLE001
+                pass
+
+    def _do_GET(self):
         u, q = urlparse(self.path), None
         q = parse_qs(u.query)
         one = lambda k, d="": (q.get(k) or [d])[0]      # noqa: E731
@@ -92,8 +132,16 @@ class H(BaseHTTPRequestHandler):
             if not proj:
                 return self._send(400, {"error": "缺 project"})
             d = pipeline.proj_dir(proj)
+            sys.path.insert(0, str(ROOT / "tools"))
+            import conductor                                      # noqa: PLC0415
+            try:
+                nxt = conductor.step_for(proj)
+            except Exception as e:                                # noqa: BLE001
+                nxt = (None, f"推进器判断出错：{e}")
             return self._send(200, {
                 "project": status_of(proj),
+                "next": {"step": nxt[0], "why": nxt[1]},
+                "paused": conductor.paused(proj),
                 "steps": [{"name": s[0], "say": s[3], "desc": " ".join(s[1][1:3])} for s in pipeline.STEPS],
                 "gates": pipeline.GATES, "gate_state": pipeline.gate_state(proj),
                 "queue": pipeline.queue(proj)["tasks"],
@@ -120,6 +168,17 @@ class H(BaseHTTPRequestHandler):
 
     # ---------- POST ----------
     def do_POST(self):
+        try:
+            return self._do_POST()
+        except Exception as e:                                  # noqa: BLE001
+            import traceback
+            traceback.print_exc()
+            try:
+                return self._send(500, {"error": f"{type(e).__name__}: {e}"})
+            except Exception:                                   # noqa: BLE001
+                pass
+
+    def _do_POST(self):
         u = urlparse(self.path)
         n = int(self.headers.get("Content-Length") or 0)
         b = json.loads(self.rfile.read(n) or b"{}")
@@ -159,6 +218,12 @@ class H(BaseHTTPRequestHandler):
                           detail=f"换成 {asset}（页代码已重生成）")
             pipeline.mark(proj, f"library/{asset}", "ok", f"指定给 {page}")
             return self._send(200, {"ok": r.returncode == 0, "log": (r.stdout or "") + (r.stderr or "")})
+        if u.path == "/api/pause":
+            sys.path.insert(0, str(ROOT / "tools"))
+            import conductor                                      # noqa: PLC0415
+            conductor.set_paused(b["project"], b.get("on", True))
+            AUTO["on"] = not b.get("on", True) is True or AUTO["on"]
+            return self._send(200, {"ok": True, "paused": conductor.paused(b["project"])})
         if u.path == "/api/say":
             pipeline.emit(b["project"], "say", text=b.get("text", ""),
                           refs=b.get("refs") or [])
@@ -287,28 +352,36 @@ def artifacts(proj):
 
 
 _TIMELINE_CACHE = {}
+_TIMELINE_LOCK = threading.Lock()
 
 
 def timeline(proj):
     """页的起止时间（走引擎 layout；带配音时是真实语速）。缓存 60 秒。"""
-    key = proj
-    hit = _TIMELINE_CACHE.get(key)
+    hit = _TIMELINE_CACHE.get(proj)
     if hit and time.time() - hit[0] < 60:
         return hit[1]
-    js = (f"import {{ loadEpisode }} from '{pipeline.ENGINE.as_uri()}/tools/lib.mjs';\n"
-          "const { L } = loadEpisode();\n"
-          "console.log(JSON.stringify({duration: L.duration,\n"
-          " pages: L.pages.map(p => ({id: p.id, start: p.start, end: p.end, title: p.title,\n"
-          "   cues: p.cues.map(c => ({t: c.text, s: c.start}))}))}));\n")
-    f = pathlib.Path(pipeline.proj_dir(proj) / "out" / "_timeline.mjs")
-    f.parent.mkdir(parents=True, exist_ok=True)
-    f.write_text(js, encoding="utf-8")
-    r = pipeline.run(["node", str(f)], cwd=pipeline.proj_dir(proj), timeout=120)
-    line = [x for x in (r.stdout or "").splitlines() if x.strip().startswith("{")]
-    data = json.loads(line[-1]) if line else {"pages": [], "duration": 0,
-                                              "error": (r.stderr or "")[:200]}
-    _TIMELINE_CACHE[key] = (time.time(), data)
-    return data
+    with _TIMELINE_LOCK:                      # 同时来两个请求时别互相踩临时文件
+        hit = _TIMELINE_CACHE.get(proj)
+        if hit and time.time() - hit[0] < 60:
+            return hit[1]
+        js = (f"import {{ loadEpisode }} from '{pipeline.ENGINE.as_uri()}/tools/lib.mjs';\n"
+              "const { L } = loadEpisode();\n"
+              "console.log(JSON.stringify({duration: L.duration,\n"
+              " pages: L.pages.map(p => ({id: p.id, start: p.start, end: p.end, title: p.title,\n"
+              "   cues: p.cues.map(c => ({t: c.text, s: c.start}))}))}));\n")
+        import tempfile
+        fd, path = tempfile.mkstemp(suffix=".mjs", prefix="vf-timeline-")
+        try:
+            os.write(fd, js.encode("utf-8"))
+            os.close(fd)
+            r = pipeline.run(["node", path], cwd=pipeline.proj_dir(proj), timeout=120)
+        finally:
+            pathlib.Path(path).unlink(missing_ok=True)
+        line = [x for x in (r.stdout or "").splitlines() if x.strip().startswith("{")]
+        data = json.loads(line[-1]) if line else {"pages": [], "duration": 0,
+                                                  "error": (r.stderr or "")[:200]}
+        _TIMELINE_CACHE[proj] = (time.time(), data)
+        return data
 
 
 def main():
@@ -318,6 +391,8 @@ def main():
     a = ap.parse_args()
     srv = ThreadingHTTPServer((a.host, a.port), H)
     print(f"面板：http://{a.host}:{a.port}   工程目录：{pipeline.ROOT / 'projects'}")
+    threading.Thread(target=conductor_loop, daemon=True).start()
+    print("自动推进：开（面板上可暂停；闸门没过时它不会动）")
     try:
         srv.serve_forever()
     except KeyboardInterrupt:

@@ -163,11 +163,15 @@ function renderWorkbench() {
       <div class="card">
         <div class="row"><b>${esc(p.title||S.project)}</b>
           <span class="k">${p.pages} 页 · ${p.cues} 句${p.film?' · 已有成片':''}</span><span class="sp"></span>
-          <span class="k" id="runline">${p.running?`正在${esc(p.running)}…`:'空闲'}</span></div>
-        <div class="steps" style="margin-top:10px">
-          ${(st.steps||[]).map(s=>`<button class="pri" title="${esc(s.desc)}" onclick="runStep('${s.name}')">${s.name}</button>`).join('')}
+          <span class="k" id="runline">${p.running?`正在${esc(p.running)}…`:'空闲'}</span>
+          <button class="pri" id="pausebtn" onclick="togglePause()">${S.state?.paused?'继续制作':'暂停'}</button>
         </div>
-        <div class="hint">阶段按钮=让执行器干活；跑动时的过程在下面。<b>先跑「剧本」「配音」，再跑「出图」「排页」「字幕」「渲染」。</b></div>
+        <div class="row" style="margin-top:8px">
+          <span class="dot ${p.running?'run':(S.state?.next?.step?'':'ok')}"></span>
+          <span id="nextline">下一步：${esc(S.state?.next?.why || '')}${S.state?.next?.step?`（自动做「${esc(S.state.next.step)}」）`:''}</span>
+        </div>
+        <div class="hint" style="margin-top:6px">流程自动往下走（台词 → 分镜确认 → 出图 → 看图 → 排页 → 配音 → 字幕 → 渲染）。
+          你要做的是三件事：<b>说</b>（下面消息框）、<b>点头</b>（审批卡）、<b>看</b>（右边画面）。</div>
       </div>
       <div class="card">
         <h2>对话 · 过程</h2>
@@ -186,14 +190,9 @@ function renderWorkbench() {
         <div id="film"></div>
         <div class="pages" id="pages" style="margin-top:10px"></div>
       </div>
-      <div class="card"><h2>生图队列</h2><div class="q" id="queue"></div>
-        <div class="row" style="margin-top:8px">
-          <input id="qpage" type="text" placeholder="页（p07）" size="6">
-          <select id="qcast"><option>小树</option><option>小芽</option></select>
-          <input id="qscene" type="text" placeholder="处境一句话：谁 + 在哪 + 在做什么 + 光从哪来">
-          <button class="pri" onclick="enqueue()">入队</button>
-        </div>
-        <div class="hint">队列在 <code>gen-queue.json</code>，执行器串行做；做完的图在素材库里等着 ✓/✗。</div>
+      <div class="card"><h2>出图</h2>
+        <div class="k" id="qline">队列是空的</div>
+        <div class="hint" style="margin-top:6px">要加一张图不必在这里点：在下面说「第 7 页换一张：……」，或在素材库里点「重画」。</div>
       </div>
       <div class="card"><h2>产物</h2><div class="lib" id="arts"></div></div>
     </div>
@@ -251,15 +250,15 @@ function renderPages() {
 }
 
 function renderQueue() {
-  const el = $('#queue'); if (!el) return;
+  const el = $('#qline'); if (!el) return;
   const q = S.state?.queue || [];
-  el.innerHTML = q.length ? q.map(t=>`
-    <div class="r"><span class="dot ${t.status==='review'?'ok':t.status==='failed'?'no':t.status==='queued'?'':'run'}"></span>
-      <b>${esc(t.page)}</b><span class="k">${esc(t.cast)} · ${esc(t.status)}</span>
-      <span class="sp"></span><span class="k">${esc((t.scene||'').slice(0,22))}…</span>
-      ${t.status==='failed'||t.status==='review'?`<button onclick="retry('${t.id}','${t.page}')">重做</button>`:''}
-      ${t.img?`<a href="/api/libfile?rel=${encodeURIComponent(t.img)}" target="_blank">看图</a>`:''}
-    </div>`).join('') : '<div class="hint">队列是空的。</div>';
+  if (!q.length) { el.textContent = '队列是空的'; return; }
+  const by = {};
+  q.forEach(t => by[t.status] = (by[t.status] || 0) + 1);
+  const txt = Object.entries(by).map(([k, n]) => `${({queued:'排队', browser:'挂角色', prompt:'写词',
+    generating:'生成中', fetching:'取图', review:'等你看看', failed:'失败', retry:'重做'})[k] || k} ${n}`).join(' · ');
+  const bad = q.filter(t => t.status === 'failed');
+  el.innerHTML = `${txt}` + (bad.length ? `　<a href="#/library">去处理</a>` : '');
 }
 
 function renderArts() {
@@ -269,9 +268,7 @@ function renderArts() {
     const body = f.kind==='video' ? `<video src="${url}" controls preload="metadata" style="width:100%"></video>`
       : f.kind==='image' ? `<a href="${url}" target="_blank"><img src="${url}" loading="lazy" style="width:100%"></a>`
       : `<div style="padding:8px;font-size:11.5px" class="hint">${esc(f.rel)}</div>`;
-    return `<div class="li">${body}<div class="m"><b>${esc(f.rel)}</b><span>${f.kb} KB</span>
-      <span class="row"><button class="ghost" onclick="mark('${esc(f.rel)}','ok')">✓</button>
-      <button class="ghost" onclick="mark('${esc(f.rel)}','no')">✗</button></span></div></div>`;
+    return `<div class="li">${body}<div class="m"><b>${esc(f.rel)}</b><span>${f.kb} KB</span></div></div>`;
   }).join('') || '<div class="hint">还没有产物。</div>';
 }
 
@@ -297,6 +294,12 @@ async function runStep(step) {
     body: JSON.stringify({project:S.project, step})}).then(r=>r.json());
   if (r.error) alert(r.error);
   setTimeout(()=>{ S.since = 0; S.events = []; streamRestart(); }, 300);
+}
+async function togglePause() {
+  const on = !(S.state?.paused);
+  await fetch('/api/pause', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({project: S.project, on})}).then(r=>r.json());
+  load();
 }
 async function say() {
   const t = $('#say').value.trim(); if (!t) return;

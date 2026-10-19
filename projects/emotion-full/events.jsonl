@@ -4,3 +4,5 @@
 {"at": "2026-10-19 16:34:47", "ts": 1792398887.954157, "kind": "approval", "key": "library/p24-clench.png", "verdict": "ok", "note": "指定给 p24"}
 {"at": "2026-10-19 16:36:00", "ts": 1792398960.4854493, "kind": "approval", "key": "gate:map", "verdict": "no", "note": "第 12 页的处境改成门口半开"}
 {"at": "2026-10-19 16:36:00", "ts": 1792398960.5421908, "kind": "page", "id": "p27", "status": "queued", "detail": "入队：男孩坐在窗前，手里拿着一张纸，顶光…（小树）"}
+{"at": "2026-10-19 17:11:18", "ts": 1792401078.1867955, "kind": "stage", "stage": "暂停", "status": "done", "detail": "已暂停（做好的不会重做）"}
+{"at": "2026-10-19 17:11:18", "ts": 1792401078.3588922, "kind": "stage", "stage": "继续", "status": "done", "detail": "继续制作"}
