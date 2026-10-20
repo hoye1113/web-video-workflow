@@ -7,27 +7,24 @@ permissions:
   - action: "*"
     resource: "*"
     effect: ask
-  # 干活的工具放行（bsk=浏览器、tools 里的脚本、引擎的 node 工具）
+  # 干活的工具放行（bsk=浏览器、python/node=脚本、ffmpeg、opencode-cli）
   - action: "shell"
     resource: "*bsk*"
     effect: allow
   - action: "shell"
-    resource: "*tools\\*"
+    resource: "*python*"
     effect: allow
   - action: "shell"
-    resource: "*tools/*"
+    resource: "*node*"
+    effect: allow
+  - action: "shell"
+    resource: "*ffmpeg*"
+    effect: allow
+  - action: "shell"
+    resource: "*ffprobe*"
     effect: allow
   - action: "shell"
     resource: "*opencode-cli*"
-    effect: allow
-  - action: "shell"
-    resource: "ffmpeg *"
-    effect: allow
-  - action: "shell"
-    resource: "ffprobe *"
-    effect: allow
-  - action: "shell"
-    resource: "node *"
     effect: allow
   # 危险动作一律拒（放最后，压过前面的放行）
   - action: "shell"
@@ -37,27 +34,33 @@ permissions:
     resource: "*Remove-Item*"
     effect: deny
   - action: "shell"
-    resource: "*del *"
-    effect: deny
-  - action: "shell"
     resource: "*rm -rf*"
     effect: deny
-  # 文件：仓库内可读；只许改这几处
+  # 文件：能读能改；**冻结目录不碰**（放最后一条的 deny 压过前面的 allow）
   - action: "read"
     resource: "*"
     effect: allow
   - action: "edit"
     resource: "*"
+    effect: allow
+  - action: "edit"
+    resource: "*base-arch*"
     effect: deny
   - action: "edit"
-    resource: "*projects/**"
-    effect: allow
+    resource: "*\\app\\*"
+    effect: deny
   - action: "edit"
-    resource: "*cast/**"
-    effect: allow
+    resource: "*/app/*"
+    effect: deny
   - action: "edit"
-    resource: "*experiments/**"
-    effect: allow
+    resource: "*\\web\\*"
+    effect: deny
+  - action: "edit"
+    resource: "*/web/*"
+    effect: deny
+  - action: "edit"
+    resource: "*.git*"
+    effect: deny
   # 技能与调研
   - action: "skill"
     resource: "*"
@@ -89,6 +92,9 @@ permissions:
 | `python tools/make_script_js.py` / `tools/make_voice.py` | 台词 → 剧本；配音 → voice.js |
 | `python tools/make_pages.py` | 页表 `page-spec.json` → 逐页代码 |
 | `node <engine>/tools/*.mjs` | 引擎侧：字幕、渲染、抽帧（**机械活，照手册跑**）|
+
+**写文件一律用 `write` / `edit` 工具**（直接写 UTF-8）。**不要用 shell 的 echo/heredoc 写中文** ——
+Windows 的壳会把中文弄乱（实测）。shell 只用来跑命令。
 
 ## 铁律（违反就是白干）
 

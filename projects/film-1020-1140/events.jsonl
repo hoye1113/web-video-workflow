@@ -1,0 +1,6 @@
+{"at": "2026-10-20 11:40:25", "ts": 1792467625.4513166, "kind": "say", "text": "新片：为什么吵架后先道歉的人反而更委屈 —— 讲给刚结婚的年轻人听（3 分钟 · 女声 · 温和（默认））"}
+{"at":"2026-10-20 11:52:11","ts":1792468331352,"kind":"stage","stage":"台词","status":"done","detail":"13 页 / 78 条 cue / 585 字（≈3 分钟），0 条硬切"}
+{"at":"2026-10-20 11:52:11","ts":1792468331352.01,"kind":"stage","stage":"分镜","status":"done","detail":"docs/页-处境映射.md：13 页 · 复用 9 张 + 新生成 4 张"}
+{"at":"2026-10-20 11:52:11","ts":1792468331352.02,"kind":"stage","stage":"排页","status":"done","detail":"page-spec.json：13 页，theme/cam/lights/texts 已给默认值，asset 等图出来再填"}
+{"at":"2026-10-20 12:05:00","ts":1792469130000,"kind":"stage","stage":"分镜","status":"done","detail":"docs/页-处境映射.md 收尾：四列表格（页/讲什么/画面/主角），13 行，p13 主角=小树+小芽"}
+{"at":"2026-10-20 12:05:00","ts":1792469130000.01,"kind":"stage","stage":"排页","status":"done","detail":"page-spec.json 收尾：13 页与 script-source.json 一一对应，每页 {id,title,asset,theme,cam,reveal,lights,texts}，asset 全空等图"}

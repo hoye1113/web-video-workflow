@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><title>做视频</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+ :root{--bg:#fbf9f4;--card:#fff;--line:#e6e0d4;--ink:#2f2a22;--dim:#8a8273;--warm:#c8873a;--ok:#4f8a5b;--no:#b05a5a}
+ *{box-sizing:border-box}
+ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 "Segoe UI",system-ui,sans-serif}
+ .wrap{max-width:980px;margin:0 auto;padding:28px 20px 60px}
+ h1{font-size:24px;margin:0 0 6px;font-weight:650;letter-spacing:.5px}
+ .sub{color:var(--dim);margin:0 0 22px}
+ .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:18px}
+ label{display:block;font-size:14px;color:var(--dim);margin:14px 0 6px}
+ textarea,input,select{width:100%;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit}
+ textarea{min-height:92px;resize:vertical}
+ button{cursor:pointer;font:inherit;border-radius:999px;border:1px solid var(--line);background:#fff;padding:8px 16px}
+ button:hover{border-color:var(--warm)}
+ button.go{background:var(--warm);border-color:var(--warm);color:#fff;font-weight:600;padding:12px 26px;font-size:17px}
+ button.go:disabled{opacity:.5;cursor:default}
+ .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+ .row .grow{flex:1}
+ .chk{display:inline-flex;gap:6px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;margin-right:8px}
+ .chk input{width:auto}
+ .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:4px 0 6px}
+ .st{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff}
+ .st .t{font-weight:600}
+ .st .h{font-size:13px;color:var(--dim);margin-top:4px;min-height:20px}
+ .st.doing{border-color:var(--warm);box-shadow:0 0 0 2px #c8873a22}
+ .st.done{border-color:var(--ok)}
+ .st.locked{opacity:.55}
+ .badge{font-size:12px;padding:2px 8px;border-radius:999px;background:#f2eee5;color:var(--dim)}
+ .badge.doing{background:#f7e7cf;color:#8a5a1e}
+ .badge.done{background:#e4efe4;color:#3d6b47}
+ table{width:100%;border-collapse:collapse;font-size:14px}
+ th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+ th{color:var(--dim);font-weight:500;font-size:12.5px}
+ .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+ .im{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+ .im img{width:100%;display:block}
+ .im .c{padding:6px 8px;font-size:12px;color:var(--dim)}
+ video{width:100%;border-radius:12px;background:#000}
+ .big{font-size:18px;font-weight:600;margin:0 0 8px}
+ .hint{color:var(--dim);font-size:13px}
+ .err{color:var(--no);font-size:14px}
+ details{margin-top:10px}
+ details summary{color:var(--dim);font-size:13px;cursor:pointer}
+ details pre{white-space:pre-wrap;font:12px/1.5 ui-monospace,Consolas,monospace;color:#6b6459;max-height:240px;overflow:auto}
+ a{color:var(--warm)}
+ .filmrow{display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--line);padding:10px 0}
+ .filmrow:last-child{border-bottom:0}
+ .muted{color:var(--dim);font-size:13px}
+</style></head><body>
+<div class="wrap" id="app">载入中…</div>
+<script>
+const $ = (s, r=document)=>r.querySelector(s);
+const esc = (s)=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const MIN = [[3,'3 分钟'],[5,'5 分钟'],[6,'6 分钟'],[8,'8 分钟'],[10,'10 分钟']];
+const S = { view:'form', film:'', state:null, es:null, since:0 };
+
+function route(){
+  const h = location.hash || '#/';
+  if (h.startsWith('#/f/')) { S.view='progress'; S.film = decodeURIComponent(h.slice(4)); }
+  else S.view = 'form';
+  load();
+}
+window.addEventListener('hashchange', route);
+
+async function load(){
+  if (S.view === 'form') {
+    const d = await fetch('/api/state').then(r=>r.json());
+    renderForm(d);
+  } else {
+    S.state = await fetch('/api/state?film='+encodeURIComponent(S.film)).then(r=>r.json());
+    renderProgress();
+    stream();
+  }
+}
+
+/* ---------------- 表单 ---------------- */
+function renderForm(d){
+  const films = d.films || [];
+  $('#app').innerHTML = `
+    <h1>做一条视频</h1>
+    <p class="sub">把想讲的事写下来，点「开始做视频」。中间有三步要你点头，做完就能下载。</p>
+    <div class="card">
+      <label>这条视频讲什么？（一句话就行，写清楚讲给谁听）</label>
+      <textarea id="topic" placeholder="例：背叛之后，男人还会不会爱自己的老婆 —— 讲给正在经历婚姻危机的人听"></textarea>
+      <label>资料（可选：把要参考的文字贴在这里）</label>
+      <textarea id="materials" style="min-height:60px" placeholder="有现成稿子就贴进来，没有就留空"></textarea>
+      <div class="row" style="margin-top:6px">
+        <div style="flex:1;min-width:220px"><label>片名（可不填）</label><input id="title" placeholder="例：还会爱吗"></div>
+        <div><label>多长</label><select id="minutes">${MIN.map(([v,t])=>`<option value="${v}" ${v===6?'selected':''}>${t}</option>`).join('')}</select></div>
+        <div><label>谁的声音</label><select id="voice">${Object.entries(d.voices||{}).map(([k,[sp,label]])=>`<option value="${k}">${esc(label)}</option>`).join('')}</select></div>
+      </div>
+      <label>用哪个小朋友当主角</label>
+      <div>${Object.entries(d.casts||{}).map(([k,label])=>`<label class="chk"><input type="checkbox" class="cast" value="${esc(k)}" checked>${esc(label)}</label>`).join('')}</div>
+      <div class="row" style="margin-top:22px"><button class="go" id="go" onclick="start()">开始做视频</button>
+        <span class="hint" id="gohint"></span></div>
+      <div class="err" id="err"></div>
+    </div>
+    <div class="card">
+      <div class="big">做过的视频</div>
+      ${films.length ? films.map(f=>`
+        <div class="filmrow">
+          <div style="flex:1"><div><b>${esc(f.title)}</b></div>
+            <div class="muted">${f.steps.map(s=>`${s.label} ${({done:'✓',doing:'进行中',todo:'·',locked:'待'})[s.state]||''}`).join('　')}</div></div>
+          <a href="#/f/${encodeURIComponent(f.film)}">${f.steps.some(s=>s.state==='done')&&f.film_file?'看片子':'看进度'}</a>
+        </div>`).join('') : '<div class="hint">还没有。上面写一句话就能开始。</div>'}
+    </div>`;
+}
+
+async function start(){
+  const topic = $('#topic').value.trim();
+  if (!topic){ $('#topic').focus(); $('#err').textContent='先写一句「这条视频讲什么」'; return; }
+  $('#go').disabled = true; $('#gohint').textContent = '正在建工程、叫导演写台词…（约 1 分钟）';
+  $('#err').textContent = '';
+  const body = { topic, title: $('#title').value.trim(), minutes: +$('#minutes').value,
+                 voice: $('#voice').value, materials: $('#materials').value.trim(),
+                 cast: [...document.querySelectorAll('.cast')].filter(x=>x.checked).map(x=>x.value) };
+  const r = await fetch('/api/start',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+    .then(r=>r.json()).catch(e=>({error:String(e)}));
+  if (!r.ok){ $('#go').disabled=false; $('#gohint').textContent=''; $('#err').textContent='没起来：'+(r.error||''); return; }
+  location.hash = '#/f/' + encodeURIComponent(r.film);
+}
+
+/* ---------------- 进度 ---------------- */
+function renderProgress(){
+  const d = S.state || {}, p = d.progress || {}, gs = d.gate_state || {};
+  const b = d.brief || {};
+  const st = (s)=>`<div class="st ${s.state}">
+      <div class="t">${s.state==='done'?'✓ ':s.state==='doing'?'⏳ ':''}${esc(s.label)}</div>
+      <div class="h">${esc(s.hint)}</div></div>`;
+  const needMap = (d.map||[]).length && gs.map!=='ok';
+  const needImg = (d.images||[]).filter(x=>x.file).length && gs.img!=='ok';
+  const hasFilm = (d.files||[]).some(f=>f.rel.endsWith('.mp4'));
+  const needFilm = hasFilm && gs.film!=='ok';
+  $('#app').innerHTML = `
+    <h1>${esc(b.topic ? b.topic.slice(0,30) : S.film)}</h1>
+    <p class="sub">${b.minutes?b.minutes+' 分钟':'目标时长待定'} · ${esc(b.voice_label||'')} · 主角 ${esc((b.cast||[]).join('、'))}
+      · <a href="#/">回首页</a></p>
+    <div class="steps">${(p.steps||[]).map(st).join('')}</div>
+    ${p.running?`<p class="hint">现在在做：${esc(p.running)}</p>`:''}
+
+    ${needMap ? gateMap(d) : ''}
+    ${needImg ? gateImages(d) : ''}
+    ${needFilm ? gateFilm(d) : ''}
+    ${!needMap && !needImg && !needFilm ? `<div class="card"><div class="big">${hasFilm?'好了，可以下载了':'正在做，稍等…'}</div>
+        ${hasFilm?filesBlock(d):'<div class="hint">页面会自动更新，不用刷新。</div>'}</div>` : ''}
+    ${hasFilm && needFilm ? filesBlock(d) : ''}
+
+    <details><summary>技术详情（给维护的人看）</summary><pre id="tech"></pre></details>`;
+  renderTech();
+}
+
+function gateMap(d){
+  const rows = d.map||[];
+  return `<div class="card">
+    <div class="big">第一步：看看分镜行不行</div>
+    <div class="hint">下面是这条片子的分页安排。觉得可以就点绿色按钮；想改就在下面写一句。</div>
+    <table style="margin-top:10px"><tr><th>页</th><th>讲什么</th><th>画面</th><th>主角</th></tr>
+      ${rows.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1]||'')}</td><td>${esc(r[2]||'')}</td><td>${esc(r[3]||'')}</td></tr>`).join('')}
+    </table>
+    <div class="row" style="margin-top:14px">
+      <button class="go" onclick="gate('map','ok')">就这样，开始画图</button>
+      <input id="note-map" placeholder="要改什么？（例：第 3 页换个说法）" style="flex:1;min-width:220px">
+      <button onclick="gate('map','no')">要改一下</button>
+    </div></div>`;
+}
+
+function gateImages(d){
+  const ims = (d.images||[]).filter(x=>x.file);
+  return `<div class="card">
+    <div class="big">第二步：看看图</div>
+    <div class="hint">一共 ${ims.length} 张（${(d.progress||{}).got||0}/${(d.progress||{}).need||ims.length} 已画）。都还行就点绿色按钮；有不满意的在下面写。</div>
+    <div class="grid" style="margin-top:12px">
+      ${ims.map(x=>`<div class="im"><img src="/api/img?rel=${encodeURIComponent(x.file)}" loading="lazy">
+        <div class="c">第 ${esc(String(x.page).replace(/^p/,''))} 页${x.status==='review'?' · 待你看':''}</div></div>`).join('')}
+    </div>
+    <div class="row" style="margin-top:14px">
+      <button class="go" onclick="gate('img','ok')">都可以，去出片</button>
+      <input id="note-img" placeholder="哪张要重画、怎么改？（例：第 5 页让他低头）" style="flex:1;min-width:220px">
+      <button onclick="gate('img','no')">有几张要重画</button>
+    </div></div>`;
+}
+
+function filesBlock(d){
+  const mp4 = (d.files||[]).filter(f=>f.rel.endsWith('.mp4'));
+  const srt = (d.files||[]).filter(f=>f.rel.endsWith('.srt'));
+  const url = (rel)=>`/api/file?film=${encodeURIComponent(S.film)}&rel=${encodeURIComponent(rel)}`;
+  const clean = mp4.find(f=>f.rel.includes('无字幕')) || mp4[0];
+  return `<div class="card">
+    <div class="big">成片</div>
+    ${clean?`<video src="${url(clean.rel)}" controls preload="metadata"></video>`:''}
+    <div class="row" style="margin-top:12px">
+      ${mp4.map(f=>`<a href="${url(f.rel)}" download>下载 ${esc(f.rel.includes('有字幕')?'带字幕版':'无字幕版')}</a>`).join('')}
+      ${srt.map(f=>`<a href="${url(f.rel)}" download>下载字幕</a>`).join('')}
+    </div></div>`;
+}
+
+function gateFilm(d){
+  return `<div class="card">
+    <div class="big">第三步：这版可以吗？</div>
+    <div class="hint">播一下看看。可以就点绿色按钮（之后随时能下载）；不行就在下面写哪里要改。</div>
+    <div class="row" style="margin-top:14px">
+      <button class="go" onclick="gate('film','ok')">可以，就这样</button>
+      <input id="note-film" placeholder="哪里要改？（例：第 12 页的图不对）" style="flex:1;min-width:220px">
+      <button onclick="gate('film','no')">还要改</button>
+    </div></div>`;
+}
+
+async function gate(g, v){
+  const note = ($('#note-'+g)||{}).value || '';
+  await fetch('/api/gate',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({film:S.film, gate:g, verdict:v, note})});
+  load();
+}
+
+/* ---------------- 实时刷新 ---------------- */
+function stream(){
+  if (S.es) S.es.close();
+  S.since = 0;
+  S.es = new EventSource(`/api/events?film=${encodeURIComponent(S.film)}&since=0`);
+  S.es.onmessage = (m)=>{
+    const e = JSON.parse(m.data);
+    const tech = $('#tech');
+    if (tech) tech.textContent += `${(e.at||'').slice(11,19)}  ${e.kind}  ${e.stage||e.id||e.text||''}\n`;
+    if (['stage','page','approval','agent','say'].includes(e.kind)) { setTimeout(load, 600); }
+  };
+  S.es.onerror = ()=>{ S.es.close(); setTimeout(stream, 3000); };
+}
+function renderTech(){ /* 事件流会往里追加 */ }
+
+route();
+</script></body></html>
