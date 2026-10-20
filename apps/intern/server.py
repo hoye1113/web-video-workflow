@@ -17,6 +17,7 @@
 """
 import argparse
 import json
+import os
 import pathlib
 import re
 import subprocess
@@ -97,12 +98,18 @@ def mini_steps(f):
     if gates.get("img") != "ok" and not films:
         s3 = "locked"
 
+    doing = [t for t in q["tasks"] if t.get("status") in ("browser", "prompt", "generating", "fetching")]
+    img_hint = f"已经画好 {got}/{need} 张" if need else "等分镜确认"
+    if doing:
+        img_hint = f"已经画好 {got}/{need} 张 · 正在画第 {doing[0].get('page', '')} 页"
+    elif got and got < need and gates.get("map") == "ok":
+        img_hint = f"已经画好 {got}/{need} 张 · 还有 {need - got} 张在排队"
+
     return {
         "steps": [
             {"key": "script", "label": "写台词", "state": s1,
              "hint": ("台词写好了，等你看看分镜" if pages else "正在按你的题目写台词…")},
-            {"key": "images", "label": "画图", "state": s2,
-             "hint": (f"画好了 {got}/{need} 张" if need else "等分镜确认")},
+            {"key": "images", "label": "画图", "state": s2, "hint": img_hint},
             {"key": "film", "label": "出片", "state": s3,
              "hint": ("成片好了，播一下看看" if films else "等图确认")},
         ],
@@ -216,10 +223,10 @@ class H(BaseHTTPRequestHandler):
                 "film": f, "brief": brief(f), "progress": mini_steps(f),
                 "gates": GATES, "gate_state": pipeline.gate_state(f),
                 "approvals": pipeline.approvals(f),
-                "images": [{"page": t["page"], "file": t.get("img"), "status": t.get("status"),
-                            "scene": t.get("scene", ""),
+                "images": [{"page": t["page"], "file": t.get("img") or "",
+                            "status": t.get("status"), "scene": t.get("scene", ""),
                             "metrics": t.get("metrics") or {}}
-                           for t in pipeline.queue(f)["tasks"] if t.get("img") or t.get("status") in ("queued", "review")],
+                           for t in pipeline.queue(f)["tasks"]],
                 "map": map_rows(f),
                 "files": [{"rel": x.name, "kb": max(1, int(x.stat().st_size / 1024))}
                           for x in (d / "out").glob("*")
@@ -263,6 +270,11 @@ class H(BaseHTTPRequestHandler):
             return self._start(b)
         if u.path == "/api/gate":
             return self._gate(b)
+        if u.path == "/api/start-images":
+            # 已经点头过、但当时没跑起来（或要补画）的片子：排队列 + 开画
+            n = build_queue(b.get("film", ""))
+            kick_images(b.get("film", ""))
+            return self._send(200, {"ok": True, "added": n})
         return self._send(404, {"error": "no route"})
 
     def _start(self, b):
@@ -303,9 +315,13 @@ class H(BaseHTTPRequestHandler):
         pipeline.emit(f, "approval", key=f"gate:{gate}", verdict=verdict, note=note)
         if verdict == "ok":
             if gate == "map":
-                ask_agent(f, prompt_images(f))
+                # 分镜点头 → **脚本**把映射表变成队列并开画（不让 agent 做机械活）
+                n = build_queue(f)
+                pipeline.emit(f, "stage", stage="出图", status="start",
+                              detail=f"按分镜排了 {n} 张图，开始逐张画")
+                kick_images(f)
             elif gate == "img":
-                kick(f)                      # 机械活：配音/字幕/渲染 交给推进器
+                kick(f)                      # 机械活：素材/排页/配音/字幕/渲染 交给推进器
             elif gate == "film":
                 pipeline.emit(f, "say", text="用户确认成片")
         else:
@@ -334,6 +350,85 @@ class H(BaseHTTPRequestHandler):
                     return
             time.sleep(1.0)
             beat += 1
+
+
+def build_queue(f):
+    """把「页 → 处境映射表」变成生图队列（**机械活，脚本干；不让 agent 做**）。
+
+    表里的四列就是队列要的四样：页号 / 讲什么 / 处境 / 主角。
+    已经有任务（重跑/重画过的）不覆盖。
+    """
+    rows = map_rows(f)
+    q = pipeline.queue(f)
+    have = {t.get("page") for t in q["tasks"] if t.get("status") in ("queued", "retry", "browser",
+                                                                     "prompt", "generating", "fetching",
+                                                                     "review", "saved")}
+    added = 0
+    for row in rows:
+        pid = (row[0] or "").strip()
+        if not pid:
+            continue
+        page = pid if pid.startswith("p") else f"p{int(pid):02d}"
+        if page in have:
+            continue
+        what, scene, cast = (row[1] if len(row) > 1 else ""), (row[2] if len(row) > 2 else ""), ""
+        cast_raw = (row[3] if len(row) > 3 else "") or ""
+        if "小芽" in cast_raw:
+            cast = "小芽"
+        elif "小树" in cast_raw:
+            cast = "小树"
+        else:
+            cast = "小树" if added % 2 == 0 else "小芽"
+        scene = (scene or what or "").strip()
+        if not scene:
+            continue
+        out = f"{page}-{pipeline.slug(what or 'scene')[:14]}.png"
+        pipeline.queue_add(f, page, cast, scene, out)
+        added += 1
+    return added
+
+
+def assign_images(f):
+    """生图完成后，把队列里的图填进页表（asset），再重生成页代码 —— 机械活。"""
+    d = film_dir(f)
+    spec_f = d / "page-spec.json"
+    spec = pipeline.read_json(spec_f, []) or []
+    by_page = {t.get("page"): t.get("img") for t in pipeline.queue(f)["tasks"] if t.get("img")}
+    filled = 0
+    for p in spec:
+        img = by_page.get(p.get("id"))
+        if img:
+            p["asset"] = img
+            filled += 1
+    if filled:
+        spec_f.write_text(json.dumps(spec, ensure_ascii=False, indent=1), encoding="utf-8")
+        pipeline.run([pipeline.PY, "tools/make_pages.py", "--project", f], timeout=300)
+        pipeline.emit(f, "stage", stage="排页", status="done", detail=f"把 {filled} 张图填进页表")
+    return filled
+
+
+def kick_images(f):
+    """后台跑生图执行器（**完全脱离**面板进程：面板重启不会把它带走）。"""
+    def run():
+        with LOCK:
+            RUNNING.update(what="画图（Flow 生图）", film=f)
+        try:
+            pipeline.emit(f, "stage", stage="出图", status="start", detail="开始逐张出图")
+            logf = ROOT / "logs" / f"gen-{f}.log"
+            logf.parent.mkdir(parents=True, exist_ok=True)
+            flags = 0
+            if os.name == "nt":
+                flags = 0x00000008 | 0x00000200        # DETACHED_PROCESS | CREATE_NEW_PROCESS_GROUP
+            with open(logf, "ab") as fh:
+                p = subprocess.Popen([pipeline.PY, "tools/gen_worker.py", f], cwd=str(ROOT),
+                                     stdout=fh, stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL,
+                                     env=pipeline.env(), creationflags=flags, close_fds=True)
+            p.wait()
+            assign_images(f)
+        finally:
+            pipeline.emit(f, "stage", stage="出图", status="done", detail="这一轮生图结束")
+            RUNNING.update(what=None, film=None)
+    threading.Thread(target=run, daemon=True).start()
 
 
 def kick(f):
