@@ -77,18 +77,21 @@ def mini_steps(f):
 
     # ① 写台词：有 script-source 且至少一页
     s1 = "done" if pages else ("doing" if running and "台词" in str(RUNNING["what"]) else "todo")
-    # ② 画图：按队列与页面
+    # ② 画图：页表里已经指定了图 = 画完了（老片子没有队列记录，也不能显示成没画）
     spec = pipeline.read_json(d / "page-spec.json", []) or []
     need = len(spec) or len(pages)
+    has_assets = any((p or {}).get("asset") for p in spec)
     got = len([t for t in q["tasks"] if t.get("status") in ("review", "saved", "approved")])
-    s2 = "done" if need and got >= need and gates.get("img") == "ok" else (
-        "doing" if got or (running and "图" in str(RUNNING["what"])) else "todo")
-    if pages and gates.get("map") != "ok":
+    if has_assets:
+        s2 = "done"
+    elif pages and gates.get("map") != "ok":
         s2 = "locked"
-    # ③ 出片
-    s3 = "done" if films and gates.get("film") == "ok" else (
-        "doing" if films or (running and any(k in str(RUNNING["what"]) for k in ("配音", "字幕", "渲染"))) else "todo")
-    if gates.get("img") != "ok":
+    else:
+        s2 = "doing" if got or (running and "图" in str(RUNNING["what"])) else "todo"
+    # ③ 出片：有 mp4 就是出过了（不因为闸门状态而假装没出）
+    s3 = "done" if films else (
+        "doing" if (running and any(k in str(RUNNING["what"]) for k in ("配音", "字幕", "渲染"))) else "todo")
+    if gates.get("img") != "ok" and not films:
         s3 = "locked"
 
     return {

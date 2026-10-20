@@ -32,15 +32,24 @@
 ## 跑
 
 ```powershell
+# 0) 一键（推荐）：已经在跑就不重复起，起好用默认浏览器打开
+powershell -ExecutionPolicy Bypass -File apps\intern\start.ps1
+
+# 或者手动：
 # 1) 前置：bsk daemon 在跑、Chrome 已登录 Flow、OpenCode 装了 material agent
 python tools/opencode/install.py
 
 # 2) 起工作台（实习生用浏览器访问这台机器）
-python apps/intern/server.py --port 8900               # 只本机
+python apps/intern/server.py --port 8900                 # 只本机
 python apps/intern/server.py --port 8900 --host 0.0.0.0  # 局域网里的实习生可访问（别开公网）
 
-# 3) 实习生打开 http://<这台机器>:8900
+# 3) 停止
+powershell -ExecutionPolicy Bypass -File apps\intern\stop.ps1
 ```
+
+> ⚠️ **必须用本机的浏览器打开**（Chrome/Edge 都行）：`http://127.0.0.1:8900/`。
+> OpenCode 的"审阅窗"浏览器访问不到本机的端口（它走另一套网络，会报 502）——
+> 这不是应用的问题，用你自己的浏览器就是通的（实测系统代理对 127.* 是放行的）。
 
 ## 出片机器
 
