@@ -63,7 +63,7 @@ def main():
     (ep / "pages").mkdir(parents=True, exist_ok=True)
     (ep / "docs").mkdir(exist_ok=True)
     (ep / "index.html").write_text(INDEX.replace("__TITLE__", a.title), encoding="utf-8")
-    (ep / ".gitignore").write_text("engine\nengine_modules\nout/\n.studio/\naudio/\nvoice.js\n",
+    (ep / ".gitignore").write_text("engine\nengine_modules\nout/\n.studio/\naudio/\nvoice.js\nagent-session.json\n",
                                    encoding="utf-8")
     src = dict(SOURCE)
     src["title"] = a.title

@@ -21,7 +21,8 @@ import sys
 import tempfile
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-EP = ROOT / "projects" / "emotion-full"
+PROJ = next((a for a in sys.argv[1:] if not a.startswith("-")), "emotion-full")
+EP = ROOT / "projects" / PROJ
 ENGINE = ROOT / "experiments" / "frametell-src" / "frametell-main" / "packages" / "engine"
 WORK = ROOT / "experiments" / "accept"
 
@@ -67,7 +68,7 @@ def stats(png):
 
 def main():
     subs = "--subs" in sys.argv
-    film = EP / "out" / ("emotion-full-有字幕.mp4" if subs else "emotion-full-无字幕.mp4")
+    film = EP / "out" / (f"{EP.name}-有字幕.mp4" if subs else f"{EP.name}-无字幕.mp4")
     if not film.exists():
         cand = sorted((EP / "out").glob("*.mp4")) if (EP / "out").exists() else []
         if not cand:

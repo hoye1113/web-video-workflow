@@ -25,11 +25,11 @@ EDGE_PY = pathlib.Path.home() / ".frametell" / "edge-venv" / "Scripts" / "python
 # 阶段表：名字 / 命令 / 在哪跑（ROOT 或 PROJ）/ 说明
 # 三态文案（照 frametell 的 run.ts）：doing=正在做 · done=做好了 · start=开始
 STEPS = [
-    ("剧本", [PY, "tools/make_script_js.py", "--from-source"], ROOT,
+    ("剧本", [PY, "tools/make_script_js.py", "{proj}", "--from-source"], ROOT,
      {"start": "开始整理剧本", "doing": "在把台词编成剧本", "done": "剧本好了"}),
     ("台词", [PY, "tools/check_cues.py"], ROOT,
      {"start": "开始审台词", "doing": "在审 12 字硬切", "done": "台词审过了"}),
-    ("配音", [PY, "tools/make_voice.py"], ROOT,
+    ("配音", [PY, "tools/make_voice.py", "{proj}"], ROOT,
      {"start": "开始配音", "doing": "正在配音", "done": "配音好了"}),
     ("排页", [PY, "tools/make_pages.py", "--project", "{proj}"], ROOT,
      {"start": "开始排页", "doing": "正在排页", "done": "页面排好了"}),
@@ -41,9 +41,9 @@ STEPS = [
      {"start": "开始写字幕", "doing": "在写口播脚本与字幕", "done": "字幕好了"}),
     ("渲染", ["node", str(ENGINE / "tools" / "render.mjs")], "PROJ",
      {"start": "开始渲染", "doing": "正在渲染成片", "done": "成片好了"}),
-    ("验收", [PY, "tools/accept_emotion.py"], ROOT,
+    ("验收", [PY, "tools/accept_emotion.py", "{proj}"], ROOT,
      {"start": "开始验收", "doing": "在逐页体检", "done": "体检完了"}),
-    ("抽帧", [PY, "tools/qc_snap.py"], ROOT,
+    ("抽帧", [PY, "tools/qc_snap.py", "{proj}"], ROOT,
      {"start": "开始抽帧", "doing": "在抽帧拼表", "done": "对照表好了"}),
 ]
 STEP = {s[0]: s for s in STEPS}

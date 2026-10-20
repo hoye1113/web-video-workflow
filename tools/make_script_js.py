@@ -20,7 +20,8 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "projects" / "marriage_full" / "project.json"
-OUTDIR = ROOT / "projects" / "emotion-full"
+PROJ = next((a for a in sys.argv[1:] if not a.startswith("-")), "emotion-full")
+OUTDIR = ROOT / "projects" / PROJ
 SRCJSON = OUTDIR / "script-source.json"
 SCRIPTJS = OUTDIR / "script.js"
 

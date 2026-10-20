@@ -1,18 +1,6 @@
 {
  "title": "先道歉的人",
  "gap": 0.8,
- "voice": {
-  "speaker": "zh-CN-XiaoxiaoNeural",
-  "provider": "edge"
- },
- "note": "口播稿：一条 cue ≤12 字且第 12 字前要有标点（不然字幕切开词）；一页 4-8 条 = 10-15 秒。改完跑 tools/check_cues.py（目标 0 条硬切）→ tools/make_script_js.py --from-source → tools/make_voice.py",
- "budget": {
-  "minutes": 3,
-  "chars": 582,
-  "actual": 585,
-  "pages": 13,
-  "rule": "194 字/分钟；13 页 × 45 字 ≈ 3 分钟"
- },
  "pages": [
   {
    "id": "p01",

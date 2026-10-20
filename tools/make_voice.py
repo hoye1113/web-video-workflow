@@ -25,7 +25,8 @@ import sys
 import tempfile
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-EP = ROOT / "projects" / "emotion-full"
+PROJ = next((a for a in sys.argv[1:] if not a.startswith("-")), "emotion-full")
+EP = ROOT / "projects" / PROJ
 SRC = EP / "script-source.json"
 AUDIO = EP / "audio"
 VOICEJS = EP / "voice.js"
@@ -132,7 +133,34 @@ def one_cue(text: str, pid: str, i: int, last=False):
             "k": build_k(text, words, lead)}
 
 
+def resolve_voice(ep: pathlib.Path):
+    """配音用谁：**工程里选的**优先（brief.json → script-source.json 的 voice），否则用默认。
+
+    实习生在下拉里选的音色必须真的用上 —— 以前这里写死，选男声也会出女声。
+    """
+    def pick(path):
+        try:
+            d = json.loads(path.read_text(encoding="utf-8"))
+        except Exception:                                      # noqa: BLE001
+            return ""
+        if path.name == "brief.json":
+            return (d.get("speaker") or "").strip()
+        v = d.get("voice") or {}
+        return (v.get("speaker") or "").strip() if isinstance(v, dict) else ""
+
+    for f in ("brief.json", "script-source.json"):
+        s = pick(ep / f)
+        if s:
+            return s
+    return VOICE
+
+
 def main(argv):
+    global VOICE
+    if "--voice" in argv:
+        VOICE = argv[argv.index("--voice") + 1]
+    else:
+        VOICE = resolve_voice(EP)
     d = json.loads(SRC.read_text(encoding="utf-8"))
     pages = d["pages"]
     want = [a for a in argv[1:] if not a.startswith("-")]

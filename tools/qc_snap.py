@@ -14,7 +14,8 @@ import sys
 import tempfile
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-EP = ROOT / "projects" / "emotion-full"
+PROJ = next((a for a in sys.argv[1:] if not a.startswith("-")), "emotion-full")
+EP = ROOT / "projects" / PROJ
 ENGINE = ROOT / "experiments" / "frametell-src" / "frametell-main" / "packages" / "engine"
 
 TIMES_JS = """

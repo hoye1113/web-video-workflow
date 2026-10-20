@@ -42,11 +42,21 @@
    "cast": "小树",
    "scene": "一个男孩独自站在厨房水槽前，双手撑着台面，水龙头还开着；窗光斜进来落在水槽边",
    "out": "p03-碗堆在水槽里-谁先低头谁就多.png",
-   "status": "generating",
+   "status": "review",
    "tries": 2,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p03-碗堆在水槽里-谁先低头谁就多.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     254,
+     253,
+     252
+    ],
+    "band_std": 4,
+    "sprout_px": 36
+   },
    "at": "2026-10-20 17:45:17"
   },
   {
@@ -55,11 +65,21 @@
    "cast": "小树",
    "scene": "一个男孩站在自家门外，一只手抬起来停在门板前没落下；走廊尽头一盏灯从上方照下来",
    "out": "p04-三天没说话-最后是他先敲的门.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p04-三天没说话-最后是他先敲的门.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     247,
+     241,
+     228
+    ],
+    "band_std": 2,
+    "sprout_px": 391
+   },
    "at": "2026-10-20 17:45:17"
   },
   {
@@ -81,11 +101,21 @@
    "cast": "小树",
    "scene": "一个男孩独自坐在桌前，双手正把一张纸沿中线折下去；顶光把纸面照亮",
    "out": "p06-先道歉的人-先把责任全揽了过.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p06-先道歉的人-先把责任全揽了过.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     244,
+     236,
+     221
+    ],
+    "band_std": 1,
+    "sprout_px": 638
+   },
    "at": "2026-10-20 17:45:17"
   },
   {
@@ -94,11 +124,21 @@
    "cast": "小树",
    "scene": "一个男孩低着头，一根食指反复掐着纸上同一道折痕，纸面看得见压痕；侧光打在手和纸上",
    "out": "p07-委屈-来自那句没敢说出口的-.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p07-委屈-来自那句没敢说出口的-.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     247,
+     240,
+     223
+    ],
+    "band_std": 1,
+    "sprout_px": 237
+   },
    "at": "2026-10-20 17:45:17"
   },
   {
@@ -120,11 +160,21 @@
    "cast": "小树",
    "scene": "一个男孩坐在桌边，旁边的椅子上没有人；顶光落在那张空椅子上",
    "out": "p09-他退的不是这一句-是怕这段关.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p09-他退的不是这一句-是怕这段关.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     242,
+     229
+    ],
+    "band_std": 1,
+    "sprout_px": 127
+   },
    "at": "2026-10-20 17:45:17"
   },
   {
@@ -133,11 +183,21 @@
    "cast": "小树",
    "scene": "一个男孩的手把一把尺子压在纸上，纸上有一道折痕，刻度朝着镜头；侧光从旁边照过来",
    "out": "p10--你先道歉-成了一本看不见的.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p10--你先道歉-成了一本看不见的.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     251,
+     248,
+     244
+    ],
+    "band_std": 13,
+    "sprout_px": 603
+   },
    "at": "2026-10-20 17:45:17"
   },
   {
@@ -159,8 +219,8 @@
    "cast": "小树",
    "scene": "一个男孩低头看着桌上的一张纸，手里握着笔，笔尖停在纸面上方；侧顶光落在纸上",
    "out": "p12-把-谁对谁错-换成-我需要什.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "generating",
+   "tries": 1,
    "error": "",
    "img": "",
    "metrics": {},
