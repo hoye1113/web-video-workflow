@@ -1,0 +1,119 @@
+{
+ "tasks": [
+  {
+   "id": "p04-1",
+   "page": "p04",
+   "cast": "小树",
+   "scene": "一个男孩坐在书桌前，一只手把一部手机反扣着推到桌子另一头，手指还搭在手机上；桌上只剩一盏台灯从侧面照着，其余很暗，主体占画面中部",
+   "out": "p04-phone-pushaway.png",
+   "status": "review",
+   "tries": 1,
+   "error": "",
+   "img": "p04-phone-pushaway.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     244,
+     241,
+     233
+    ],
+    "band_std": 3,
+    "sprout_px": 11
+   },
+   "at": "2026-10-20 16:20:00"
+  },
+  {
+   "id": "p08-1",
+   "page": "p08",
+   "cast": "小芽",
+   "scene": "一个女孩侧身坐在窗边的椅子上，一部亮着的手机屏幕朝上放在旁边的桌角，她看着窗外没有去拿它；窗口的冷白光照在她的侧脸上，屋里很暗，主体占画面中部",
+   "out": "p08-phone-ignored.png",
+   "status": "review",
+   "tries": 1,
+   "error": "",
+   "img": "p08-phone-ignored.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     251,
+     249,
+     242
+    ],
+    "band_std": 7,
+    "sprout_px": 0
+   },
+   "at": "2026-10-20 16:20:00"
+  },
+  {
+   "id": "p13-1",
+   "page": "p13",
+   "cast": "小树",
+   "scene": "夜里，一个男孩侧身坐在床沿上，手机握在手里没放下，屏幕的光照亮了他的下巴和手，房间其余地方是暗的，主体占画面中部",
+   "out": "p13-phone-in-hand.png",
+   "status": "review",
+   "tries": 1,
+   "error": "",
+   "img": "p13-phone-in-hand.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     245,
+     236
+    ],
+    "band_std": 0,
+    "sprout_px": 0
+   },
+   "at": "2026-10-20 16:20:00"
+  },
+  {
+   "id": "p15-1",
+   "page": "p15",
+   "cast": "小树",
+   "scene": "一个男孩侧身靠在椅背上一动不动，一部手机反扣在摊开的书旁边，他没有看它；头顶一盏灯的光直直落下来，桌面很干净，主体占画面中部",
+   "out": "p15-phone-flip.png",
+   "status": "review",
+   "tries": 1,
+   "error": "",
+   "img": "p15-phone-flip.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     246,
+     236
+    ],
+    "band_std": 1,
+    "sprout_px": 8
+   },
+   "at": "2026-10-20 16:20:00"
+  },
+  {
+   "id": "p23-1",
+   "page": "p23",
+   "cast": "小树",
+   "scene": "一个男孩侧身坐在椅子上，头转向另一边，一只手搭在椅背上；桌上另一侧放着一只没动过的杯子，暖色顶光从上方落下，主体占画面中部",
+   "out": "p23-turn-away.png",
+   "status": "review",
+   "tries": 1,
+   "error": "",
+   "img": "p23-turn-away.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     245,
+     241,
+     232
+    ],
+    "band_std": 1,
+    "sprout_px": 71
+   },
+   "at": "2026-10-20 16:20:00"
+  }
+ ]
+}

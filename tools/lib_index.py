@@ -19,11 +19,20 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
+# Windows 控制台是 GBK：打印 '⚠'/'✓' 会抛 UnicodeEncodeError（会带倒整批活）
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+except Exception:                                        # noqa: BLE001
+    pass
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 LIB = ROOT / "projects" / "scene-library"
 OUT = LIB / "index.json"
 
 SPROUT = (0xDE, 0xF0, 0xA8)          # 嫩芽色 #DEF0A8
+# 嫩芽判据（2026-10-20 与 tools/gen_scenes.py 对齐）：老窗口只认最亮的嫩芽，
+# 暗一点的橄榄绿嫩芽会被判成 0。**这是提示不是判决 —— 头顶有没有芽要人眼看。**
+SPROUT_MIN = 12                      # 低于这个数 → 提示"看一眼头顶"
 
 
 def metrics(f: pathlib.Path):
@@ -36,12 +45,17 @@ def metrics(f: pathlib.Path):
     var = sum((c[i] - mean[i]) ** 2 for c in px for i in (0, 1, 2)) // (len(px) * 3)
     small = im.resize((160, 90))
     sprout = sum(1 for c in small.getdata()
-                 if abs(c[0] - SPROUT[0]) < 45 and abs(c[1] - SPROUT[1]) < 45 and abs(c[2] - SPROUT[2]) < 60)
+                 if c[1] > 150 and c[0] > 110 and c[2] < 190 and (c[1] - c[2]) > 25)
     return {"w": w, "h": h, "band_std": int(var ** 0.5), "sprout_px": sprout}
 
 
 def gen_log():
-    """批量生成日志 → {文件名: {char, scene}}（这是"这张图是谁、画的是什么"的出处）。"""
+    """批量生成日志 → {文件名: {char, scene}}（这是"这张图是谁、画的是什么"的出处）。
+
+    两个日志都读：
+      · batch-c-log.jsonl   —— 批次 C（tools/gen_scenes.py）
+      · gen-worker.log.jsonl —— 队列执行器（tools/gen_worker.py），字段名是 cast/scene/file
+    """
     d = {}
     f = LIB / "batch-c-log.jsonl"
     if f.exists():
@@ -53,6 +67,16 @@ def gen_log():
             if r.get("file"):
                 d[r["file"]] = {"cast": r.get("char", ""), "scene": r.get("scene", ""),
                                 "at": r.get("at", "")}
+    f2 = LIB / "gen-worker.log.jsonl"
+    if f2.exists():
+        for line in f2.read_text(encoding="utf-8").splitlines():
+            try:
+                r = json.loads(line)
+            except Exception:                                  # noqa: BLE001
+                continue
+            if r.get("file"):
+                d.setdefault(r["file"], {"cast": r.get("cast", ""), "scene": r.get("scene", ""),
+                                         "at": r.get("at", "")})
     return d
 
 
@@ -117,12 +141,12 @@ def main():
         flag = []
         if r["band_std"] > 12:
             flag.append("留白带不净")
-        if r["sprout_px"] == 0:
-            flag.append("没看到嫩芽")
+        if r["sprout_px"] < SPROUT_MIN:
+            flag.append("嫩芽少，看一眼头顶")
         used = ("→ " + " ".join(r["used_by"])) if r["used_by"] else ""
-        print(f'  {r["file"]:<26} {r["cast"] or "—":<4} {r["status"]:<4} '
+        print(f'  {r["file"]:<26} {r["cast"] or "-":<4} {r["status"]:<4} '
               f'{r["w"]}x{r["h"]} 芽{r["sprout_px"]:>3} 带{r["band_std"]:>2} '
-              f'{"⚠ " + "、".join(flag) if flag else ""} {used}')
+              f'{"[!] " + "、".join(flag) if flag else ""} {used}')
     print(f"\n写好了：{OUT.relative_to(ROOT)}" if "--check" not in sys.argv else "（--check，没写）")
 
 

@@ -1,0 +1,6 @@
+engine
+engine_modules
+out/
+.studio/
+audio/
+voice.js

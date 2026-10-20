@@ -83,7 +83,14 @@ def full_prompt(scene):
 
 
 def metrics(png):
-    """量一眼：尺寸 / 下方留白带 / 嫩芽色在不在。"""
+    """量一眼：尺寸 / 下方留白带 / 嫩芽色在不在。
+
+    嫩芽的判据（2026-10-20 校准）：老窗口（g>190,r>160,b<200,g-b>30）只认得出**最亮**的嫩芽，
+    暗一点的橄榄绿嫩芽会被判成 0（实测 p13 的嫩芽像素是 (147,147,106)）。
+    现在放宽成"绿色占优"，跟 `tools/lib_index.py` 用同一套。
+    **注意：这是提示不是判决** —— 全图数绿像素分不出"头顶有芽"和"别处有灰绿"，
+    背对镜头那两张（真没芽）反而数出几百个绿像素。**头顶有没有芽要人眼看。**
+    """
     im = Image.open(io.BytesIO(png)).convert("RGB")
     w, h = im.size
     band = im.crop((0, int(h * 0.82), w, h)).resize((60, 12))
@@ -92,7 +99,7 @@ def metrics(png):
     var = sum((c[i] - mean[i]) ** 2 for c in px for i in (0, 1, 2)) // (len(px) * 3)
     small = im.resize((160, 90))
     sprout = sum(1 for c in small.getdata()
-                 if c[1] > 190 and c[0] > 160 and c[2] < 200 and (c[1] - c[2]) > 30)
+                 if c[1] > 150 and c[0] > 110 and c[2] < 190 and (c[1] - c[2]) > 25)
     return {"w": w, "h": h, "band_mean": mean, "band_std": int(var ** 0.5), "sprout_px": sprout}
 
 

@@ -60,18 +60,17 @@ function route(){
   const h = location.hash || '#/';
   if (h.startsWith('#/f/')) { S.view='progress'; S.film = decodeURIComponent(h.slice(4)); }
   else S.view = 'form';
-  load();
+  load().then(()=>{ if (S.view === 'progress') stream(); });
 }
-window.addEventListener('hashchange', route);
+window.addEventListener('hashchange', () => { if (S.es) { S.es.close(); S.es = null; } route(); });
 
 async function load(){
   if (S.view === 'form') {
     const d = await fetch('/api/state').then(r=>r.json());
     renderForm(d);
   } else {
-    S.state = await fetch('/api/state?film='+encodeURIComponent(S.film)).then(r=>r.json());
+    S.state = await fetch('/api/state?film='+encodeURIComponent(S.film)).then(r=>r.json()).catch(()=>({}));
     renderProgress();
-    stream();
   }
 }
 
@@ -209,23 +208,45 @@ function gateFilm(d){
 
 async function gate(g, v){
   const note = ($('#note-'+g)||{}).value || '';
-  await fetch('/api/gate',{method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({film:S.film, gate:g, verdict:v, note})});
+  const btn = event && event.target;
+  if (btn) { btn.disabled = true; btn.textContent = v==='ok' ? '已收到，正在安排…' : '已收到，正在改…'; }
+  try {
+    const r = await fetch('/api/gate',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({film:S.film, gate:g, verdict:v, note})});
+    if (!r.ok) {
+      const d = await r.json().catch(()=>({}));
+      alert('没提交成功：' + (d.error || r.status) + '\n（如果是用审阅窗打开的，请用本机浏览器访问 127.0.0.1:8900）');
+      if (btn) { btn.disabled = false; }
+    }
+  } catch (e) {
+    alert('连不上服务：' + e.message + '\n请确认 http://127.0.0.1:8900/ 是用本机浏览器打开的');
+    if (btn) { btn.disabled = false; }
+  }
   load();
 }
 
 /* ---------------- 实时刷新 ---------------- */
 function stream(){
-  if (S.es) S.es.close();
+  // 只开一条；已经开着就别再开（以前每次 load() 都重开，堆出几百个 TIME_WAIT）
+  if (S.es && S.es.readyState !== 2) return;
   S.since = 0;
   S.es = new EventSource(`/api/events?film=${encodeURIComponent(S.film)}&since=0`);
   S.es.onmessage = (m)=>{
     const e = JSON.parse(m.data);
     const tech = $('#tech');
     if (tech) tech.textContent += `${(e.at||'').slice(11,19)}  ${e.kind}  ${e.stage||e.id||e.text||''}\n`;
-    if (['stage','page','approval','agent','say'].includes(e.kind)) { setTimeout(load, 600); }
+    if (['stage','page','approval','agent','say','perm'].includes(e.kind)) scheduleLoad();
   };
-  S.es.onerror = ()=>{ S.es.close(); setTimeout(stream, 3000); };
+  S.es.onerror = ()=>{
+    if (S.es) S.es.close();
+    S.es = null;
+    setTimeout(()=>{ if (S.view === 'progress') route(); }, 5000);
+  };
+}
+let loadTimer = null;
+function scheduleLoad(){
+  if (loadTimer) return;                    // 1.5 秒内只刷一次（事件密集时不刷爆）
+  loadTimer = setTimeout(()=>{ loadTimer = null; load(); }, 1500);
 }
 function renderTech(){ /* 事件流会往里追加 */ }
 

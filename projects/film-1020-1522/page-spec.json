@@ -1,0 +1,939 @@
+[
+ {
+  "id": "p01",
+  "title": "分开之后他不回消息，是想复合还是想断联",
+  "asset": "female-02-phone-glow.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [
+   [
+    960,
+    430,
+    420,
+    "screen",
+    1.0,
+    "blue",
+    "PV.clamp((lt - 1.0) / 1.4)"
+   ]
+  ],
+  "texts": [
+   [
+    "不回消息",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p02",
+  "title": "他越是推开你，心里越是在意你",
+  "asset": "p18-two-doors.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.32,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [
+   [
+    670,
+    240,
+    560,
+    "window",
+    0.4,
+    "",
+    "PV.clamp(lt / 2)"
+   ]
+  ],
+  "texts": [
+   [
+    "答案相反",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ]
+ },
+ {
+  "id": "p03",
+  "title": "嘴上硬，心里软，他在等你先开口",
+  "asset": "female-06-bed-edge.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.6
+  ],
+  "lights": [
+   [
+    1000,
+    330,
+    430,
+    "lamp",
+    0.4,
+    "orange",
+    "PV.clamp(1 - (lt - 1.5) / 5)"
+   ]
+  ],
+  "texts": [
+   [
+    "嘴上硬心软",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.5
+   ]
+  ]
+ },
+ {
+  "id": "p04",
+  "title": "第一种：他说别再联系，其实在等你来纠缠",
+  "asset": "p04-phone-pushaway.png",
+  "theme": "day",
+  "cam": "tight55",
+  "reveal": [
+   0.35,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [
+   [
+    900,
+    380,
+    420,
+    "lamp",
+    0.5,
+    "orange",
+    "PV.clamp((lt - 0.5) / 1.6)"
+   ]
+  ],
+  "texts": [
+   [
+    "别再联系",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p05",
+  "title": "你真不找，他反而开始怀疑自己",
+  "asset": "male-02-phone-glow.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.6
+  ],
+  "lights": [
+   [
+    1000,
+    430,
+    420,
+    "screen",
+    1.0,
+    "blue",
+    "PV.clamp((lt - 1.0) / 1.4)"
+   ]
+  ],
+  "texts": [
+   [
+    "他先慌了",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.5
+   ]
+  ]
+ },
+ {
+  "id": "p06",
+  "title": "他要的不是复合，是你心里还有他",
+  "asset": "p25-ruler.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.35,
+   1,
+   0.25,
+   1.4
+  ],
+  "lights": [
+   [
+    860,
+    420,
+    520,
+    "window",
+    0.6,
+    "",
+    "PV.clamp(lt / 2)"
+   ]
+  ],
+  "texts": [
+   [
+    "你的分量",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p07",
+  "title": "所以他的冷不是断联，是要你证明分量",
+  "asset": "p07-crease.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.35,
+   1,
+   0.25,
+   1.4
+  ],
+  "lights": [
+   [
+    900,
+    420,
+    520,
+    "window",
+    0.6,
+    "",
+    "PV.clamp(lt / 2)"
+   ]
+  ],
+  "texts": [
+   [
+    "要你证明",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p08",
+  "title": "第一个信号：没删你，也没拉黑你",
+  "asset": "p08-phone-ignored.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [
+   [
+    960,
+    320,
+    480,
+    "window",
+    0.4,
+    "",
+    "PV.clamp(lt / 2)"
+   ],
+   [
+    1310,
+    620,
+    260,
+    "screen",
+    1.0,
+    "blue",
+    "PV.clamp((lt - 1.0) / 1.4)"
+   ]
+  ],
+  "texts": [
+   [
+    "只是不回",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p09",
+  "title": "第二种：他狠心断联，是在逼自己放下",
+  "asset": "male-03-long-table.png",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.25,
+   1.5
+  ],
+  "lights": [
+   [
+    960,
+    520,
+    760,
+    "window",
+    0.4,
+    "",
+    "PV.clamp(lt / 2)"
+   ]
+  ],
+  "texts": [
+   [
+    "逼自己放下",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p10",
+  "title": "他越狠心，越能证明他在意",
+  "asset": "male-06-bed-edge.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.6
+  ],
+  "lights": [
+   [
+    1150,
+    330,
+    430,
+    "lamp",
+    0.4,
+    "orange",
+    "PV.clamp(1 - (lt - 1.5) / 5)"
+   ]
+  ],
+  "texts": [
+   [
+    "越狠越在意",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.5
+   ]
+  ]
+ },
+ {
+  "id": "p11",
+  "title": "他不擅长解释，只会用距离说话",
+  "asset": "male-08-empty-living.png",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.25,
+   1.5
+  ],
+  "lights": [
+   [
+    1380,
+    300,
+    460,
+    "lamp",
+    0.7,
+    "orange",
+    "PV.clamp((lt - 0.7) / 1.5)"
+   ]
+  ],
+  "texts": [
+   [
+    "只会躲",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p12",
+  "title": "距离越远，他越觉得安全",
+  "asset": "p12-half-door.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.35,
+   1,
+   0.25,
+   1.4
+  ],
+  "lights": [
+   [
+    700,
+    380,
+    420,
+    "lamp",
+    0.6,
+    "orange",
+    "PV.clamp(lt / 2)"
+   ],
+   [
+    1010,
+    300,
+    300,
+    "screen",
+    1.1,
+    "blue",
+    "PV.clamp((lt - 1.1) / 1.4)"
+   ]
+  ],
+  "texts": [
+   [
+    "距离说话",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p13",
+  "title": "他嘴上说放下了，手机却一直没离手",
+  "asset": "p13-phone-in-hand.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.32,
+   1,
+   0.2,
+   1.6
+  ],
+  "lights": [
+   [
+    960,
+    420,
+    400,
+    "screen",
+    1.0,
+    "blue",
+    "PV.clamp((lt - 1.0) / 1.4)"
+   ]
+  ],
+  "texts": [
+   [
+    "谁先低头",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.6
+   ]
+  ]
+ },
+ {
+  "id": "p14",
+  "title": "不是不爱，是他没能力解决",
+  "asset": "p22-two-points.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.35,
+   1,
+   0.25,
+   1.4
+  ],
+  "lights": [
+   [
+    900,
+    430,
+    700,
+    "window",
+    0.5,
+    "",
+    "PV.clamp(lt / 2)"
+   ]
+  ],
+  "texts": [
+   [
+    "解决不了",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p15",
+  "title": "碰到难题，他习惯先躲开",
+  "asset": "p15-phone-flip.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.35,
+   1,
+   0.25,
+   1.4
+  ],
+  "lights": [
+   [
+    960,
+    220,
+    700,
+    "window",
+    0.4,
+    "",
+    "PV.clamp(lt / 2)"
+   ]
+  ],
+  "texts": [
+   [
+    "先躲开",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p16",
+  "title": "他说累，不是放弃你，是扛不住",
+  "asset": "p05-kneel.png",
+  "theme": "day",
+  "cam": "tight55",
+  "reveal": [
+   0.35,
+   1,
+   0.3,
+   1.5
+  ],
+  "lights": [
+   [
+    770,
+    300,
+    680,
+    "window",
+    0.5,
+    "",
+    "PV.clamp(lt / 2)"
+   ]
+  ],
+  "texts": [
+   [
+    "扛不住",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.5
+   ]
+  ]
+ },
+ {
+  "id": "p17",
+  "title": "逃避问题的本质，就是回避",
+  "asset": "p21-flatten.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.35,
+   1,
+   0.25,
+   1.4
+  ],
+  "lights": [
+   [
+    880,
+    480,
+    700,
+    "window",
+    0.5,
+    "",
+    "PV.clamp(lt / 2)"
+   ]
+  ],
+  "texts": [
+   [
+    "逃避就是回避",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p18",
+  "title": "回避心里有三个软肋：敏感、脆弱、不甘",
+  "asset": "p13-two-lights.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.32,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [
+   [
+    420,
+    620,
+    560,
+    "lamp",
+    0.5,
+    "orange",
+    "PV.clamp((lt - 0.5) / 1.5)"
+   ],
+   [
+    1520,
+    620,
+    560,
+    "screen",
+    1.0,
+    "blue",
+    "PV.clamp((lt - 1.0) / 1.5)"
+   ]
+  ],
+  "texts": [
+   [
+    "三个软肋",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p19",
+  "title": "你越消失，他越慌",
+  "asset": "female-04-empty-chair.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.35,
+   1,
+   0.25,
+   1.4
+  ],
+  "lights": [
+   [
+    810,
+    520,
+    520,
+    "window",
+    0.6,
+    "",
+    "PV.clamp(lt / 2)"
+   ]
+  ],
+  "texts": [
+   [
+    "你越消失",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p20",
+  "title": "想让他回来，先让他安心",
+  "asset": "p14-scissors.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.35,
+   1,
+   0.25,
+   1.4
+  ],
+  "lights": [
+   [
+    860,
+    430,
+    540,
+    "window",
+    0.6,
+    "",
+    "PV.clamp(lt / 2)"
+   ]
+  ],
+  "texts": [
+   [
+    "先别追",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p21",
+  "title": "最后说三种情形",
+  "asset": "p03-cases.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [
+   [
+    920,
+    380,
+    760,
+    "window",
+    0.4,
+    "",
+    "PV.clamp(lt / 2)"
+   ]
+  ],
+  "texts": [
+   [
+    "三种情形",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.3
+   ]
+  ]
+ },
+ {
+  "id": "p22",
+  "title": "第一种怎么办：稳住，别追",
+  "asset": "p24-clench.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.35,
+   1,
+   0.25,
+   1.4
+  ],
+  "lights": [
+   [
+    960,
+    430,
+    540,
+    "window",
+    0.6,
+    "",
+    "PV.clamp(lt / 2)"
+   ]
+  ],
+  "texts": [
+   [
+    "先稳住",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p23",
+  "title": "第二种：还能聊，一说感情就绕开",
+  "asset": "p23-turn-away.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.35,
+   1,
+   0.25,
+   1.4
+  ],
+  "lights": [
+   [
+    700,
+    420,
+    560,
+    "lamp",
+    0.6,
+    "orange",
+    "PV.clamp(lt / 2)"
+   ]
+  ],
+  "texts": [
+   [
+    "门还开着",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p24",
+  "title": "第三种最难：删除拉黑，态度决绝",
+  "asset": "p16-keys.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.6
+  ],
+  "lights": [
+   [
+    770,
+    260,
+    480,
+    "lamp",
+    0.4,
+    "orange",
+    "PV.clamp((lt - 0.4) / 1.6)"
+   ]
+  ],
+  "texts": [
+   [
+    "态度决绝",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.5
+   ]
+  ]
+ },
+ {
+  "id": "p25",
+  "title": "第三种怎么办：先停一停",
+  "asset": "p26-smooth-refold.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.35,
+   1,
+   0.25,
+   1.4
+  ],
+  "lights": [
+   [
+    1020,
+    420,
+    700,
+    "window",
+    0.5,
+    "orange",
+    "PV.clamp(lt / 2)"
+   ]
+  ],
+  "texts": [
+   [
+    "先停一停",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p26",
+  "title": "冷不是拒绝，肯回来才是答案",
+  "asset": "p15-night-door.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.32,
+   1,
+   0.2,
+   1.6
+  ],
+  "lights": [
+   [
+    960,
+    320,
+    460,
+    "lamp",
+    0.5,
+    "orange",
+    "PV.clamp((lt - 0.5) / 1.6)"
+   ]
+  ],
+  "texts": [
+   [
+    "门没关",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.5
+   ]
+  ]
+ }
+]

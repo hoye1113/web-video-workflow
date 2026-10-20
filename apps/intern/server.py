@@ -86,6 +86,9 @@ def mini_steps(f):
         s2 = "done"
     elif pages and gates.get("map") != "ok":
         s2 = "locked"
+    elif pages:
+        # 分镜已经点头了：从这一刻起就是"正在画"，哪怕第一张还没出来
+        s2 = "doing" if (got or not films) else "done"
     else:
         s2 = "doing" if got or (running and "图" in str(RUNNING["what"])) else "todo"
     # ③ 出片：有 mp4 就是出过了（不因为闸门状态而假装没出）
@@ -162,6 +165,13 @@ def prompt_fix_script(f, note):
         f"只改 projects/{f}/script-source.json 与 docs/页-处境映射.md（必要时 page-spec.json），"
         f"改完停下等我再确认。"
     )
+
+
+class Server(ThreadingHTTPServer):
+    """**不允许两个实例抢同一个端口**（Windows 下 SO_REUSEADDR 会静默允许重复绑定，
+    结果请求一半打到僵住的旧实例上 —— 页面"没反应"就是这么来的）。"""
+    allow_reuse_address = False
+    daemon_threads = True
 
 
 class H(BaseHTTPRequestHandler):
@@ -394,9 +404,19 @@ def main():
     ap.add_argument("--port", type=int, default=8900)
     ap.add_argument("--host", default="127.0.0.1")
     a = ap.parse_args()
+    # 单实例守卫：端口已被占用就直接说清楚（别让两个实例同时听）
+    import socket
+    probe = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        probe.bind((a.host, a.port))
+    except OSError:
+        print(f"✗ 端口 {a.port} 已经被占用 —— 已经有一个工作台在跑了（先停掉再起：apps\\intern\\stop.ps1）")
+        return 2
+    finally:
+        probe.close()
     print(f"实习工作台：http://{a.host}:{a.port}")
     print("  （只填表 → 三次点头 → 下载；工程细节在下面：OpenCode material agent + bsk/Flow + frametell 引擎）")
-    srv = ThreadingHTTPServer((a.host, a.port), H)
+    srv = Server((a.host, a.port), H)
     try:
         srv.serve_forever()
     except KeyboardInterrupt:
@@ -404,4 +424,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
