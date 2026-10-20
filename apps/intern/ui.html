@@ -138,6 +138,7 @@ function renderProgress(){
       · <a href="#/">回首页</a></p>
     <div class="steps">${(p.steps||[]).map(st).join('')}</div>
     ${p.running?`<p class="hint">现在在做：${esc(p.running)}</p>`:''}
+    ${stuckCards(d)}
 
     ${needMap ? gateMap(d) : ''}
     ${needImg ? gateImages(d) : ''}
@@ -148,6 +149,32 @@ function renderProgress(){
 
     <details><summary>技术详情（给维护的人看）</summary><pre id="tech"></pre></details>`;
   renderTech();
+}
+
+function stuckCards(d){
+  const f = d.flags || {};
+  let html = '';
+  if (f.need_script) html += `<div class="card" style="border-color:var(--warm)">
+    <div class="big">台词还没写出来</div>
+    <div class="hint">导演可能卡住了。点下面再叫它一次（约 1–2 分钟）。</div>
+    <div class="row" style="margin-top:12px"><button class="go" onclick="retryScript()">再写一次</button></div></div>`;
+  if (f.need_resume_images) html += `<div class="card" style="border-color:var(--warm)">
+    <div class="big">画图停住了</div>
+    <div class="hint">还有图没画完（可能是执行器被关掉了）。点下面继续，已经画好的不会重画。</div>
+    <div class="row" style="margin-top:12px"><button class="go" onclick="resumeImages()">继续画图</button></div></div>`;
+  return html;
+}
+
+async function retryScript(){
+  const r = await fetch('/api/retry-script',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({film:S.film})}).then(r=>r.json()).catch(e=>({error:String(e)}));
+  if (r.error) alert('没发出去：' + r.error);
+  load();
+}
+async function resumeImages(){
+  await fetch('/api/start-images',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({film:S.film})}).catch(()=>{});
+  load();
 }
 
 function gateMap(d){

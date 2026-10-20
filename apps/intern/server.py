@@ -219,8 +219,16 @@ class H(BaseHTTPRequestHandler):
                 return self._send(200, {"films": [status_row(x) for x in pipeline.projects()],
                                         "voices": VOICES, "casts": CASTS, "gates": GATES})
             d = film_dir(f)
+            src = pipeline.read_json(d / "script-source.json", {}) or {}
+            tasks = pipeline.queue(f)["tasks"]
+            flags = {
+                "need_script": not (src.get("pages") or []),
+                "need_resume_images": (not RUNNING["what"]) and any(
+                    t.get("status") in ("queued", "retry", "failed") for t in tasks),
+            }
             return self._send(200, {
                 "film": f, "brief": brief(f), "progress": mini_steps(f),
+                "flags": flags,
                 "gates": GATES, "gate_state": pipeline.gate_state(f),
                 "approvals": pipeline.approvals(f),
                 "images": [{"page": t["page"], "file": t.get("img") or "",
@@ -275,6 +283,14 @@ class H(BaseHTTPRequestHandler):
             n = build_queue(b.get("film", ""))
             kick_images(b.get("film", ""))
             return self._send(200, {"ok": True, "added": n})
+        if u.path == "/api/retry-script":
+            # 台词阶段卡住（agent 中途停了）→ 带着题目再叫一次
+            f = b.get("film", "")
+            br = brief(f)
+            ok, err = ask_agent(f, prompt_script(f, br.get("topic", "") or f,
+                                                 float(br.get("minutes") or 6)))
+            pipeline.emit(f, "say", text="（已重新叫导演写台词）")
+            return self._send(200, {"ok": ok, "error": err})
         return self._send(404, {"error": "no route"})
 
     def _start(self, b):
@@ -388,11 +404,30 @@ def build_queue(f):
     return added
 
 
+def ensure_page_spec(f):
+    """页表缺失时按台词页补一份最小页表（防 agent 中途停住导致后面没页可用）。"""
+    d = film_dir(f)
+    spec_f = d / "page-spec.json"
+    spec = pipeline.read_json(spec_f, []) or []
+    if spec:
+        return spec
+    src = pipeline.read_json(d / "script-source.json", {}) or {}
+    pages = src.get("pages", [])
+    if not pages:
+        return []
+    spec = [{"id": p.get("id", f"p{i:02d}"), "title": p.get("title", ""), "asset": "",
+             "theme": "day", "cam": "push40", "reveal": [0.35, 1, 0.25, 1.4],
+             "lights": [], "texts": []} for i, p in enumerate(pages, 1)]
+    spec_f.write_text(json.dumps(spec, ensure_ascii=False, indent=1), encoding="utf-8")
+    pipeline.emit(f, "stage", stage="排页", status="done", detail=f"补了 {len(spec)} 页页表")
+    return spec
+
+
 def assign_images(f):
     """生图完成后，把队列里的图填进页表（asset），再重生成页代码 —— 机械活。"""
     d = film_dir(f)
     spec_f = d / "page-spec.json"
-    spec = pipeline.read_json(spec_f, []) or []
+    spec = ensure_page_spec(f)
     by_page = {t.get("page"): t.get("img") for t in pipeline.queue(f)["tasks"] if t.get("img")}
     filled = 0
     for p in spec:
