@@ -161,9 +161,15 @@ def main(argv):
         VOICE = argv[argv.index("--voice") + 1]
     else:
         VOICE = resolve_voice(EP)
+    # 位置参数：第 1 个是**工程名**（EP 已用它算好），后面的才是页过滤
+    raw = [a for a in argv[1:] if not a.startswith("-")]
+    if "--voice" in argv:
+        v = argv[argv.index("--voice") + 1]
+        if v in raw:
+            raw.remove(v)
+    pages_want = raw[1:] if raw else []
     d = json.loads(SRC.read_text(encoding="utf-8"))
     pages = d["pages"]
-    want = [a for a in argv[1:] if not a.startswith("-")]
     if "--check" in argv:
         tot = 0
         for p in pages:
@@ -177,7 +183,7 @@ def main(argv):
         if VOICEJS.with_suffix(".cache.json").exists() else {}
     todo = 0
     for p in pages:
-        fresh = not want or p["id"] in want          # 不给页号 = 全部页（换机器重建音频也走这条）
+        fresh = not pages_want or p["id"] in pages_want          # 不给页号 = 全部页（换机器重建音频也走这条）
         if not fresh:
             continue
         for i, text in enumerate(p["cues"]):

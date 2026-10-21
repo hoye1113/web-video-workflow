@@ -87,10 +87,23 @@ def step_for(proj):
 
 
 def advance(proj, say=print):
-    """看一步、做一步（一次只做一件事，做完就返回，让下一次调用继续）。"""
+    """看一步、做一步（一次只做一件事，做完就返回，让下一次调用继续）。
+
+    **同一个阶段连续失败 3 次就停**（否则会在"渲染缺配音"这种硬错误上空转）。
+    """
     step, why = step_for(proj)
     if not step:
         return None, why
+    f = pipeline.proj_dir(proj) / f".fails-{step}"
+    try:
+        n = int(f.read_text(encoding="utf-8").strip() or 0)
+    except Exception:                                          # noqa: BLE001
+        n = 0
+    if n >= 3:
+        say(f"[推进] {step} 已经连续失败 {n} 次 —— 停下来等人看（{why}）")
+        pipeline.emit(proj, "stage", stage=step, status="failed",
+                      detail=f"连续失败 {n} 次，停止重试（需要人看）")
+        return None, f"{step} 连续失败 {n} 次，已停"
     say(f"[推进] {step}：{why}")
     pipeline.emit(proj, "stage", stage=step, status="start", detail=f"自动：{why}")
     _, cmd, cwd, txt = pipeline.STEP[step]
@@ -102,6 +115,10 @@ def advance(proj, say=print):
         pipeline.emit(proj, "log", text=line, step=step)
     pipeline.emit(proj, "stage", stage=step, status="done" if ok else "failed",
                   detail=txt["done"] if ok else (r.stderr or "没成")[-200:])
+    try:
+        f.write_text("0" if ok else str(n + 1), encoding="utf-8")
+    except Exception:                                          # noqa: BLE001
+        pass
     return step, why
 
 

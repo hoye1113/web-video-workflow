@@ -407,7 +407,7 @@ def build_queue(f):
     q = pipeline.queue(f)
     have = {t.get("page") for t in q["tasks"] if t.get("status") in ("queued", "retry", "browser",
                                                                      "prompt", "generating", "fetching",
-                                                                     "review", "saved")}
+                                                                     "review", "saved", "failed")}
     added = 0
     for row in rows:
         pid = (row[0] or "").strip()

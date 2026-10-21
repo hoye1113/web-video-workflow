@@ -151,6 +151,15 @@ class Flow:
         self.known = self._image_bases()
         self.log(f"项目里已有的图：{len(self.known)} 张（用来区分新图）")
 
+    def _wait_composer(self, timeout=45):
+        """等 Flow 的输入区出现（图多了以后页面加载慢，8 秒有时不够）。"""
+        deadline = time.time() + timeout
+        while time.time() < deadline:
+            if self._has_input():
+                return True
+            time.sleep(2)
+        return False
+
     def enter(self, url):
         """开一个会话并**直接进指定的项目**（不经过首页，免得误点"新建项目"）。
 
@@ -175,8 +184,8 @@ class Flow:
             raise RuntimeError("Flow 在这个地区不可用（/unsupported-country）—— 换个代理节点")
         time.sleep(8)
         self._dismiss_changelog()
-        if not self._has_input():
-            raise RuntimeError("项目页打开了却没有输入框 —— 地址不对，或界面变了")
+        if not self._wait_composer():
+            raise RuntimeError("项目页打开了但输入区一直没出现（Flow 可能卡住/没登录）")
         # **滚一遍取并集**：网格虚拟滚动，读一次取不全 → 后面会"把老图当新图"
         self.known = self._full_bases()
         self._sigs = None
@@ -279,17 +288,29 @@ class Flow:
 
         **必须用 bsk 的真实点击，不能用 JS 的 .click()** —— 实测 JS 点击返回成功、
         按钮也不 disabled，但页面毫无反应（React 那边的处理没被触发）。
-        手工跑通那次用的就是 `bsk click @eNN`，这里照做：
-        先 observe 拿到按钮的 ref，再 click。
+
+        2026-10-21 界面更新：生成按钮是输入框右侧的箭头，`aria-label="Start generation"`，
+        **不带文字** —— 所以先按 aria-label 用 DOM 找，找不到再退回 observe（兼容旧界面）。
         """
+        hit = self._run(
+            "(()=>{const b=[...document.querySelectorAll('button,[role=button]')].find(x=>"
+            "/start generation|开始生成/i.test(x.getAttribute('aria-label')||''));"
+            "if(!b)return 'not found';b.setAttribute('data-vf-gen','1');"
+            "return {ok:true,label:b.getAttribute('aria-label')};})()"
+        )
+        if isinstance(hit, dict) and hit.get("ok"):
+            o2, e2, c2 = _bsk("click", "--session", self.sid, "--selector", "[data-vf-gen='1']", timeout=180)
+            ok = "click ok" in (o2 or "") or c2 == 0
+            return {"ok": ok, "ref": "aria:" + str(hit.get("label")), "out": (o2 or e2 or "")[:120]}
+
         out, err, _ = _bsk("observe", "--session", self.sid,
                            "--max-tokens", "6000", timeout=180)
-        m = re.search(r'@(e\d+)\s+button\s+"(Start generation|开始生成)"', out or "")
+        m = re.search(r'@(e\d+)\s+(?:\[)?button(?:\])?\s+"(Start generation|开始生成)"', out or "")
         if not m:
-            m = re.search(r'@(e\d+)\s+button\s+"[^"]*generation[^"]*"', out or "", re.I)
+            m = re.search(r'@(e\d+)\s+(?:\[)?button(?:\])?\s+"[^"]*generation[^"]*"', out or "", re.I)
         if not m:
-            btns = re.findall(r'@e\d+\s+button\s+"[^"]{0,40}"', out or "")[:20]
-            return {"ok": False, "reason": "observe 里找不到生成按钮", "buttons": btns}
+            btns = re.findall(r'@e\d+\s+(?:\[)?button(?:\])?\s+"[^"]{0,40}"', out or "")[:12]
+            return {"ok": False, "reason": "找不到生成按钮", "buttons": btns}
         ref = "@" + m.group(1)
         o2, e2, c2 = _bsk("click", ref, "--session", self.sid, timeout=180)
         ok = "click ok" in (o2 or "") or c2 == 0
@@ -309,10 +330,26 @@ class Flow:
         p = Path(path)
         if not p.exists():
             raise RuntimeError(f"参考图不存在：{p}")
-        out, _, _ = _bsk("observe", "--session", self.sid, "--max-tokens", "12000", timeout=300)
+        out, _, _ = _bsk("observe", "--session", self.sid, "--max-tokens", "16000", timeout=300)
         m = re.search(r'@(e\d+)\s+button\s+"Add ingredients', out or "")
         if not m:
-            raise RuntimeError("找不到 Add ingredients 按钮（Flow 界面可能变了）")
+            # 输入区是瞬时的：窗口小了会折叠、刚加载时会晚出现。放回 1600×900 + 等输入框 + 再试两次。
+            for attempt in range(3):
+                try:
+                    _bsk("window", "resize", "--session", self.sid,
+                         "--width", "1600", "--height", "900", timeout=60)
+                except Exception:                              # noqa: BLE001
+                    pass
+                self._wait_composer(20)
+                self._run("document.body.click()")
+                time.sleep(2)
+                out, _, _ = _bsk("observe", "--session", self.sid, "--max-tokens", "16000", timeout=300)
+                m = re.search(r'@(e\d+)\s+button\s+"Add ingredients', out or "")
+                if m:
+                    self.log(f"  第 {attempt + 1} 次重试找到了 Add ingredients")
+                    break
+        if not m:
+            raise RuntimeError("找不到 Add ingredients 按钮（Flow 界面可能变了，或输入区没展开）")
         _bsk("click", "@" + m.group(1), "--session", self.sid, timeout=120)
         time.sleep(2)
         out2, _, _ = _bsk("observe", "--session", self.sid, "--max-tokens", "12000", timeout=300)
@@ -333,41 +370,90 @@ class Flow:
     def attach_character(self, name):
         """把 Flow 项目里**已建好的角色**挂成提示词的素材 chip。
 
-        实测流程（2026-10-19 验证通过，截图存 experiments/uitest/flow/）：
-          ① 点 `Add ingredients` → 面板里列出素材条目（角色也在里面）
-          ② 点条目（要走到 `.asset-item` 那一层）→ 出现 `Add to prompt`
-          ③ 点 `Add to prompt` → 角色作为 chip 进提示框
-
+        2026-10-21 Flow 换了界面（右侧 Agent 面板）：入口仍是提示框左下那个 `+`
+        （aria-label = "Add ingredients to the prompt box"），点开是**素材选择器**：
+        左筛选（All/Images/Voices/**Characters**…）、中列表、右预览 + **Add to prompt**。
+        所以这里全按 DOM 找，**不依赖 observe 的文本格式**（它会变）：
+            + → 列表里文本以角色名开头的 `[role=option]` → Add to prompt
         **角色名不要写进提示词** —— 写进去等于让模型自己编，挂 chip 才锁得住形象。
         """
-        out, _, _ = _bsk("observe", "--session", self.sid, "--max-tokens", "16000", timeout=300)
-        m = re.search(r'@(e\d+)\s+button\s+"Add ingredients', out or "")
-        if not m:
-            raise RuntimeError("找不到 Add ingredients 按钮（Flow 界面可能变了）")
-        _bsk("click", "@" + m.group(1), "--session", self.sid, timeout=120)
-        time.sleep(4)
+        try:
+            _bsk("window", "resize", "--session", self.sid,
+                 "--width", "1600", "--height", "900", timeout=60)
+        except Exception:                                      # noqa: BLE001
+            pass
+        self._wait_composer(30)
+        hit = self._run(
+            "(()=>{const b=[...document.querySelectorAll('button,[role=button]')].find(x=>"
+            "(x.getAttribute('aria-label')||'').includes('Add ingredients'));"
+            "if(!b)return 'no + button';b.setAttribute('data-vf-plus','1');"
+            "return b.getAttribute('aria-label');})()"
+        )
+        if not isinstance(hit, str) or hit.startswith("no "):
+            raise RuntimeError(f"找不到提示框的 + 按钮（Flow 界面又变了？）：{hit}")
+        _bsk("click", "--session", self.sid, "--selector", "[data-vf-plus='1']", timeout=120)
+
+        ok = False
+        for _ in range(10):
+            time.sleep(2)
+            n = self._run("document.querySelectorAll('[role=option]').length")
+            if isinstance(n, int) and n > 0:
+                ok = True
+                break
+        if not ok:
+            self._run("document.body.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}))")
+            raise RuntimeError("点了 + 但素材选择器没出现")
 
         pick = self._run(
-            "(()=>{const all=[...document.querySelectorAll('*')];"
-            "const hit=all.filter(e=>(e.textContent||'').trim()===" + json.dumps(name) + "&&e.children.length<=2);"
-            "if(!hit.length)return 'not found';let el=hit[0];"
-            "for(let i=0;i<6&&el;i++){if((el.className||'').toString().includes('asset-item'))break;el=el.parentElement;}"
-            "if(!el)return 'no asset-item';el.setAttribute('data-pick','1');"
-            "return (el.textContent||'').trim().slice(0,40);})()"
+            "(()=>{const opts=[...document.querySelectorAll('[role=option]')];"
+            "const hit=opts.find(e=>(e.textContent||'').replace(/\\s+/g,'').includes(" + json.dumps(name) + "));"
+            "if(!hit)return 'not found';hit.setAttribute('data-vf-pick','1');"
+            "return (hit.textContent||'').replace(/\\s+/g,' ').trim().slice(0,30);})()"
         )
-        if pick in ("not found", "no asset-item"):
-            raise RuntimeError(f"素材面板里点不到角色「{name}」：{pick}（Flow 里的角色名改过？）")
-        _bsk("click", "--session", self.sid, "--selector", "[data-pick='1']", timeout=180)
+        if pick == "not found":
+            # 列表可能只显示了一部分：先点左侧 Characters 筛选，再滚一下列表，再找
+            self._run(
+                "(()=>{const el=[...document.querySelectorAll('*')].find(x=>"
+                "(x.textContent||'').trim()==='Characters'&&x.children.length===0);"
+                "if(!el)return 'no filter';let p=el;for(let i=0;i<4&&p;i++){p=p.parentElement;}"
+                "(p||el).setAttribute('data-vf-chars','1');return 'ok';})()"
+            )
+            _bsk("click", "--session", self.sid, "--selector", "[data-vf-chars='1']", timeout=120)
+            time.sleep(2)
+            pick = self._run(
+                "(()=>{const opts=[...document.querySelectorAll('[role=option]')];"
+                "const hit=opts.find(e=>(e.textContent||'').replace(/\\s+/g,'').includes(" + json.dumps(name) + "));"
+                "if(!hit)return 'not found';hit.setAttribute('data-vf-pick','1');"
+                "return (hit.textContent||'').replace(/\\s+/g,' ').trim().slice(0,30);})()"
+            )
+        if pick == "not found":
+            self._run(
+                "(()=>{const o=document.querySelector('[role=option]');"
+                "const lb=o?o.closest('[role=listbox]')||o.parentElement:null;"
+                "if(lb)lb.scrollTop=lb.scrollHeight;return lb?'ok':'no list';})()"
+            )
+            time.sleep(2)
+            pick = self._run(
+                "(()=>{const opts=[...document.querySelectorAll('[role=option]')];"
+                "const hit=opts.find(e=>(e.textContent||'').replace(/\\s+/g,'').includes(" + json.dumps(name) + "));"
+                "if(!hit)return 'not found';hit.setAttribute('data-vf-pick','1');"
+                "return (hit.textContent||'').replace(/\\s+/g,' ').trim().slice(0,30);})()"
+            )
+        if pick == "not found":
+            self._run("document.body.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}))")
+            raise RuntimeError(f"选择器里没有角色「{name}」（Flow 里的角色名改过？）")
+        _bsk("click", "--session", self.sid, "--selector", "[data-vf-pick='1']", timeout=120)
         time.sleep(3)
 
         add = self._run(
             "(()=>{const b=[...document.querySelectorAll('button')].find(x=>/add to prompt/i.test(x.textContent||''));"
-            "if(!b)return false;b.setAttribute('data-add','1');return {disabled:!!b.disabled};})()"
+            "if(!b)return 'not found';if(b.disabled)return 'disabled';b.setAttribute('data-vf-add','1');return 'ok';})()"
         )
-        if not add:
-            raise RuntimeError("点了角色条目却没出现 Add to prompt 按钮")
-        _bsk("click", "--session", self.sid, "--selector", "[data-add='1']", timeout=180)
+        if add != "ok":
+            raise RuntimeError(f"Add to prompt 不可用：{add}")
+        _bsk("click", "--session", self.sid, "--selector", "[data-vf-add='1']", timeout=120)
         time.sleep(4)
+
         # chip 挂上之后要**刷新一次已知集合** —— chip 本身也是个 img，
         # 不刷新的话它会被当成"新图"，取图那一步会白等。
         self.known |= self._image_bases()
