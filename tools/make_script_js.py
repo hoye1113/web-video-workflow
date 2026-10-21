@@ -162,7 +162,7 @@ def write(pages, title):
         "  const META = {",
         "    style: 'warm-emotion',",
         f"    title: {json.dumps(title, ensure_ascii=False)},",
-        "    name: 'emotion-full',",
+        "    name: " + json.dumps(PROJ) + ",",
         "    gap: 0.8,",
         "    voice: { speaker: 'zh-CN-XiaoxiaoNeural', provider: 'edge' },",
         "    extras: ['engine/styles/warm-emotion/kit.js'],",

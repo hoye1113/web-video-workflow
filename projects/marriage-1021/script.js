@@ -4,7 +4,7 @@
   const META = {
     style: 'warm-emotion',
     title: "犯错的男人还会不会爱老婆",
-    name: 'emotion-full',
+    name: "marriage-1021",
     gap: 0.8,
     voice: { speaker: 'zh-CN-XiaoxiaoNeural', provider: 'edge' },
     extras: ['engine/styles/warm-emotion/kit.js'],
