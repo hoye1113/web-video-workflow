@@ -167,11 +167,15 @@ PAGES = [
 
 
 def render(p):
+    # **有插图的页不要叠 P.light**：图是 Flow 画好的，光已经画在画里了；
+    # 再叠一层径向光斑 = 每页同一个位置冒出一团假光（2026-10-21 用户发现的"奇怪光源"）。
+    # 真要叠，页表里显式写 "light_on": true。
+    lights = (p.get("lights") or []) if p.get("light_on") else []
     L = []
     L.append(f'/* {p["id"]} · {p["title"]}')
     L.append(" * 图：../scene-library/" + p["asset"] + "（处境图库，图不复制）")
-    if p.get("lights"):
-        L.append(" * 光：" + "、".join(f'{x[3]}' for x in p["lights"]) + "（光就是情绪）")
+    if lights:
+        L.append(" * 光：" + "、".join(f'{x[3]}' for x in lights) + "（光就是情绪）")
     if p.get("texts"):
         L.append(" * 屏上字：" + "、".join(t[0] for t in p["texts"]) + "（只做标签）")
     L.append(" */")
@@ -192,7 +196,7 @@ def render(p):
             L.append('    grade: { ' + p["grade"] + ' },')
         L.append('  });')
     L.append('')
-    for i, (x, y, r, kind, at, color, k) in enumerate(p.get("lights") or [], 1):
+    for i, (x, y, r, kind, at, color, k) in enumerate(lights, 1):
         c = (f", color: '{color}'" if color else "")
         L.append(f'  P.light({x}, {y}, {r}, {{ at: {at}, kind: \'{kind}\'{c}, k: (lt) => {k} }});')
     for (txt, x, y, size, align, color, at) in p.get("texts") or []:

@@ -1,6 +1,5 @@
 /* p07 · 你说不用照顾，别人就真的不照顾你
  * 图：../scene-library/p07-你说不用照顾-别人就真的不照.png（处境图库，图不复制）
- * 光：lamp（光就是情绪）
  * 屏上字：没有人来看你（只做标签）
  */
 ENGINE.visual('p07', (P) => {
@@ -14,6 +13,5 @@ ENGINE.visual('p07', (P) => {
     grade: { brightness: 0.86, saturate: 0.84 },
   });
 
-  P.light(760, 560, 480, { at: 0.4, kind: 'lamp', color: 'orange', k: (lt) => PV.clamp(lt / 1.8) });
   P.text("没有人来看你", { x: 250, y: 230, size: 44, align: 'l', color: 'ink', at: 1.5 });
 });

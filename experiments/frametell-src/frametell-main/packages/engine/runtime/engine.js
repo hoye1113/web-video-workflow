@@ -107,6 +107,9 @@
         catch (e) { cam.innerHTML = ''; hud.innerHTML = ''; obj.sh.acts.length = 0; obj.sh.ticks.length = 0; fail(obj, 'build', e); }
         finally { PV.colorPage = undefined; }
       }
+      // 每页建完后记下"这页用的主题"：页面里 STYLE.setTheme() 是在**建页**时执行的，
+      // 而所有页是一次性建完的 —— 不记下来，全片就会用最后一页的主题（暗角/纸底全错）。
+      obj.theme = (typeof window !== 'undefined' && window.STYLE && window.STYLE.theme) || '';
     }
     chrome = (SCRIPT.META || {}).chrome === true ? buildChrome(frame) : null;   // META.chrome: true → series header (META.course · META.no | section)
     if (opts.subs) { subs = h('div', 'subs', '<span></span>', frame); }
@@ -117,6 +120,15 @@
     // The cross-fade ends D seconds after the page boundary: a new page draws its first stroke a moment after it starts,
     // and ending the fade at the boundary showed empty paper in between. The outgoing page stays a pure function of t.
     const D = SCRIPT.META?.fadeDelay ?? 0.3;
+    // **主题跟着当前页走**：建页时每页都会 setTheme，最后一个会覆盖全局；
+    // 渲染时按"当前页"把主题切回来，否则整片都是最后一页的暗角（2026-10-21 用户发现的"怪光"）。
+    if (window.STYLE && window.STYLE.setTheme) {
+      let curPage = pages[0];
+      for (const p of pages) if (t >= p.pg.start) curPage = p;
+      if (curPage && curPage.theme && curPage.theme !== window.STYLE.theme) {
+        try { window.STYLE.setTheme(curPage.theme); } catch (e) { /* 主题名不认识就算了 */ }
+      }
+    }
     for (const p of pages) {
       const { start, end, index } = p.pg;
       const last = index === pages.length - 1;

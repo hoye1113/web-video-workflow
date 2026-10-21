@@ -170,7 +170,8 @@ def prompt_script(f, topic, minutes):
         f"第 12 字前必须有标点；总字数 ≈{chars}）\n"
         f"2) 写 projects/{f}/docs/页-处境映射.md：一页一行（页号 | 一句话论点 | 处境一句话 | 用哪个角色）\n"
         f"3) 更新 projects/{f}/page-spec.json：每页 id/title/asset 先留空（asset 等图出来再填）、"
-        f"theme/cam/lights/texts 按 warm-emotion 的规矩给默认值\n"
+        f"theme/cam 按 warm-emotion 的规矩给；**lights 一律写 []**（光已经画在 Flow 的图里，"
+        f"再叠 P.light 会在同一个位置加一团假光斑）\n"
         f"做完停下来，等我在页面上点「就这样，开始画图」。"
     )
 

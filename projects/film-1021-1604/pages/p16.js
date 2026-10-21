@@ -1,6 +1,5 @@
 /* p16 · 第二件：提一个具体的小要求
  * 图：../scene-library/p16-第二件-提一个具体的小要求.png（处境图库，图不复制）
- * 光：window（光就是情绪）
  * 屏上字：很小，很清楚（只做标签）
  */
 ENGINE.visual('p16', (P) => {
@@ -13,6 +12,5 @@ ENGINE.visual('p16', (P) => {
     cam: [[0, 1], [T * 0.38, 1], [T * 0.38 + 0.7, 1.09], [T, 1.09]].map(([t, z]) => ({ t, z })),
   });
 
-  P.light(1150, 380, 520, { at: 0.5, kind: 'window', k: (lt) => PV.clamp(lt / 2) });
   P.text("很小，很清楚", { x: 250, y: 230, size: 44, align: 'l', color: 'ink', at: 1.4 });
 });
