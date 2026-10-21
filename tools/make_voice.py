@@ -1,21 +1,26 @@
-"""给 emotion-full 配音：逐条 cue 合成 → audio/*.wav + voice.js。
+"""给一条片子配音：**整页连续合成 → 按词边界切成每条 cue** → voice.js。
 
-产物契约（`packages/engine/runtime/timing.js` 读的就是这个）：
-    SCRIPT.VOICE = { speaker, provider, pages: [[{t, f, d, o, k}, …], …] }
-      t = 这条 cue 的文字（**必须和 script.js 里一字不差**）
-      f = 音频文件（相对工程目录）
-      d = 这条音频的长度（秒）—— **含我在末尾补的停顿**，页内节奏全靠它
-      o = 开头那点静音（speech 真正起声的位置）→ 引擎用它算 cue.start
-      k = 逐字起声时间（相对音频开头，一个字一个数）→ 字幕精确到字就靠它
+为什么不是"一条 cue 合成一次"（旧做法，已废弃）：
+  每条单独合成会让 **每一句重新起调**，句子之间还会各带一段首尾静音，
+  拼起来就是"短句很碎 + 停顿很长"。用户听过成片后的原话：
+  "TTS 说话有很明显的错误短句和比较长的说话停顿，希望句子连续读完，
+   在逗号或句号处才正常停顿。"
 
-每条 cue 是**独立一段音频**（和 `experiments/ft-run/实验-情感` 的做法一致），
-末尾按标点补停顿：句号 0.5s / 逗号 0.28s / 页末 0.25s —— 引擎在"有 o"这条路里
-**不再自己加停顿**，所以停顿必须我补。
+现在的做法（**连续优先**）：
+  ① 把一页的 cues **拼成一段连续文本**（标点都在 cue 末尾，拼起来就是自然句子）；
+  ② 调一次 edge-tts → 一段自然语调的整页音频 + 逐词时间戳；
+  ③ 按"这条 cue 的第一个词"到"下一条 cue 的第一个词"**切**出每条 cue 的音频
+     （切点天然包含逗号/句号处那个停顿 → 只在标点处停，不会额外加静音）；
+  ④ 每条 cue 记 d（切出来的长度）、o（起声在片段内的位置）、k（逐字起点）。
 
-跑法：
-    python tools/make_voice.py                # 全部（已有音频的跳过）
-    python tools/make_voice.py p05 p06        # 只做指定页
-    python tools/make_voice.py --check        # 只对一遍 script.js 与源数据
+语速：基准 **+40%（约 1.4 倍）** —— 用户要求"以真人说话语速"，并给了 1.4 倍这个数。
+时长拟合保留（±8% 微调），但**不再为了凑时长把语速降到很慢**。
+
+用法：
+    python tools/make_voice.py <片名>                 # 全部页（并按目标时长微调）
+    python tools/make_voice.py <片名> p05 p06          # 只做指定页
+    python tools/make_voice.py <片名> --rate 40        # 指定语速（百分比）
+    python tools/make_voice.py <片名> --check
 """
 import json
 import os
@@ -36,11 +41,11 @@ PY = pathlib.Path.home() / ".frametell" / "edge-venv" / "Scripts" / "python.exe"
 LOCALBIN = pathlib.Path.home() / ".local" / "bin"
 
 VOICE = "zh-CN-XiaoxiaoNeural"
-RATE = -4          # 语速：-4% 听着稳，又不拖（第一部用 -8% 出来 9:52，用户说太长）
-PITCH = -2         # 压低一点，稳
-# 停顿**补在音频末尾**（引擎在"有 o"这条路里不再自己加）。第一版补得偏宽（0.5/0.28）→ 全片多出 40+ 秒。
-TAIL = {"。": 0.35, "！": 0.35, "？": 0.35, "，": 0.20, "、": 0.18, "；": 0.26, "：": 0.24}
-TAIL_LAST = 0.2    # 页末那条
+PITCH = -2
+RATE = 40          # **1.4 倍**（edge-tts 的 rate 是百分比：+40%）
+RATE_MIN, RATE_MAX = 30, 55      # 拟合时允许的语速范围（不再慢到 1.0 倍以下）
+LEAD = 0.08        # 切片时往前多留一点，别把字头切掉
+FIT_TOL = 0.08     # 目标时长 ±8% 就算合格
 
 
 def env():
@@ -51,23 +56,22 @@ def env():
     return e
 
 
-def run(cmd, **kw):
+def run(cmd, timeout=180):
     return subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8",
-                          errors="replace", env=env(), **kw)
+                          errors="replace", env=env(), timeout=timeout)
 
 
 def synth(text: str, mp3: pathlib.Path):
-    """调桥：文本 → mp3 + 逐词时间戳。"""
+    """整段文本 → mp3 + 逐词时间戳。"""
     reqf = pathlib.Path(tempfile.gettempdir()) / "vf-tts-req.json"
     reqf.write_text(json.dumps({"text": text, "voice": VOICE, "rate": RATE,
                                 "pitch": PITCH, "out": str(mp3)}, ensure_ascii=False),
                     encoding="utf-8")
-    r = run([str(PY), str(BRIDGE), str(reqf)], timeout=180)
-    raw = (r.stdout or "").strip().splitlines()
-    try:
-        d = json.loads([x for x in raw if x.startswith("{")][-1])
-    except Exception:                                          # noqa: BLE001
-        raise RuntimeError(f"桥没吐 JSON：{r.stdout[:200]} / {r.stderr[:200]}") from None
+    r = run([str(PY), str(BRIDGE), str(reqf)])
+    lines = [x for x in (r.stdout or "").strip().splitlines() if x.startswith("{")]
+    if not lines:
+        raise RuntimeError(f"桥没吐 JSON：{(r.stdout or r.stderr)[:200]}")
+    d = json.loads(lines[-1])
     if "error" in d:
         raise RuntimeError(f"合成失败：{d['error']}")
     return d["words"]
@@ -76,23 +80,30 @@ def synth(text: str, mp3: pathlib.Path):
 def dur_of(f: pathlib.Path) -> float:
     r = run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
              "-of", "default=nw=1:nk=1", str(f)])
-    return round(float((r.stdout or "0").strip() or 0), 3)
+    try:
+        return round(float((r.stdout or "0").strip() or 0), 3)
+    except Exception:                                          # noqa: BLE001
+        return 0.0
 
 
-def to_wav(mp3: pathlib.Path, wav: pathlib.Path, pad: float):
-    """转 48k 双声道 wav，并在末尾补 `pad` 秒静音（停顿就靠它）。"""
-    af = f"apad=pad_dur={pad:.3f}" if pad > 0 else "anull"
-    r = run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(mp3),
-             "-af", af, "-ar", "48000", "-ac", "2", str(wav)])
-    if r.returncode != 0:
-        raise RuntimeError(f"ffmpeg 转 wav 失败：{(r.stderr or '')[:200]}")
+def cut(src: pathlib.Path, dst: pathlib.Path, start: float, end: float):
+    """从整页音频里切一段（48k 双声道）。"""
+    run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{max(0.0, start):.3f}",
+         "-to", f"{max(start + 0.25, end):.3f}", "-i", str(src),
+         "-ar", "48000", "-ac", "2", str(dst)])
 
 
-def build_k(text: str, words, lead: float):
-    """逐字起声：把词级时间戳摊到字上（词内线性插值，标点跟后一个字）。"""
-    chars = list(text)
-    k = [None] * len(chars)
-    pos = 0
+def page_entries(pid: str, cues):
+    """一页 → 每条 cue 的音频与时间轴（整页合成、再切）。"""
+    text = "".join(cues)
+    mp3 = AUDIO / f"{pid}.full.mp3"
+    words = synth(text, mp3)
+    total = dur_of(mp3)
+    if total <= 0:
+        raise RuntimeError(f"{pid} 合成出来的音频是 0 秒")
+
+    # 词 → 字符区间
+    spans, pos = [], 0
     for w in words:
         wd = (w.get("word") or "")
         if not wd:
@@ -100,44 +111,56 @@ def build_k(text: str, words, lead: float):
         idx = text.find(wd, pos)
         if idx < 0:
             continue
-        n = len(wd)
-        s, e = float(w["startTime"]), float(w["endTime"])
-        for j in range(n):
-            ci = idx + j
-            if ci < len(chars):
-                k[ci] = round(s + (e - s) * (j / max(n, 1)), 4)
-        pos = idx + n
-    # 剩下的（标点等）：跟上一个已定的字
-    last = lead
-    for i, v in enumerate(k):
-        if v is None:
-            k[i] = last
+        spans.append((idx, idx + len(wd), float(w["startTime"]), float(w["endTime"])))
+        pos = idx + len(wd)
+
+    offs, c = [], 0
+    for cu in cues:
+        offs.append(c)
+        c += len(cu)
+
+    entries = []
+    for i, cu in enumerate(cues):
+        c0, c1 = offs[i], offs[i] + len(cu)
+        starts = [s for (a, b, s, e) in spans if b > c0 and a < c1]
+        if starts:
+            s0 = min(starts)
+        elif entries:                       # 纯标点：接在上一条后面
+            s0 = entries[-1]["_end"]
         else:
-            last = v
-    for i in range(1, len(k)):
-        if k[i] < k[i - 1]:
-            k[i] = k[i - 1]
-    return k
+            s0 = LEAD
+        cut_start = max(0.0, s0 - LEAD)
+        if i + 1 < len(cues):
+            n0 = offs[i + 1]
+            nxt = [s for (a, b, s, e) in spans if a >= n0]
+            cut_end = min(nxt) if nxt else total
+        else:
+            cut_end = total
+        cut_end = min(total, max(cut_end, cut_start + 0.3))
 
+        wav = AUDIO / f"{pid}-{i}.wav"
+        cut(mp3, wav, cut_start, cut_end)
 
-def one_cue(text: str, pid: str, i: int, last=False):
-    """合成一条 cue → 返回 {f, d, o, k}。**不管文件在不在都重做**（元数据只能从这次合成里来）。"""
-    wav = AUDIO / f"{pid}-{i}.wav"
-    mp3 = AUDIO / f"{pid}-{i}.mp3"
-    words = synth(text, mp3)
-    lead = round(min([float(w["startTime"]) for w in words] or [0]), 3)
-    pad = TAIL_LAST if last else TAIL.get(text.strip()[-1:], 0.2)
-    to_wav(mp3, wav, pad)
+        k = []
+        for ci in range(c0, c1):
+            w = next((x for x in spans if x[0] <= ci < x[1]), None)
+            if w:
+                a, b, ws, we = w
+                frac = (ci - a) / max(1, (b - a))
+                k.append(round(max(0.0, ws - cut_start + (we - ws) * frac), 3))
+            else:
+                k.append(round(max(0.0, s0 - cut_start), 3))
+        entries.append({"t": cu, "f": f"audio/{wav.name}",
+                        "d": round(dur_of(wav) or (cut_end - cut_start), 3),
+                        "o": round(max(0.0, s0 - cut_start), 3),
+                        "k": k, "r": RATE, "_end": cut_end})
+    for e in entries:
+        e.pop("_end", None)
     mp3.unlink(missing_ok=True)
-    return {"f": f"audio/{wav.name}", "d": dur_of(wav), "o": lead,
-            "k": build_k(text, words, lead)}
+    return entries
 
 
 def resolve_voice(ep: pathlib.Path):
-    """配音用谁：**工程里选的**优先（brief.json → script-source.json 的 voice），否则用默认。
-
-    实习生在下拉里选的音色必须真的用上 —— 以前这里写死，选男声也会出女声。
-    """
     def pick(path):
         try:
             d = json.loads(path.read_text(encoding="utf-8"))
@@ -155,78 +178,116 @@ def resolve_voice(ep: pathlib.Path):
     return VOICE
 
 
+def target_seconds(ep: pathlib.Path):
+    try:
+        b = json.loads((ep / "brief.json").read_text(encoding="utf-8"))
+        m = float(b.get("minutes") or 0)
+        return m * 60 if m > 0 else None
+    except Exception:                                          # noqa: BLE001
+        return None
+
+
 def main(argv):
-    global VOICE
+    global VOICE, RATE
     if "--voice" in argv:
         VOICE = argv[argv.index("--voice") + 1]
     else:
         VOICE = resolve_voice(EP)
-    # 位置参数：第 1 个是**工程名**（EP 已用它算好），后面的才是页过滤
+    if "--rate" in argv:
+        RATE = float(argv[argv.index("--rate") + 1])
     raw = [a for a in argv[1:] if not a.startswith("-")]
-    if "--voice" in argv:
-        v = argv[argv.index("--voice") + 1]
-        if v in raw:
-            raw.remove(v)
+    for flag in ("--voice", "--rate"):
+        if flag in argv:
+            v = argv[argv.index(flag) + 1]
+            if v in raw:
+                raw.remove(v)
     pages_want = raw[1:] if raw else []
+
     d = json.loads(SRC.read_text(encoding="utf-8"))
     pages = d["pages"]
     if "--check" in argv:
-        tot = 0
-        for p in pages:
-            n = len(p["cues"])
-            tot += n
-        print(f'{len(pages)} 页 / {tot} 条 cue；音色 {VOICE} rate {RATE} pitch {PITCH}')
+        tot = sum(len(p["cues"]) for p in pages)
+        print(f'{len(pages)} 页 / {tot} 条 cue；音色 {VOICE} rate {RATE:+.0f}%（约 {1 + RATE / 100:.1f} 倍）')
         return
 
     AUDIO.mkdir(parents=True, exist_ok=True)
-    cache = json.loads(VOICEJS.with_suffix(".cache.json").read_text(encoding="utf-8")) \
-        if VOICEJS.with_suffix(".cache.json").exists() else {}
-    todo = 0
-    for p in pages:
-        fresh = not pages_want or p["id"] in pages_want          # 不给页号 = 全部页（换机器重建音频也走这条）
-        if not fresh:
-            continue
-        for i, text in enumerate(p["cues"]):
-            key = f'{p["id"]}:{i}'
-            wav = AUDIO / f'{p["id"]}-{i}.wav'
-            # 缓存**按文字 + 音频文件**校验：cue 改了、或音频丢了（换机器/清过 audio），都得重做
-            if key in cache and cache[key].get("t") == text and wav.exists() and not force_all(argv):
+
+    def synthesize():
+        cache = json.loads(VOICEJS.with_suffix(".cache.json").read_text(encoding="utf-8")) \
+            if VOICEJS.with_suffix(".cache.json").exists() else {}
+        todo_pages = 0
+        for p in pages:
+            if pages_want and p["id"] not in pages_want:
                 continue
-            todo += 1
-            last = i == len(p["cues"]) - 1
-            print(f'  {p["id"]} [{i + 1}/{len(p["cues"])}] {text}')
-            v = one_cue(text, p["id"], i, last=last)
-            v["t"] = text
-            cache[key] = v
-            print(f'      {v["d"]}s 起声{v["o"]}s 首字k={v["k"][:4]}')
+            keys = [f'{p["id"]}:{i}' for i in range(len(p["cues"]))]
+            valid = all(k in cache and cache[k].get("t") == t and cache[k].get("r") == RATE
+                        and (AUDIO / cache[k]["f"].split("/")[-1]).exists()
+                        for k, t in zip(keys, p["cues"]))
+            if valid and "--force" not in argv:
+                continue
+            todo_pages += 1
+            print(f'  {p["id"]}（{len(p["cues"])} 条）整页合成…', flush=True)
+            try:
+                entries = page_entries(p["id"], p["cues"])
+            except Exception as e:                             # noqa: BLE001
+                print(f'    ✗ {p["id"]} 失败：{e}（这一页先跳过）', flush=True)
+                continue
+            for k, en in zip(keys, entries):
+                cache[k] = en
 
-    # 组装：**按页对齐**；缺的页给空数组 —— 引擎对没配音的页会退回按字数估算（timing.js 里那条兜底）
-    out_pages, missing = [], []
-    for p in pages:
-        cues = [cache.get(f'{p["id"]}:{i}') for i in range(len(p["cues"]))]
-        if all(cues):
-            out_pages.append(cues)
-        else:
-            out_pages.append([])
-            missing.append(p["id"])
+        out_pages, missing = [], []
+        for p in pages:
+            cues = [cache.get(f'{p["id"]}:{i}') for i in range(len(p["cues"]))]
+            if all(cues):
+                out_pages.append(cues)
+            else:
+                out_pages.append([])
+                missing.append(p["id"])
+        VOICEJS.write_text(
+            "/* 由 tools/make_voice.py 生成（音色 " + VOICE + "，语速 " + f"{RATE:+.0f}%"
+            + "）：整页连续合成后按词边界切分。\n"
+            " * 改了 cue 文字**必须重跑配音**，否则 t 对不上就不会生效。 */\n"
+            "SCRIPT.VOICE = " + json.dumps({"speaker": VOICE, "provider": "edge",
+                                            "pages": out_pages}, ensure_ascii=False) + ";\n",
+            encoding="utf-8")
+        VOICEJS.with_suffix(".cache.json").write_text(json.dumps(cache, ensure_ascii=False),
+                                                      encoding="utf-8")
+        total = sum(c["d"] for pg in out_pages for c in pg)
+        print(f"写好 {VOICEJS.relative_to(ROOT)}：{len(out_pages)} 页 / 已配音 "
+              f"{sum(1 for p in out_pages if p)} 页 / 语音共 {total / 60:.1f} 分钟"
+              f"（本轮重做 {todo_pages} 页）")
+        if missing:
+            print("还没配音的页：" + " ".join(missing))
+        return out_pages, missing, total
 
-    VOICEJS.write_text(
-        "/* 由 tools/make_voice.py 生成（音色 " + VOICE + "）：真实语速的时间轴。\n"
-        " * 改了 cue 文字**必须重跑配音**，否则 t 对不上就不会生效。 */\n"
-        "SCRIPT.VOICE = " + json.dumps({"speaker": VOICE, "provider": "edge",
-                                        "pages": out_pages}, ensure_ascii=False) + ";\n",
-        encoding="utf-8")
-    VOICEJS.with_suffix(".cache.json").write_text(json.dumps(cache, ensure_ascii=False),
-                                                  encoding="utf-8")
-    total = sum(c["d"] for pg in out_pages for c in pg)
-    print(f"写好 {VOICEJS.relative_to(ROOT)}：{len(out_pages)} 页 / 已配音 "
-          f"{sum(1 for p in out_pages if p)} 页 / 语音共 {total / 60:.1f} 分钟（本轮新做 {todo} 条）")
+    out_pages, missing, total = synthesize()
+
+    # ── 时长拟合：只微调语速（±8% 内），**不再为了凑时长把语速降慢** ──────────────
+    target = target_seconds(EP)
+    if target and not pages_want and not missing:
+        for attempt in range(1, 3):
+            ratio = total / target
+            print(f"  配时第 {attempt} 轮：{total:.0f}s / 目标 {target:.0f}s（{ratio:.1%}），语速 {RATE:+.0f}%")
+            if abs(ratio - 1) <= FIT_TOL:
+                print("  ✓ 时长在目标 ±8% 内")
+                break
+            new_rate = ((1 + RATE / 100.0) * ratio - 1) * 100.0
+            new_rate = max(RATE_MIN, min(RATE_MAX, round(new_rate, 1)))
+            if abs(new_rate - RATE) < 0.8:
+                print(f"  ⚠ 语速已到边界（{RATE:+.0f}%），再调没有意义 —— 想更长/更短要改文案字数")
+                break
+            print(f"  → 语速 {RATE:+.0f}% 改到 {new_rate:+.0f}%，整页重配")
+            RATE = new_rate
+            out_pages, missing, total = synthesize()
+        try:
+            b = json.loads((EP / "brief.json").read_text(encoding="utf-8"))
+            b["rate"] = RATE
+            b["audio_seconds"] = round(total, 1)
+            (EP / "brief.json").write_text(json.dumps(b, ensure_ascii=False, indent=1), encoding="utf-8")
+        except Exception:                                      # noqa: BLE001
+            pass
     if missing:
         print("还没配音的页：" + " ".join(missing))
-
-
-def force_all(argv):
-    return "--force" in argv
 
 
 if __name__ == "__main__":

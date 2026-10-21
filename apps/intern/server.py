@@ -104,13 +104,15 @@ def mini_steps(f):
     review = [t for t in q["tasks"] if t.get("status") == "review"]
     running = RUNNING["film"] == f and RUNNING["what"]
 
-    # ① 写台词：有 script-source 且至少一页
-    s1 = "done" if pages else ("doing" if running and "台词" in str(RUNNING["what"]) else "todo")
+    # ① 写台词：有**像样的**台词才算好（脚手架只有 1 页 2 句，不能算）
+    total_cues = sum(len(p.get("cues", [])) for p in pages)
+    has_script = len(pages) >= 3 and total_cues >= 6
+    s1 = "done" if has_script else ("doing" if running and "台词" in str(RUNNING["what"]) else "todo")
     # ② 画图：页表里已经指定了图 = 画完了（老片子没有队列记录，也不能显示成没画）
     spec = pipeline.read_json(d / "page-spec.json", []) or []
     need = len(spec) or len(pages)
     has_assets = any((p or {}).get("asset") for p in spec)
-    got = len([t for t in q["tasks"] if t.get("status") in ("review", "saved", "approved")])
+    got = len([t for t in q["tasks"] if t.get("img")])
     if has_assets:
         s2 = "done"
     elif pages and gates.get("map") != "ok":
@@ -160,7 +162,7 @@ def ask_agent(f, text):
 
 
 def prompt_script(f, topic, minutes):
-    chars = int(minutes * 194)
+    chars = int(minutes * 330)
     return (
         f"这是一位只填表的同事交来的片子：主题「{topic}」，目标 {minutes:g} 分钟（≈{chars} 字台词）。\n"
         f"按 docs/新题材开工手册.md 干活，**只做第一阶段，不要生成任何图、不要跑渲染**：\n"
@@ -360,6 +362,19 @@ class H(BaseHTTPRequestHandler):
         pipeline.emit(f, "approval", key=f"gate:{gate}", verdict=verdict, note=note)
         if verdict == "ok":
             if gate == "map":
+                # 先验一下：台词/分镜是不是真的写好了（别拿脚手架去建队列）
+                sync_page_spec(f)                      # 页表先跟台词页数对齐（确定性兜底）
+                src = pipeline.read_json(film_dir(f) / "script-source.json", {}) or {}
+                pages = src.get("pages", [])
+                rows = map_rows(f)
+                if len(pages) < 3 or len(rows) < 3:
+                    pipeline.emit(f, "log",
+                                  text="台词/分镜还没写好（页面会自动刷新），稍等一下再点")
+                    return self._send(200, {"ok": False, "error": "script/mapping not ready"})
+                if len(rows) < len(pages) * 0.6:
+                    pipeline.emit(f, "log",
+                                  text=f"分镜只有 {len(rows)} 行、台词 {len(pages)} 页 —— 等分镜写完再点")
+                    return self._send(200, {"ok": False, "error": "mapping incomplete"})
                 # 分镜点头 → **脚本**把映射表变成队列并开画（不让 agent 做机械活）
                 n = build_queue(f)
                 pipeline.emit(f, "stage", stage="出图", status="start",
@@ -417,6 +432,9 @@ def build_queue(f):
         if page in have:
             continue
         what, scene, cast = (row[1] if len(row) > 1 else ""), (row[2] if len(row) > 2 else ""), ""
+        # 表格里常有「（**复用** xxx）」「（**新生成**）」这类备注 —— 不能进提示词
+        scene = re.sub(r"（[^（）]*\*\*[^（）]*）", "", scene or "")
+        scene = scene.replace("**", "").strip()
         cast_raw = (row[3] if len(row) > 3 else "") or ""
         if "小芽" in cast_raw:
             cast = "小芽"
@@ -431,6 +449,29 @@ def build_queue(f):
         pipeline.queue_add(f, page, cast, scene, out)
         added += 1
     return added
+
+
+def sync_page_spec(f):
+    """页表和台词页数不一致时，按台词页补齐/裁剪（确定性兜底，不依赖 agent）。"""
+    d = film_dir(f)
+    src = pipeline.read_json(d / "script-source.json", {}) or {}
+    pages = src.get("pages", [])
+    if not pages:
+        return []
+    spec = pipeline.read_json(d / "page-spec.json", []) or []
+    by_id = {p.get("id"): p for p in spec}
+    out = []
+    for p in pages:
+        pid = p.get("id")
+        out.append(by_id.get(pid) or {"id": pid, "title": p.get("title", ""), "asset": "",
+                                      "theme": "day", "cam": "push40", "reveal": [0.35, 1, 0.25, 1.4],
+                                      "lights": [], "texts": []})
+    if len(out) != len(spec):
+        (d / "page-spec.json").write_text(json.dumps(out, ensure_ascii=False, indent=1),
+                                          encoding="utf-8")
+        pipeline.emit(f, "stage", stage="排页", status="done",
+                      detail=f"页表跟台词对齐到 {len(out)} 页")
+    return out
 
 
 def ensure_page_spec(f):
@@ -496,18 +537,27 @@ def kick_images(f):
 
 
 def kick(f):
-    """把机械活（配音/字幕/渲染）交给推进器后台跑，并在页面上显示成"出片"。"""
+    """把出片链（素材→排页→配音→字幕→渲染→验收）交给**脱离面板的进程**跑。
+
+    以前是面板里的线程 —— 面板一重启（比如改代码/换端口）整条链就断了（实测踩过）。
+    """
     def run():
         with LOCK:
             RUNNING.update(what="出片（配音/字幕/渲染）", film=f)
         try:
-            for _ in range(10):                      # 素材→排页→配音→字幕→渲染→验收/抽帧
-                step, why = conductor.advance(f)
-                if not step:
-                    break
-                pipeline.emit(f, "stage", stage=step, status="done", detail=why)
-                time.sleep(1)
+            logf = ROOT / "logs" / f"conductor-{f}.log"
+            logf.parent.mkdir(parents=True, exist_ok=True)
+            flags = 0
+            if os.name == "nt":
+                flags = 0x00000008 | 0x00000200
+            with open(logf, "ab") as fh:
+                p = subprocess.Popen([pipeline.PY, "tools/conductor.py", f, "--drain"],
+                                     cwd=str(ROOT), stdout=fh, stderr=subprocess.STDOUT,
+                                     stdin=subprocess.DEVNULL, env=pipeline.env(),
+                                     creationflags=flags, close_fds=True)
+            p.wait()
         finally:
+            pipeline.emit(f, "stage", stage="出片", status="done", detail="出片链结束")
             RUNNING.update(what=None, film=None)
     threading.Thread(target=run, daemon=True).start()
 

@@ -143,6 +143,7 @@ def main():
     ap.add_argument("project")
     ap.add_argument("--once", action="store_true")
     ap.add_argument("--watch", action="store_true")
+    ap.add_argument("--drain", action="store_true", help="把能做的步骤一路做到底（出片链用）")
     ap.add_argument("--pause", action="store_true")
     ap.add_argument("--resume", action="store_true")
     a = ap.parse_args()
@@ -152,6 +153,13 @@ def main():
     if a.once:
         step, why = step_for(a.project)
         print(f"下一步：{step or '（不动）'} —— {why}")
+        return
+    if a.drain:
+        for i in range(20):
+            step, why = advance(a.project)
+            print(f"  {time.strftime('%H:%M:%S')} {step or '·'} {why}", flush=True)
+            if not step:
+                break
         return
     if a.watch:
         while True:
