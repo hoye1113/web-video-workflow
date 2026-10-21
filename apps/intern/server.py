@@ -56,6 +56,34 @@ LOCK = threading.Lock()
 RUNNING = {"what": None, "film": None}
 
 
+SNAP = ROOT / "projects" / "_snapshots"
+_snap_at = {}
+
+
+def guard_files(f):
+    """防止 agent 把关键文件删空：有内容就快照；不见了就从快照恢复（每 10 秒最多写一次）。"""
+    d = film_dir(f)
+    snap = SNAP / f
+    now = time.time()
+    do_write = now - _snap_at.get(f, 0) > 10
+    for name in ("brief.json", "script-source.json", "page-spec.json"):
+        src, dst = d / name, snap / name
+        try:
+            if src.exists() and src.stat().st_size > 4:
+                if do_write:
+                    txt = src.read_text(encoding="utf-8")
+                    if name != "script-source.json" or '"pages"' in txt:
+                        snap.mkdir(parents=True, exist_ok=True)
+                        dst.write_text(txt, encoding="utf-8")
+            elif not src.exists() and dst.exists() and dst.stat().st_size > 4:
+                src.write_text(dst.read_text(encoding="utf-8"), encoding="utf-8")
+                pipeline.emit(f, "log", text=f"⚠ {name} 不见了，已从快照恢复")
+        except Exception:                                     # noqa: BLE001
+            pass
+    if do_write:
+        _snap_at[f] = now
+
+
 def film_dir(f):
     return pipeline.proj_dir(f)
 
@@ -219,6 +247,7 @@ class H(BaseHTTPRequestHandler):
                 return self._send(200, {"films": [status_row(x) for x in pipeline.projects()],
                                         "voices": VOICES, "casts": CASTS, "gates": GATES})
             d = film_dir(f)
+            guard_files(f)
             src = pipeline.read_json(d / "script-source.json", {}) or {}
             tasks = pipeline.queue(f)["tasks"]
             flags = {

@@ -11,7 +11,8 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-SRC = ROOT / "projects" / "emotion-full" / "script-source.json"
+PROJ = next((a for a in sys.argv[1:] if not a.startswith("-")), "emotion-full")
+SRC = ROOT / "projects" / PROJ / "script-source.json"
 PUNCT = re.compile(r"[，。！？；：、,.!?;:—…]")
 
 MAX = 12
