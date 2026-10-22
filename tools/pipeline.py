@@ -39,7 +39,7 @@ STEPS = [
      {"start": "开始整理素材库", "doing": "在整理素材库索引", "done": "素材库索引好了"}),
     ("字幕", ["node", str(ENGINE / "tools" / "script.mjs")], "PROJ",
      {"start": "开始写字幕", "doing": "在写口播脚本与字幕", "done": "字幕好了"}),
-    ("渲染", ["node", str(ENGINE / "tools" / "render.mjs")], "PROJ",
+    ("渲染", ["node", str(ENGINE / "tools" / "render.mjs"), "--workers", "6"], "PROJ",
      {"start": "开始渲染", "doing": "正在渲染成片", "done": "成片好了"}),
     ("验收", [PY, "tools/accept_emotion.py", "{proj}"], ROOT,
      {"start": "开始验收", "doing": "在逐页体检", "done": "体检完了"}),

@@ -1,0 +1,1022 @@
+[
+ {
+  "id": "p01",
+  "title": "开场：四不管，感情反而更好",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.32,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "四不管",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p02",
+  "title": "越管越累，不是因为不爱",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.34,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p03",
+  "title": "查喝酒、查同事",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.36,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p04",
+  "title": "查升职、查沉默",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p05",
+  "title": "像雷达一样扫描",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.32,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "全天候雷达",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p06",
+  "title": "换来焦虑和躲闪",
+  "asset": "",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.34,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p07",
+  "title": "越控制，分量越轻",
+  "asset": "",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.36,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p08",
+  "title": "查岗暴露的是不安",
+  "asset": "",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p09",
+  "title": "四件事，让感情变好",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.32,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p10",
+  "title": "第一件：不管社交圈",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.34,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "社交圈",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p11",
+  "title": "跟谁来往，是她的选择",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.36,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p12",
+  "title": "不管，能行吗",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p13",
+  "title": "管得住的其实很少",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.32,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p14",
+  "title": "不说实话，或回家窒息",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.34,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p15",
+  "title": "护婚姻，其实在消耗分享",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.36,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p16",
+  "title": "靠得住的人，不用盯",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p17",
+  "title": "翻遍通讯录也拦不住",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.32,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p18",
+  "title": "放手，是相信自己的选择",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.34,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p19",
+  "title": "辜负了，是对方的问题",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.36,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p20",
+  "title": "第二件：不管聊天边界",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "聊天边界",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p21",
+  "title": "最深的刺：不安全感",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.32,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p22",
+  "title": "回消息时侧一下屏幕",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.34,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p23",
+  "title": "翻手机、查记录、追问",
+  "asset": "",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.36,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p24",
+  "title": "时间精力花出去，得到什么",
+  "asset": "",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p25",
+  "title": "查不到，内耗好几天",
+  "asset": "",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.32,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p26",
+  "title": "查到了，只剩一场大吵",
+  "asset": "",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.34,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p27",
+  "title": "边界是对方的自律",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.36,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "对方的自律",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p28",
+  "title": "值得信任，就不用疑神疑鬼",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p29",
+  "title": "疑神疑鬼，把日子过别扭",
+  "asset": "",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.32,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p30",
+  "title": "不是崩溃，不是自我怀疑",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.34,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p31",
+  "title": "对方的选择，说明对方是谁",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.36,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p32",
+  "title": "体面转身，把真心留给值得的人",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p33",
+  "title": "第三件：不管未来走向",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.32,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "人生课题",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p34",
+  "title": "事业和上进，是对方的课题",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.34,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p35",
+  "title": "总觉得对方缺人推一把",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.36,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p36",
+  "title": "帮规划、督促、比本人还急",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p37",
+  "title": "你托举，对方越走越快",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.32,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p38",
+  "title": "被推着走的人，很少真心感激",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.34,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p39",
+  "title": "有一天，会觉得你跟不上",
+  "asset": "",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.36,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p40",
+  "title": "先经营好自己的成长",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p41",
+  "title": "硬拽不想动的人，性价比最低",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.32,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "性价比",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p42",
+  "title": "第四件：不管情绪波动",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.34,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "情绪波动",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p43",
+  "title": "结了婚，情绪会互相牵连",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.36,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p44",
+  "title": "对方脸色不对，你心里打鼓",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p45",
+  "title": "是不是我说错了什么",
+  "asset": "",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.32,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p46",
+  "title": "过度共情，失去重心",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.34,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p47",
+  "title": "对方成了你的天气预报",
+  "asset": "",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.36,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p48",
+  "title": "先是一个独立的人",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "独立的人",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p49",
+  "title": "关心一句，但不必一起乱",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.32,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p50",
+  "title": "稳住自己，才看得清关系",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.34,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p51",
+  "title": "情绪稳定的人，才有分量",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.36,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p52",
+  "title": "四条背后，就一句话",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "一句话",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p53",
+  "title": "把眼睛收回来，看看自己",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.32,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p54",
+  "title": "珍惜你的人，会更看重婚姻",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.34,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p55",
+  "title": "你有自己的节奏，不是离不开谁",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.36,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p56",
+  "title": "体谅和信任，是有分量的",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p57",
+  "title": "不盘问、不窥探、不紧盯",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.32,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "不去盘问",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p58",
+  "title": "值得相伴余生的人",
+  "asset": "",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.34,
+   1,
+   0.2,
+   1.45
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "相伴余生",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p59",
+  "title": "人心会变，分寸靠阅历",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.36,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": []
+ },
+ {
+  "id": "p60",
+  "title": "理解了吗？再见",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": []
+ }
+]

@@ -48,6 +48,25 @@ def main():
         print(f'  {pid}  {c}   →   {" ｜ ".join(parts)}')
     print(f"\n（把硬切处加个逗号就行：cue 里第 12 个字前要有标点）")
 
+    # ── 节奏检查：用户要求 **6 秒一屏**（1.4 倍速 ≈ 5.5 字/秒 → 一页 30–36 字）──
+    long_pages, short_pages, chars_all = [], [], 0
+    for p in d["pages"]:
+        n = sum(len(c) for c in p["cues"])
+        chars_all += n
+        if n > 45:
+            long_pages.append((p["id"], n))
+        elif n < 20:
+            short_pages.append((p["id"], n))
+    pages = len(d["pages"])
+    print(f"\n节奏：{pages} 页 / 共 {chars_all} 字 / 估时 {chars_all / 5.5 / 60:.1f} 分钟"
+          f"（6 秒一屏时，一页 30–36 字）")
+    if long_pages:
+        print("  偏长（>45 字，≈8 秒以上）：" + "、".join(f"{i}({n})" for i, n in long_pages))
+    if short_pages:
+        print("  偏短（<20 字，≈3.6 秒以下）：" + "、".join(f"{i}({n})" for i, n in short_pages))
+    if not long_pages and not short_pages:
+        print("  ✓ 每页节奏都在 6 秒附近")
+
 
 if __name__ == "__main__":
     main()

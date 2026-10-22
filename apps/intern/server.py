@@ -161,17 +161,29 @@ def ask_agent(f, text):
         return False, str(e)
 
 
-def prompt_script(f, topic, minutes):
+def prompt_script(f, topic, minutes, materials=""):
     chars = int(minutes * 330)
+    src = (materials or "").strip()
+    block = (
+        "\n—— 同事给的原文（**必须按它写**：只去口水词/重复，观点和顺序都不改，不要扩写）——\n"
+        + src[:5000] + "\n—— 原文到此 ——\n"
+        if src else ""
+    )
     return (
         f"这是一位只填表的同事交来的片子：主题「{topic}」，目标 {minutes:g} 分钟（≈{chars} 字台词）。\n"
+        + block +
         f"按 docs/新题材开工手册.md 干活，**只做第一阶段，不要生成任何图、不要跑渲染**：\n"
-        f"1) 写 projects/{f}/script-source.json（页面骨架：钩子→案例/论点→结论→行动；每条 cue ≤12 字，"
-        f"第 12 字前必须有标点；总字数 ≈{chars}）\n"
-        f"2) 写 projects/{f}/docs/页-处境映射.md：一页一行（页号 | 一句话论点 | 处境一句话 | 用哪个角色）\n"
-        f"3) 更新 projects/{f}/page-spec.json：每页 id/title/asset 先留空（asset 等图出来再填）、"
-        f"theme/cam 按 warm-emotion 的规矩给；**lights 一律写 []**（光已经画在 Flow 的图里，"
-        f"再叠 P.light 会在同一个位置加一团假光斑）\n"
+        f"1) 写 projects/{f}/script-source.json：\n"
+        f"   结构 {{\"title\":…,\"gap\":0.8,\"voice\":{{…}},\"pages\":[{{\"id\":\"p01\",\"section\":\"钩子\","
+        f"\"title\":\"一句话\",\"cues\":[\"…，\",\"…。\"]}}]}}；\n"
+        f"   页面骨架：钩子→案例/论点→结论→行动；**页数 = 时长×10**（每页≈6 秒，"
+        f"3 分钟≈30 页、6 分钟≈60 页）；每页 **4–5 条**（约 30–36 字）；\n"
+        f"   每条 cue ≤12 字，且**第 12 字前必须有标点**（不然字幕会切开词）；总字数 ≈{chars}（±5%）。\n"
+        f"2) 写 projects/{f}/docs/页-处境映射.md：四列表格 | 页 | 讲什么 | 画面 | 主角 |，一页一行；\n"
+        f"   画面 = 谁 + 在哪 + 在做什么 + 光从哪来（光要写进画面，不要另加灯）；主角只能写 小树 或 小芽。\n"
+        f"3) 更新 projects/{f}/page-spec.json：与台词同页数、id 对齐；asset 留空（等图）；\n"
+        f"   theme 大部分 day、情绪低谷用 night；cam 用 push40/push55/pull；\n"
+        f"   **lights 一律写 []**（光已经画在图里，再叠 P.light 会在同一个位置加一团假光斑）。\n"
         f"做完停下来，等我在页面上点「就这样，开始画图」。"
     )
 
@@ -320,7 +332,8 @@ class H(BaseHTTPRequestHandler):
             f = b.get("film", "")
             br = brief(f)
             ok, err = ask_agent(f, prompt_script(f, br.get("topic", "") or f,
-                                                 float(br.get("minutes") or 6)))
+                                                 float(br.get("minutes") or 6),
+                                                 br.get("materials") or ""))
             pipeline.emit(f, "say", text="（已重新叫导演写台词）")
             return self._send(200, {"ok": ok, "error": err})
         return self._send(404, {"error": "no route"})
@@ -351,7 +364,7 @@ class H(BaseHTTPRequestHandler):
         src["note"] = (src.get("note") or "")
         (d / "script-source.json").write_text(json.dumps(src, ensure_ascii=False, indent=1), encoding="utf-8")
         pipeline.emit(name, "say", text=f"新片：{topic}（{minutes:g} 分钟 · {voice_label}）")
-        ok, err = ask_agent(name, prompt_script(name, topic, minutes))
+        ok, err = ask_agent(name, prompt_script(name, topic, minutes, b.get("materials") or ""))
         return self._send(200, {"ok": ok, "film": name, "error": err})
 
     def _gate(self, b):
@@ -372,9 +385,10 @@ class H(BaseHTTPRequestHandler):
                     pipeline.emit(f, "log",
                                   text="台词/分镜还没写好（页面会自动刷新），稍等一下再点")
                     return self._send(200, {"ok": False, "error": "script/mapping not ready"})
-                if len(rows) < len(pages) * 0.6:
+                if len(rows) < len(pages):
                     pipeline.emit(f, "log",
-                                  text=f"分镜只有 {len(rows)} 行、台词 {len(pages)} 页 —— 等分镜写完再点")
+                                  text=f"分镜只有 {len(rows)} 行、台词 {len(pages)} 页 —— "
+                                       f"缺 {len(pages) - len(rows)} 页的画面描述，等分镜写完再点")
                     return self._send(200, {"ok": False, "error": "mapping incomplete"})
                 # 分镜点头 → **脚本**把映射表变成队列并开画（不让 agent 做机械活）
                 n = build_queue(f)
