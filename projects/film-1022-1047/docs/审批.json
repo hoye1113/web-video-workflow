@@ -1,0 +1,17 @@
+{
+ "gate:map": {
+  "verdict": "ok",
+  "note": "自动跑通（agent 代点）",
+  "at": "2026-10-22 12:48:56"
+ },
+ "gate:img": {
+  "verdict": "ok",
+  "note": "自动跑通（agent 代点）",
+  "at": "2026-10-22 12:48:56"
+ },
+ "gate:film": {
+  "verdict": "ok",
+  "note": "自动跑通（agent 代点）",
+  "at": "2026-10-22 12:48:56"
+ }
+}

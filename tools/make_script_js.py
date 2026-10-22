@@ -191,7 +191,7 @@ def report(pages):
         for c in p["cues"]:
             flag = "  ⚠长" if len(c) > CUE_MAX else ("  ⚠短" if len(c) < 4 else "")
             print(f'   {len(c):>3} {c}{flag}')
-    print(f"\n合计 {tot} 字，按 4.3 字/秒约 {tot / 4.3 / 60:.1f} 分钟")
+    print(f"\n合计 {tot} 字，按 5.5 字/秒（1.4 倍速 ≈330 字/分钟）约 {tot / 5.5 / 60:.1f} 分钟")
 
 
 if __name__ == "__main__":

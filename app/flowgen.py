@@ -411,14 +411,27 @@ class Flow:
             "return (hit.textContent||'').replace(/\\s+/g,' ').trim().slice(0,30);})()"
         )
         if pick == "not found":
-            # 列表可能只显示了一部分：先点左侧 Characters 筛选，再滚一下列表，再找
+            # 选择器是个大面板，左栏有分类：All / Images / Videos / Voices / **Characters** / Avatars。
+            # 以前按"文本正好等于 Characters"找 —— 按钮里带图标名（accessibility_newCharacters），永远匹配不上，
+            # 于是角色被埋在几千张图里（2026-10-22：小芽明明在 Characters 里，选择器却"搜不到"）。
+            # 现在：① 在搜索框所在面板里点"含 Characters 的按钮" ② 用原生 setter 往搜索框里填名字。
             self._run(
-                "(()=>{const el=[...document.querySelectorAll('*')].find(x=>"
-                "(x.textContent||'').trim()==='Characters'&&x.children.length===0);"
-                "if(!el)return 'no filter';let p=el;for(let i=0;i<4&&p;i++){p=p.parentElement;}"
-                "(p||el).setAttribute('data-vf-chars','1');return 'ok';})()"
+                "(()=>{const i=[...document.querySelectorAll('input')].find(x=>"
+                "(x.placeholder||'').includes('Search'));let p=i;for(let k=0;k<6&&p;k++)p=p.parentElement;"
+                "const root=p||document;"
+                "const b=[...root.querySelectorAll('button,[role=tab],[role=button]')].find(x=>"
+                "/Characters/.test(x.textContent||''));"
+                "if(!b)return 'no tab';b.setAttribute('data-vf-chars','1');return 'ok';})()"
             )
             _bsk("click", "--session", self.sid, "--selector", "[data-vf-chars='1']", timeout=120)
+            time.sleep(2)
+            self._run(
+                "(()=>{const i=[...document.querySelectorAll('input')].find(x=>"
+                "(x.placeholder||'').includes('Search'));if(!i)return 'no';(i.focus());"
+                "const s=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set;"
+                "s.call(i," + json.dumps(name) + ");"
+                "i.dispatchEvent(new Event('input',{bubbles:true}));return 'ok';})()"
+            )
             time.sleep(2)
             pick = self._run(
                 "(()=>{const opts=[...document.querySelectorAll('[role=option]')];"
@@ -442,17 +455,24 @@ class Flow:
         if pick == "not found":
             self._run("document.body.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}))")
             raise RuntimeError(f"选择器里没有角色「{name}」（Flow 里的角色名改过？）")
+        before = len(self.prompt_chips())
         _bsk("click", "--session", self.sid, "--selector", "[data-vf-pick='1']", timeout=120)
         time.sleep(3)
 
-        add = self._run(
-            "(()=>{const b=[...document.querySelectorAll('button')].find(x=>/add to prompt/i.test(x.textContent||''));"
-            "if(!b)return 'not found';if(b.disabled)return 'disabled';b.setAttribute('data-vf-add','1');return 'ok';})()"
-        )
-        if add != "ok":
-            raise RuntimeError(f"Add to prompt 不可用：{add}")
-        _bsk("click", "--session", self.sid, "--selector", "[data-vf-add='1']", timeout=120)
-        time.sleep(4)
+        # 2026-10-22 的界面上，点角色条目**直接就挂上了**（选择器自动关），不再有 "Add to prompt"。
+        # 所以先看 chip 有没有变多；没变多再去点 Add to prompt（老界面）。
+        chips = self.prompt_chips()
+        if len(chips) <= before:
+            add = self._run(
+                "(()=>{const b=[...document.querySelectorAll('button')].find(x=>/add to prompt/i.test(x.textContent||''));"
+                "if(!b)return 'not found';if(b.disabled)return 'disabled';b.setAttribute('data-vf-add','1');return 'ok';})()"
+            )
+            if add == "ok":
+                _bsk("click", "--session", self.sid, "--selector", "[data-vf-add='1']", timeout=120)
+                time.sleep(4)
+                chips = self.prompt_chips()
+            elif not chips:
+                raise RuntimeError(f"点了「{name}」但既没挂上 chip，也没有 Add to prompt：{add}")
 
         # chip 挂上之后要**刷新一次已知集合** —— chip 本身也是个 img，
         # 不刷新的话它会被当成"新图"，取图那一步会白等。
@@ -568,18 +588,26 @@ class Flow:
         每个 base 先试 `=s<size>-rw`（原图 / 指定尺寸），失败再退回原始 URL；
         宽度不到 `min_w` 的一律不要（网格里有素材缩略图 512×512）。
         返回 `[{b, w, h, size, b64}, …]`（`b` 是 base，用来对号入座）。
+
+        **必须分批**：项目里的图会越攒越多（200+ 张时一次拼进去，命令行超过
+        Windows 的 32K 上限 → WinError 206，整批生图全挂）。2026-10-22 踩过。
         """
+        bases = list(bases)
         if not bases:
             return []
-        js = _FETCH_IMGS % (json.dumps(list(bases)), min_w, size)
-        out, err, code = _bsk("evaluate", js, "--session", self.sid, json_out=True, timeout=600)
-        try:
-            o = json.loads(out)
-        except Exception:                                      # noqa: BLE001
-            raise RuntimeError(f"取图失败：{(out or err)[:300]}") from None
-        if not o.get("ok"):
-            raise RuntimeError(f"取图失败：{json.dumps(o)[:300]}")
-        return o["value"] or []
+        got = []
+        for i in range(0, len(bases), 20):
+            chunk = bases[i:i + 20]
+            js = _FETCH_IMGS % (json.dumps(chunk), min_w, size)
+            out, err, code = _bsk("evaluate", js, "--session", self.sid, json_out=True, timeout=600)
+            try:
+                o = json.loads(out)
+            except Exception:                                      # noqa: BLE001
+                raise RuntimeError(f"取图失败：{(out or err)[:300]}") from None
+            if not o.get("ok"):
+                raise RuntimeError(f"取图失败：{json.dumps(o)[:300]}")
+            got.extend(o.get("value") or [])
+        return got
 
     def _fetch(self, bases, min_w=900):
         """只要字节流（老接口，保持兼容）。"""
