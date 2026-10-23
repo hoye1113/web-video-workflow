@@ -2,7 +2,7 @@
  {
   "id": "p01",
   "title": "开场：四不管，感情反而更好",
-  "asset": "",
+  "asset": "p01-开场抛出结论.png",
   "theme": "day",
   "cam": "pull",
   "reveal": [
@@ -27,7 +27,7 @@
  {
   "id": "p02",
   "title": "越管越累，不是因为不爱",
-  "asset": "",
+  "asset": "p02-越管越累的根源.png",
   "theme": "day",
   "cam": "pull",
   "reveal": [
@@ -42,7 +42,7 @@
  {
   "id": "p03",
   "title": "查喝酒、查同事",
-  "asset": "",
+  "asset": "p03-管对方跟谁喝酒.png",
   "theme": "day",
   "cam": "push40",
   "reveal": [
@@ -57,7 +57,7 @@
  {
   "id": "p04",
   "title": "查升职、查沉默",
-  "asset": "",
+  "asset": "p04-管升职-管沉默.png",
   "theme": "day",
   "cam": "push55",
   "reveal": [
@@ -72,7 +72,7 @@
  {
   "id": "p05",
   "title": "像雷达一样扫描",
-  "asset": "",
+  "asset": "p05-整天像雷达一样扫描.png",
   "theme": "day",
   "cam": "push55",
   "reveal": [
@@ -97,7 +97,7 @@
  {
   "id": "p06",
   "title": "换来焦虑和躲闪",
-  "asset": "",
+  "asset": "p06-换来的是焦虑和躲闪.png",
   "theme": "night",
   "cam": "push55",
   "reveal": [
@@ -112,7 +112,7 @@
  {
   "id": "p07",
   "title": "越控制，分量越轻",
-  "asset": "",
+  "asset": "p07-越控制-分量越轻.png",
   "theme": "night",
   "cam": "push55",
   "reveal": [
@@ -127,7 +127,7 @@
  {
   "id": "p08",
   "title": "查岗暴露的是不安",
-  "asset": "",
+  "asset": "p08-查岗暴露的是不安.png",
   "theme": "night",
   "cam": "pull",
   "reveal": [
@@ -142,7 +142,7 @@
  {
   "id": "p09",
   "title": "四件事，让感情变好",
-  "asset": "",
+  "asset": "p09-四件事让感情变好.png",
   "theme": "day",
   "cam": "pull",
   "reveal": [
@@ -157,7 +157,7 @@
  {
   "id": "p10",
   "title": "第一件：不管社交圈",
-  "asset": "",
+  "asset": "p10-第一件-不管社交圈.png",
   "theme": "day",
   "cam": "pull",
   "reveal": [
@@ -182,7 +182,7 @@
  {
   "id": "p11",
   "title": "跟谁来往，是她的选择",
-  "asset": "",
+  "asset": "p11-跟谁来往是她的选择.png",
   "theme": "day",
   "cam": "pull",
   "reveal": [
@@ -197,7 +197,7 @@
  {
   "id": "p12",
   "title": "不管，能行吗",
-  "asset": "",
+  "asset": "p12-不管-能行吗.png",
   "theme": "day",
   "cam": "push40",
   "reveal": [
@@ -212,7 +212,7 @@
  {
   "id": "p13",
   "title": "管得住的其实很少",
-  "asset": "",
+  "asset": "p13-管得住的其实很少.png",
   "theme": "day",
   "cam": "push55",
   "reveal": [
@@ -227,7 +227,7 @@
  {
   "id": "p14",
   "title": "不说实话，或回家窒息",
-  "asset": "",
+  "asset": "p14-不说实话-或回家窒息.png",
   "theme": "day",
   "cam": "pull",
   "reveal": [
@@ -242,7 +242,7 @@
  {
   "id": "p15",
   "title": "护婚姻，其实在消耗分享",
-  "asset": "",
+  "asset": "p15-护婚姻-其实在消耗分享.png",
   "theme": "day",
   "cam": "push40",
   "reveal": [
@@ -257,7 +257,7 @@
  {
   "id": "p16",
   "title": "靠得住的人，不用盯",
-  "asset": "",
+  "asset": "p16-靠得住的人不用盯.png",
   "theme": "day",
   "cam": "push55",
   "reveal": [
@@ -272,7 +272,7 @@
  {
   "id": "p17",
   "title": "翻遍通讯录也拦不住",
-  "asset": "",
+  "asset": "p17-翻遍通讯录也拦不住.png",
   "theme": "day",
   "cam": "push55",
   "reveal": [
@@ -287,7 +287,7 @@
  {
   "id": "p18",
   "title": "放手，是相信自己的选择",
-  "asset": "",
+  "asset": "p18-放手是相信自己的选择.png",
   "theme": "day",
   "cam": "push40",
   "reveal": [
@@ -302,7 +302,7 @@
  {
   "id": "p19",
   "title": "辜负了，是对方的问题",
-  "asset": "",
+  "asset": "p19-辜负了是对方的问题.png",
   "theme": "day",
   "cam": "push55",
   "reveal": [
@@ -317,7 +317,7 @@
  {
   "id": "p20",
   "title": "第二件：不管聊天边界",
-  "asset": "",
+  "asset": "p20-第二件-不管聊天边界.png",
   "theme": "day",
   "cam": "pull",
   "reveal": [
@@ -342,7 +342,7 @@
  {
   "id": "p21",
   "title": "最深的刺：不安全感",
-  "asset": "",
+  "asset": "p21-最深的刺-不安全感.png",
   "theme": "day",
   "cam": "push40",
   "reveal": [
@@ -357,7 +357,7 @@
  {
   "id": "p22",
   "title": "回消息时侧一下屏幕",
-  "asset": "",
+  "asset": "p22-回消息时侧一下屏幕.png",
   "theme": "day",
   "cam": "push55",
   "reveal": [
@@ -372,7 +372,7 @@
  {
   "id": "p23",
   "title": "翻手机、查记录、追问",
-  "asset": "",
+  "asset": "p23-翻手机-查记录-追问.png",
   "theme": "night",
   "cam": "pull",
   "reveal": [
@@ -387,7 +387,7 @@
  {
   "id": "p24",
   "title": "时间精力花出去，得到什么",
-  "asset": "",
+  "asset": "p24-花出去的精力换来什么.png",
   "theme": "night",
   "cam": "push55",
   "reveal": [
@@ -402,7 +402,7 @@
  {
   "id": "p25",
   "title": "查不到，内耗好几天",
-  "asset": "",
+  "asset": "p25-查不到-内耗好几天.png",
   "theme": "night",
   "cam": "push55",
   "reveal": [
@@ -417,7 +417,7 @@
  {
   "id": "p26",
   "title": "查到了，只剩一场大吵",
-  "asset": "",
+  "asset": "p26-查到了-只剩一场大吵.png",
   "theme": "night",
   "cam": "pull",
   "reveal": [
@@ -432,7 +432,7 @@
  {
   "id": "p27",
   "title": "边界是对方的自律",
-  "asset": "",
+  "asset": "p27-边界是对方的自律.png",
   "theme": "day",
   "cam": "push40",
   "reveal": [
@@ -457,7 +457,7 @@
  {
   "id": "p28",
   "title": "值得信任，就不用疑神疑鬼",
-  "asset": "",
+  "asset": "p28-值得信任就不用疑神疑鬼.png",
   "theme": "day",
   "cam": "push55",
   "reveal": [
@@ -472,7 +472,7 @@
  {
   "id": "p29",
   "title": "疑神疑鬼，把日子过别扭",
-  "asset": "",
+  "asset": "p29-疑神疑鬼把日子过别扭.png",
   "theme": "night",
   "cam": "pull",
   "reveal": [
@@ -487,7 +487,7 @@
  {
   "id": "p30",
   "title": "不是崩溃，不是自我怀疑",
-  "asset": "",
+  "asset": "p30-不是崩溃不是自我怀疑.png",
   "theme": "day",
   "cam": "push40",
   "reveal": [
@@ -502,7 +502,7 @@
  {
   "id": "p31",
   "title": "对方的选择，说明对方是谁",
-  "asset": "",
+  "asset": "p31-对方的选择说明对方是谁.png",
   "theme": "day",
   "cam": "push55",
   "reveal": [
@@ -517,7 +517,7 @@
  {
   "id": "p32",
   "title": "体面转身，把真心留给值得的人",
-  "asset": "",
+  "asset": "p32-体面转身-留给值得的人.png",
   "theme": "day",
   "cam": "pull",
   "reveal": [
@@ -532,7 +532,7 @@
  {
   "id": "p33",
   "title": "第三件：不管未来走向",
-  "asset": "",
+  "asset": "p33-第三件-不管未来走向.png",
   "theme": "day",
   "cam": "pull",
   "reveal": [
@@ -557,7 +557,7 @@
  {
   "id": "p34",
   "title": "事业和上进，是对方的课题",
-  "asset": "",
+  "asset": "p34-事业是对方的课题.png",
   "theme": "day",
   "cam": "push55",
   "reveal": [
@@ -572,7 +572,7 @@
  {
   "id": "p35",
   "title": "总觉得对方缺人推一把",
-  "asset": "",
+  "asset": "p35-总觉得对方缺人推一把.png",
   "theme": "day",
   "cam": "pull",
   "reveal": [
@@ -587,7 +587,7 @@
  {
   "id": "p36",
   "title": "帮规划、督促、比本人还急",
-  "asset": "",
+  "asset": "p36-帮规划-督促-还着急.png",
   "theme": "day",
   "cam": "push40",
   "reveal": [
@@ -602,7 +602,7 @@
  {
   "id": "p37",
   "title": "你托举，对方越走越快",
-  "asset": "",
+  "asset": "p37-你托举-对方越走越快.png",
   "theme": "day",
   "cam": "push55",
   "reveal": [
@@ -617,7 +617,7 @@
  {
   "id": "p38",
   "title": "被推着走的人，很少真心感激",
-  "asset": "",
+  "asset": "p38-被推着走的人很少感激.png",
   "theme": "day",
   "cam": "push55",
   "reveal": [
@@ -632,7 +632,7 @@
  {
   "id": "p39",
   "title": "有一天，会觉得你跟不上",
-  "asset": "",
+  "asset": "p39-有一天会觉得你跟不上.png",
   "theme": "night",
   "cam": "push40",
   "reveal": [
@@ -647,7 +647,7 @@
  {
   "id": "p40",
   "title": "先经营好自己的成长",
-  "asset": "",
+  "asset": "p40-先经营好自己的成长.png",
   "theme": "day",
   "cam": "push55",
   "reveal": [
@@ -662,7 +662,7 @@
  {
   "id": "p41",
   "title": "硬拽不想动的人，性价比最低",
-  "asset": "",
+  "asset": "p41-硬拽不想动的人最不划算.png",
   "theme": "day",
   "cam": "pull",
   "reveal": [
@@ -687,7 +687,7 @@
  {
   "id": "p42",
   "title": "第四件：不管情绪波动",
-  "asset": "",
+  "asset": "p42-第四件-不管情绪波动.png",
   "theme": "day",
   "cam": "pull",
   "reveal": [
@@ -712,7 +712,7 @@
  {
   "id": "p43",
   "title": "结了婚，情绪会互相牵连",
-  "asset": "",
+  "asset": "p43-情绪会互相牵连.png",
   "theme": "day",
   "cam": "push55",
   "reveal": [
@@ -727,7 +727,7 @@
  {
   "id": "p44",
   "title": "对方脸色不对，你心里打鼓",
-  "asset": "",
+  "asset": "p44-对方脸色不对你就打鼓.png",
   "theme": "day",
   "cam": "pull",
   "reveal": [
@@ -742,7 +742,7 @@
  {
   "id": "p45",
   "title": "是不是我说错了什么",
-  "asset": "",
+  "asset": "p45-是不是我说错了什么.png",
   "theme": "night",
   "cam": "push40",
   "reveal": [
@@ -757,7 +757,7 @@
  {
   "id": "p46",
   "title": "过度共情，失去重心",
-  "asset": "",
+  "asset": "p46-过度共情会失去重心.png",
   "theme": "day",
   "cam": "push55",
   "reveal": [
@@ -772,7 +772,7 @@
  {
   "id": "p47",
   "title": "对方成了你的天气预报",
-  "asset": "",
+  "asset": "p47-对方成了天气预报.png",
   "theme": "night",
   "cam": "push55",
   "reveal": [
@@ -787,7 +787,7 @@
  {
   "id": "p48",
   "title": "先是一个独立的人",
-  "asset": "",
+  "asset": "p48-首先是一个独立的人.png",
   "theme": "day",
   "cam": "push40",
   "reveal": [
@@ -812,7 +812,7 @@
  {
   "id": "p49",
   "title": "关心一句，但不必一起乱",
-  "asset": "",
+  "asset": "p49-关心一句但不必一起乱.png",
   "theme": "day",
   "cam": "push55",
   "reveal": [
@@ -827,7 +827,7 @@
  {
   "id": "p50",
   "title": "稳住自己，才看得清关系",
-  "asset": "",
+  "asset": "p50-稳住自己才看得清关系.png",
   "theme": "day",
   "cam": "pull",
   "reveal": [
@@ -842,7 +842,7 @@
  {
   "id": "p51",
   "title": "情绪稳定的人，才有分量",
-  "asset": "",
+  "asset": "p51-情绪稳定的人才有分量.png",
   "theme": "day",
   "cam": "push40",
   "reveal": [
@@ -857,7 +857,7 @@
  {
   "id": "p52",
   "title": "四条背后，就一句话",
-  "asset": "",
+  "asset": "p52-四条背后就一句话.png",
   "theme": "day",
   "cam": "pull",
   "reveal": [
@@ -882,7 +882,7 @@
  {
   "id": "p53",
   "title": "把眼睛收回来，看看自己",
-  "asset": "",
+  "asset": "p53-把眼睛收回来看看自己.png",
   "theme": "day",
   "cam": "pull",
   "reveal": [
@@ -897,7 +897,7 @@
  {
   "id": "p54",
   "title": "珍惜你的人，会更看重婚姻",
-  "asset": "",
+  "asset": "p54-珍惜你的人会更看重婚姻.png",
   "theme": "day",
   "cam": "push40",
   "reveal": [
@@ -912,7 +912,7 @@
  {
   "id": "p55",
   "title": "你有自己的节奏，不是离不开谁",
-  "asset": "",
+  "asset": "p55-你有自己的节奏.png",
   "theme": "day",
   "cam": "push55",
   "reveal": [
@@ -927,7 +927,7 @@
  {
   "id": "p56",
   "title": "体谅和信任，是有分量的",
-  "asset": "",
+  "asset": "p56-体谅和信任是有分量的.png",
   "theme": "day",
   "cam": "pull",
   "reveal": [
@@ -942,7 +942,7 @@
  {
   "id": "p57",
   "title": "不盘问、不窥探、不紧盯",
-  "asset": "",
+  "asset": "p57-不盘问-不窥探-不紧盯.png",
   "theme": "day",
   "cam": "push40",
   "reveal": [
@@ -967,7 +967,7 @@
  {
   "id": "p58",
   "title": "值得相伴余生的人",
-  "asset": "",
+  "asset": "p58-值得相伴余生的人.png",
   "theme": "night",
   "cam": "push55",
   "reveal": [
@@ -992,7 +992,7 @@
  {
   "id": "p59",
   "title": "人心会变，分寸靠阅历",
-  "asset": "",
+  "asset": "p59-人心会变-分寸靠阅历.png",
   "theme": "day",
   "cam": "pull",
   "reveal": [
@@ -1007,7 +1007,7 @@
  {
   "id": "p60",
   "title": "理解了吗？再见",
-  "asset": "",
+  "asset": "p60-理解了吗-再见.png",
   "theme": "day",
   "cam": "pull",
   "reveal": [

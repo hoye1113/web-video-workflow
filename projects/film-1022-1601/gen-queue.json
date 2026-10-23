@@ -52,11 +52,21 @@
    "cast": "小树",
    "scene": "小树站在玄关，手里攥着车钥匙，走廊的灯从头顶打下来",
    "out": "p03-管对方跟谁喝酒.png",
-   "status": "browser",
+   "status": "review",
    "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p03-管对方跟谁喝酒.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     245,
+     239,
+     228
+    ],
+    "band_std": 21,
+    "sprout_px": 23
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -65,11 +75,21 @@
    "cast": "小树",
    "scene": "小树坐在沙发边，盯着对面关着的房门，客厅的暖灯从背后照来",
    "out": "p04-管升职-管沉默.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p04-管升职-管沉默.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     249,
+     244,
+     234
+    ],
+    "band_std": 1,
+    "sprout_px": 893
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -78,11 +98,21 @@
    "cast": "小树",
    "scene": "小树在客厅里来回走，手机举在胸前，落地灯从侧面照过来",
    "out": "p05-整天像雷达一样扫描.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p05-整天像雷达一样扫描.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     249,
+     245,
+     235
+    ],
+    "band_std": 9,
+    "sprout_px": 14
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -91,11 +121,21 @@
    "cast": "小树",
    "scene": "小树站在门口，手停在门把上，楼道的冷光从门缝里透进来",
    "out": "p06-换来的是焦虑和躲闪.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p06-换来的是焦虑和躲闪.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     247,
+     241,
+     229
+    ],
+    "band_std": 22,
+    "sprout_px": 992
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -104,11 +144,21 @@
    "cast": "小树",
    "scene": "小树坐在床边，低头看着摊开的手心，床头灯从侧面照过来",
    "out": "p07-越控制-分量越轻.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p07-越控制-分量越轻.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     244,
+     234
+    ],
+    "band_std": 1,
+    "sprout_px": 106
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -117,11 +167,21 @@
    "cast": "小树",
    "scene": "小树把手机贴在耳边站在阳台，夜里的城市灯光从背后照来",
    "out": "p08-查岗暴露的是不安.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p08-查岗暴露的是不安.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     246,
+     238
+    ],
+    "band_std": 1,
+    "sprout_px": 4
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -130,11 +190,21 @@
    "cast": "小树",
    "scene": "小树把手机放进抽屉，厨房的晨光从窗口照进来",
    "out": "p09-四件事让感情变好.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p09-四件事让感情变好.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     248,
+     243,
+     232
+    ],
+    "band_std": 2,
+    "sprout_px": 937
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -143,11 +213,21 @@
    "cast": "小芽",
    "scene": "小芽在玄关弯腰换鞋，手里拎着包，门口的暖光从侧面照来",
    "out": "p10-第一件-不管社交圈.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p10-第一件-不管社交圈.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     249,
+     245,
+     235
+    ],
+    "band_std": 1,
+    "sprout_px": 52
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -156,11 +236,21 @@
    "cast": "小芽",
    "scene": "小芽在餐馆和朋友碰杯，头顶吊灯的光从上往下照",
    "out": "p11-跟谁来往是她的选择.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p11-跟谁来往是她的选择.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     251,
+     250,
+     244
+    ],
+    "band_std": 3,
+    "sprout_px": 641
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -169,11 +259,21 @@
    "cast": "小树",
    "scene": "小树站在窗边，眉头皱起来，窗外的天光从正面照在脸上",
    "out": "p12-不管-能行吗.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p12-不管-能行吗.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     251,
+     246,
+     236
+    ],
+    "band_std": 2,
+    "sprout_px": 210
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -182,11 +282,21 @@
    "cast": "小树",
    "scene": "小树坐在餐桌前，手里翻着一本旧记事本，顶灯从上方照下来",
    "out": "p13-管得住的其实很少.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p13-管得住的其实很少.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     245,
+     235
+    ],
+    "band_std": 2,
+    "sprout_px": 328
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -195,11 +305,21 @@
    "cast": "小芽",
    "scene": "小芽坐在出租车后座看着窗外，路灯一盏盏从侧面掠过去",
    "out": "p14-不说实话-或回家窒息.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p14-不说实话-或回家窒息.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     245,
+     233
+    ],
+    "band_std": 2,
+    "sprout_px": 936
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -208,11 +328,21 @@
    "cast": "小芽",
    "scene": "小芽站在厨房，手里的水杯停在半空，冰箱的冷光从侧面照来",
    "out": "p15-护婚姻-其实在消耗分享.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p15-护婚姻-其实在消耗分享.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     252,
+     247,
+     235
+    ],
+    "band_std": 0,
+    "sprout_px": 20
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -221,11 +351,21 @@
    "cast": "小芽",
    "scene": "小芽在客厅整理外套，动作从容，落地灯的暖光从侧面照来",
    "out": "p16-靠得住的人不用盯.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p16-靠得住的人不用盯.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     247,
+     236
+    ],
+    "band_std": 1,
+    "sprout_px": 274
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -234,11 +374,21 @@
    "cast": "小树",
    "scene": "小树窝在沙发里翻手机，屏幕的光从下方照在脸上",
    "out": "p17-翻遍通讯录也拦不住.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p17-翻遍通讯录也拦不住.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     251,
+     246,
+     235
+    ],
+    "band_std": 1,
+    "sprout_px": 52
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -247,11 +397,21 @@
    "cast": "小芽",
    "scene": "小芽在门口回头笑了一下，走廊的暖光从背后照过来",
    "out": "p18-放手是相信自己的选择.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p18-放手是相信自己的选择.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     246,
+     236
+    ],
+    "band_std": 0,
+    "sprout_px": 723
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -260,11 +420,21 @@
    "cast": "小树",
    "scene": "小树站在阳台上，肩膀松下来，清晨的光从侧面照过来",
    "out": "p19-辜负了是对方的问题.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p19-辜负了是对方的问题.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     247,
+     243,
+     233
+    ],
+    "band_std": 11,
+    "sprout_px": 75
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -273,11 +443,21 @@
    "cast": "小芽",
    "scene": "小芽坐在沙发上，手机屏幕亮着，窗外的光落在她手边",
    "out": "p20-第二件-不管聊天边界.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p20-第二件-不管聊天边界.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     249,
+     245,
+     236
+    ],
+    "band_std": 1,
+    "sprout_px": 925
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -286,11 +466,21 @@
    "cast": "小芽",
    "scene": "小芽盯着手机，拇指停在屏幕上，台灯的光从侧面照过来",
    "out": "p21-最深的刺-不安全感.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p21-最深的刺-不安全感.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     251,
+     247,
+     235
+    ],
+    "band_std": 0,
+    "sprout_px": 163
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -299,11 +489,21 @@
    "cast": "小树",
    "scene": "小树坐在餐桌对面，把手机往怀里侧了一下，顶灯从上往下照",
    "out": "p22-回消息时侧一下屏幕.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p22-回消息时侧一下屏幕.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     247,
+     239
+    ],
+    "band_std": 1,
+    "sprout_px": 669
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -312,11 +512,21 @@
    "cast": "小芽",
    "scene": "小芽坐在床沿，手机贴在胸口，床头灯的光从侧面照来",
    "out": "p23-翻手机-查记录-追问.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p23-翻手机-查记录-追问.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     243,
+     234,
+     218
+    ],
+    "band_std": 2,
+    "sprout_px": 358
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -325,11 +535,21 @@
    "cast": "小树",
    "scene": "小树站在窗前攥着手机，夜里路灯的光从下方照上来",
    "out": "p24-花出去的精力换来什么.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p24-花出去的精力换来什么.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     248,
+     243,
+     233
+    ],
+    "band_std": 1,
+    "sprout_px": 678
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -338,11 +558,21 @@
    "cast": "小芽",
    "scene": "小芽坐在餐桌前，桌上的饭菜已经凉了，顶灯的光从上方压下来",
    "out": "p25-查不到-内耗好几天.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p25-查不到-内耗好几天.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     252,
+     248,
+     239
+    ],
+    "band_std": 1,
+    "sprout_px": 382
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -351,11 +581,21 @@
    "cast": "小树",
    "scene": "小树背对着门站在客厅，客厅的灯从背后照过来",
    "out": "p26-查到了-只剩一场大吵.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p26-查到了-只剩一场大吵.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     251,
+     245,
+     232
+    ],
+    "band_std": 2,
+    "sprout_px": 423
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -364,11 +604,21 @@
    "cast": "小芽",
    "scene": "小芽把手机放回桌上，手心朝下压着，窗光从侧面照来",
    "out": "p27-边界是对方的自律.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p27-边界是对方的自律.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     247,
+     237
+    ],
+    "band_std": 0,
+    "sprout_px": 579
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -377,11 +627,21 @@
    "cast": "小芽",
    "scene": "小芽在阳台晾衣服，晨光从侧面照在她手臂上",
    "out": "p28-值得信任就不用疑神疑鬼.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p28-值得信任就不用疑神疑鬼.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     243,
+     230
+    ],
+    "band_std": 2,
+    "sprout_px": 249
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -390,11 +650,21 @@
    "cast": "小树",
    "scene": "小树缩在沙发角落抱着靠垫，落地灯的光只照到他半边肩膀",
    "out": "p29-疑神疑鬼把日子过别扭.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p29-疑神疑鬼把日子过别扭.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     247,
+     239
+    ],
+    "band_std": 0,
+    "sprout_px": 326
+   },
    "at": "2026-10-22 16:55:28"
   },
   {
@@ -403,11 +673,21 @@
    "cast": "小芽",
    "scene": "小芽蹲在衣柜前，衣服摊了一地，顶灯的光从上往下照",
    "out": "p30-不是崩溃不是自我怀疑.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p30-不是崩溃不是自我怀疑.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     243,
+     229
+    ],
+    "band_std": 1,
+    "sprout_px": 284
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -416,11 +696,21 @@
    "cast": "小芽",
    "scene": "小芽站在镜子前，抬手把头发别到耳后，镜前灯从正面照来",
    "out": "p31-对方的选择说明对方是谁.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p31-对方的选择说明对方是谁.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     248,
+     243,
+     232
+    ],
+    "band_std": 7,
+    "sprout_px": 124
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -429,11 +719,21 @@
    "cast": "小芽",
    "scene": "小芽拎着行李袋走出门，走廊的光从前方照过来",
    "out": "p32-体面转身-留给值得的人.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p32-体面转身-留给值得的人.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     241,
+     227
+    ],
+    "band_std": 1,
+    "sprout_px": 292
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -442,11 +742,21 @@
    "cast": "小树",
    "scene": "小树坐在书桌前，面前摊着一页招聘信息，台灯从侧面照来",
    "out": "p33-第三件-不管未来走向.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p33-第三件-不管未来走向.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     251,
+     246,
+     235
+    ],
+    "band_std": 0,
+    "sprout_px": 176
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -455,11 +765,21 @@
    "cast": "小树",
    "scene": "小树站在白板前，手里捏着马克笔，办公室的顶灯从上往下照",
    "out": "p34-事业是对方的课题.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p34-事业是对方的课题.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     249,
+     244,
+     232
+    ],
+    "band_std": 14,
+    "sprout_px": 13
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -468,11 +788,21 @@
    "cast": "小芽",
    "scene": "小芽在书桌旁把一叠资料推到桌子中间，台灯从侧面照来",
    "out": "p35-总觉得对方缺人推一把.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p35-总觉得对方缺人推一把.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     251,
+     247,
+     235
+    ],
+    "band_std": 0,
+    "sprout_px": 481
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -481,11 +811,21 @@
    "cast": "小芽",
    "scene": "小芽站在小树身后，手指点着笔记本上的一行字，窗光从侧面照来",
    "out": "p36-帮规划-督促-还着急.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p36-帮规划-督促-还着急.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     253,
+     249,
+     240
+    ],
+    "band_std": 3,
+    "sprout_px": 238
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -494,11 +834,21 @@
    "cast": "小树",
    "scene": "小树快步走上楼梯，脚步没停，楼梯间的顶灯从上往下照",
    "out": "p37-你托举-对方越走越快.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p37-你托举-对方越走越快.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     244,
+     233
+    ],
+    "band_std": 3,
+    "sprout_px": 5
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -507,11 +857,21 @@
    "cast": "小树",
    "scene": "小树在会议室门口回头，怀里抱着文件，走廊的光从背后照来",
    "out": "p38-被推着走的人很少感激.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p38-被推着走的人很少感激.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     249,
+     247,
+     239
+    ],
+    "band_std": 3,
+    "sprout_px": 26
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -520,11 +880,21 @@
    "cast": "小芽",
    "scene": "小芽站在地铁站台，隧道里的车灯从前方照过来",
    "out": "p39-有一天会觉得你跟不上.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p39-有一天会觉得你跟不上.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     245,
+     235
+    ],
+    "band_std": 1,
+    "sprout_px": 631
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -533,11 +903,21 @@
    "cast": "小芽",
    "scene": "小芽坐在窗边看书，笔记本摊在膝上，晨光从窗口照进来",
    "out": "p40-先经营好自己的成长.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p40-先经营好自己的成长.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     246,
+     236
+    ],
+    "band_std": 1,
+    "sprout_px": 386
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -546,11 +926,21 @@
    "cast": "小树",
    "scene": "小树双手去拉一扇沉重的门，门缝里的光从里面透出来",
    "out": "p41-硬拽不想动的人最不划算.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p41-硬拽不想动的人最不划算.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     247,
+     241,
+     230
+    ],
+    "band_std": 16,
+    "sprout_px": 1534
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -559,11 +949,21 @@
    "cast": "小芽",
    "scene": "小芽坐在餐桌前，双手捧着杯子，厨房的暖光从侧面照来",
    "out": "p42-第四件-不管情绪波动.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p42-第四件-不管情绪波动.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     251,
+     246,
+     236
+    ],
+    "band_std": 0,
+    "sprout_px": 2135
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -572,11 +972,21 @@
    "cast": "小树",
    "scene": "小树坐在沙发一端，肩膀塌着，客厅的灯从上方照下来",
    "out": "p43-情绪会互相牵连.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p43-情绪会互相牵连.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     247,
+     242,
+     231
+    ],
+    "band_std": 17,
+    "sprout_px": 13
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -585,11 +995,21 @@
    "cast": "小芽",
    "scene": "小芽站在厨房门口探头看客厅，冰箱的冷光从侧面照来",
    "out": "p44-对方脸色不对你就打鼓.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p44-对方脸色不对你就打鼓.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     246,
+     236
+    ],
+    "band_std": 1,
+    "sprout_px": 33
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -598,11 +1018,21 @@
    "cast": "小树",
    "scene": "小树坐在床沿，一只手撑着额头，床头灯从侧面照来",
    "out": "p45-是不是我说错了什么.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p45-是不是我说错了什么.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     246,
+     244,
+     236
+    ],
+    "band_std": 6,
+    "sprout_px": 101
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -611,11 +1041,21 @@
    "cast": "小芽",
    "scene": "小芽站在阳台上，风吹起衣角，天光从侧面照在她身上",
    "out": "p46-过度共情会失去重心.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p46-过度共情会失去重心.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     247,
+     237
+    ],
+    "band_std": 0,
+    "sprout_px": 6
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -624,11 +1064,21 @@
    "cast": "小芽",
    "scene": "小芽抬头看窗外的阴天，灰白的光从窗外照进来",
    "out": "p47-对方成了天气预报.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p47-对方成了天气预报.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     251,
+     250,
+     240
+    ],
+    "band_std": 1,
+    "sprout_px": 365
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -637,11 +1087,21 @@
    "cast": "小芽",
    "scene": "小芽一个人坐在餐桌前吃饭，窗光从侧面照在碗沿上",
    "out": "p48-首先是一个独立的人.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 3,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p48-首先是一个独立的人.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     246,
+     236
+    ],
+    "band_std": 1,
+    "sprout_px": 509
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -650,11 +1110,21 @@
    "cast": "小树",
    "scene": "小树从桌子对面把一杯热水推过来，厨房的暖光从上往下照",
    "out": "p49-关心一句但不必一起乱.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p49-关心一句但不必一起乱.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     242,
+     236,
+     225
+    ],
+    "band_std": 28,
+    "sprout_px": 653
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -663,11 +1133,21 @@
    "cast": "小芽",
    "scene": "小芽站在窗前，一只手放在胸口，晨光从正面照过来",
    "out": "p50-稳住自己才看得清关系.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p50-稳住自己才看得清关系.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     247,
+     238
+    ],
+    "band_std": 1,
+    "sprout_px": 528
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -676,11 +1156,21 @@
    "cast": "小树",
    "scene": "小树坐在书桌前平静地写字，台灯的光从侧面照在纸面上",
    "out": "p51-情绪稳定的人才有分量.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p51-情绪稳定的人才有分量.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     247,
+     241,
+     230
+    ],
+    "band_std": 10,
+    "sprout_px": 80
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -689,11 +1179,21 @@
    "cast": "小芽",
    "scene": "小芽坐在餐桌前，把手机翻过来扣在桌上，晨光从窗口照进来",
    "out": "p52-四条背后就一句话.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p52-四条背后就一句话.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     249,
+     246,
+     239
+    ],
+    "band_std": 2,
+    "sprout_px": 1520
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -702,11 +1202,21 @@
    "cast": "小芽",
    "scene": "小芽站在镜子前，认真看着镜子里的自己，镜前灯从正面照来",
    "out": "p53-把眼睛收回来看看自己.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p53-把眼睛收回来看看自己.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     247,
+     242,
+     233
+    ],
+    "band_std": 3,
+    "sprout_px": 602
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -715,11 +1225,21 @@
    "cast": "小芽",
    "scene": "小树和小芽在厨房并肩洗碗，窗光从侧面照在两人手上",
    "out": "p54-珍惜你的人会更看重婚姻.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p54-珍惜你的人会更看重婚姻.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     247,
+     245,
+     237
+    ],
+    "band_std": 12,
+    "sprout_px": 92
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -728,11 +1248,21 @@
    "cast": "小芽",
    "scene": "小芽背着包走出门，脚步轻快，走廊的光从前方照过来",
    "out": "p55-你有自己的节奏.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p55-你有自己的节奏.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     251,
+     244,
+     230
+    ],
+    "band_std": 0,
+    "sprout_px": 3
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -741,11 +1271,21 @@
    "cast": "小树",
    "scene": "小树把外套披到小芽肩上，门口的暖光从背后照过来",
    "out": "p56-体谅和信任是有分量的.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p56-体谅和信任是有分量的.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     250,
+     245,
+     236
+    ],
+    "band_std": 1,
+    "sprout_px": 29
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -754,11 +1294,21 @@
    "cast": "小芽",
    "scene": "小芽坐在沙发上，手机放在茶几上没去拿，落地灯从侧面照来",
    "out": "p57-不盘问-不窥探-不紧盯.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p57-不盘问-不窥探-不紧盯.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     251,
+     247,
+     235
+    ],
+    "band_std": 0,
+    "sprout_px": 86
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -767,11 +1317,21 @@
    "cast": "小树",
    "scene": "小树和小芽并肩走在小区路上，傍晚的光从侧面照过来",
    "out": "p58-值得相伴余生的人.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p58-值得相伴余生的人.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     246,
+     232,
+     211
+    ],
+    "band_std": 15,
+    "sprout_px": 683
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -780,11 +1340,21 @@
    "cast": "小芽",
    "scene": "小芽在阳台给绿植浇水，晨光从侧面照在叶片上",
    "out": "p59-人心会变-分寸靠阅历.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p59-人心会变-分寸靠阅历.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     251,
+     247,
+     237
+    ],
+    "band_std": 4,
+    "sprout_px": 974
+   },
    "at": "2026-10-22 16:55:29"
   },
   {
@@ -793,11 +1363,21 @@
    "cast": "小树",
    "scene": "小树坐在窗边，抬起手挥了一下，晨光从窗口照进来",
    "out": "p60-理解了吗-再见.png",
-   "status": "queued",
-   "tries": 0,
+   "status": "review",
+   "tries": 1,
    "error": "",
-   "img": "",
-   "metrics": {},
+   "img": "p60-理解了吗-再见.png",
+   "metrics": {
+    "w": 1376,
+    "h": 768,
+    "band_mean": [
+     248,
+     243,
+     232
+    ],
+    "band_std": 1,
+    "sprout_px": 268
+   },
    "at": "2026-10-22 16:55:29"
   }
  ]
