@@ -49,6 +49,8 @@ def main(argv):
     ap.add_argument("--page-chars", type=int, default=33)
     ap.add_argument("--page-sec", type=float, default=6.2)
     ap.add_argument("--max-cue", type=int, default=20)
+    ap.add_argument("--voice-only", action="store_true",
+                    help="只重切音频并重写 voice.js（不动 script.js / page-spec）")
     a = ap.parse_args(argv[1:])
 
     proj = a.project
@@ -106,7 +108,7 @@ def main(argv):
         for ci, c in enumerate(pg):
             wav = ADIR / f"{pid}-{ci}.wav"
             run(["ffmpeg", "-y", "-loglevel", "error",
-                 "-ss", f"{max(0.0, c['start'] - 0.02):.3f}", "-to", f"{c['cut_end']:.3f}",
+                 "-ss", f"{max(0.0, c['start']):.3f}", "-to", f"{c['cut_end']:.3f}",
                  "-i", str(audio), "-ar", "48000", "-ac", "2", str(wav)])
             dd = dur_of(wav) or (c["cut_end"] - c["start"])
             chars = list(c["text"])
@@ -124,6 +126,17 @@ def main(argv):
                            "lights": [], "texts": []})
 
     title = (tr.get("title") or d.name)
+
+    if a.voice_only:
+        (d / "voice.js").write_text(
+            "/* 由 tools/audio_film.py 生成：音频来自用户的录音，按段切开，未做任何合成 */\n"
+            "SCRIPT.VOICE = " + json.dumps({"speaker": SPEAKER, "provider": "audio",
+                                            "pages": voice_pages}, ensure_ascii=False) + ";\n",
+            encoding="utf-8")
+        total2 = sum(c["d"] for pg in voice_pages for c in pg)
+        print(f"  只重切音频：{len(pages)} 页 / {len(cues)} 条 · 音轨 {total2:.1f}s（原音频 {total:.1f}s）")
+        return
+
     (d / "script-source.json").write_text(json.dumps(
         {"title": title, "gap": 0, "voice": {"speaker": SPEAKER, "provider": "audio"},
          "pages": src_pages}, ensure_ascii=False, indent=1), encoding="utf-8")
