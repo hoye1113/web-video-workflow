@@ -57,7 +57,7 @@
     let t = 0;
     const out = pages.map((pg, idx) => {
       const start = t;
-      let ct = start + (voice ? VOICE.lead : LEAD);
+      let ct = start + (voice ? (V.lead ?? VOICE.lead) : LEAD);
       const cues = pg.cues.map((c, ci) => {
         const text = typeof c === 'string' ? c : c.t;
         const hold = typeof c === 'string' ? 0 : c.hold || 0;
