@@ -118,7 +118,10 @@ def do_one(f, proj, t):
     """生成一张。返回 metrics，失败抛异常。"""
     pipeline.queue_set(proj, t["id"], status="browser", tries=t.get("tries", 0) + 1)
     pipeline.emit(proj, "page", id=t["page"], status="browser", detail=f"挂角色 {t['cast']}")
-    f.attach_character(t["cast"])
+    # cast 可以是 "小树+小芽"：双人同框页要两个 chip 都挂，另一个角色才不会被模型乱画
+    for _name in str(t["cast"]).split("+"):
+        if _name.strip():
+            f.attach_character(_name.strip())
 
     prompt = full_prompt(t["scene"])
     pipeline.queue_set(proj, t["id"], status="prompt")
