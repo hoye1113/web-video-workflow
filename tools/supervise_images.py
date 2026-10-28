@@ -38,16 +38,19 @@ def main():
     ap.add_argument("--minutes", type=float, default=60)
     a = ap.parse_args()
     F, deadline = a.film, time.time() + a.minutes * 60
+    ROOT = pathlib.Path(__file__).resolve().parent.parent
+    sys.path.insert(0, str(ROOT / "tools"))
+    import pipeline as pl
     total = None
     last = None
     while time.time() < deadline:
         time.sleep(30)
         try:
-            d = get("/api/state?film=" + F)
+            q = pl.queue(F)
+            imgs = [{"status": t.get("status"), "file": bool(t.get("img"))} for t in q["tasks"]]
         except Exception as e:                                  # noqa: BLE001
-            print("  ✗ 读状态失败：", e, flush=True)
+            print("  ✗ 读队列失败：", e, flush=True)
             continue
-        imgs = d.get("images", [])
         total = total or len(imgs) or 0
         c = Counter(x["status"] for x in imgs)
         done = sum(1 for x in imgs if x.get("file"))
@@ -58,19 +61,22 @@ def main():
         pending = any(x["status"] in ("queued", "retry", "failed") for x in imgs)
         if pending and not worker_running():
             try:
-                sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-                import pipeline as pl
                 q = pl.queue(F)
                 for t in q["tasks"]:
-                    if t["status"] == "failed":
+                    if t["status"] in ("failed", "browser", "generating", "prompt", "fetching") and not t.get("img"):
                         t["status"] = "retry"
                         t["error"] = ""
                 pl.queue_save(F, q)
             except Exception:                               # noqa: BLE001
                 pass
             try:
-                r = post("/api/start-images", {"film": F})
-                print("  ↻ 执行器不在 → 已重启（补排 %s 张）" % r.get("added"), flush=True)
+                logf = ROOT / "logs" / f"gen-{F}.log"
+                logf.parent.mkdir(parents=True, exist_ok=True)
+                subprocess.Popen([sys.executable, str(ROOT / "tools" / "gen_worker.py"), F],
+                                 cwd=str(ROOT), stdout=open(logf, "ab"), stderr=subprocess.STDOUT,
+                                 stdin=subprocess.DEVNULL,
+                                 creationflags=0x00000008 | 0x00000200, close_fds=True)
+                print("  ↻ 执行器不在 → 已重启（直接起 gen_worker，不依赖面板）", flush=True)
             except Exception as e:                              # noqa: BLE001
                 print("  ✗ 重启失败：", e, flush=True)
         if total and done >= total:
