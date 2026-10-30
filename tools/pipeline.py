@@ -131,12 +131,13 @@ def queue_save(proj, q):
     return q
 
 
-def queue_add(proj, page, cast, scene, out=None):
+def queue_add(proj, page, cast, scene, out=None, layout="full"):
     q = queue(proj)
     n = sum(1 for t in q["tasks"] if t.get("page") == page) + 1
     tid = f"{page}-{n}"
     out = out or f"{page}-{tid}.png"
     q["tasks"].append({"id": tid, "page": page, "cast": cast, "scene": scene, "out": out,
+                       "layout": layout,
                        "status": "queued", "tries": 0, "error": "", "img": "", "metrics": {},
                        "at": time.strftime("%Y-%m-%d %H:%M:%S")})
     queue_save(proj, q)

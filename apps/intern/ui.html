@@ -89,6 +89,7 @@ function renderForm(d){
         <div style="flex:1;min-width:220px"><label>片名（可不填）</label><input id="title" placeholder="例：还会爱吗"></div>
         <div><label>多长</label><select id="minutes">${MIN.map(([v,t])=>`<option value="${v}" ${v===6?'selected':''}>${t}</option>`).join('')}</select></div>
         <div><label>谁的声音</label><select id="voice">${Object.entries(d.voices||{}).map(([k,[sp,label]])=>`<option value="${k}">${esc(label)}</option>`).join('')}</select></div>
+        <div><label>套版</label><select id="layout">${Object.entries(d.layouts||{}).map(([k,v])=>`<option value="${k}" ${k==='p2'?'selected':''}>${esc(v.label)}</option>`).join('')}</select></div>
       </div>
       <label>用哪个小朋友当主角</label>
       <div>${Object.entries(d.casts||{}).map(([k,label])=>`<label class="chk"><input type="checkbox" class="cast" value="${esc(k)}" checked>${esc(label)}</label>`).join('')}</div>
@@ -114,6 +115,7 @@ async function start(){
   $('#err').textContent = '';
   const body = { topic, title: $('#title').value.trim(), minutes: +$('#minutes').value,
                  voice: $('#voice').value, materials: $('#materials').value.trim(),
+                 layout_mode: $('#layout').value,
                  cast: [...document.querySelectorAll('.cast')].filter(x=>x.checked).map(x=>x.value) };
   const r = await fetch('/api/start',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
     .then(r=>r.json()).catch(e=>({error:String(e)}));
@@ -135,6 +137,7 @@ function renderProgress(){
   $('#app').innerHTML = `
     <h1>${esc(b.topic ? b.topic.slice(0,30) : S.film)}</h1>
     <p class="sub">${b.minutes?b.minutes+' 分钟':'目标时长待定'} · ${esc(b.voice_label||'')} · 主角 ${esc((b.cast||[]).join('、'))}
+      · 套版 ${esc((d.layouts&&d.layouts[b.layout_mode]&&d.layouts[b.layout_mode].label)||b.layout_mode||'P2 · 70/30')}
       · <a href="#/">回首页</a></p>
     <div class="steps">${(p.steps||[]).map(st).join('')}</div>
     ${p.running?`<p class="hint">现在在做：${esc(p.running)}</p>`:''}

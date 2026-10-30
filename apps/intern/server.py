@@ -31,6 +31,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 import agent_bridge                                          # noqa: E402
 import conductor                                             # noqa: E402
+import decide_layout                                         # noqa: E402
 import pipeline                                              # noqa: E402
 
 UI = pathlib.Path(__file__).resolve().parent / "ui.html"
@@ -43,6 +44,7 @@ VOICES = {
     "female-lively": ("zh-CN-XiaoyiNeural", "女声 · 活泼"),
 }
 CASTS = {"小树": "小男孩（灰发·头顶嫩芽）", "小芽": "小女孩（栗发·头顶嫩芽）"}
+LAYOUTS = decide_layout.MODES
 
 # 三个"点头"的闸门（给实习生看的话）
 GATES = {
@@ -192,7 +194,8 @@ def prompt_images(f):
     return (
         f"分镜已确认。现在给 projects/{f} 出图（第二阶段），只做图、并把图接进页表；不要出片：\n"
         f"1) 按 docs/页-处境映射.md，把每页要生成的处境写进 gen-queue.json（用 tools/pipeline.py 的 queue_add，"
-        f"或直接写文件）：page / cast（小树/小芽）/ scene（谁+在哪+在做什么+光从哪来）/ out 文件名（以页号开头）\n"
+        f"或直接写文件）：page / cast（小树/小芽）/ scene（谁+在哪+在做什么+光从哪来）/ out 文件名（以页号开头）；"
+        f"layout 由脚本按 brief.json 的 layout_mode 自动分配（P1 全 card / P2 70/30），不用你猜\n"
         f"2) 跑 python tools/gen_worker.py {f}（bsk 开浏览器在 Flow 里挂角色 chip 生图，串行，一张约 60–100 秒）\n"
         f"3) 每张出来之后按 character-cards 的一致性判据看图；不合格的标 retry 重排\n"
         f"4) 全部出完：把 page-spec.json 每页的 asset 填成**该页对应的那张图**（图在 projects/scene-library/），"
@@ -260,7 +263,8 @@ class H(BaseHTTPRequestHandler):
             f = one("film")
             if not f:
                 return self._send(200, {"films": [status_row(x) for x in pipeline.projects()],
-                                        "voices": VOICES, "casts": CASTS, "gates": GATES})
+                                        "voices": VOICES, "casts": CASTS, "layouts": LAYOUTS,
+                                        "gates": GATES})
             d = film_dir(f)
             guard_files(f)
             src = pipeline.read_json(d / "script-source.json", {}) or {}
@@ -272,6 +276,8 @@ class H(BaseHTTPRequestHandler):
             }
             return self._send(200, {
                 "film": f, "brief": brief(f), "progress": mini_steps(f),
+                "layout_mode": brief(f).get("layout_mode") or "p2",
+                "layouts": LAYOUTS,
                 "flags": flags,
                 "gates": GATES, "gate_state": pipeline.gate_state(f),
                 "approvals": pipeline.approvals(f),
@@ -348,6 +354,7 @@ class H(BaseHTTPRequestHandler):
         voice_key = b.get("voice") or "female-calm"
         speaker, voice_label = VOICES.get(voice_key, VOICES["female-calm"])
         cast = [c for c in (b.get("cast") or list(CASTS)) if c in CASTS] or list(CASTS)
+        layout_mode = b.get("layout_mode") if b.get("layout_mode") in LAYOUTS else "p2"
         r = pipeline.run([pipeline.PY, "tools/new_film.py", name,
                           "--title", (b.get("title") or topic)[:24], "--minutes", str(minutes), "--force"],
                          timeout=300)
@@ -356,14 +363,14 @@ class H(BaseHTTPRequestHandler):
         d = film_dir(name)
         (d / "brief.json").write_text(json.dumps({
             "topic": topic, "minutes": minutes, "speaker": speaker, "voice_label": voice_label,
-            "cast": cast, "materials": b.get("materials") or "",
+            "cast": cast, "materials": b.get("materials") or "", "layout_mode": layout_mode,
         }, ensure_ascii=False, indent=1), encoding="utf-8")
         # 配音写进 script-source 的 voice（agent 之后改 script-source 时会保留）
         src = pipeline.read_json(d / "script-source.json", {}) or {}
         src["voice"] = {"speaker": speaker, "provider": "edge"}
         src["note"] = (src.get("note") or "")
         (d / "script-source.json").write_text(json.dumps(src, ensure_ascii=False, indent=1), encoding="utf-8")
-        pipeline.emit(name, "say", text=f"新片：{topic}（{minutes:g} 分钟 · {voice_label}）")
+        pipeline.emit(name, "say", text=f"新片：{topic}（{minutes:g} 分钟 · {voice_label} · {LAYOUTS[layout_mode]['label']}）")
         ok, err = ask_agent(name, prompt_script(name, topic, minutes, b.get("materials") or ""))
         return self._send(200, {"ok": ok, "film": name, "error": err})
 
@@ -438,6 +445,11 @@ def build_queue(f):
     have = {t.get("page") for t in q["tasks"] if t.get("status") in ("queued", "retry", "browser",
                                                                      "prompt", "generating", "fetching",
                                                                      "review", "saved", "failed")}
+    d = film_dir(f)
+    mode = brief(f).get("layout_mode") or "p2"
+    src = pipeline.read_json(d / "script-source.json", {}) or {}
+    spec = pipeline.read_json(d / "page-spec.json", []) or []
+    layouts = decide_layout.choose(src.get("pages", []), spec, mode)
     added = 0
     for row in rows:
         pid = (row[0] or "").strip()
@@ -463,7 +475,8 @@ def build_queue(f):
         if not scene:
             continue
         out = f"{page}-{pipeline.slug(what or 'scene')[:14]}.png"
-        pipeline.queue_add(f, page, cast, scene, out)
+        layout = layouts.get(page) or ("card" if mode == "p1" else "full")
+        pipeline.queue_add(f, page, cast, scene, out, layout=layout)
         added += 1
     return added
 

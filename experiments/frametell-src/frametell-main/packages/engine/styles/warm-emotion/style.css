@@ -12,6 +12,28 @@
 
 #frame { background: #F6EFE0; }
 
+/* 字幕带：图铺满之后，底部 18% 用纸色收一下，母版也要有干净的字幕带。
+   18% 是纯色带，18–24% 做柔和过渡，画面仍然是满的。 */
+#frame::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 24%;
+  pointer-events: none;
+  z-index: 31;
+  background: linear-gradient(to top,
+    rgba(251, 247, 237, 0.96) 0%,
+    rgba(251, 247, 237, 0.96) 75%,
+    rgba(251, 247, 237, 0) 100%);
+}
+
+html[data-theme="night"] #frame::after {
+  background: linear-gradient(to top,
+    rgba(22, 19, 16, 0.96) 0%,
+    rgba(22, 19, 16, 0.96) 75%,
+    rgba(22, 19, 16, 0) 100%);
+}
+
 /* 日间：四角只压一点点，像纸被翻久了 */
 #vignette {
   background: radial-gradient(ellipse 80% 75% at 50% 45%, transparent 58%, rgba(90, 60, 35, 0.12) 100%);

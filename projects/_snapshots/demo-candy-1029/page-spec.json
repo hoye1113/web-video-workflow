@@ -1,0 +1,76 @@
+[
+ {
+  "id": "p01",
+  "title": "她总把最后一块糖，留到化了才吃",
+  "asset": "p01-last-candy-v2.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.2
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "最后一块",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "full"
+ },
+ {
+  "id": "p02",
+  "title": "她说，好东西要留到最后，才不算浪费",
+  "asset": "p02-candy-tin-v2.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.35,
+   1,
+   0.2,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p03",
+  "title": "后来她才知道，有些甜，等不了那么久",
+  "asset": "p03-melted-candy-v2.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.35,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p04",
+  "title": "那天，她把糖放进嘴里，笑了",
+  "asset": "p04-candy-smile-close.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.4
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "close"
+ }
+]

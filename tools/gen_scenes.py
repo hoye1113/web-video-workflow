@@ -33,7 +33,15 @@ LOG = LIB / "batch-c-log.jsonl"
 SHOTS = ROOT / "experiments" / "uitest" / "flow"
 
 STYLE = "暖色纸本插画，平涂加细铅笔线，一支笔的笔触，不描粗边不发光。"
-TAIL = "米白纸底留白多，画面下方 20% 完全留空，不要任何文字、不要图表、不要箭头、不要圆圈、不要边框。"
+# P1 原版：小图 + 四周留白；P2 的 full 页用铺满；P2 的 close 页用干净特写。
+CARD_TAIL = ("米白纸底留白多，画面下方 20% 完全留空，"
+             "不要任何文字、不要图表、不要箭头、不要圆圈、不要边框。")
+TAIL = ("画面铺满整张画布，主体占画面 65–80%，背景延伸到四边，"
+        "周围补足与场景一致的环境元素（家具、窗、墙、植物、光影），不要外圈大片留白。"
+        "画面下方 18% 只保留干净的纸面或地面，不要任何文字、不要图表、不要箭头、不要圆圈、不要边框。")
+CLOSE_TAIL = ("近景/特写，干净米白纸底，背景只保留极简环境或纯纸面，主体占画面 60–80%，"
+              "不要家具、植物、房间杂物，不要外圈大片留白。"
+              "画面下方 18% 完全留空，不要任何文字、不要图表、不要箭头、不要圆圈、不要边框。")
 
 # 顺序有讲究：**同一个角色连做**，最后才换角色（换角色要清 chip，重启会话最稳）
 ITEMS = [
@@ -78,8 +86,10 @@ ITEMS = [
 ]
 
 
-def full_prompt(scene):
-    return STYLE + scene + "。" + TAIL
+def full_prompt(scene, layout="full"):
+    """layout: card（P1 原版留白）| full（P2 处境页铺满）| close（P2 情绪特写/干净背景）。"""
+    tail = {"card": CARD_TAIL, "close": CLOSE_TAIL}.get(layout, TAIL)
+    return STYLE + scene + "。" + tail
 
 
 def metrics(png):
