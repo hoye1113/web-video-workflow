@@ -103,6 +103,7 @@ python tools/qc_snap.py                 # 逐页抽帧对照表（看图用）
 | **角色资产** | `projects/character-assets/character-cards.md`（实测色板、禁令） |
 | **页 → 处境映射（第一部）** | `projects/emotion-full/docs/页-处境映射.md` |
 | **FRAMETELL 怎么做到稳定好看** | `docs/FRAMETELL拆解.md`；fork 的改动清单在 `experiments/frametell-src/frametell-main/OURS.md` |
+| **参考：huashu-design 有什么可借** | `docs/参考-huashu-design.md`（存档，不接入生产） |
 
 **历史文档（已被取代，只作留档）**：`docs/P2-待拍板.md`、`docs/P3-P4-方案.md`、`PRD-video-factory.md`。
 
