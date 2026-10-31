@@ -158,6 +158,10 @@ def do_one(f, proj, t):
     got = []
     while time.time() < deadline:
         time.sleep(6)
+        # Flow 的安全策略会在页面里留一条 error，但界面上“生成中”会一直转 ——
+        # 不识别它就会白等 300 秒，还只报“没等到新图”。（2026-10-31 踩过）
+        if f._run('(document.body.innerText||"").includes("violate our policies")'):
+            raise RuntimeError('Flow 安全策略拦截：这张的画面描述要改写（换场景/换动作/去掉私密空间）')
         cur = f._image_bases()
         fresh = [b for b in sorted(cur - before) if b not in f._rejected]
         if fresh:
