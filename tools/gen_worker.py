@@ -21,6 +21,7 @@
     python tools/gen_worker.py <片名> --once       # 只做一张（调试用）
 """
 import argparse
+import json
 import base64
 import io
 import pathlib
@@ -136,18 +137,12 @@ def do_one(f, proj, t):
         if not wait_ready(f, tries=6):
             raise RuntimeError("提示词写进去了，但「生成」按钮一直是灰的（Flow 没认这次输入）")
 
-    # ② 点生成 + 确认真的开始出图
-    started = False
-    for attempt in range(3):
-        c = f._click_generate()
-        if not isinstance(c, dict) or not c.get("ok"):
-            raise RuntimeError(f"点不到生成按钮：{c}")
-        if wait_started(f):
-            started = True
-            break
-        say(proj, f"    生成没启动（第 {attempt + 1} 次点击），再点一次")
-    if not started:
-        raise RuntimeError("点了生成，Flow 一直没进入出图状态")
+    # ② 点生成。**新版界面点完之后提示框不清空、也没有 stop 按钮**，
+    # 所以不能再靠 wait_started 判断"是否开始"——直接点一次，后面等新图即可。
+    # （2026-11-03 bsk 0.4 + Flow 新版：JS 点击可用，原生点击报 "not ready for native input"）
+    c = f._click_generate()
+    if not isinstance(c, dict) or not c.get("ok"):
+        raise RuntimeError(f"点不到生成按钮：{c}")
 
     pipeline.queue_set(proj, t["id"], status="generating")
     pipeline.emit(proj, "page", id=t["page"], status="generating", detail="生成中（约 60–100 秒）")
@@ -156,13 +151,17 @@ def do_one(f, proj, t):
     before = set(f.known) | f._image_bases()
     deadline = time.time() + 300
     got = []
+    tick = 0
     while time.time() < deadline:
         time.sleep(6)
+        tick += 1
         # Flow 的安全策略会在页面里留一条 error，但界面上“生成中”会一直转 ——
         # 不识别它就会白等 300 秒，还只报“没等到新图”。（2026-10-31 踩过）
         if f._run('(document.body.innerText||"").includes("violate our policies")'):
             raise RuntimeError('Flow 安全策略拦截：这张的画面描述要改写（换场景/换动作/去掉私密空间）')
-        cur = f._image_bases()
+        # 新版网格是虚拟滚动：新图可能在 DOM 外，隔几次**滚一遍取并集**再比
+        # （2026-11-03 Flow 新版 + bsk 0.4 踩过：只看当前 DOM 永远等不到）
+        cur = set(f._full_bases()) if tick % 3 == 0 else set(f._image_bases())
         fresh = [b for b in sorted(cur - before) if b not in f._rejected]
         if fresh:
             time.sleep(8)                          # 等原图就位

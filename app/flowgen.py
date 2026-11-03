@@ -33,13 +33,88 @@ def _env():
     return e
 
 
+# bsk 0.4 起，共享标签页上的动作要先 `cooperate sync` 拿 context/observation，
+# 否则 evaluate/click 全部返回 permission_denied（2026-11-03 升级后踩到）。
+_NEED_CTX = {"evaluate", "click", "fill", "press", "select", "upload",
+             "scroll-to", "focus", "blur", "hover", "navigate", "get-html"}
+
+
+def _coop(sid):
+    """返回 (context_id, observation_id)；失败就返回 (None, None)。"""
+    try:
+        r = subprocess.run([BSK, "cooperate", "sync", "--session", sid, "--json"],
+                           capture_output=True, text=True, encoding="utf-8",
+                           errors="replace", env=_env(), timeout=90)
+        t = (r.stdout or "").strip()
+        i = t.find("{")
+        d = json.loads(t[i:]) if i >= 0 else {}
+        return d.get("context_id"), d.get("observation_id")
+    except Exception:                                          # noqa: BLE001
+        return None, None
+
+
 def _bsk(*args, timeout=120, json_out=False):
-    cmd = [BSK] + [str(a) for a in args]
+    args = [str(a) for a in args]
+    cmd = [BSK] + args
+    act = args[0] if args else ""
+    if act in _NEED_CTX:
+        sid = ""
+        for i, a in enumerate(args):
+            if a == "--session" and i + 1 < len(args):
+                sid = args[i + 1]
+                break
+        if sid:
+            ctx, obs = _coop(sid)
+            if ctx:
+                cmd += ["--context", ctx]
+            if obs and act in ("evaluate", "press"):
+                cmd += ["--observation", obs]
     if json_out:
         cmd.append("--json")
     r = subprocess.run(cmd, capture_output=True, text=True,
                        encoding="utf-8", errors="replace", env=_env(), timeout=timeout)
     return r.stdout or "", r.stderr or "", r.returncode
+
+
+def _focus_window():
+    """把 Chrome 的 Flow 窗口提到前台。
+
+    bsk 0.4 的原生点击要求窗口在最前台，否则报
+    "the browser did not become ready for native input"（2026-11-03 踩过）。
+    做法：ESC 关掉挡路的浮层 → 点一下标题栏激活窗口 → SetForegroundWindow。
+    """
+    try:
+        import ctypes
+        import ctypes.wintypes as wt
+        u = ctypes.windll.user32
+        u.keybd_event(0x1B, 0, 0, 0)
+        u.keybd_event(0x1B, 0, 2, 0)
+        time.sleep(0.2)
+        wins = []
+
+        @ctypes.WINFUNCTYPE(ctypes.c_bool, wt.HWND, wt.LPARAM)
+        def cb(h, l):
+            b = ctypes.create_unicode_buffer(512)
+            u.GetWindowTextW(h, b, 512)
+            if "Google Flow" in b.value:
+                wins.append(h)
+            return True
+
+        u.EnumWindows(cb, 0)
+        for h in wins[:1]:
+            u.ShowWindow(h, 9)                       # SW_RESTORE
+            r = wt.RECT()
+            if u.GetWindowRect(h, ctypes.byref(r)):
+                u.SetCursorPos(r.left + 200, r.top + 10)   # 标题栏，不碰页面内容
+                u.mouse_event(0x0002, 0, 0, 0, 0)          # 左键按下
+                u.mouse_event(0x0004, 0, 0, 0, 0)          # 抬起
+                time.sleep(0.2)
+            u.SetForegroundWindow(h)
+            u.BringWindowToTop(h)
+        time.sleep(0.3)
+        return bool(wins)
+    except Exception:                                          # noqa: BLE001
+        return False
 
 
 def daemon_ok():
@@ -122,7 +197,7 @@ class Flow:
     # ---------- 会话 ----------
 
     def open(self):
-        out, err, _ = _bsk("session", "start", json_out=True, timeout=180)
+        out, err, _ = _bsk("session", "start", "--focus", json_out=True, timeout=180)
         try:
             self.sid = json.loads(out).get("session_id")
         except Exception:                                      # noqa: BLE001
@@ -166,7 +241,7 @@ class Flow:
         用法：角色挂载、批量生图都走这里。项目地址是这个：
         https://flow.google.com/project/2423a8a2-2219-4dd5-83ea-563fd00a79fb（video-factory）
         """
-        out, err, _ = _bsk("session", "start", json_out=True, timeout=180)
+        out, err, _ = _bsk("session", "start", "--focus", json_out=True, timeout=180)
         try:
             self.sid = json.loads(out).get("session_id")
         except Exception:                                      # noqa: BLE001
@@ -186,6 +261,8 @@ class Flow:
         self._dismiss_changelog()
         if not self._wait_composer():
             raise RuntimeError("项目页打开了但输入区一直没出现（Flow 可能卡住/没登录）")
+        _focus_window()          # bsk 0.4：原生点击要求窗口在前台
+        time.sleep(0.6)
         # **滚一遍取并集**：网格虚拟滚动，读一次取不全 → 后面会"把老图当新图"
         self.known = self._full_bases()
         self._sigs = None
@@ -292,6 +369,20 @@ class Flow:
         2026-10-21 界面更新：生成按钮是输入框右侧的箭头，`aria-label="Start generation"`，
         **不带文字** —— 所以先按 aria-label 用 DOM 找，找不到再退回 observe（兼容旧界面）。
         """
+        # 2026-11-03：bsk 0.4 的原生点击要求窗口在前台；JS 点击 Flow 不认（不触发）。
+        # 顺序：确保窗口在前台 → 原生点击 → 失败再提一次前台重试 → 最后才退回 JS。
+        _focus_window()
+        time.sleep(0.5)
+        # bsk 0.4 + Flow 新版：生成按钮的原生点击会被拒（not ready for native input），
+        # 但输入框里按 **Enter** 能正常提交（2026-11-03 实测）。
+        self._run('(()=>{const e=[...document.querySelectorAll(\'[contenteditable=true]\')].pop();if(e)e.focus();return 1})()')
+        oE, eE, cE = _bsk("press", "Enter", "--session", self.sid, timeout=60)
+        if "press ok" in (oE or "") or cE == 0:
+            return {"ok": True, "ref": "enter", "out": (oE or eE or "")[:80]}
+        js = ("(()=>{const b=[...document.querySelectorAll('button,[role=button]')].find(x=>"
+              "/start generation|开始生成/i.test(x.getAttribute('aria-label')||''));"
+              "if(!b)return 'no';if(b.disabled)return 'disabled';b.click();return 'ok';})()")
+
         hit = self._run(
             "(()=>{const b=[...document.querySelectorAll('button,[role=button]')].find(x=>"
             "/start generation|开始生成/i.test(x.getAttribute('aria-label')||''));"
@@ -299,9 +390,19 @@ class Flow:
             "return {ok:true,label:b.getAttribute('aria-label')};})()"
         )
         if isinstance(hit, dict) and hit.get("ok"):
-            o2, e2, c2 = _bsk("click", "--session", self.sid, "--selector", "[data-vf-gen='1']", timeout=180)
-            ok = "click ok" in (o2 or "") or c2 == 0
-            return {"ok": ok, "ref": "aria:" + str(hit.get("label")), "out": (o2 or e2 or "")[:120]}
+            last = ""
+            for attempt in range(3):
+                o2, e2, c2 = _bsk("click", "--session", self.sid, "--selector", "[data-vf-gen='1']", timeout=180)
+                last = (o2 or e2 or "")[:120]
+                if "click ok" in (o2 or "") or c2 == 0:
+                    return {"ok": True, "ref": "aria:" + str(hit.get("label")), "out": last}
+                if "not ready" in last:
+                    _focus_window()          # 窗口被切走 → 提回前台再点
+                    time.sleep(1.2)
+                    continue
+                break
+            jr = self._run(js)
+            return {"ok": jr == "ok", "ref": "js", "out": last + " / js=" + str(jr)}
 
         out, err, _ = _bsk("observe", "--session", self.sid,
                            "--max-tokens", "6000", timeout=180)
