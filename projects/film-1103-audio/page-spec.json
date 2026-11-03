@@ -1,0 +1,385 @@
+[
+ {
+  "id": "p01",
+  "title": "婚姻里错了可以改",
+  "asset": "f1103-p01.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "回不去了",
+    250,
+    230,
+    44,
+    "l",
+    "#E8DCCB",
+    1.2
+   ]
+  ],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p02",
+  "title": "我都已经给了她无数次机会了",
+  "asset": "f1103-p02.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p03",
+  "title": "她反复主动靠近",
+  "asset": "f1103-p03.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "反复靠近",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p04",
+  "title": "难道你真的希望在离婚之后",
+  "asset": "f1103-p04.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p05",
+  "title": "说放下就能放下了",
+  "asset": "f1103-p05.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p06",
+  "title": "那她曾经对你的爱",
+  "asset": "f1103-p06.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p07",
+  "title": "这一切的背后",
+  "asset": "f1103-p07.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "舍不得",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p08",
+  "title": "你不妨为这段婚姻",
+  "asset": "f1103-p08.png",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p09",
+  "title": "好像轻松了自由了",
+  "asset": "f1103-p09.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p10",
+  "title": "满脑子都在自动播放",
+  "asset": "f1103-p10.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p11",
+  "title": "所以你不知道",
+  "asset": "f1103-p11.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p12",
+  "title": "她可不是没人要",
+  "asset": "f1103-p12.png",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p13",
+  "title": "不想这个家就这样散了",
+  "asset": "f1103-p13.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "尊严",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p14",
+  "title": "在她的骨子里",
+  "asset": "f1103-p14.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p15",
+  "title": "总是主动沟通的人了好吗",
+  "asset": "f1103-p15.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p16",
+  "title": "是她害怕失去你的慌张",
+  "asset": "f1103-p16.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p17",
+  "title": "能遇到一个愿意",
+  "asset": "f1103-p17.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "别等",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p18",
+  "title": "彻底转身抽离的时候",
+  "asset": "f1103-p18.png",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p19",
+  "title": "可以发重圆两个字",
+  "asset": "f1103-p19.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "重圆",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "card",
+  "layout_manual": true
+ }
+]
