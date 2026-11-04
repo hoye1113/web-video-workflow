@@ -152,7 +152,7 @@ def main(argv):
         "    gap: 0,",
         "    voice: { speaker: 'audio', provider: 'audio' },",
         "    extras: ['engine/styles/warm-emotion/kit.js'],",
-        "    pace: { lead: 0, gap: 0, maxHold: 0, tail: 1.0 },",
+        "    pace: { lead: 0, gap: 0, maxHold: 0, comma: 0, stop: 0, pageEnd: 0, tail: 1.0 },",
         "  };",
         "  const PAGES = [",
     ]

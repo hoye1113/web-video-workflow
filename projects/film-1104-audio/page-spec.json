@@ -1,0 +1,727 @@
+[
+ {
+  "id": "p01",
+  "title": "夫妻闹到哪一步就没必要在一起了",
+  "asset": "f1104-p01.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "为什么",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p02",
+  "title": "夫妻之间闹到什么程度",
+  "asset": "f1104-p02.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p03",
+  "title": "但有些底线一旦被反复踩踏",
+  "asset": "f1104-p03.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p04",
+  "title": "第一种沟通已经变成了指责与反击",
+  "asset": "f1104-p04.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "第一种",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p05",
+  "title": "当你们一开口就火药味十足",
+  "asset": "f1104-p05.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p06",
+  "title": "你说一句，对方怼十句",
+  "asset": "f1104-p06.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p07",
+  "title": "因为对方告诉你",
+  "asset": "f1104-p07.png",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p08",
+  "title": "失望累积到彻底麻木了很多婚姻",
+  "asset": "f1104-p08.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "第二种",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p09",
+  "title": "你提醒过沟通过崩溃过",
+  "asset": "f1104-p09.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p10",
+  "title": "最后你不是不爱了",
+  "asset": "f1104-p10.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "安静",
+    250,
+    230,
+    44,
+    "l",
+    "#E8DCCB",
+    1.2
+   ]
+  ],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p11",
+  "title": "心凉是婚姻死亡最大的信号",
+  "asset": "f1104-p11.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p12",
+  "title": "一个人永远在付出",
+  "asset": "f1104-p12.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "第三种",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p13",
+  "title": "家里所有的责任都是你在扛着",
+  "asset": "f1104-p13.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p14",
+  "title": "对方却觉得理所当然",
+  "asset": "f1104-p14.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p15",
+  "title": "只会越来越痛苦",
+  "asset": "f1104-p15.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p16",
+  "title": "不值得你继续心软第四种",
+  "asset": "f1104-p16.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "第四种",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p17",
+  "title": "而是对方不把你当回事",
+  "asset": "f1104-p17.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p18",
+  "title": "可以为了朋友搁置你的需要",
+  "asset": "f1104-p18.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p19",
+  "title": "当尊重没了",
+  "asset": "f1104-p19.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "空壳",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p20",
+  "title": "信任已经碎得捡不回来了",
+  "asset": "f1104-p20.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "第五种",
+    250,
+    230,
+    44,
+    "l",
+    "#E8DCCB",
+    1.2
+   ]
+  ],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p21",
+  "title": "最可怕的不是问题本身",
+  "asset": "f1104-p21.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p22",
+  "title": "对方嫌你烦",
+  "asset": "f1104-p22.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p23",
+  "title": "信任缺口大到补不回来时",
+  "asset": "f1104-p23.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "第六种",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p24",
+  "title": "如果一段婚姻让你变得紧张",
+  "asset": "f1104-p24.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p25",
+  "title": "是你在一段错误的关系里待太久了",
+  "asset": "f1104-p25.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p26",
+  "title": "你越来越像一个被驯化的伴侣",
+  "asset": "f1104-p26.png",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p27",
+  "title": "而不是越来越憋屈第七种",
+  "asset": "f1104-p27.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "第七种",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p28",
+  "title": "要不要一起努力这些最基本的想法",
+  "asset": "f1104-p28.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p29",
+  "title": "而是你心里已经知道答案了",
+  "asset": "f1104-p29.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p30",
+  "title": "真的没必要再继续了很简单",
+  "asset": "f1104-p30.png",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p31",
+  "title": "不再被尊重",
+  "asset": "f1104-p31.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "失去自己",
+    250,
+    230,
+    44,
+    "l",
+    "#E8DCCB",
+    1.2
+   ]
+  ],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p32",
+  "title": "沉默才可怕",
+  "asset": "f1104-p32.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p33",
+  "title": "最后我想说一句",
+  "asset": "f1104-p33.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "最后",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p34",
+  "title": "修不好的婚姻是你一个人苦撑",
+  "asset": "f1104-p34.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "card",
+  "layout_manual": true
+ },
+ {
+  "id": "p35",
+  "title": "愿你被理解被珍惜",
+  "asset": "f1104-p35.png",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "放手",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "card",
+  "layout_manual": true
+ }
+]

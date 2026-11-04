@@ -72,7 +72,7 @@
         if (v) {
           // the page's last cue: no hold, short pause — the page turn itself is the breath
           const lastCue = ci === pg.cues.length - 1;
-          const pause = lastCue ? VOICE.pageEnd : /[。？！?!.]$/.test(text) ? VOICE.stop : VOICE.comma, h = lastCue ? 0 : Math.min(hold, V.maxHold);
+          const pause = lastCue ? V.pageEnd : /[。？！?!.]$/.test(text) ? V.stop : V.comma, h = lastCue ? 0 : Math.min(hold, V.maxHold);
           const cue = { text, sub: subText(text), start: ct, end: ct + v.d + pause * 0.9, hold: h, audio: v.f, audioAt: ct, dur: v.d, k: v.k };
           ct += v.d + pause + h;
           return cue;
