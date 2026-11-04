@@ -1,0 +1,33 @@
+{
+ "id": "vlog-cast",
+ "status": "draft",
+ "style": "japanese-soft-cute",
+ "names": {
+  "male": "阿澈",
+  "female": "小满"
+ },
+ "options": {
+  "a": {
+   "label": "团子版",
+   "male_ref": "refs/vlog-a-che.png",
+   "female_ref": "refs/vlog-a-man.png",
+   "male_outfit": "白色团子身体 + 黑色领带",
+   "female_outfit": "白色团子 + 白色婚纱 + 白色头纱 + 灰棕色微卷刘海",
+   "mark": "单叶芽"
+  },
+  "b": {
+   "label": "日系人类版",
+   "male_ref": "refs/vlog-b-che.png",
+   "female_ref": "refs/vlog-b-man.png",
+   "male_outfit": "黑色西装 + 白衬衫 + 黑领带 + 绿色叶子胸针",
+   "female_outfit": "白色婚纱 + 白色头纱 + 灰栗色微卷短发 + 绿色叶子发夹",
+   "mark": "绿色叶子配饰"
+  }
+ },
+ "fixed_role": "情侣或夫妻，按文案切换",
+ "notes": [
+  "不使用小树/小芽的双叶嫩芽",
+  "角色长期复用，服装固定不换",
+  "选版后在 Flow 建 Character"
+ ]
+}
