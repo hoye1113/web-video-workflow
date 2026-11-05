@@ -55,24 +55,48 @@ def _coop(sid):
 
 def _bsk(*args, timeout=120, json_out=False):
     args = [str(a) for a in args]
-    cmd = [BSK] + args
     act = args[0] if args else ""
-    if act in _NEED_CTX:
-        sid = ""
-        for i, a in enumerate(args):
-            if a == "--session" and i + 1 < len(args):
-                sid = args[i + 1]
-                break
-        if sid:
+    sid = ""
+    for i, a in enumerate(args):
+        if a == "--session" and i + 1 < len(args):
+            sid = args[i + 1]
+            break
+
+    def build():
+        cmd = [BSK] + args
+        if act in _NEED_CTX and sid:
             ctx, obs = _coop(sid)
             if ctx:
                 cmd += ["--context", ctx]
             if obs and act in ("evaluate", "press"):
                 cmd += ["--observation", obs]
-    if json_out:
-        cmd.append("--json")
-    r = subprocess.run(cmd, capture_output=True, text=True,
+        if json_out:
+            cmd.append("--json")
+        return cmd
+
+    r = subprocess.run(build(), capture_output=True, text=True,
                        encoding="utf-8", errors="replace", env=_env(), timeout=timeout)
+    msg = (r.stdout or "") + (r.stderr or "")
+    # 0.4 的共享控制：人在操作这个标签页时，agent 会被拒（user has control）。
+    # 等对方交还控制权，然后重新同步再试一次。
+    if r.returncode != 0 and ("user has control" in msg or "User activity revoked" in msg) and sid:
+        # 协议 1.8 把 agent 自己的按键也记成 user activity → 控制权被收回。
+        # 这里主动把控制权拿回来（sync --policy target），重试一次；不行再等人工交还。
+        try:
+            subprocess.run([BSK, "cooperate", "sync", "--session", sid, "--policy", "target", "--json"],
+                           capture_output=True, timeout=90, env=_env())
+        except Exception:                                      # noqa: BLE001
+            pass
+        r = subprocess.run(build(), capture_output=True, text=True,
+                           encoding="utf-8", errors="replace", env=_env(), timeout=timeout)
+        if r.returncode != 0 and "user has control" in ((r.stdout or "") + (r.stderr or "")) and sid:
+            try:
+                subprocess.run([BSK, "cooperate", "wait", "--session", sid, "--json"],
+                               capture_output=True, timeout=300, env=_env())
+            except Exception:                                  # noqa: BLE001
+                pass
+            r = subprocess.run(build(), capture_output=True, text=True,
+                               encoding="utf-8", errors="replace", env=_env(), timeout=timeout)
     return r.stdout or "", r.stderr or "", r.returncode
 
 
