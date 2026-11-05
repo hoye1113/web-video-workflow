@@ -68,6 +68,10 @@
 - **1bubu**：当前 Flow Portrait 仍是 `1bubu-sheet-bright.png`，待替换为 v4
 - **2bubu**：当前 Flow Portrait 仍是 `2bubu-sheet-bright.png`，待替换为 v12
 
+> **2026-11-06 替换尝试未生效**：在 Flow 角色编辑器里删除旧 Portrait → Upload v4/v12 → Done，
+> 页面预览和下载仍是旧图；用 1bubu chip 做生成测试，出来的仍是小眼旧版。
+> 本地模板已定稿并入库，Flow 端需要换一种方式（重建角色或查上传缓存）再替换。
+
 `attach_character('1bubu')` / `('2bubu')` 均验证过可挂载。
 
 > 建角色流程：New character → Upload 设定图 → Edit name → Done。
