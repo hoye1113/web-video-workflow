@@ -463,8 +463,14 @@ def build_queue(f):
         scene = re.sub(r"（[^（）]*\*\*[^（）]*）", "", scene or "")
         scene = scene.replace("**", "").strip()
         cast_raw = (row[3] if len(row) > 3 else "") or ""
-        if "小树" in cast_raw and "小芽" in cast_raw:
-            cast = "小树+小芽"          # 双人同框：两个 chip 都挂
+        if "1bubu" in cast_raw and "2bubu" in cast_raw:
+            cast = "1bubu+2bubu"       # 双人同框：两个 chip 都挂
+        elif "1bubu" in cast_raw:
+            cast = "1bubu"
+        elif "2bubu" in cast_raw:
+            cast = "2bubu"
+        elif "小树" in cast_raw and "小芽" in cast_raw:
+            cast = "小树+小芽"
         elif "小芽" in cast_raw:
             cast = "小芽"
         elif "小树" in cast_raw:
