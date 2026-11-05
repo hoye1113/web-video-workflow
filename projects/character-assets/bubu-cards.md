@@ -37,7 +37,7 @@
 3. 画面下方 18% 留给字幕；
 4. 两人同框时两个 chip 都要挂（`1bubu+2bubu`），否则另一半会被模型自由发挥。
 
-## Flow 角色（待建）
+## Flow 角色（已建好，2026-11-05）
 
 在 Flow 项目 `video-factory` → Characters → New character → **Upload**：
 

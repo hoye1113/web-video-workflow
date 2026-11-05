@@ -68,7 +68,7 @@ def _bsk(*args, timeout=120, json_out=False):
             ctx, obs = _coop(sid)
             if ctx:
                 cmd += ["--context", ctx]
-            if obs and act in ("evaluate", "press"):
+            if obs and act in ("evaluate", "press", "navigate", "upload", "fill", "select", "hover", "scroll-to"):
                 cmd += ["--observation", obs]
         if json_out:
             cmd.append("--json")
