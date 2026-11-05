@@ -1,0 +1,1470 @@
+[
+ {
+  "id": "p01",
+  "title": "想重归于好，先离开追蛇",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "追蛇效应",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p02",
+  "title": "婚姻里被忽略的陷阱",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "心理陷阱",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p03",
+  "title": "从愿意沟通到无话可说",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "无话可说",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p04",
+  "title": "一个追着解释，一个躲",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "一个追一个躲",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p05",
+  "title": "你们可能困在追蛇效应",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": []
+ },
+ {
+  "id": "p06",
+  "title": "一句和好，会传到心里",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "一句和好",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p07",
+  "title": "那个被蛇咬了的假设",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": []
+ },
+ {
+  "id": "p08",
+  "title": "先处理伤口，别追蛇",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "先处理伤口",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p09",
+  "title": "追着蛇跑，自己先倒下",
+  "asset": "",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": []
+ },
+ {
+  "id": "p10",
+  "title": "婚姻里也有那条蛇",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "婚姻里的蛇",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p11",
+  "title": "追问越多，对方越沉默",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "越问越急",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p12",
+  "title": "越想靠近，越想躲开",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "更想躲",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p13",
+  "title": "越问越急，翻出旧账",
+  "asset": "",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "翻旧账",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p14",
+  "title": "非要今天说清楚",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": []
+ },
+ {
+  "id": "p15",
+  "title": "越追越伤，越防越远",
+  "asset": "",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "越追越伤",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p16",
+  "title": "沟通成审问，沉默成惩罚",
+  "asset": "",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "越走越远",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p17",
+  "title": "问题要面对，伤害要看见",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": []
+ },
+ {
+  "id": "p18",
+  "title": "先看见伤害，再谈对错",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "先看见",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p19",
+  "title": "三个破局点，先退一步",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "三个破局点",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p20",
+  "title": "第一步：先处理自己的伤口",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "第一步",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p21",
+  "title": "吵架时，情绪先跑了出来",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "情绪先行",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p22",
+  "title": "一条晚回的消息",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "晚回的消息",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p23",
+  "title": "听见的不只是一句气话",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "不只是一句",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p24",
+  "title": "感受是真的，但不等于事实",
+  "asset": "",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "感受不是事实",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p25",
+  "title": "指责把人推得更远",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": []
+ },
+ {
+  "id": "p26",
+  "title": "先停一停，给自己缓冲",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "先停一停",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p27",
+  "title": "我现在最难受的是什么",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": []
+ },
+ {
+  "id": "p28",
+  "title": "把感受写下来，分清事实",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": []
+ },
+ {
+  "id": "p29",
+  "title": "说出需要，而不是指责",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "说出需要",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p30",
+  "title": "这几天，我们很少好好说话",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "我有些孤单",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p31",
+  "title": "让表达从攻击变成沟通",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "攻击变沟通",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p32",
+  "title": "成熟，是生气也不说狠话",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "生气不说狠话",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p33",
+  "title": "第二步：照顾好自己的需求",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "第二步",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p34",
+  "title": "别把伴侣当成唯一出口",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "唯一出口",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p35",
+  "title": "那些希望被接住的时刻",
+  "asset": "",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": []
+ },
+ {
+  "id": "p36",
+  "title": "合理需求，也要说清楚",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": []
+ },
+ {
+  "id": "p37",
+  "title": "陪伴与回应，不是太依赖",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "不是太依赖",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p38",
+  "title": "没有人能填满所有空缺",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": []
+ },
+ {
+  "id": "p39",
+  "title": "说清需求，也建立支撑",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "建立支撑",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p40",
+  "title": "给生活留一点自己的时间",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": []
+ },
+ {
+  "id": "p41",
+  "title": "重新分配，也重新成长",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "重新分配",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p42",
+  "title": "独立，不是不需要伴侣",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "不是不需要",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p43",
+  "title": "别把价值交给一个表情",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": []
+ },
+ {
+  "id": "p44",
+  "title": "为自己的生活负责",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "为自己负责",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p45",
+  "title": "你有压力，也有边界",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "压力与边界",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p46",
+  "title": "别让情绪成为婚姻主角",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "情绪主角",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p47",
+  "title": "做自己情绪的主人",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "情绪主人",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p48",
+  "title": "你永远有选择态度的自由",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "选择态度",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p49",
+  "title": "冷战，还是先缓半小时",
+  "asset": "",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "先缓半小时",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p50",
+  "title": "暂停不是消失",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "暂停不是消失",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p51",
+  "title": "说清原因，约定回来",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": []
+ },
+ {
+  "id": "p52",
+  "title": "别让冷静变成被抛下",
+  "asset": "",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "别被抛下",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p53",
+  "title": "管理自己的反应",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": []
+ },
+ {
+  "id": "p54",
+  "title": "该表达时表达，该倾听时倾听",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "表达与倾听",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p55",
+  "title": "道歉别拿家当挡箭牌",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": []
+ },
+ {
+  "id": "p56",
+  "title": "不假装没发生，说清边界",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "说清边界",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p57",
+  "title": "不是谁先低头谁就输",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "不是谁先低头",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p58",
+  "title": "把争论拉回眼前这件事",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "拉回这件事",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p59",
+  "title": "先听完，再复述重点",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "先听完",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p60",
+  "title": "再说感受，把问题拆小",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": []
+ },
+ {
+  "id": "p61",
+  "title": "留一段不被打断的时间",
+  "asset": "",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "不被打断",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p62",
+  "title": "需要时，寻求专业支持",
+  "asset": "",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "寻求支持",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ },
+ {
+  "id": "p63",
+  "title": "先保护自己，不必独自承受",
+  "asset": "",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "layout": "full",
+  "texts": [
+   [
+    "先保护自己",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.4
+   ]
+  ]
+ }
+]
