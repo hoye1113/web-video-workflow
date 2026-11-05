@@ -1,0 +1,54 @@
+{
+ "updated": "2026-11-05",
+ "style_presets": {
+  "bubu-bright": {
+   "label": "治愈扁平 · 明亮活泼",
+   "prompt": "治愈系Q版卡通插画，扁平柔和画风，圆润极简的卡通角色；明亮活泼的配色，阳光清爽、通透明亮；干净简约线条；无复杂阴影、无高光渐变、无厚涂纹理；可爱的圆形腮红，画面平整洁净。",
+   "tail": "米白纯色背景，画面干净，主体占画面中部，画面下方 18% 留空（字幕带），不要任何文字、不要图表、不要箭头、不要边框、不要地面阴影。",
+   "negative": "复杂阴影、渐变高光、厚涂笔触、纸纹颗粒、发光、描粗边、写实、3D 渲染、暗沉配色"
+  },
+  "warm-paper": {
+   "label": "暖色纸本（小树/小芽）",
+   "prompt": "暖色纸本插画，平涂加细铅笔线，一支笔的笔触，不描粗边不发光。",
+   "tail": "米白纸底留白多，画面下方 20% 完全留空，不要任何文字、不要图表、不要箭头、不要圆圈、不要边框。"
+  }
+ },
+ "characters": {
+  "1bubu": {
+   "kind": "棕色小熊（男）",
+   "sheet": "1bubu-sheet-bright.png",
+   "alt": "1bubu-sheet-bright-v2.png",
+   "style": "bubu-bright",
+   "flow_character": "1bubu",
+   "traits": "杏棕/焦糖奶油色、圆耳深棕内耳、嫩黄圆腮红、深棕圆点眼、吐小舌头、短圆尾；头大身小"
+  },
+  "2bubu": {
+   "kind": "暖白小熊",
+   "sheet": "2bubu-sheet-bright.png",
+   "alt": "2bubu-sheet-bright-v2.png",
+   "style": "bubu-bright",
+   "flow_character": "2bubu",
+   "traits": "暖白身体、浅奶茶棕耳/手脚、胸口浅棕掌印、樱花粉腮红、深棕圆点眼、w 形嘴、短圆尾；头大身小"
+  },
+  "小树": {
+   "kind": "男孩（男）",
+   "sheet": "male-front.png",
+   "style": "warm-paper",
+   "flow_character": "小树",
+   "traits": "灰蓝短发 #728A96、浅灰蓝开襟外套、白 T、头顶两片叶嫩芽 #DEF0A8"
+  },
+  "小芽": {
+   "kind": "女孩（女）",
+   "sheet": "female-front.png",
+   "style": "warm-paper",
+   "flow_character": "小芽",
+   "traits": "暖粉齐肩微卷发、米白连帽衫、头顶两片叶嫩芽"
+  }
+ },
+ "rules": [
+  "提示词里不写角色名（写‘棕色小熊/白色小熊/男孩/女孩’），一致性靠 Flow chip",
+  "两人同框时两个 chip 都挂（1bubu+2bubu 或 小树+小芽）",
+  "三视图只用于建角色/对齐设定，不直接放进片子",
+  "画面下方 18% 留给字幕"
+ ]
+}
