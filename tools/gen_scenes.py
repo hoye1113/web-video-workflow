@@ -86,10 +86,21 @@ ITEMS = [
 ]
 
 
-def full_prompt(scene, layout="full"):
+# 1bubu / 2bubu 专用风格：治愈 Q 版、扁平柔和、圆润极简、低饱和、干净线条、无复杂阴影
+BUBU_STYLE = ("治愈系Q版卡通插画，扁平柔和的画风，圆润极简的卡通角色造型，"
+              "低饱和度柔和配色，干净简约的线条，无复杂阴影、无高光渐变、无厚涂纹理，"
+              "可爱的圆形腮红，画面平整洁净。")
+BUBU_TAIL = ("米白纯色背景，画面干净，主体占画面中部，画面下方 18% 留空（字幕带），"
+             "不要任何文字、不要图表、不要箭头、不要边框、不要地面阴影。")
+
+
+def full_prompt(scene, layout="full", cast=""):
     """layout: card（P1 原版留白）| full（P2 处境页铺满）| close（P2 情绪特写/干净背景）。"""
+    if "bubu" in (cast or "").lower():
+        return BUBU_STYLE + scene + "。" + BUBU_TAIL
     tail = {"card": CARD_TAIL, "close": CLOSE_TAIL}.get(layout, TAIL)
     return STYLE + scene + "。" + tail
+
 
 
 def metrics(png):

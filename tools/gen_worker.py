@@ -124,7 +124,7 @@ def do_one(f, proj, t):
         if _name.strip():
             f.attach_character(_name.strip())
 
-    prompt = full_prompt(t["scene"], t.get("layout", "full"))
+    prompt = full_prompt(t["scene"], t.get("layout", "full"), t.get("cast", ""))
     pipeline.queue_set(proj, t["id"], status="prompt")
     pipeline.emit(proj, "page", id=t["page"], status="prompt", detail="写提示词（会读回核对）")
     back = f._type_prompt(prompt)
