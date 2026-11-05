@@ -50,5 +50,35 @@
   "两人同框时两个 chip 都挂（1bubu+2bubu 或 小树+小芽）",
   "三视图只用于建角色/对齐设定，不直接放进片子",
   "画面下方 18% 留给字幕"
- ]
+ ],
+ "presets": {
+  "P1": {
+   "name": "原版留白（暖纸）",
+   "layout": "p1",
+   "style": "warm-paper",
+   "cast": [
+    "小树",
+    "小芽"
+   ]
+  },
+  "P2": {
+   "name": "铺满+情绪特写 70/30（暖纸）",
+   "layout": "p2",
+   "style": "warm-paper",
+   "cast": [
+    "小树",
+    "小芽"
+   ]
+  },
+  "P3": {
+   "name": "布布明亮版",
+   "layout": "p2",
+   "style": "bubu-bright",
+   "cast": [
+    "1bubu",
+    "2bubu"
+   ],
+   "sheet": "1bubu-sheet-bright.png / 2bubu-sheet-bright.png"
+  }
+ }
 }
