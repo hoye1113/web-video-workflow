@@ -10,7 +10,10 @@ export const EP = process.cwd();
 export const OUT = path.join(EP, 'out');
 /** Portrait canvas (1080×1920, pages-portrait/): `--portrait` on any tool, or PORTRAIT=1 (render.mjs passes it to its children). Default is landscape. */
 export const PORTRAIT = process.argv.includes('--portrait') || process.env.PORTRAIT === '1';
-export const SIZE = PORTRAIT ? { width: 1080, height: 1920 } : { width: 1920, height: 1080 };
+const _vf = (process.env.VF_STAGE || "").match(/^(\d+)x(\d+)$/);
+export const SIZE = PORTRAIT ? { width: 1080, height: 1920 }
+  : _vf ? { width: Number(_vf[1]), height: Number(_vf[2]) } : { width: 1920, height: 1080 };
+const STAGE_Q = (!PORTRAIT && _vf) ? `&stage=${SIZE.width}x${SIZE.height}` : "";
 import { findChrome } from './bins.mjs';
 export const { chromium } = createRequire(import.meta.url)('playwright-core');
 
@@ -29,7 +32,7 @@ export function loadEpisode() {
   return { TIMING, SCRIPT, META: SCRIPT.META || {}, L: TIMING.layout(SCRIPT.PAGES, { ...(SCRIPT.META || {}), voice: SCRIPT.VOICE }) };
 }
 
-export const pageUrl = (query) => 'file://' + path.join(EP, 'index.html') + '?' + query + (PORTRAIT ? '&portrait' : '');
+export const pageUrl = (query) => 'file://' + path.join(EP, 'index.html') + '?' + query + (PORTRAIT ? '&portrait' : '') + STAGE_Q;
 
 /** Opens a 1920×1080 (or 1080×1920 portrait) page on the episode and waits until fonts are loaded and pages are built. */
 export async function openStage(query, launchArgs = []) {

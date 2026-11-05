@@ -6,7 +6,9 @@
 (function () {
   // canvas: landscape 1920×1080 by default; ?portrait → 1080×1920 with pages from pages-portrait/ (same script.js)
   const portrait = /[?&]portrait(&|=|$)/.test(location.search);
-  window.STAGE = portrait ? { w: 1080, h: 1920, portrait: true } : { w: 1920, h: 1080, portrait: false };
+  const _st = (location.search.match(/[?&]stage=(\d+)x(\d+)/) || []).slice(1).map(Number);
+  window.STAGE = portrait ? { w: 1080, h: 1920, portrait: true }
+    : (_st.length === 2 ? { w: _st[0], h: _st[1], portrait: false } : { w: 1920, h: 1080, portrait: false });
   const KIT = document.currentScript.src.replace(/boot\.js(\?.*)?$/, '');
   // browser libraries and fonts: the project's engine_modules/ link (where npm or pnpm actually installed them), named by
   // <meta name="engine-modules">; falls back to the engine's own node_modules/
@@ -43,6 +45,7 @@
     <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
   </filter>
 </defs></svg>
-<div id="viewport"><div id="frame"${portrait ? ' class="portrait"' : ''}><div id="bg"></div><div id="stage"></div><div id="vignette"></div></div></div>` +
+<div id="viewport"><div id="frame"${portrait ? ' class="portrait"' : ''} style="width:${STAGE.w}px;height:${STAGE.h}px"><div id="bg"></div><div id="stage"></div><div id="vignette"></div></div></div>
+<style>${STAGE.w !== 1920 ? `#frame .subs span{max-width:${STAGE.w - 180}px}` : ''}</style>` +
     js.map((s) => `<script src="${s}"><\/script>`).join(''));
 })();
