@@ -16,21 +16,19 @@
  "characters": {
   "1bubu": {
    "kind": "棕色小熊（男）",
-   "sheet": "1bubu-sheet-bright.png",
+   "sheet": "1bubu-sheet-bright-v4.png",
    "alt": "1bubu-sheet-bright-v2.png",
-   "v4_candidate": "1bubu-sheet-bright-v4.png",
    "style": "bubu-bright",
    "flow_character": "1bubu",
-   "traits": "杏棕/焦糖奶油色、圆耳深棕内耳、嫩黄圆腮红、深棕圆点眼、吐小舌头、短圆尾；头大身小"
+   "traits": "杏棕/焦糖奶油色、圆耳深棕内耳、嫩黄圆腮红、大眼深棕圆点、吐小舌头、短圆尾；头大身小"
   },
   "2bubu": {
    "kind": "暖白小熊",
-   "sheet": "2bubu-sheet-bright.png",
+   "sheet": "2bubu-sheet-bright-v12.png",
    "alt": "2bubu-sheet-bright-v2.png",
-   "v12_candidate": "2bubu-sheet-bright-v12.png",
    "style": "bubu-bright",
    "flow_character": "2bubu",
-   "traits": "暖白身体、浅奶茶棕耳/手脚、胸口浅棕掌印、樱花粉腮红、深棕圆点眼、w 形嘴、短圆尾；头大身小"
+   "traits": "暖白身体、浅奶茶棕耳/手脚、胸口无图案、樱花粉腮红、大眼深棕圆点、w 形嘴、短圆尾；头大身小"
   },
   "小树": {
    "kind": "男孩（男）",

@@ -2,11 +2,9 @@
 
 > 来源：用户提供的三视图 `E:\彬\12bubu`（棕色布布 3D 设定页 + 白色布布多视图）。
 > **定稿风格：治愈扁平 + 明亮活泼**。
-> 定稿图：`1bubu-sheet-bright.png` / `2bubu-sheet-bright.png`（另有 `-bright-v2` 备选）。
-> 旧版（暖纸铅笔 / 低饱和扁平）只留档，不再使用。
-> **v4 候选（2026-11-05）**：`1bubu-sheet-bright-v4.png`，以 v2 原图为底，**只放大眼睛**。
-> **v12 候选（2026-11-06）**：`2bubu-sheet-bright-v12.png`，在 v4 基础上**去掉白色小熊肚皮上的掌印图案**，其余不动。
-> v3（大眼 + 高光 + 改毛色/肚皮/睫毛）已否决并删除。
+> **当前模板定稿（2026-11-06）**：`1bubu-sheet-bright-v4.png` / `2bubu-sheet-bright-v12.png`。
+> 1bubu v4 = v2 原图只放大眼睛；2bubu v12 = v4 基础上只去掉肚皮掌印，其余不动。
+> 旧版（暖纸铅笔 / 低饱和扁平）只留档，不再使用；v3 已否决并删除。
 
 ---
 
@@ -67,8 +65,8 @@
 
 项目 `video-factory` → Characters：
 
-- **1bubu**（Portrait = `1bubu-sheet-bright.png`）
-- **2bubu**（Portrait = `2bubu-sheet-bright.png`）
+- **1bubu**：当前 Flow Portrait 仍是 `1bubu-sheet-bright.png`，待替换为 v4
+- **2bubu**：当前 Flow Portrait 仍是 `2bubu-sheet-bright.png`，待替换为 v12
 
 `attach_character('1bubu')` / `('2bubu')` 均验证过可挂载。
 
