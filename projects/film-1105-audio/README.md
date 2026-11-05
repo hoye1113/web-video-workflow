@@ -1,10 +1,32 @@
 # 夫妻想重归于好，先脱离追蛇效应
 
-> 目标片长 **6.39 分钟** ≈ **1239 字**（实测 194 字/分钟）。
+## 规格
 
-照 `docs/新题材开工手册.md` 走：
-1. 写词 `script-source.json`（cue ≤12 字、第 12 字前有标点）→ `tools/check_cues.py`
-2. 出图 `tools/gen_scenes.py`（先翻 `projects/scene-library/` 有没有能复用的）
-3. 排页 改 `tools/make_pages.py` 的 PAGES → `python tools/make_pages.py`
-4. 配音 `python tools/make_voice.py` → 字幕/渲染（见手册第 4 节）
-5. 验收 `tools/qc_snap.py` + `tools/accept_emotion.py`
+| 项 | 值 |
+|---|---|
+| 套版 | **P3 · 布布明亮版**（63 页全部 full） |
+| 画幅 | **4:3 / 1440×1080 / 60fps** |
+| 页数 | 63 页 |
+| cue | 261 条 |
+| 字数 | 2132 字 |
+| 音轨 | 用户原声（`source-1105.mp4`，383.2s） |
+| 成片 | **6:24.2** |
+| 验收 | 母版 63/63、字幕版 63/63 |
+
+## 文件
+
+- 台词：`script-source.json`
+- 页表：`page-spec.json`
+- 页代码：`pages/p01–p63.js`
+- 逐字时间轴：`voice.js`
+- 源音频：`source-1105.mp4`
+- 页 → 处境：`docs/页-处境映射.md`
+- 成片与交付：`E:\video-factory\1105\`
+
+## 做法
+
+1. 源音频 383.2s → 转写 63 页 / 261 条 / 2132 字
+2. P3 布布明亮版：1bubu / 2bubu，居家过道、门内门外、冷暖对比
+3. Flow 生图 63 张；16:9 原图居中裁成 4:3（1440×1080）
+4. `VF_STAGE=1440x1080` → `script.mjs` → `render.mjs --workers 6`
+5. 母版 / 字幕版逐页抽帧验收 63/63
