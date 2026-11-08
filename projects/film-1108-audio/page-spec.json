@@ -1,0 +1,840 @@
+[
+ {
+  "id": "p01",
+  "title": "如果你想离婚并且有孩子",
+  "asset": "f1108-p01-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "为了孩子",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "full"
+ },
+ {
+  "id": "p02",
+  "title": "对于一个成年人来讲其实真的不算难",
+  "asset": "f1108-p02-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p03",
+  "title": "这事就算尘埃落定了",
+  "asset": "f1108-p03-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "家变了",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "full"
+ },
+ {
+  "id": "p04",
+  "title": "在他成长的这一路上",
+  "asset": "f1108-p04-43.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p05",
+  "title": "父母离婚对孩子的影响到底有多大",
+  "asset": "f1108-p05-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p06",
+  "title": "这种影响会渗透到生活的方方面面",
+  "asset": "f1108-p06-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p07",
+  "title": "但你知道吗",
+  "asset": "f1108-p07-43.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "自卑",
+    250,
+    230,
+    44,
+    "l",
+    "#F7F3EA",
+    1.2
+   ]
+  ],
+  "layout": "full"
+ },
+ {
+  "id": "p08",
+  "title": "小时候在幼儿园",
+  "asset": "f1108-p08-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p09",
+  "title": "还要默默承受同学们投来的异样眼光",
+  "asset": "f1108-p09-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p10",
+  "title": "都会让她在同龄人面前不自觉地低下头",
+  "asset": "f1108-p10-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p11",
+  "title": "但那些自卑的孩子里",
+  "asset": "f1108-p11-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p12",
+  "title": "孩子就不得不变成一个",
+  "asset": "f1108-p12-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p13",
+  "title": "可实际上",
+  "asset": "f1108-p13-43.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p14",
+  "title": "所以我想跟你说",
+  "asset": "f1108-p14-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "还能修吗",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "full"
+ },
+ {
+  "id": "p15",
+  "title": "继续好好生活",
+  "asset": "f1108-p15-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p16",
+  "title": "妈妈总是当着她的面说",
+  "asset": "f1108-p16-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p17",
+  "title": "都只是默默听着不反驳",
+  "asset": "f1108-p17-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p18",
+  "title": "每次这个时候",
+  "asset": "f1108-p18-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p19",
+  "title": "爸爸离开家之后",
+  "asset": "f1108-p19-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p20",
+  "title": "她跟着妈妈生活",
+  "asset": "f1108-p20-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p21",
+  "title": "还故意孤立她欺负她",
+  "asset": "f1108-p21-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p22",
+  "title": "她还不能在妈妈面前",
+  "asset": "f1108-p22-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p23",
+  "title": "两边都不能得罪",
+  "asset": "f1108-p23-43.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p24",
+  "title": "一直以来",
+  "asset": "f1108-p24-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p25",
+  "title": "她发现自己根本不敢谈恋爱",
+  "asset": "f1108-p25-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p26",
+  "title": "再一次被伴侣抛弃你看",
+  "asset": "f1108-p26-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "孩子",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "full"
+ },
+ {
+  "id": "p27",
+  "title": "孩子心里除了害怕",
+  "asset": "f1108-p27-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p28",
+  "title": "她只会想",
+  "asset": "f1108-p28-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p29",
+  "title": "孩子都会认为是自己的错",
+  "asset": "f1108-p29-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p30",
+  "title": "他们童年时期经历的这些伤痛",
+  "asset": "f1108-p30-43.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p31",
+  "title": "这种恐惧会一直伴随着他们成长",
+  "asset": "f1108-p31-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p32",
+  "title": "用坚硬的外壳",
+  "asset": "f1108-p32-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p33",
+  "title": "总是委屈自己去迎合别人",
+  "asset": "f1108-p33-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p34",
+  "title": "但不管是哪种性格变化",
+  "asset": "f1108-p34-43.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p35",
+  "title": "而且这个社会对于离异的单亲家庭",
+  "asset": "f1108-p35-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "偏见",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "full"
+ },
+ {
+  "id": "p36",
+  "title": "就可能成为阻碍孩子婚恋的一道坎",
+  "asset": "f1108-p36-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p37",
+  "title": "这小孩肯定缺爱",
+  "asset": "f1108-p37-43.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p38",
+  "title": "另外你带着孩子再婚",
+  "asset": "f1108-p38-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p39",
+  "title": "是真心实意地接纳你和原配的孩子",
+  "asset": "f1108-p39-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p40",
+  "title": "这就是人性里既残酷又现实的一面",
+  "asset": "f1108-p40-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p41",
+  "title": "他们很多人都会跟我倾诉",
+  "asset": "f1108-p41-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p42",
+  "title": "等到后来他们自己有了小孩之后",
+  "asset": "f1108-p42-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p43",
+  "title": "把更多的关爱和经历",
+  "asset": "f1108-p43-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p44",
+  "title": "不要一上来就又吵又闹",
+  "asset": "f1108-p44-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p45",
+  "title": "你有没有认真想过",
+  "asset": "f1108-p45-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p46",
+  "title": "就不会再出现了吗",
+  "asset": "f1108-p46-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p47",
+  "title": "多花点功夫",
+  "asset": "f1108-p47-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "一起修",
+    250,
+    230,
+    44,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "full"
+ },
+ {
+  "id": "p48",
+  "title": "也能给你自己一个温暖安稳的港湾",
+  "asset": "f1108-p48-43.png",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.3,
+   1,
+   0.2,
+   1.5
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ }
+]

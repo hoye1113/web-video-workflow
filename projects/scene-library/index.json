@@ -1,6 +1,6 @@
 {
- "at": "2026-11-04 20:48:37",
- "count": 525,
+ "at": "2026-11-08 12:46:49",
+ "count": 747,
  "images": [
   {
    "file": "f1103-p01.png",
@@ -813,6 +813,1350 @@
    "at": ""
   },
   {
+   "file": "f1108-p01-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 1229,
+   "used_by": [
+    "film-1108-audio:p01"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p01.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 896,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p02-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 4,
+   "sprout_px": 926,
+   "used_by": [
+    "film-1108-audio:p02"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p02.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 5,
+   "sprout_px": 635,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p03-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 3,
+   "sprout_px": 2489,
+   "used_by": [
+    "film-1108-audio:p03"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p03.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 4,
+   "sprout_px": 1843,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p04-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 17,
+   "sprout_px": 2097,
+   "used_by": [
+    "film-1108-audio:p04"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p04.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 15,
+   "sprout_px": 1569,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p05-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 3,
+   "sprout_px": 2235,
+   "used_by": [
+    "film-1108-audio:p05"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p05.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 3,
+   "sprout_px": 1788,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p06-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 1277,
+   "used_by": [
+    "film-1108-audio:p06"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p06.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 961,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p07-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 7,
+   "sprout_px": 636,
+   "used_by": [
+    "film-1108-audio:p07"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p07.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 6,
+   "sprout_px": 461,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p08-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 208,
+   "used_by": [
+    "film-1108-audio:p08"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p08.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 163,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p09-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 3440,
+   "used_by": [
+    "film-1108-audio:p09"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p09.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 3883,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p10-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 4,
+   "sprout_px": 2115,
+   "used_by": [
+    "film-1108-audio:p10"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p10.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 5,
+   "sprout_px": 1591,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p11-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 1502,
+   "used_by": [
+    "film-1108-audio:p11"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p11.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 1087,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p12-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 2085,
+   "used_by": [
+    "film-1108-audio:p12"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p12.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 1549,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p13-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 63,
+   "used_by": [
+    "film-1108-audio:p13"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p13.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 49,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p14-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 3,
+   "sprout_px": 1500,
+   "used_by": [
+    "film-1108-audio:p14"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p14.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 3,
+   "sprout_px": 1110,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p15-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 14,
+   "sprout_px": 511,
+   "used_by": [
+    "film-1108-audio:p15"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p15.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 12,
+   "sprout_px": 367,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p16-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 1435,
+   "used_by": [
+    "film-1108-audio:p16"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p16.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 1058,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p17-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 2,
+   "sprout_px": 1019,
+   "used_by": [
+    "film-1108-audio:p17"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p17.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 2,
+   "sprout_px": 762,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p18-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 892,
+   "used_by": [
+    "film-1108-audio:p18"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p18.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 670,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p19-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 2,
+   "sprout_px": 1586,
+   "used_by": [
+    "film-1108-audio:p19"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p19.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 2,
+   "sprout_px": 1143,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p20-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 3,
+   "sprout_px": 439,
+   "used_by": [
+    "film-1108-audio:p20"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p20.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 4,
+   "sprout_px": 327,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p21-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 2669,
+   "used_by": [
+    "film-1108-audio:p21"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p21.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 2,
+   "sprout_px": 2024,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p22-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 665,
+   "used_by": [
+    "film-1108-audio:p22"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p22.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 507,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p23-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 906,
+   "used_by": [
+    "film-1108-audio:p23"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p23.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 687,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p24-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 7,
+   "sprout_px": 1668,
+   "used_by": [
+    "film-1108-audio:p24"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p24.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 6,
+   "sprout_px": 1271,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p25-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 3,
+   "sprout_px": 250,
+   "used_by": [
+    "film-1108-audio:p25"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p25.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 8,
+   "sprout_px": 924,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p26-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 9,
+   "sprout_px": 2167,
+   "used_by": [
+    "film-1108-audio:p26"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p26.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 7,
+   "sprout_px": 1584,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p27-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 876,
+   "used_by": [
+    "film-1108-audio:p27"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p27.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 5,
+   "sprout_px": 653,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p28-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 196,
+   "used_by": [
+    "film-1108-audio:p28"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p28.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 148,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p29-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 1332,
+   "used_by": [
+    "film-1108-audio:p29"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p29.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 975,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p30-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 105,
+   "used_by": [
+    "film-1108-audio:p30"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p30.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 87,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p31-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 52,
+   "used_by": [
+    "film-1108-audio:p31"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p31.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 36,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p32-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 667,
+   "used_by": [
+    "film-1108-audio:p32"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p32.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 4,
+   "sprout_px": 520,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p33-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 967,
+   "used_by": [
+    "film-1108-audio:p33"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p33.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 730,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p34-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 4,
+   "sprout_px": 338,
+   "used_by": [
+    "film-1108-audio:p34"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p34.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 4,
+   "sprout_px": 284,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p35-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 1235,
+   "used_by": [
+    "film-1108-audio:p35"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p35.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 4,
+   "sprout_px": 929,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p36-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 4,
+   "sprout_px": 54,
+   "used_by": [
+    "film-1108-audio:p36"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p36.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 4,
+   "sprout_px": 38,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p37-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 10,
+   "sprout_px": 284,
+   "used_by": [
+    "film-1108-audio:p37"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p37.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 9,
+   "sprout_px": 207,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p38-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 3232,
+   "used_by": [
+    "film-1108-audio:p38"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p38.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 2554,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p39-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 3,
+   "sprout_px": 1199,
+   "used_by": [
+    "film-1108-audio:p39"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p39.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 3,
+   "sprout_px": 893,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p40-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 4,
+   "sprout_px": 2965,
+   "used_by": [
+    "film-1108-audio:p40"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p40.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 4,
+   "sprout_px": 2239,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p41-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 20,
+   "sprout_px": 2464,
+   "used_by": [
+    "film-1108-audio:p41"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p41.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 17,
+   "sprout_px": 1840,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p42-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 1086,
+   "used_by": [
+    "film-1108-audio:p42"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p42.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 811,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p43-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 1327,
+   "used_by": [
+    "film-1108-audio:p43"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 1018,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p44-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 22,
+   "sprout_px": 2510,
+   "used_by": [
+    "film-1108-audio:p44"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p44.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 19,
+   "sprout_px": 1863,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p45-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 390,
+   "used_by": [
+    "film-1108-audio:p45"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p45.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 283,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p46-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 29,
+   "sprout_px": 2899,
+   "used_by": [
+    "film-1108-audio:p46"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p46.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 25,
+   "sprout_px": 2124,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p47-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 2026,
+   "used_by": [
+    "film-1108-audio:p47"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p47.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 2,
+   "sprout_px": 1503,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p48-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 12,
+   "sprout_px": 2210,
+   "used_by": [
+    "film-1108-audio:p48"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "f1108-p48.png",
+   "cast": "",
+   "scene": "",
+   "kind": "通用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 11,
+   "sprout_px": 1624,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
    "file": "female-01-paper-fold.png",
    "cast": "小芽",
    "scene": "",
@@ -1141,6 +2485,34 @@
    "at": "2026-10-20 17:46:54"
   },
   {
+   "file": "p01-夫妻想重归于好-先要离开追蛇-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 15,
+   "sprout_px": 2810,
+   "used_by": [
+    "film-1105-audio:p01"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p01-夫妻想重归于好-先要离开追蛇.png",
+   "cast": "1bubu+2bubu",
+   "scene": "棕色小熊站在家门内的过道中央，一只手握着门把，白色小熊在门外半步处回头；门缝的冷白光照亮两人之间的地面，屋内暖黄壁灯只照亮棕色小熊的肩和门框内侧",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 13,
+   "sprout_px": 2109,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 15:49:13"
+  },
+  {
    "file": "p01-开场抛出结论.png",
    "cast": "小树",
    "scene": "小树坐在餐桌一端，手机扣在桌上，厨房的暖光从侧面照进来",
@@ -1364,6 +2736,34 @@
    "at": "2026-10-22 11:53:16"
   },
   {
+   "file": "p02-婚姻里有一个容易被忽略的心理-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 9,
+   "sprout_px": 2211,
+   "used_by": [
+    "film-1105-audio:p02"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p02-婚姻里有一个容易被忽略的心理.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 7,
+   "sprout_px": 1597,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
    "file": "p02-我是专注修复婚姻的家庭咨询师.png",
    "cast": "小树",
    "scene": "男孩坐在餐桌前，双手交叠压在合上的笔记本上，晨光从窗口落在桌沿",
@@ -1528,6 +2928,34 @@
    "at": "2026-10-29 12:28:31"
   },
   {
+   "file": "p03-刚结婚时亲密-后来话越来越少-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 20,
+   "sprout_px": 2242,
+   "used_by": [
+    "film-1105-audio:p03"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p03-刚结婚时亲密-后来话越来越少.png",
+   "cast": "1bubu+2bubu",
+   "scene": "从过道尽头回看，棕色小熊站在近处，白色小熊停在远处卧室门口，两人之间是一段空过道；暖灯在近处渐弱，尽头门缝的冷光浮起",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 19,
+   "sprout_px": 1648,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 17:53:07"
+  },
+  {
    "file": "p03-委屈说多了-就变成了背景音.png",
    "cast": "小树",
    "scene": "一桌人在说话，小树一个人低头坐在角落，没人看他；顶光从桌面压下来",
@@ -1687,6 +3115,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-20 16:00:05"
+  },
+  {
+   "file": "p04-一个追着解释-一个躲着不说-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 931,
+   "used_by": [
+    "film-1105-audio:p04"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p04-一个追着解释-一个躲着不说.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 2,
+   "sprout_px": 826,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p04-三天没说话-最后是他先敲的门.png",
@@ -1870,6 +3326,34 @@
    "at": "2026-10-21 11:21:34"
   },
   {
+   "file": "p05-两个人不知不觉困在追蛇效应里-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 4687,
+   "used_by": [
+    "film-1105-audio:p05"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p05-两个人不知不觉困在追蛇效应里.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 4233,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
    "file": "p05-他活得累-她也不好过-家里死.png",
    "cast": "小芽",
    "scene": "女孩坐在餐桌前，面前一碗凉掉的汤，吊灯的光只照亮碗沿",
@@ -2033,6 +3517,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-19 10:58:18"
+  },
+  {
+   "file": "p06-一句真心的和好-会悄悄传到对-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 6,
+   "sprout_px": 1475,
+   "used_by": [
+    "film-1105-audio:p06"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p06-一句真心的和好-会悄悄传到对.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 6,
+   "sprout_px": 1102,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p06-先道歉的人-先把责任全揽了过.png",
@@ -2276,6 +3788,34 @@
    "at": "2026-10-20 17:55:07"
   },
   {
+   "file": "p07-小故事开始-野外走路被毒蛇咬-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 8,
+   "sprout_px": 1076,
+   "used_by": [
+    "film-1105-audio:p07"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p07-小故事开始-野外走路被毒蛇咬.png",
+   "cast": "1bubu",
+   "scene": "过道尽头，棕色小熊独自停下脚步，回头看向门缝；一缕冷光在地板上拉出细长的蛇形影子，暖灯只照到他的后颈",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 9,
+   "sprout_px": 1102,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 16:11:01"
+  },
+  {
    "file": "p07-暴露始于一次意外-孩子用他的.png",
    "cast": "小树",
    "scene": "夜里，一个男孩坐在儿童书桌旁，手机屏幕在暗房间里亮起，桌上摊着作业本",
@@ -2456,6 +3996,34 @@
    "at": "2026-10-26 12:00:07"
   },
   {
+   "file": "p08-最要紧的是处理伤口-不是追蛇-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 11,
+   "sprout_px": 1012,
+   "used_by": [
+    "film-1105-audio:p08"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p08-最要紧的是处理伤口-不是追蛇.png",
+   "cast": "1bubu",
+   "scene": "玄关柜旁，棕色小熊坐在换鞋凳上低头处理手臂上的擦伤，脚边是一根放下的木棍；暖灯照着绷带，门缝冷光贴着地板",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 9,
+   "sprout_px": 756,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 16:14:41"
+  },
+  {
    "file": "p08-查岗暴露的是不安.png",
    "cast": "小树",
    "scene": "小树把手机贴在耳边站在阳台，夜里的城市灯光从背后照来",
@@ -2514,6 +4082,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-29 12:29:57"
+  },
+  {
+   "file": "p09-举着棍子追蛇-蛇没追到自己先-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 696,
+   "used_by": [
+    "film-1105-audio:p09"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p09-举着棍子追蛇-蛇没追到自己先.png",
+   "cast": "1bubu",
+   "scene": "低机位看狭长过道，棕色小熊举着木棍追向门缝里的蛇形冷影，身体前倾；身后暖灯缩成一小团，冷光把影子拉过整面墙",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 505,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 16:18:19"
   },
   {
    "file": "p09-他在提醒自己别再受一次伤害.png",
@@ -2771,6 +4367,34 @@
    "at": "2026-10-27 10:34:15"
   },
   {
+   "file": "p10-放到婚姻里-伴侣也开始沉默和-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 1995,
+   "used_by": [
+    "film-1105-audio:p10"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p10-放到婚姻里-伴侣也开始沉默和.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 1472,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
    "file": "p10-没有任何犹豫就认错-情绪完全.png",
    "cast": "小树",
    "scene": "一个男孩坐在床边，两只手撑着膝盖，低着头，床头一盏小灯只照着他的侧脸",
@@ -2904,6 +4528,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-21 17:04:08"
+  },
+  {
+   "file": "p11-你马上追问-怎么了-是不是没-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 16,
+   "sprout_px": 1731,
+   "used_by": [
+    "film-1105-audio:p11"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p11-你马上追问-怎么了-是不是没.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 14,
+   "sprout_px": 1277,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p11-别再把精力放在认错-道歉-哀.png",
@@ -3040,6 +4692,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-28 12:18:24"
+  },
+  {
+   "file": "p12-对方更想躲-你又觉得自己被冷-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 1269,
+   "used_by": [
+    "film-1105-audio:p12"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p12-对方更想躲-你又觉得自己被冷.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 934,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p12-懂事是一场交易-不麻烦-换安.png",
@@ -3328,6 +5008,34 @@
    "at": "2026-10-20 18:05:44"
   },
   {
+   "file": "p13-越问越急-翻出以前所有旧账-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 10,
+   "sprout_px": 1663,
+   "used_by": [
+    "film-1105-audio:p13"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p13-越问越急-翻出以前所有旧账.png",
+   "cast": "1bubu",
+   "scene": "玄关柜前，棕色小熊蹲着翻出一叠旧照片和票据，纸页散在脚边；头顶暖灯压得很低，门外冷光从侧面扫过纸面",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 9,
+   "sprout_px": 1220,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 16:21:55"
+  },
+  {
    "file": "p14-scissors.png",
    "cast": "小树",
    "scene": "一个男孩手持一把剪刀，停在一条绷紧的细线前面，没有剪下去，桌面和手被侧光照亮",
@@ -3479,6 +5187,34 @@
    "at": "2026-10-29 11:44:59"
   },
   {
+   "file": "p14-非要今天把每个问题都说清楚-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 29,
+   "sprout_px": 2891,
+   "used_by": [
+    "film-1105-audio:p14"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p14-非要今天把每个问题都说清楚.png",
+   "cast": "1bubu",
+   "scene": "棕色小熊站在门外走廊，一手撑着门框，另一手比划着要一次说完；门内暖光从背后勾出轮廓，走廊尽头冷光压在他的前额",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 25,
+   "sprout_px": 2204,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 16:25:32"
+  },
+  {
    "file": "p15-night-door.png",
    "cast": "小树",
    "scene": "",
@@ -3523,6 +5259,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-22 12:06:48"
+  },
+  {
+   "file": "p15-你越追越受伤-对方也越来越防-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 20,
+   "sprout_px": 1971,
+   "used_by": [
+    "film-1105-audio:p15"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p15-你越追越受伤-对方也越来越防.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 18,
+   "sprout_px": 1495,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p15-即便你变成大众眼中的好人-对.png",
@@ -3751,6 +5515,34 @@
    "at": "2026-10-29 11:47:33"
   },
   {
+   "file": "p16-沟通变成审问-沉默变成惩罚--43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 4,
+   "sprout_px": 5397,
+   "used_by": [
+    "film-1105-audio:p16"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p16-沟通变成审问-沉默变成惩罚-.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 3,
+   "sprout_px": 5038,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
    "file": "p16-第二件-提一个具体的小要求.png",
    "cast": "小树",
    "scene": "小树站在门口，一只手扶着门框，脚还没迈出去；走廊的光从背后打进来",
@@ -3794,6 +5586,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-22 17:56:26"
+  },
+  {
+   "file": "p17-不是说要忍着冷暴力-也不是提-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 14,
+   "sprout_px": 180,
+   "used_by": [
+    "film-1105-audio:p17"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p17-不是说要忍着冷暴力-也不是提.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 13,
+   "sprout_px": 131,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p17-双方都认同-男女之情是婚姻的.png",
@@ -3963,6 +5783,34 @@
    "at": "2026-10-29 12:32:41"
   },
   {
+   "file": "p18-伤害需要被看见-处理顺序很重-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 6,
+   "sprout_px": 836,
+   "used_by": [
+    "film-1105-audio:p18"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p18-伤害需要被看见-处理顺序很重.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 5,
+   "sprout_px": 592,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
    "file": "p18-你一露出不耐烦-他的怀疑就翻.png",
    "cast": "小芽",
    "scene": "女孩起身离开餐桌，椅子还歪着，顶灯的光落在空椅上",
@@ -4081,6 +5929,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-26 11:30:53"
+  },
+  {
+   "file": "p19-三个破局点-先从追蛇的状态里-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 7,
+   "sprout_px": 621,
+   "used_by": [
+    "film-1105-audio:p19"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p19-三个破局点-先从追蛇的状态里.png",
+   "cast": "1bubu",
+   "scene": "过道尽头并排三扇门，棕色小熊站在第一扇门前回头，手搭在门把上；第一扇门内透出暖光，另外两扇仍暗，尽头窗外是冷蓝",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 8,
+   "sprout_px": 448,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 16:29:11"
   },
   {
    "file": "p19-你对我好-只是想得到我吧.png",
@@ -4308,6 +6184,34 @@
    "at": "2026-10-29 11:51:16"
   },
   {
+   "file": "p20-第一步-情绪上来时先处理自己-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 26,
+   "sprout_px": 1645,
+   "used_by": [
+    "film-1105-audio:p20"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p20-第一步-情绪上来时先处理自己.png",
+   "cast": "1bubu",
+   "scene": "玄关换鞋凳上，棕色小熊低头把创可贴按在手臂上，外套搭在一边；暖黄吊灯落在肩背，门底缝的冷光停在鞋边",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 23,
+   "sprout_px": 1222,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 16:32:59"
+  },
+  {
    "file": "p20-第二件-不管聊天边界.png",
    "cast": "小芽",
    "scene": "小芽坐在沙发上，手机屏幕亮着，窗外的光落在她手边",
@@ -4352,6 +6256,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-28 12:39:02"
+  },
+  {
+   "file": "p21-吵架时以为在讨论事情-其实被-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 15,
+   "sprout_px": 366,
+   "used_by": [
+    "film-1105-audio:p21"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p21-吵架时以为在讨论事情-其实被.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 16,
+   "sprout_px": 295,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p21-因为那种刺激感太强了.png",
@@ -4458,6 +6390,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-19 11:20:44"
+  },
+  {
+   "file": "p22-一条晚回的消息-让人感到被忽-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 3929,
+   "used_by": [
+    "film-1105-audio:p22"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p22-一条晚回的消息-让人感到被忽.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 2867,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p22-互相觉得对方的做法不对-各有.png",
@@ -4593,6 +6553,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-20 16:08:36"
+  },
+  {
+   "file": "p23-听见的不只是一句气话-而是--43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 26,
+   "sprout_px": 2526,
+   "used_by": [
+    "film-1105-audio:p23"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p23-听见的不只是一句气话-而是-.png",
+   "cast": "1bubu",
+   "scene": "棕色小熊站在门后，额头轻轻抵着门板，一只手按在门上；猫眼透进的一小点冷光落在他的睫毛，屋内暖光在侧脸",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 22,
+   "sprout_px": 1926,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 16:46:27"
   },
   {
    "file": "p23-旧人旧事还在-你早晚又站回老.png",
@@ -4791,6 +6779,34 @@
    "at": "2026-10-27 10:44:02"
   },
   {
+   "file": "p24-感受都是真的-但感受不等于全-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 58,
+   "sprout_px": 3782,
+   "used_by": [
+    "film-1105-audio:p24"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p24-感受都是真的-但感受不等于全.png",
+   "cast": "1bubu",
+   "scene": "门缝横贯画面的特写，冷白光带落在棕色小熊的眼睛和攥紧的手上，暖灯从画面上方退到很远的背景",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 58,
+   "sprout_px": 4394,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 16:50:12"
+  },
+  {
    "file": "p24-爱恋消失后-才生出看不惯的分.png",
    "cast": "小树+小芽",
    "scene": "男孩和女孩坐在餐桌两侧，女孩抱臂靠向椅背，男孩垂眼看着碗，午后的光落在桌角",
@@ -4927,6 +6943,34 @@
    "at": "2026-10-22 18:06:31"
   },
   {
+   "file": "p25-用指责和质问保护自己-却把对-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 2026,
+   "used_by": [
+    "film-1105-audio:p25"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p25-用指责和质问保护自己-却把对.png",
+   "cast": "1bubu",
+   "scene": "棕色小熊站在过道中央，墙上的软影被拉成一个抬起手指的轮廓，比他本人更大；身后暖灯，面前门外冷光，影子在中间",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 1519,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 16:54:03"
+  },
+  {
    "file": "p25-靠一天一件小事-把透明变成日.png",
    "cast": "小树",
    "scene": "小树在客厅把手机翻过来放在茶几上，屏幕朝上，晨光从窗口照进来",
@@ -4986,6 +7030,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-29 11:28:48"
+  },
+  {
+   "file": "p26-又想追着问明白时-先停一停-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 46,
+   "sprout_px": 1653,
+   "used_by": [
+    "film-1105-audio:p26"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p26-又想追着问明白时-先停一停.png",
+   "cast": "1bubu",
+   "scene": "特写门把，棕色小熊的手停在半空又收回，过道纵深在背景里展开；暖光落在手背，门缝冷光贴着金属门把",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 43,
+   "sprout_px": 1680,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 16:57:46"
   },
   {
    "file": "p26-双方都觉得自己才是对的-谁也.png",
@@ -5168,6 +7240,34 @@
    "at": "2026-10-22 18:08:17"
   },
   {
+   "file": "p27-问问自己-现在最难受的到底是-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 3090,
+   "used_by": [
+    "film-1105-audio:p27"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p27-问问自己-现在最难受的到底是.png",
+   "cast": "1bubu",
+   "scene": "玄关柜旁，棕色小熊坐在地上抱着膝盖，头偏向一边；暖灯从柜面上方落下来，门外冷光沿着地脚线爬到他脚边",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 2326,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 17:01:34"
+  },
+  {
    "file": "p28-你们不是天生的-离与不离-对.png",
    "cast": "小树+小芽",
    "scene": "男孩和女孩隔着一张餐桌站着，各扶着一把椅背，午后的光从窗口落在桌面",
@@ -5241,6 +7341,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-27 11:10:33"
+  },
+  {
+   "file": "p28-把感受写下来-分清发生了什么-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 45,
+   "sprout_px": 1835,
+   "used_by": [
+    "film-1105-audio:p28"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p28-把感受写下来-分清发生了什么.png",
+   "cast": "1bubu",
+   "scene": "玄关柜上摊着一张纸，棕色小熊俯身握笔写字，旁边放着一盏小台灯；暖光照亮纸面，门外冷光只碰到纸的另一边",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 40,
+   "sprout_px": 1345,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 17:05:25"
   },
   {
    "file": "p28-结束了那段关系-却一直高度紧.png",
@@ -5363,6 +7491,34 @@
    "at": "2026-10-22 17:25:18"
   },
   {
+   "file": "p29-说出真正需要什么-而不是一开-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 24,
+   "sprout_px": 2413,
+   "used_by": [
+    "film-1105-audio:p29"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p29-说出真正需要什么-而不是一开.png",
+   "cast": "1bubu",
+   "scene": "棕色小熊站在门内，手掌贴着门板，像在斟酌开口；暖黄壁灯落在他的侧脸和手背，门缝的冷光停在指尖",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 21,
+   "sprout_px": 1777,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 17:09:15"
+  },
+  {
    "file": "p29-靠强撑维持两个人在一起-又何.png",
    "cast": "小树+小芽",
    "scene": "夜里，男孩和女孩并肩坐在沙发上，身体僵直，中间留着一拳距离，落地灯落在两人之间",
@@ -5451,6 +7607,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-29 11:30:08"
+  },
+  {
+   "file": "p30-试着说-这几天我们很少好好说-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 9,
+   "sprout_px": 2080,
+   "used_by": [
+    "film-1105-audio:p30"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p30-试着说-这几天我们很少好好说.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 7,
+   "sprout_px": 1532,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p30-这种状态一直在消耗他.png",
@@ -5588,6 +7772,34 @@
    "at": "2026-10-26 12:09:22"
   },
   {
+   "file": "p31-让表达从攻击变成沟通-等情绪-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 4,
+   "sprout_px": 1553,
+   "used_by": [
+    "film-1105-audio:p31"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p31-让表达从攻击变成沟通-等情绪.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 3,
+   "sprout_px": 1141,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
    "file": "p32-以朋友身份约她吃饭-散步.png",
    "cast": "小树+小芽",
    "scene": "男孩和女孩并肩走在街边，各拿一支冰淇淋，傍晚的光落在两人脚边",
@@ -5661,6 +7873,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-31 15:56:22"
+  },
+  {
+   "file": "p32-成熟不是不生气-而是生气也不-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 1576,
+   "used_by": [
+    "film-1105-audio:p32"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p32-成熟不是不生气-而是生气也不.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 1159,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p32-来回几个小时-他看清这是长期.png",
@@ -5783,6 +8023,34 @@
    "at": "2026-10-22 17:26:52"
   },
   {
+   "file": "p33-第二步-照顾好自己的真实需求-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 4,
+   "sprout_px": 345,
+   "used_by": [
+    "film-1105-audio:p33"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p33-第二步-照顾好自己的真实需求.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 5,
+   "sprout_px": 219,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
    "file": "p33-那份随时防卫的心-可以慢慢放.png",
    "cast": "小树",
    "scene": "夜里，男孩坐在沙发边，慢慢松开攥紧的手，电视的冷光落在摊开的掌心",
@@ -5873,6 +8141,34 @@
    "at": "2026-10-28 13:05:28"
   },
   {
+   "file": "p34-别把伴侣变成唯一的情绪出口-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 169,
+   "used_by": [
+    "film-1105-audio:p34"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p34-别把伴侣变成唯一的情绪出口.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 133,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
    "file": "p34-好感够了-再正式表白.png",
    "cast": "小树+小芽",
    "scene": "男孩和女孩站在桥上，男孩把一小束花递过去，女孩伸手接住，天光落在水面上",
@@ -5946,6 +8242,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-21 11:59:53"
+  },
+  {
+   "file": "p35-希望对方立刻安慰-希望对方主-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 87,
+   "used_by": [
+    "film-1105-audio:p35"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p35-希望对方立刻安慰-希望对方主.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 63,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p35-总觉得对方缺人推一把.png",
@@ -6113,6 +8437,34 @@
    "at": "2026-10-26 11:46:43"
   },
   {
+   "file": "p36-期待对方随时报告行踪-随时回-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 3,
+   "sprout_px": 701,
+   "used_by": [
+    "film-1105-audio:p36"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p36-期待对方随时报告行踪-随时回.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 4,
+   "sprout_px": 506,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
    "file": "p37-一边怕失去一边停不下来-这是.png",
    "cast": "小树",
    "scene": "一个男孩站在两扇门中间不肯挪，两扇门缝里一暖一冷的光先后照到他身上",
@@ -6171,6 +8523,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-31 15:29:15"
+  },
+  {
+   "file": "p37-尊重-陪伴-共同承担-是合理-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 1127,
+   "used_by": [
+    "film-1105-audio:p37"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p37-尊重-陪伴-共同承担-是合理.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 844,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p37-建立新沟通-每天聊十分钟.png",
@@ -6246,6 +8626,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-27 11:19:53"
+  },
+  {
+   "file": "p38-但没有人能时时刻刻猜中另一个-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 6,
+   "sprout_px": 2116,
+   "used_by": [
+    "film-1105-audio:p38"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p38-但没有人能时时刻刻猜中另一个.png",
+   "cast": "1bubu",
+   "scene": "从门外走廊的视角看进去，棕色小熊站在过道中央，向门外伸出一只手，手掌停在冷光边缘；暖灯从他背后照来，冷光在前方，手没有碰到任何人",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 7,
+   "sprout_px": 1609,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 17:13:08"
   },
   {
    "file": "p38-你凭什么要求对方继续配合.png",
@@ -6366,6 +8774,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-21 12:03:56"
+  },
+  {
+   "file": "p39-把需求说清楚-也要给自己建立-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 8,
+   "sprout_px": 1913,
+   "used_by": [
+    "film-1105-audio:p39"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p39-把需求说清楚-也要给自己建立.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 7,
+   "sprout_px": 1440,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p39-拿从前的好抵现在的伤-就是否.png",
@@ -6533,6 +8969,34 @@
    "at": "2026-10-29 12:05:36"
   },
   {
+   "file": "p40-重新安排一点属于自己的时间-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 7,
+   "sprout_px": 1565,
+   "used_by": [
+    "film-1105-audio:p40"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p40-重新安排一点属于自己的时间.png",
+   "cast": "1bubu",
+   "scene": "过道窗边，棕色小熊坐在换鞋凳上翻一本旧书，脚边放着一双跑鞋；午后暖光落在书页，窗外和门缝的冷光在玻璃上",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 6,
+   "sprout_px": 1163,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 17:17:07"
+  },
+  {
    "file": "p41-一起旅行-创造新的回忆.png",
    "cast": "小树",
    "scene": "小树站在公园小路上，肩上背着旅行包，回头伸出手，午后的光从树叶间落下",
@@ -6576,6 +9040,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-29 12:06:50"
+  },
+  {
+   "file": "p41-发展兴趣-也重新分配家务和责-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 884,
+   "used_by": [
+    "film-1105-audio:p41"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p41-发展兴趣-也重新分配家务和责.png",
+   "cast": "1bubu",
+   "scene": "过道尽头，棕色小熊蹲在画架旁调色，身旁贴着几张家务分工的便签；暖灯照亮画布，门外冷光在画架背面",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 2,
+   "sprout_px": 665,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 17:21:00"
   },
   {
    "file": "p41-撕裂感才是持续消耗他的东西.png",
@@ -6728,6 +9220,34 @@
    "at": "2026-10-26 12:14:54"
   },
   {
+   "file": "p42-独立不是不需要伴侣-而是不再-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 29,
+   "sprout_px": 3545,
+   "used_by": [
+    "film-1105-audio:p42"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p42-独立不是不需要伴侣-而是不再.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 25,
+   "sprout_px": 2609,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
    "file": "p42-第四件-不管情绪波动.png",
    "cast": "小芽",
    "scene": "小芽坐在餐桌前，双手捧着杯子，厨房的暖光从侧面照来",
@@ -6756,6 +9276,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-31 16:03:43"
+  },
+  {
+   "file": "p43-别把全部价值和情绪交给对方一-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 27,
+   "sprout_px": 1374,
+   "used_by": [
+    "film-1105-audio:p43"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p43-别把全部价值和情绪交给对方一.png",
+   "cast": "1bubu",
+   "scene": "棕色小熊站在门内，脸一半在暖灯里一半在门缝冷光里，身后镜子只映出一个模糊表情；画面安静，暖光落在肩上",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 23,
+   "sprout_px": 1073,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 17:25:01"
   },
   {
    "file": "p43-情绪会互相牵连.png",
@@ -6893,6 +9441,34 @@
    "at": "2026-10-22 18:26:39"
   },
   {
+   "file": "p44-我可以为自己的生活负责-也愿-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 28,
+   "sprout_px": 5003,
+   "used_by": [
+    "film-1105-audio:p44"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p44-我可以为自己的生活负责-也愿.png",
+   "cast": "1bubu",
+   "scene": "棕色小熊站在玄关，自己穿好外套、拿起钥匙，背挺直；暖灯从头顶落下，门外冷光停在门槛外，他还没有跨出去",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 27,
+   "sprout_px": 6003,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 17:29:07"
+  },
+  {
    "file": "p44-拔刺会连着撕下一块肉-要有打.png",
    "cast": "小树",
    "scene": "男孩坐在客厅沙发边，低头看着自己的手心，窗外的天光落在掌纹上",
@@ -6951,6 +9527,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-26 12:17:23"
+  },
+  {
+   "file": "p45-你也有压力和边界-可以坦诚说-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 23,
+   "sprout_px": 2055,
+   "used_by": [
+    "film-1105-audio:p45"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p45-你也有压力和边界-可以坦诚说.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 22,
+   "sprout_px": 1851,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p45-别把自己放在追她的位置.png",
@@ -7041,6 +9645,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-27 11:24:42"
+  },
+  {
+   "file": "p46-别让情绪成为婚姻里的主角-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 3691,
+   "used_by": [
+    "film-1105-audio:p46"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p46-别让情绪成为婚姻里的主角.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 2772,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p46-患得患失-就开始讨好.png",
@@ -7193,6 +9825,34 @@
    "at": "2026-10-26 12:18:29"
   },
   {
+   "file": "p47-要学着做自己情绪的主人-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 18,
+   "sprout_px": 2661,
+   "used_by": [
+    "film-1105-audio:p47"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p47-要学着做自己情绪的主人.png",
+   "cast": "1bubu",
+   "scene": "棕色小熊站在过道镜前，手按在胸口，镜中的他被暖光照亮，身后的门缝却透进冷光；两个倒影一暖一冷",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 16,
+   "sprout_px": 1977,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 17:33:05"
+  },
+  {
    "file": "p47-讨好久了-就变得卑微.png",
    "cast": "小树",
    "scene": "男孩坐在餐桌前把菜推到对面，自己只留一碗白饭，顶灯的光落在碗沿",
@@ -7221,6 +9881,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-27 11:26:57"
+  },
+  {
+   "file": "p48-你仍然拥有选择自己态度的自由-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 11,
+   "sprout_px": 2268,
+   "used_by": [
+    "film-1105-audio:p48"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p48-你仍然拥有选择自己态度的自由.png",
+   "cast": "1bubu",
+   "scene": "门缝光带前，棕色小熊一只脚在暖光里，另一只脚踏在冷光边缘，低头看着自己的脚；过道暖灯在上，门外冷光铺开",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 9,
+   "sprout_px": 1671,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 17:37:02"
   },
   {
    "file": "p48-她会慢慢不理你.png",
@@ -7313,6 +10001,34 @@
    "at": "2026-10-22 17:38:57"
   },
   {
+   "file": "p49-可以冷战-也可以说-我想冷静-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 3,
+   "sprout_px": 569,
+   "used_by": [
+    "film-1105-audio:p49"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p49-可以冷战-也可以说-我想冷静.png",
+   "cast": "1bubu",
+   "scene": "棕色小熊坐在过道地板上，背对一扇关着的门，门底暖光从身侧透出；走廊尽头冷光压在他的背上，他抱着膝",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 3,
+   "sprout_px": 412,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 17:41:10"
+  },
+  {
    "file": "p49-妻子这端最危险的-是失去判断.png",
    "cast": "小树",
    "scene": "一个男孩低头站着，双手把一张纸攥得越来越紧，纸被攥出褶皱，指节发白，冷色侧光照着他的侧脸和手",
@@ -7371,6 +10087,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-27 11:28:20"
+  },
+  {
+   "file": "p50-暂停不是消失-更不是用不回应-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 13,
+   "sprout_px": 1377,
+   "used_by": [
+    "film-1105-audio:p50"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p50-暂停不是消失-更不是用不回应.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 14,
+   "sprout_px": 998,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p50-稳住自己才看得清关系.png",
@@ -7478,6 +10222,62 @@
    "at": "2026-10-22 17:40:37"
   },
   {
+   "file": "p51-说清原因-也要约定什么时候回-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 15,
+   "sprout_px": 3624,
+   "used_by": [
+    "film-1105-audio:p51"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p51-说清原因-也要约定什么时候回.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 16,
+   "sprout_px": 2701,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p52-一方以为在冷静-另一方却觉得-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 13,
+   "sprout_px": 2616,
+   "used_by": [
+    "film-1105-audio:p52"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p52-一方以为在冷静-另一方却觉得.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 12,
+   "sprout_px": 2038,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
    "file": "p52-你很强-才是吸引力核心.png",
    "cast": "小树",
    "scene": "男孩站在天桥上扶着栏杆看车流，风把外套吹起，天光从云缝落下",
@@ -7536,6 +10336,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-27 10:58:05"
+  },
+  {
+   "file": "p53-主动权不是控制伴侣-而是管理-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 1293,
+   "used_by": [
+    "film-1105-audio:p53"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p53-主动权不是控制伴侣-而是管理.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 1025,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p53-情绪价值高-相处就舒服.png",
@@ -7628,6 +10456,34 @@
    "at": "2026-10-21 13:25:50"
   },
   {
+   "file": "p54-该表达时讲清事实和感受-该倾-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 6,
+   "sprout_px": 1441,
+   "used_by": [
+    "film-1105-audio:p54"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p54-该表达时讲清事实和感受-该倾.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 5,
+   "sprout_px": 1054,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
    "file": "p55-你有自己的节奏.png",
    "cast": "小芽",
    "scene": "小芽背着包走出门，脚步轻快，走廊的光从前方照过来",
@@ -7658,6 +10514,34 @@
    "at": "2026-10-29 12:18:36"
   },
   {
+   "file": "p55-道歉时不拿-我都是为了这个家-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 3446,
+   "used_by": [
+    "film-1105-audio:p55"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p55-道歉时不拿-我都是为了这个家.png",
+   "cast": "1bubu",
+   "scene": "玄关柜旁，棕色小熊低头把一张写着字的便签揉成一团，手停在半空；暖灯照着手背，门外冷光落在纸团边缘",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 1,
+   "sprout_px": 2503,
+   "used_by": [],
+   "status": "等审批",
+   "at": "2026-11-05 17:47:14"
+  },
+  {
    "file": "p56-一杯奶茶-立刻送到楼下.png",
    "cast": "小树",
    "scene": "夜里，男孩拎着奶茶站在楼下，抬手看手机，楼道的灯从门口照出来",
@@ -7673,6 +10557,34 @@
    "at": "2026-10-29 11:39:05"
   },
   {
+   "file": "p56-不假装没发生-而是明确说清什-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 18,
+   "sprout_px": 2533,
+   "used_by": [
+    "film-1105-audio:p56"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p56-不假装没发生-而是明确说清什.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 16,
+   "sprout_px": 2325,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
    "file": "p56-体谅和信任是有分量的.png",
    "cast": "小树",
    "scene": "小树把外套披到小芽肩上，门口的暖光从背后照过来",
@@ -7686,6 +10598,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-22 17:42:23"
+  },
+  {
+   "file": "p57-不是谁先低头谁就输-而是愿不-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 43,
+   "sprout_px": 5029,
+   "used_by": [
+    "film-1105-audio:p57"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p57-不是谁先低头谁就输-而是愿不.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 41,
+   "sprout_px": 5019,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p57-不盘问-不窥探-不紧盯.png",
@@ -7748,6 +10688,34 @@
    "at": "2026-10-29 12:19:51"
   },
   {
+   "file": "p58-把争论从-你爱不爱我-拉回眼-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 2,
+   "sprout_px": 1487,
+   "used_by": [
+    "film-1105-audio:p58"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p58-把争论从-你爱不爱我-拉回眼.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 2,
+   "sprout_px": 1091,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
    "file": "p59-人心会变-分寸靠阅历.png",
    "cast": "小芽",
    "scene": "小芽在阳台给绿植浇水，晨光从侧面照在叶片上",
@@ -7763,6 +10731,34 @@
    "at": "2026-10-23 10:24:45"
   },
   {
+   "file": "p59-先听完-不打断不讽刺-再复述-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 5,
+   "sprout_px": 1005,
+   "used_by": [
+    "film-1105-audio:p59"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p59-先听完-不打断不讽刺-再复述.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 5,
+   "sprout_px": 732,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
    "file": "p59-投入越多-越难抽身.png",
    "cast": "小树+小芽",
    "scene": "女孩蹲在阳台上给一排绿植浇水，男孩站在门口看着，午后的光落在叶片上",
@@ -7776,6 +10772,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-29 12:21:05"
+  },
+  {
+   "file": "p60-再说自己的感受和希望-把问题-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 1517,
+   "used_by": [
+    "film-1105-audio:p60"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p60-再说自己的感受和希望-把问题.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 0,
+   "sprout_px": 1111,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p60-理解了吗-再见.png",
@@ -7823,6 +10847,34 @@
    "at": "2026-10-29 12:23:34"
   },
   {
+   "file": "p61-每天留一段不被手机打断的交流-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 44,
+   "sprout_px": 1877,
+   "used_by": [
+    "film-1105-audio:p61"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p61-每天留一段不被手机打断的交流.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 39,
+   "sprout_px": 1385,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
    "file": "p62-这不是算计-是让关系平衡.png",
    "cast": "小树+小芽",
    "scene": "男孩和女孩隔着餐桌分一块蛋糕，两人的手同时伸向盘子，午后的光落在桌面",
@@ -7838,6 +10890,34 @@
    "at": "2026-10-29 12:25:00"
   },
   {
+   "file": "p62-陷入冷战-羞辱或反复伤害-可-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 26,
+   "sprout_px": 2166,
+   "used_by": [
+    "film-1105-audio:p62"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p62-陷入冷战-羞辱或反复伤害-可.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 22,
+   "sprout_px": 1630,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
+  },
+  {
    "file": "p63-关系停在原地-就复盘节奏.png",
    "cast": "小树",
    "scene": "夜里，男孩坐在书桌前把手机倒扣，翻开本子又合上，台灯的光落在桌角",
@@ -7851,6 +10931,34 @@
    ],
    "status": "等审批",
    "at": "2026-10-29 11:40:19"
+  },
+  {
+   "file": "p63-涉及暴力或人身安全时-优先保-43.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1024,
+   "h": 768,
+   "band_std": 5,
+   "sprout_px": 1048,
+   "used_by": [
+    "film-1105-audio:p63"
+   ],
+   "status": "等审批",
+   "at": ""
+  },
+  {
+   "file": "p63-涉及暴力或人身安全时-优先保.png",
+   "cast": "",
+   "scene": "",
+   "kind": "专用",
+   "w": 1376,
+   "h": 768,
+   "band_std": 4,
+   "sprout_px": 786,
+   "used_by": [],
+   "status": "等审批",
+   "at": ""
   },
   {
    "file": "p64-她真正在意的是你这个人.png",

@@ -23,10 +23,10 @@ const GET_CHIPS = `(()=>{const els=[...document.querySelectorAll('[contenteditab
 async function connect() {
   const browser = await chromium.connectOverCDP('http://127.0.0.1:9222');
   const ctx = browser.contexts()[0];
-  let page = ctx.pages().find(p => p.url().includes('flow.google.com/project/'));
+  let page = ctx.pages().find(p => p.url().includes('flow.google.com/project/') && !p.url().includes('/character'));
   if (!page) {
     page = ctx.pages().find(p => p.url().includes('flow.google.com')) || await ctx.newPage();
-    if (!page.url().includes('flow.google.com')) {
+    if (!page.url().includes('flow.google.com/project/') || page.url().includes('/character')) {
       await page.goto('https://flow.google.com/project/2423a8a2-2219-4dd5-83ea-563fd00a79fb', { waitUntil: 'domcontentloaded', timeout: 60000 });
       await page.waitForTimeout(10000);
     }
