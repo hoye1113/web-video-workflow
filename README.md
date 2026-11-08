@@ -90,6 +90,7 @@ cd projects/emotion-full
 node <engine>/tools/script.mjs          # → out/口播脚本.md + out/字幕.srt
 node <engine>/tools/render.mjs          # → out/*.mp4（分段并行，约 20 分钟）
 python tools/accept_emotion.py          # 机器判据：黑页/空页/字幕带
+python tools/qa_film.py <project>       # 成片体检：pre（渲染前）+ post（渲染后）→ qa/report.md
 python tools/qc_snap.py                 # 逐页抽帧对照表（看图用）
 ```
 

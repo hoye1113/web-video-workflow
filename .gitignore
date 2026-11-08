@@ -36,6 +36,9 @@ experiments/qa09*/
 experiments/flow/
 experiments/temp/
 
+# 成片体检：report.md / motion.csv 进仓，证据图留本地
+projects/*/qa/*.png
+
 # 允许这些图进仓（对比图/验收表/生成的图是我们的证据与资产）
 !projects/*/assets/*.png
 !experiments/uitest/*.png
