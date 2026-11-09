@@ -306,6 +306,19 @@ def main():
         f"{len(no_cam)} 页没写 cam" + ("：" + "、".join(no_cam) if no_cam else ""))
     add("WARN" if bad_theme else "PASS", "pre", "主题值",
         f"{len(bad_theme)} 页主题不认识" + ("：" + "、".join(bad_theme) if bad_theme else "（day/night 合法）"))
+    visuals = [p.get("visual") for p in spec]
+    if any(visuals):
+        runs = [f'{spec[i]["id"]}–{spec[i+2]["id"]}:{visuals[i]}' for i in range(len(visuals) - 2)
+                if visuals[i] and visuals[i] == visuals[i + 1] == visuals[i + 2]]
+        counts = {}
+        for v in visuals:
+            if v:
+                counts[v] = counts.get(v, 0) + 1
+        top = " / ".join(f"{k} {v}" for k, v in sorted(counts.items(), key=lambda x: -x[1]))
+        add("WARN" if runs else "PASS", "pre", "画面类型",
+            f"连续 3 页同类型 {len(runs)} 处" + ("：" + "、".join(runs) if runs else f"（{top}）"))
+    else:
+        add("INFO", "pre", "画面类型", "page-spec 没有 visual 字段，跳过类型轮换检查")
     add("WARN" if text_small else "PASS", "pre", "标签字号",
         f"{len(text_small)} 处 < 4% 画面高（43.2px）" + ("：" + "、".join(text_small[:6]) if text_small else "（全部 ≥43.2px）"))
     add("WARN" if text_out else "PASS", "pre", "文字位置",
@@ -522,7 +535,8 @@ def main():
     if "开场 1 秒" in names:
         advice.append("p01 直接满亮度起，首字 0.2–0.4s，推镜 0.3s 起；前 1 秒是短视频最贵的一秒。")
     if "cue 与页长" in names or "结尾留白" in names:
-        advice.append("p48 末尾约 1s 无口播，确认是否刻意留白；不是就补内容或缩短页长。")
+        last_id = spec[-1].get("id", "最后一页") if spec else "最后一页"
+        advice.append(f"{last_id} 末尾约 1s 无口播，确认是否刻意留白；不是就补内容或缩短页长。")
     if "响度" in names:
         advice.append("最终封装加 +2 dB，或用 loudnorm 归一到 -14 LUFS / -1 dBTP。")
     if "运动结构" in names:
@@ -555,7 +569,7 @@ def main():
         lines.append("")
         lines.append("> `pulse` = 有一次明显运动，但中位变化 0%、最长静止 ≥2s（停-推-停）；"
                      "`static` = 整页 0.5s 窗口内变化 <0.1%；`low` = 最大变化 <0.5%；`moving` = 其余。"
-                     "完整 48 页数据在 `motion.csv`。")
+                     f"完整 {len(motion)} 页数据在 `motion.csv`。")
         lines.append("")
     if arts:
         lines.append("## 证据图")

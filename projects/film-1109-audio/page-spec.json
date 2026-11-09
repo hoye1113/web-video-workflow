@@ -1,0 +1,849 @@
+[
+ {
+  "id": "p01",
+  "title": "为什么没必要要求妻子和别的男人保持距离",
+  "asset": "f1109-p01-43.png",
+  "theme": "day",
+  "cam": "openpush",
+  "reveal": [
+   0.78,
+   1,
+   0,
+   0.7
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "她真的不懂？",
+    250,
+    230,
+    50,
+    "l",
+    "ink",
+    0.25
+   ]
+  ],
+  "layout": "full",
+  "visual": "双人对话"
+ },
+ {
+  "id": "p02",
+  "title": "已经有伴侣的成年女人",
+  "asset": "f1109-p02-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "单人特写"
+ },
+ {
+  "id": "p03",
+  "title": "也依旧要选择频繁与其他异性深入互动",
+  "asset": "f1109-p03-43.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "不是不懂",
+    250,
+    230,
+    50,
+    "l",
+    "#F7F3EA",
+    1.2
+   ]
+  ],
+  "layout": "full",
+  "visual": "象征物"
+ },
+ {
+  "id": "p04",
+  "title": "而是她自己做出的选择",
+  "asset": "f1109-p04-43.png",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "选择",
+    250,
+    230,
+    50,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "full",
+  "visual": "隐喻"
+ },
+ {
+  "id": "p05",
+  "title": "是不是自己太敏感太小心眼",
+  "asset": "f1109-p05-43.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "不是你敏感",
+    250,
+    230,
+    50,
+    "l",
+    "#F7F3EA",
+    1.2
+   ]
+  ],
+  "layout": "full",
+  "visual": "单人特写"
+ },
+ {
+  "id": "p06",
+  "title": "从社会认知心理学角度看",
+  "asset": "f1109-p06-43.png",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.4,
+   1,
+   0.1,
+   1.3
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "成本与收益",
+    250,
+    230,
+    50,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "full",
+  "visual": "象征物"
+ },
+ {
+  "id": "p07",
+  "title": "这件事能得到什么又要付出什么代价",
+  "asset": "f1109-p07-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "双人对话"
+ },
+ {
+  "id": "p08",
+  "title": "就像一个人知道面试时不能满嘴脏话一样",
+  "asset": "f1109-p08-43.png",
+  "theme": "night",
+  "cam": "tight55",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "单人特写"
+ },
+ {
+  "id": "p09",
+  "title": "背着你单独见面",
+  "asset": "f1109-p09-43.png",
+  "theme": "night",
+  "cam": "beat",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "越界",
+    250,
+    230,
+    50,
+    "l",
+    "#F7F3EA",
+    1.2
+   ]
+  ],
+  "layout": "full",
+  "visual": "双人对话"
+ },
+ {
+  "id": "p10",
+  "title": "这个擦边行为带来的那点新鲜感",
+  "asset": "f1109-p10-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "象征物"
+ },
+ {
+  "id": "p11",
+  "title": "远比你会不会不安更重要",
+  "asset": "f1109-p11-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "她分得清",
+    250,
+    230,
+    50,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "full",
+  "visual": "对比"
+ },
+ {
+  "id": "p12",
+  "title": "她只是想把后者继续留在自己的生活里",
+  "asset": "f1109-p12-43.png",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.4,
+   1,
+   0.1,
+   1.3
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "隐喻"
+ },
+ {
+  "id": "p13",
+  "title": "依然会保持对更优质社会资源",
+  "asset": "f1109-p13-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "隐喻"
+ },
+ {
+  "id": "p14",
+  "title": "恰恰是要把真相讲明白",
+  "asset": "f1109-p14-43.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "双人对话"
+ },
+ {
+  "id": "p15",
+  "title": "她做的其实是一种平行评估",
+  "asset": "f1109-p15-43.png",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "安全网",
+    250,
+    230,
+    50,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "full",
+  "visual": "隐喻"
+ },
+ {
+  "id": "p16",
+  "title": "一边又和外面的候选人",
+  "asset": "f1109-p16-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "隐喻"
+ },
+ {
+  "id": "p17",
+  "title": "她拿着你这里的安稳给自己兜底",
+  "asset": "f1109-p17-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "象征物"
+ },
+ {
+  "id": "p18",
+  "title": "已经决定要离开",
+  "asset": "f1109-p18-43.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "删不掉的窗口",
+    250,
+    230,
+    50,
+    "l",
+    "#F7F3EA",
+    1.2
+   ]
+  ],
+  "layout": "full",
+  "visual": "双人对话"
+ },
+ {
+  "id": "p19",
+  "title": "可你没办法替她消除",
+  "asset": "f1109-p19-43.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.4,
+   1,
+   0.1,
+   1.3
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "单人特写"
+ },
+ {
+  "id": "p20",
+  "title": "这件事还说明了更深的一层",
+  "asset": "f1109-p20-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "隐喻"
+ },
+ {
+  "id": "p21",
+  "title": "一个真正对亲密关系感到满足的女人",
+  "asset": "f1109-p21-43.png",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "对比"
+ },
+ {
+  "id": "p22",
+  "title": "可她明明知道你会难受",
+  "asset": "f1109-p22-43.png",
+  "theme": "day",
+  "cam": "beat",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "裂口",
+    250,
+    230,
+    50,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "full",
+  "visual": "双人对话"
+ },
+ {
+  "id": "p23",
+  "title": "她对这段婚姻的在意",
+  "asset": "f1109-p23-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "象征物"
+ },
+ {
+  "id": "p24",
+  "title": "也更让人难受",
+  "asset": "f1109-p24-43.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.4,
+   1,
+   0.1,
+   1.3
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "隐喻"
+ },
+ {
+  "id": "p25",
+  "title": "你一问她就说你太多疑",
+  "asset": "f1109-p25-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "双人对话"
+ },
+ {
+  "id": "p26",
+  "title": "甚至她会把责任反过来推给你",
+  "asset": "f1109-p26-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "双人对话"
+ },
+ {
+  "id": "p27",
+  "title": "这其实是一种自我开脱",
+  "asset": "f1109-p27-43.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "自我开脱",
+    250,
+    230,
+    50,
+    "l",
+    "#F7F3EA",
+    1.2
+   ]
+  ],
+  "layout": "full",
+  "visual": "单人特写"
+ },
+ {
+  "id": "p28",
+  "title": "心里反而会多一份隐秘的痛快看",
+  "asset": "f1109-p28-43.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "单人特写"
+ },
+ {
+  "id": "p29",
+  "title": "她维护的未必只是和外面那个男人的关系",
+  "asset": "f1109-p29-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "不是那个男人",
+    250,
+    230,
+    50,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "full",
+  "visual": "隐喻"
+ },
+ {
+  "id": "p30",
+  "title": "和那点必须证明自己没错的自我满足",
+  "asset": "f1109-p30-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "双人对话"
+ },
+ {
+  "id": "p31",
+  "title": "暗地里把边界推得更远",
+  "asset": "f1109-p31-43.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "单人特写"
+ },
+ {
+  "id": "p32",
+  "title": "而是谁有资格定义什么叫越界所以",
+  "asset": "f1109-p32-43.png",
+  "theme": "day",
+  "cam": "pull",
+  "reveal": [
+   0.4,
+   1,
+   0.1,
+   1.3
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "谁定义越界",
+    250,
+    230,
+    50,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "full",
+  "visual": "对比"
+ },
+ {
+  "id": "p33",
+  "title": "也不是翻她手机逼她解释",
+  "asset": "f1109-p33-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "双人对话"
+ },
+ {
+  "id": "p34",
+  "title": "反复否定自己的直觉和价值",
+  "asset": "f1109-p34-43.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "单人特写"
+ },
+ {
+  "id": "p35",
+  "title": "我还愿不愿意继续接受",
+  "asset": "f1109-p35-43.png",
+  "theme": "day",
+  "cam": "beat",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "安全感被拿走",
+    250,
+    230,
+    50,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "full",
+  "visual": "隐喻"
+ },
+ {
+  "id": "p36",
+  "title": "当成在外面试探的底气",
+  "asset": "f1109-p36-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "隐喻"
+ },
+ {
+  "id": "p37",
+  "title": "那条线会比你要求的更清楚",
+  "asset": "f1109-p37-43.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "单人特写"
+ },
+ {
+  "id": "p38",
+  "title": "如果你老婆明知道你介意",
+  "asset": "f1109-p38-43.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.4,
+   1,
+   0.1,
+   1.3
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "单人特写"
+ },
+ {
+  "id": "p39",
+  "title": "安心这里整理了一套",
+  "asset": "f1109-p39-43.png",
+  "theme": "day",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "象征物"
+ },
+ {
+  "id": "p40",
+  "title": "她现在和对方联系到什么程度",
+  "asset": "f1109-p40-43.png",
+  "theme": "day",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.15,
+   1.2
+  ],
+  "lights": [],
+  "texts": [
+   [
+    "先看清处境",
+    250,
+    230,
+    50,
+    "l",
+    "ink",
+    1.2
+   ]
+  ],
+  "layout": "full",
+  "visual": "双人对话"
+ },
+ {
+  "id": "p41",
+  "title": "给你更有针对性的分析和思路",
+  "asset": "f1109-p41-43.png",
+  "theme": "day",
+  "cam": "tight55",
+  "reveal": [
+   0.4,
+   1,
+   0.1,
+   1.3
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full",
+  "visual": "单人特写"
+ }
+]

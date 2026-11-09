@@ -45,6 +45,9 @@ def main():
             left = (w - tw) // 2
             out = im.crop((left, 0, left + tw, h))
         dst = src.with_name(src.stem + "-43.png")
+        # P3 成片是 1440×1080；先放大再进引擎，避免浏览器二次缩放
+        if out.size != (1440, 1080):
+            out = out.resize((1440, 1080), Image.LANCZOS)
         out.save(dst)
         t["img"] = dst.name
         n += 1
