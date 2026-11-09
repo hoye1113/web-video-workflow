@@ -9,7 +9,7 @@ ENGINE.visual('p35', (P) => {
   P.scene('../scene-library/f1109-p35-43.png', {
     at: 0,
     reveal: { from: 0.65, to: 1, at: 0.15, dur: 1.2 },
-    cam: [[0, 1], [T * 0.45, 1], [T * 0.45 + 0.55, 1.12], [T, 1.12]].map(([t, z]) => ({ t, z })),
+    cam: [[0, 1], [5.02, 1], [5.57, 1.12], [T, 1.12]].map(([t, z]) => ({ t, z })),
   });
 
   P.text("安全感被拿走", { x: 250, y: 230, size: 50, align: 'l', color: 'ink', at: 1.2 });

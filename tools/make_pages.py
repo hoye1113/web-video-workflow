@@ -27,6 +27,15 @@ CAM = {
     "beat":   "[[0, 1], [T * 0.45, 1], [T * 0.45 + 0.55, 1.12], [T, 1.12]]",   # 重拍：全片只给 2–3 页
 }
 
+
+def cam_expr(p):
+    """页表里 cam=beat 且写了 beatAt 时，用台词里的关键词时间，不用页面 45%。"""
+    cam = p.get("cam")
+    if cam == "beat" and p.get("beatAt") is not None:
+        b = float(p["beatAt"])
+        return f"[[0, 1], [{b:g}, 1], [{b + 0.55:g}, 1.12], [T, 1.12]]"
+    return CAM.get(cam, CAM["push40"])
+
 # 一页 = 图 / 主题 / 机位 / 明暗（reveal: from,to,at,dur）/ 调色 / 灯 / 字
 # 灯 = (x, y, r, kind, at, color, k)；字 = (文字, x, y, 字号, 对齐, 颜色, at)
 PAGES = [
@@ -193,7 +202,7 @@ def render(p):
         L.append('  P.scene(\'../scene-library/' + p["asset"] + '\', {')
         for line in o:
             L.append('    ' + line + ',')
-        L.append('    cam: ' + CAM[p["cam"]] + '.map(([t, z]) => ({ t, z })),')
+        L.append('    cam: ' + cam_expr(p) + '.map(([t, z]) => ({ t, z })),')
         if p.get("grade"):
             L.append('    grade: { ' + p["grade"] + ' },')
         L.append('  });')
@@ -234,7 +243,7 @@ def main():
     out = (ROOT / "projects" / proj / "pages") if proj else OUT
 
     if "--export" in args:
-        keep = ["id", "title", "asset", "theme", "cam", "reveal", "lights", "texts"]
+        keep = ["id", "title", "asset", "theme", "cam", "beatAt", "reveal", "lights", "texts"]
         data = [{k: v for k, v in p.items() if k in keep} for p in pages]
         f = (ROOT / "projects" / (proj or "emotion-full") / "page-spec.json")
         f.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")

@@ -210,7 +210,8 @@
    ]
   ],
   "layout": "full",
-  "visual": "双人对话"
+  "visual": "双人对话",
+  "beatAt": 3.21
  },
  {
   "id": "p10",
@@ -471,7 +472,8 @@
    ]
   ],
   "layout": "full",
-  "visual": "双人对话"
+  "visual": "双人对话",
+  "beatAt": 3.21
  },
  {
   "id": "p23",
@@ -732,7 +734,8 @@
    ]
   ],
   "layout": "full",
-  "visual": "隐喻"
+  "visual": "隐喻",
+  "beatAt": 5.02
  },
  {
   "id": "p36",

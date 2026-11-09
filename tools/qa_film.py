@@ -304,6 +304,23 @@ def main():
         ("；渲染时会放大" if wrong_size else ""))
     add("FAIL" if no_cam else "PASS", "pre", "每页有运镜",
         f"{len(no_cam)} 页没写 cam" + ("：" + "、".join(no_cam) if no_cam else ""))
+    beat_pages = [p for p in spec if p.get("cam") == "beat"]
+    if beat_pages:
+        missing_beat = [p["id"] for p in beat_pages if p.get("beatAt") is None]
+        bad_beat = []
+        for p in beat_pages:
+            if p.get("beatAt") is None:
+                continue
+            dur = next((x["end"] - x["start"] for x in tl_pages if x["id"] == p["id"]), None)
+            if dur is not None and not (0 <= float(p["beatAt"]) < dur):
+                bad_beat.append(f'{p["id"]}:{float(p["beatAt"]):.2f}s/{dur:.1f}s')
+        beat_times = " / ".join(f'{p["id"]} {float(p["beatAt"]):.2f}s' for p in beat_pages if p.get("beatAt") is not None)
+        add("WARN" if missing_beat or bad_beat else "PASS", "pre", "重拍时间",
+            (f"{len(beat_pages)} 页重拍" + (f"：{beat_times}" if beat_times else "")) +
+            ("；缺 beatAt：" + "、".join(missing_beat) if missing_beat else "") +
+            ("；落点超出页长：" + "、".join(bad_beat) if bad_beat else ""))
+    else:
+        add("INFO", "pre", "重拍时间", "没有 cam=beat 的页面")
     add("WARN" if bad_theme else "PASS", "pre", "主题值",
         f"{len(bad_theme)} 页主题不认识" + ("：" + "、".join(bad_theme) if bad_theme else "（day/night 合法）"))
     visuals = [p.get("visual") for p in spec]

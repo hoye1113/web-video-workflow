@@ -9,7 +9,7 @@ ENGINE.visual('p22', (P) => {
   P.scene('../scene-library/f1109-p22-43.png', {
     at: 0,
     reveal: { from: 0.65, to: 1, at: 0.15, dur: 1.2 },
-    cam: [[0, 1], [T * 0.45, 1], [T * 0.45 + 0.55, 1.12], [T, 1.12]].map(([t, z]) => ({ t, z })),
+    cam: [[0, 1], [3.21, 1], [3.76, 1.12], [T, 1.12]].map(([t, z]) => ({ t, z })),
   });
 
   P.text("裂口", { x: 250, y: 230, size: 50, align: 'l', color: 'ink', at: 1.2 });
