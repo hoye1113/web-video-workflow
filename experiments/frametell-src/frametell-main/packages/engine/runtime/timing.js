@@ -18,8 +18,8 @@
   }
   const commas = (text) => (text.slice(0, -1).match(/[，、；：——,]/g) || []).length;
 
-  function cueDur(text) {
-    return Math.max(1.3, units(text) / CPS + commas(text) * COMMA + BREATH);
+  function cueDur(text, cps = CPS, breath = BREATH, min = 1.3) {
+    return Math.max(min, units(text) / cps + commas(text) * COMMA + breath);
   }
 
   /**
@@ -54,6 +54,9 @@
     const voice = opts.voice || null;
     const V = { ...VOICE, ...(opts.pace || {}) };   // META.pace: { maxHold, gap } loosens a voiced film's pauses (tight by default)
     const gap = voice ? V.gap : opts.gap ?? GAP;
+    const cps = opts.cps ?? CPS;                     // no-voice tempo override; voiced films always use the audio
+    const breath = opts.breath ?? BREATH;
+    const minCue = opts.minCue ?? 1.3;               // short cues need a floor; night-insight uses ~0.55
     let t = 0;
     const out = pages.map((pg, idx) => {
       const start = t;
@@ -77,8 +80,8 @@
           ct += v.d + pause + h;
           return cue;
         }
-        const d = cueDur(text);
-        const cue = { text, sub: subText(text), start: ct, end: ct + d - BREATH * 0.5, hold };
+        const d = cueDur(text, cps, breath, minCue);
+        const cue = { text, sub: subText(text), start: ct, end: ct + d - breath * 0.5, hold };
         ct += d + hold;
         return cue;
       });

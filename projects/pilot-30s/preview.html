@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>为什么你越安慰，她越崩溃 · 30s 风格样张</title>
+<style>
+  :root{
+    --bg:#07090C;
+    --panel:#0E141A;
+    --panel2:#121A21;
+    --ink:#F2F6F7;
+    --muted:#8C9AA5;
+    --dim:#5C6A74;
+    --cyan:#35E0D0;
+    --cyan-soft:rgba(53,224,208,.16);
+    --orange:#FFA23A;
+    --orange-soft:rgba(255,162,58,.14);
+    --red:#FF5A6A;
+    --line:rgba(255,255,255,.09);
+    --font:"Microsoft YaHei","PingFang SC","Noto Sans SC",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:100%;height:100%;background:#030406;overflow:hidden}
+  body{font-family:var(--font);-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+  #viewport{position:fixed;inset:0;display:grid;place-items:center;background:#030406}
+  #stage{
+    position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--bg);
+    transform-origin:center center;
+  }
+  #stage::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(760px 560px at 72% 26%,rgba(53,224,208,.10),transparent 68%),
+      radial-gradient(680px 540px at 18% 82%,rgba(255,162,58,.075),transparent 70%),
+      radial-gradient(900px 700px at 50% 50%,#0D1218 0%,#080B0F 55%,#05070A 100%);
+  }
+  #stage::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,.026) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.026) 1px,transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(ellipse 80% 75% at 50% 48%,#000 35%,transparent 100%);
+    opacity:.55;
+  }
+  .vignette{
+    position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse 78% 72% at 50% 48%,transparent 58%,rgba(0,0,0,.42) 100%);
+    z-index:2;
+  }
+  .hud{
+    position:absolute;top:48px;left:72px;right:72px;display:flex;align-items:center;justify-content:space-between;
+    z-index:60;pointer-events:none;
+  }
+  .chapter{display:flex;align-items:center;gap:14px;font-size:21px;letter-spacing:.14em;color:var(--muted);font-weight:600}
+  .chapter b{color:var(--cyan);font-size:22px;letter-spacing:.08em;font-weight:800}
+  .chapter i{display:block;width:44px;height:1px;background:linear-gradient(90deg,var(--cyan),transparent);opacity:.7}
+  .brand{font-size:17px;letter-spacing:.22em;color:#4B5862;font-weight:600}
+  .footer{position:absolute;left:72px;right:72px;bottom:38px;z-index:60;display:flex;align-items:center;gap:22px;pointer-events:none}
+  .progress{flex:1;height:2px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden}
+  .progress > i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--cyan),var(--orange));border-radius:99px;box-shadow:0 0 18px rgba(53,224,208,.5)}
+  .time{font-size:16px;letter-spacing:.08em;color:#4F5D67;font-variant-numeric:tabular-nums;min-width:110px;text-align:right}
+  .scene{position:absolute;inset:0;padding:130px 120px 120px;opacity:0;visibility:hidden;will-change:opacity;z-index:10}
+  .scene.on{visibility:visible}
+  .anim{opacity:0;will-change:opacity,translate,scale}
+  .kicker{font-size:20px;letter-spacing:.22em;color:var(--cyan);font-weight:700;margin-bottom:18px;text-transform:uppercase}
+  .kicker.orange{color:var(--orange)}
+  .h1{font-size:92px;line-height:1.08;letter-spacing:.01em;font-weight:900;color:var(--ink)}
+  .h2{font-size:76px;line-height:1.14;letter-spacing:.01em;font-weight:900;color:var(--ink)}
+  .lead{font-size:38px;line-height:1.5;color:var(--muted);font-weight:500}
+  .small{font-size:23px;line-height:1.6;color:var(--dim);letter-spacing:.04em}
+  .accent-cyan{color:var(--cyan);text-shadow:0 0 34px rgba(53,224,208,.28)}
+  .accent-orange{color:var(--orange);text-shadow:0 0 34px rgba(255,162,58,.24)}
+  .accent-red{color:var(--red);text-shadow:0 0 30px rgba(255,90,106,.22)}
+  .panel{
+    background:linear-gradient(180deg,rgba(20,28,35,.94),rgba(11,16,21,.94));
+    border:1px solid var(--line);border-radius:28px;
+    box-shadow:0 24px 70px rgba(0,0,0,.44),inset 0 1px 0 rgba(255,255,255,.06),0 0 0 1px rgba(0,0,0,.2);
+  }
+  .panel.cyan{border-color:rgba(53,224,208,.24);box-shadow:0 24px 70px rgba(0,0,0,.44),inset 0 1px 0 rgba(255,255,255,.06),0 0 42px rgba(53,224,208,.08)}
+  .panel.orange{border-color:rgba(255,162,58,.22);box-shadow:0 24px 70px rgba(0,0,0,.44),inset 0 1px 0 rgba(255,255,255,.06),0 0 42px rgba(255,162,58,.07)}
+  .tag{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 18px;border-radius:99px;font-size:18px;font-weight:700;letter-spacing:.06em}
+  .tag.cyan{color:var(--cyan);background:rgba(53,224,208,.10);border:1px solid rgba(53,224,208,.26)}
+  .tag.orange{color:var(--orange);background:rgba(255,162,58,.10);border:1px solid rgba(255,162,58,.28)}
+  .tag.red{color:var(--red);background:rgba(255,90,106,.09);border:1px solid rgba(255,90,106,.26)}
+  .dot{width:9px;height:9px;border-radius:50%;background:currentColor;box-shadow:0 0 12px currentColor}
+
+  /* ---------- p01 ---------- */
+  .phone{
+    position:absolute;left:150px;top:212px;width:486px;height:650px;border-radius:44px;padding:24px;
+    background:linear-gradient(180deg,#111821,#0A0E13);border:1px solid rgba(255,255,255,.11);
+    box-shadow:0 30px 90px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.07),0 0 70px rgba(53,224,208,.06);
+  }
+  .phone::before{content:"";position:absolute;left:50%;top:14px;width:118px;height:26px;transform:translateX(-50%);border-radius:0 0 18px 18px;background:#070A0E;border:1px solid rgba(255,255,255,.06);border-top:0}
+  .phone-head{display:flex;align-items:center;gap:12px;margin:16px 8px 0;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.07)}
+  .phone-head .avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#22313C,#131B22);border:1px solid rgba(53,224,208,.35);position:relative;overflow:hidden;flex:none}
+  .phone-head .avatar::before{content:"";position:absolute;left:50%;top:9px;width:12px;height:12px;transform:translateX(-50%);border-radius:50%;background:#9DB3BD}
+  .phone-head .avatar::after{content:"";position:absolute;left:50%;bottom:-6px;width:26px;height:20px;transform:translateX(-50%);border-radius:50%;background:#6E8792}
+  .phone-head .who{font-size:22px;color:#D7E2E6;font-weight:700}
+  .phone-head .status{font-size:16px;color:#5E707B;margin-left:auto}
+  .chat{padding:26px 8px 0;display:flex;flex-direction:column;gap:18px}
+  .bubble{max-width:82%;padding:18px 22px;border-radius:22px;font-size:28px;line-height:1.42;font-weight:500}
+  .bubble.in{align-self:flex-start;background:#1A242D;color:#DCE6EA;border-bottom-left-radius:7px;border:1px solid rgba(255,255,255,.06)}
+  .bubble.out{align-self:flex-end;background:linear-gradient(135deg,#1F6E68,#164B48);color:#E9FFFC;border-bottom-right-radius:7px;border:1px solid rgba(53,224,208,.22)}
+  .bubble.dim{color:#8B99A2;background:#141C23}
+  .read{align-self:flex-end;font-size:15px;color:#576873;letter-spacing:.08em;margin-top:-8px}
+  .typing{position:absolute;left:32px;bottom:34px;display:flex;align-items:center;gap:9px;font-size:15px;color:#5E707B;letter-spacing:.06em}
+  .typing i{width:7px;height:7px;border-radius:50%;background:#5E707B;display:block;animation:blink 1.2s infinite}
+  .typing i:nth-child(2){animation-delay:.16s}.typing i:nth-child(3){animation-delay:.32s}
+  .typing span{margin-left:4px}
+  @keyframes blink{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+  .p01-title{position:absolute;left:790px;top:250px;width:930px}
+  .p01-title .h1{font-size:104px}
+  .p01-title .lead{margin-top:26px;max-width:720px;font-size:36px}
+  .heart-wrap{position:absolute;left:1150px;top:600px;width:420px;height:420px;opacity:.96}
+  .heart{width:100%;height:100%;filter:drop-shadow(0 0 46px rgba(53,224,208,.18))}
+  .heart .crack{stroke:#07090C;stroke-width:7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .p01-note{position:absolute;left:1268px;top:970px;font-size:18px;letter-spacing:.16em;color:#5C6A74}
+
+  /* ---------- p02 ---------- */
+  .p02-title{position:absolute;left:120px;top:132px;width:1200px}
+  .p02-title .h2{font-size:72px}
+  .p02-grid{position:absolute;left:120px;right:120px;top:380px;display:grid;grid-template-columns:1fr 1fr;gap:380px}
+  .p02-card{position:relative;height:440px;padding:42px 44px}
+  .p02-card .tag{position:absolute;right:32px;top:32px}
+  .p02-card h3{font-size:42px;font-weight:900;color:var(--ink);margin-top:16px}
+  .p02-card p{font-size:24px;line-height:1.9;color:var(--muted);margin-top:24px}
+  .p02-card .icon{width:88px;height:88px;border-radius:24px;display:grid;place-items:center;border:1px solid var(--line);background:rgba(255,255,255,.03)}
+  .p02-card .icon svg{width:52px;height:52px}
+  .p02-wall{
+    position:absolute;left:856px;top:352px;width:208px;height:520px;border-radius:28px;
+    background:linear-gradient(180deg,rgba(255,90,106,.16),rgba(255,90,106,.05));
+    border:1px solid rgba(255,90,106,.35);box-shadow:0 0 60px rgba(255,90,106,.10),inset 0 0 40px rgba(255,90,106,.05);
+    display:grid;place-items:center;
+  }
+  .p02-wall span{writing-mode:vertical-rl;font-size:32px;font-weight:900;letter-spacing:.22em;color:var(--red)}
+  .p02-caption{position:absolute;left:120px;right:120px;bottom:120px;text-align:center;font-size:34px;color:var(--muted);font-weight:500}
+  .p02-caption b{color:var(--orange);font-weight:800}
+
+  /* ---------- p03 ---------- */
+  .p03-title{position:absolute;left:120px;top:132px;width:1100px}
+  .p03-title .h2{font-size:70px}
+  .p03-left{position:absolute;left:210px;top:430px;width:470px;padding:34px 38px}
+  .p03-left .label{font-size:18px;color:var(--dim);letter-spacing:.16em;margin-bottom:16px}
+  .p03-left .said{font-size:64px;font-weight:900;color:var(--ink);line-height:1.25}
+  .p03-arrow{position:absolute;left:720px;top:520px;width:230px;height:2px;background:linear-gradient(90deg,rgba(255,255,255,.15),var(--orange));box-shadow:0 0 18px rgba(255,162,58,.3)}
+  .p03-arrow::after{content:"";position:absolute;right:-2px;top:-7px;width:16px;height:16px;border-top:2px solid var(--orange);border-right:2px solid var(--orange);transform:rotate(45deg)}
+  .p03-right{position:absolute;left:1020px;top:386px;width:720px;padding:36px 42px;border-color:rgba(255,90,106,.22)}
+  .p03-right .label{font-size:18px;color:var(--red);letter-spacing:.16em;margin-bottom:18px}
+  .p03-right .heard{font-size:58px;font-weight:900;color:#87939C;line-height:1.3}
+  .p03-right .strike{position:absolute;left:42px;right:42px;top:128px;height:3px;background:var(--red);transform:rotate(-2deg);box-shadow:0 0 20px rgba(255,90,106,.4)}
+  .p03-caption{position:absolute;left:120px;right:120px;bottom:118px;text-align:center;font-size:32px;color:var(--muted)}
+  .p03-caption b{color:var(--orange);font-weight:800}
+
+  /* ---------- p04 ---------- */
+  .p04-title{position:absolute;left:120px;top:132px;width:1200px}
+  .p04-title .h2{font-size:72px}
+  .p04-floor{position:absolute;left:200px;right:200px;top:700px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent)}
+  .avatar-big{position:absolute;width:126px;height:126px;border-radius:50%;display:grid;place-items:center;border:2px solid rgba(255,255,255,.16);background:radial-gradient(circle at 40% 30%,#22313C,#0E141A);box-shadow:0 16px 40px rgba(0,0,0,.4)}
+  .avatar-big::before{content:"";width:30px;height:30px;border-radius:50%;background:#B5C8CF;transform:translateY(-12px)}
+  .avatar-big::after{content:"";position:absolute;bottom:16px;width:58px;height:34px;border-radius:50% 50% 42% 42%;background:#7C96A0}
+  .avatar-big.cyan{border-color:rgba(53,224,208,.7);box-shadow:0 0 50px rgba(53,224,208,.18)}
+  .avatar-big.orange{border-color:rgba(255,162,58,.7);box-shadow:0 0 50px rgba(255,162,58,.16)}
+  .avatar-big .name{position:absolute;bottom:-44px;left:50%;transform:translateX(-50%);font-size:18px;letter-spacing:.12em;color:#6E7D87;white-space:nowrap}
+  .p04-wall{position:absolute;left:860px;top:350px;width:200px;height:430px;border-radius:26px;background:linear-gradient(180deg,rgba(255,162,58,.13),rgba(255,162,58,.04));border:1px solid rgba(255,162,58,.34);display:grid;place-items:center;box-shadow:0 0 60px rgba(255,162,58,.08)}
+  .p04-wall span{writing-mode:vertical-rl;font-size:38px;font-weight:900;letter-spacing:.24em;color:var(--orange)}
+  .p04-dash{position:absolute;left:602px;top:640px;width:716px;height:1px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.22) 0 12px,transparent 12px 24px);opacity:.65}
+  .p04-caption{position:absolute;left:120px;right:120px;bottom:116px;text-align:center;font-size:33px;color:var(--muted)}
+  .p04-caption b{color:var(--orange);font-weight:800}
+
+  /* ---------- p05 ---------- */
+  .p05-title{position:absolute;left:120px;top:132px;width:1100px}
+  .p05-title .h2{font-size:72px}
+  .p05-bubble{position:absolute;left:260px;top:460px;width:620px;padding:40px 44px;border-color:rgba(53,224,208,.28)}
+  .p05-bubble .label{font-size:18px;letter-spacing:.16em;color:var(--cyan);margin-bottom:16px}
+  .p05-bubble .quote{font-size:48px;line-height:1.42;font-weight:800;color:var(--ink)}
+  .p05-bubble::after{content:"";position:absolute;right:-24px;top:96px;width:44px;height:44px;background:linear-gradient(135deg,transparent 50%,rgba(53,224,208,.14) 50%);border-right:1px solid rgba(53,224,208,.28);border-bottom:1px solid rgba(53,224,208,.28);transform:rotate(-45deg)}
+  .p05-heart{position:absolute;left:1110px;top:430px;width:420px;height:420px}
+  .p05-ring{position:absolute;left:1040px;top:360px;width:560px;height:560px;border-radius:50%;border:1px solid rgba(255,162,58,.28);box-shadow:0 0 70px rgba(255,162,58,.10),inset 0 0 70px rgba(255,162,58,.05)}
+  .p05-ring::before{content:"";position:absolute;inset:34px;border-radius:50%;border:1px dashed rgba(255,162,58,.18)}
+  .p05-tool{position:absolute;left:1500px;top:760px;width:270px;padding:22px 26px;opacity:.34;filter:saturate(.4)}
+  .p05-tool .t{font-size:20px;color:#9BAAB3;font-weight:700}
+  .p05-tool .l{font-size:15px;color:#5C6A74;margin-top:8px;letter-spacing:.08em}
+  .p05-caption{position:absolute;left:120px;right:120px;bottom:116px;text-align:center;font-size:32px;color:var(--muted)}
+  .p05-caption b{color:var(--cyan);font-weight:800}
+
+  /* ---------- p06 ---------- */
+  .p06-title{position:absolute;left:120px;top:132px;width:1200px}
+  .p06-title .h2{font-size:70px}
+  .p06-cards{position:absolute;left:200px;right:200px;top:400px;display:grid;grid-template-columns:1fr 1fr;gap:120px}
+  .p06-card{height:330px;padding:40px 44px;position:relative;display:flex;flex-direction:column;justify-content:space-between}
+  .p06-card .icon{width:84px;height:84px;border-radius:24px;display:grid;place-items:center;border:1px solid var(--line);background:rgba(255,255,255,.03)}
+  .p06-card .icon svg{width:48px;height:48px}
+  .p06-card h3{font-size:44px;font-weight:900;color:var(--ink)}
+  .p06-card p{font-size:22px;color:var(--muted);line-height:1.7}
+  .p06-switch{position:absolute;left:50%;top:520px;transform:translateX(-50%);width:92px;height:44px;border-radius:99px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);box-shadow:inset 0 2px 8px rgba(0,0,0,.4)}
+  .p06-switch::after{content:"";position:absolute;left:calc(50% - 16px);top:5px;width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),#1F9A91);box-shadow:0 0 18px rgba(53,224,208,.5)}
+  .p06-quote{position:absolute;left:300px;right:300px;bottom:116px;padding:30px 40px;text-align:center;font-size:36px;line-height:1.5;color:#DDE7EA;font-weight:700}
+  .p06-quote b{color:var(--orange)}
+
+  /* ---------- p07 ---------- */
+  .p07-wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-top:40px}
+  .p07-kicker{font-size:20px;letter-spacing:.26em;color:var(--orange);font-weight:700;margin-bottom:22px}
+  .p07-title{font-size:88px;line-height:1.14;font-weight:900;color:var(--ink)}
+  .p07-ring{position:relative;width:430px;height:430px;margin-top:44px;border-radius:50%;border:1px solid rgba(255,162,58,.32);box-shadow:0 0 100px rgba(255,162,58,.12),inset 0 0 90px rgba(255,162,58,.06);display:grid;place-items:center}
+  .p07-ring::before{content:"";position:absolute;inset:34px;border-radius:50%;border:1px dashed rgba(255,162,58,.18)}
+  .p07-pair{position:relative;width:230px;height:130px}
+  .p07-pair .avatar-big{width:104px;height:104px;top:12px}
+  .p07-pair .avatar-big.cyan{left:0}
+  .p07-pair .avatar-big.orange{right:0}
+  .p07-pair .avatar-big::before{width:26px;height:26px}
+  .p07-pair .avatar-big::after{width:48px;height:28px;bottom:13px}
+  .p07-note{margin-top:22px;font-size:25px;letter-spacing:.08em;color:#7E8D97}
+  .p07-note b{color:var(--cyan);font-weight:700}
+  .p07-end{margin-top:28px;font-size:17px;letter-spacing:.24em;color:#48545D}
+
+  @media (prefers-reduced-motion:reduce){
+    .anim{opacity:1!important}
+  }
+</style>
+</head>
+<body>
+<div id="viewport">
+  <div id="stage">
+    <div class="vignette"></div>
+
+    <header class="hud">
+      <div class="chapter"><b id="chapterNo">01</b><i></i><span id="chapterName">钩子</span></div>
+      <div class="brand">心理图解 · 30s 样片</div>
+    </header>
+
+    <!-- 01 -->
+    <section class="scene" data-start="0" data-end="4" data-chapter="01" data-name="钩子">
+      <div class="phone anim" data-in="0.0" data-dur="0.7" data-y="46" data-scale="0.97">
+        <div class="phone-head">
+          <span class="avatar"></span>
+          <span class="who">她</span>
+          <span class="status">在线</span>
+        </div>
+        <div class="chat">
+          <div class="bubble in anim" data-in="0.3" data-y="18">我今天好累</div>
+          <div class="bubble out anim" data-in="0.8" data-y="18">别想太多，早点睡</div>
+          <div class="bubble in dim anim" data-in="1.3" data-y="18">……</div>
+          <div class="bubble in dim anim" data-in="1.8" data-y="18">你根本不懂</div>
+          <div class="read anim" data-in="2.2">已读</div>
+        </div>
+        <div class="typing anim" data-in="2.35"><i></i><i></i><i></i><span>对方正在输入…</span></div>
+      </div>
+
+      <div class="p01-title">
+        <div class="kicker anim" data-in="0.0">她难过的时候</div>
+        <div class="h1 anim" data-in="0.1" data-y="34">越<span class="accent-cyan">安慰</span></div>
+        <div class="h1 anim" data-in="0.3" data-y="34">越<span class="accent-orange">崩溃</span></div>
+        <div class="lead anim" data-in="0.7" data-y="22">你越想把她拉出来，<br>她越觉得你没进去。</div>
+      </div>
+
+      <div class="heart-wrap anim" data-in="0.6" data-dur="0.9" data-y="30" data-scale="0.9">
+        <svg class="heart" viewBox="0 0 200 200" aria-hidden="true">
+          <defs>
+            <linearGradient id="hg1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#35E0D0" stop-opacity=".95"/>
+              <stop offset=".55" stop-color="#2BB6AA" stop-opacity=".55"/>
+              <stop offset="1" stop-color="#FFA23A" stop-opacity=".55"/>
+            </linearGradient>
+          </defs>
+          <path d="M100 174C82 158 28 125 28 78c0-28 20-46 44-46 13 0 24 6 28 16 4-10 15-16 28-16 24 0 44 18 44 46 0 47-54 80-72 96Z"
+                fill="none" stroke="url(#hg1)" stroke-width="3.5" opacity=".9"/>
+          <path d="M100 174C82 158 28 125 28 78c0-28 20-46 44-46 13 0 24 6 28 16 4-10 15-16 28-16 24 0 44 18 44 46 0 47-54 80-72 96Z"
+                fill="rgba(53,224,208,.035)" stroke="none"/>
+          <path class="crack" d="M100 54l-8 34 18 12-12 28 22 14-10 24"/>
+          <path class="crack" d="M64 84l24 8M138 104l-20 12" opacity=".8"/>
+        </svg>
+      </div>
+      <div class="p01-note anim" data-in="2.5">第 3 次已读不回</div>
+    </section>
+
+    <!-- 02 -->
+    <section class="scene" data-start="4" data-end="8" data-chapter="02" data-name="反常识">
+      <div class="p02-title">
+        <div class="kicker anim" data-in="-0.2">反常识</div>
+        <div class="h2 anim" data-in="-0.12" data-y="28">大多数安慰，<br>都在急着<span class="accent-cyan">解决问题</span></div>
+      </div>
+
+      <div class="p02-grid">
+        <div class="p02-card panel orange anim" data-in="0.0" data-y="34">
+          <span class="tag orange"><i class="dot"></i>急着修好</span>
+          <div class="icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#FFA23A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 17h30v22H9z"/><path d="M17 17v-5h14v5"/><path d="M9 25h30"/><path d="M20 25v5h8v-5"/>
+            </svg>
+          </div>
+          <h3>给方案</h3>
+          <p>“别想了”<br>“这有什么”<br>“我教你怎么办”</p>
+        </div>
+
+        <div class="p02-card panel cyan anim" data-in="0.1" data-y="34">
+          <span class="tag cyan"><i class="dot"></i>先接住</span>
+          <div class="icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#35E0D0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 24s7-10 18-10 18 10 18 10-7 10-18 10S6 24 6 24Z"/><circle cx="24" cy="24" r="5.5"/><path d="M24 38v4"/>
+            </svg>
+          </div>
+          <h3>给回应</h3>
+          <p>“我在”<br>“很难受吧”<br>“你慢慢说”</p>
+        </div>
+      </div>
+
+      <div class="p02-wall anim" data-in="0.2" data-scale="1.06" data-y="20"><span>解决问题</span></div>
+      <div class="p02-caption anim" data-in="0.55">她要的是<b>被看见</b>，不是被指导。</div>
+    </section>
+
+    <!-- 03 -->
+    <section class="scene" data-start="8" data-end="12.5" data-chapter="03" data-name="错误示范">
+      <div class="p03-title">
+        <div class="kicker orange anim" data-in="-0.2">一句话，两种翻译</div>
+        <div class="h2 anim" data-in="-0.12" data-y="28">你说“<span class="accent-orange">别想了</span>”</div>
+      </div>
+
+      <div class="p03-left panel anim" data-in="0.0" data-y="30">
+        <div class="label">你的安慰</div>
+        <div class="said">别想了</div>
+      </div>
+
+      <div class="p03-arrow anim" data-in="0.2" data-x="-20"></div>
+
+      <div class="p03-right panel anim" data-in="0.3" data-y="26">
+        <div class="label">她听到的</div>
+        <div class="heard">你的感受不重要</div>
+        <div class="strike anim" data-in="0.65" data-x="-18"></div>
+      </div>
+
+      <div class="p03-caption anim" data-in="0.9">否定情绪，比不回应更<b>伤人</b>。</div>
+    </section>
+
+    <!-- 04 -->
+    <section class="scene" data-start="12.5" data-end="17.5" data-chapter="04" data-name="机制">
+      <div class="p04-title">
+        <div class="kicker anim" data-in="-0.2">为什么进不去</div>
+        <div class="h2 anim" data-in="-0.12" data-y="28">情绪没被接住，<br><span class="accent-orange">道理</span>就进不去</div>
+      </div>
+
+      <div class="p04-floor anim" data-in="0.1" data-y="10"></div>
+
+      <div class="avatar-big cyan anim" data-in="0.0" data-y="24" style="left:470px;top:560px"><span class="name">你</span></div>
+      <div class="avatar-big orange anim" data-in="0.1" data-y="24" style="left:1320px;top:560px"><span class="name">她</span></div>
+      <div class="p04-dash anim" data-in="0.2"></div>
+      <div class="p04-wall anim" data-in="0.3" data-scale="1.05" data-y="20"><span>道理</span></div>
+
+      <div class="p04-caption anim" data-in="0.75">越讲道理，她越觉得你在<b>对面</b>。</div>
+    </section>
+
+    <!-- 05 -->
+    <section class="scene" data-start="17.5" data-end="22.5" data-chapter="05" data-name="正确动作">
+      <div class="p05-title">
+        <div class="kicker anim" data-in="-0.2">先做什么</div>
+        <div class="h2 anim" data-in="-0.12" data-y="28">先接住情绪，<br>再<span class="accent-cyan">给方案</span></div>
+      </div>
+
+      <div class="p05-ring anim" data-in="0.0" data-scale="0.92"></div>
+      <div class="p05-heart anim" data-in="0.05" data-scale="0.9">
+        <svg class="heart" viewBox="0 0 200 200" aria-hidden="true">
+          <defs>
+            <linearGradient id="hg2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#35E0D0"/>
+              <stop offset=".55" stop-color="#FFA23A"/>
+              <stop offset="1" stop-color="#FF7A45"/>
+            </linearGradient>
+          </defs>
+          <path d="M100 174C82 158 28 125 28 78c0-28 20-46 44-46 13 0 24 6 28 16 4-10 15-16 28-16 24 0 44 18 44 46 0 47-54 80-72 96Z"
+                fill="rgba(255,162,58,.08)" stroke="url(#hg2)" stroke-width="4"/>
+          <path d="M100 62l-8 30 16 10-10 22 16 10" stroke="rgba(255,255,255,.35)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="p05-bubble panel anim" data-in="0.15" data-y="30">
+        <div class="label">先说这一句</div>
+        <div class="quote">“你现在一定很难受。”</div>
+      </div>
+
+      <div class="p05-tool panel anim" data-in="0.55" data-y="20">
+        <div class="t">方案</div>
+        <div class="l">先放一边</div>
+      </div>
+
+      <div class="p05-caption anim" data-in="0.9">先接住，再说。</div>
+    </section>
+
+    <!-- 06 -->
+    <section class="scene" data-start="22.5" data-end="27.5" data-chapter="06" data-name="把选择权交给她">
+      <div class="p06-title">
+        <div class="kicker anim" data-in="-0.2">等她落地</div>
+        <div class="h2 anim" data-in="-0.12" data-y="28">再问一句</div>
+      </div>
+
+      <div class="p06-cards">
+        <div class="p06-card panel cyan anim" data-in="0.0" data-y="32">
+          <div class="icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#35E0D0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 10c8 0 12 6 12 14v7c0 4 2 6 6 6"/><path d="M11 25c0 7 5 12 12 12"/><path d="M13 16c3-4 8-6 13-6"/>
+            </svg>
+          </div>
+          <div>
+            <h3>听我说</h3>
+            <p>先不评价，先听完</p>
+          </div>
+        </div>
+
+        <div class="p06-card panel orange anim" data-in="0.1" data-y="32">
+          <div class="icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#FFA23A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M24 8a11 11 0 0 0-7 19.6V34h14v-6.4A11 11 0 0 0 24 8Z"/><path d="M19 39h10"/><path d="M21 34v5M27 34v5"/>
+            </svg>
+          </div>
+          <div>
+            <h3>一起想办法</h3>
+            <p>她要的是队友，不是老师</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="p06-switch anim" data-in="0.25" data-scale="0.8"></div>
+
+      <div class="p06-quote panel anim" data-in="0.5" data-y="24">“你想让我听，<b>还是一起想办法</b>？”</div>
+    </section>
+
+    <!-- 07 -->
+    <section class="scene" data-start="27.5" data-end="30" data-chapter="07" data-name="收尾">
+      <div class="p07-wrap">
+        <div class="p07-kicker anim" data-in="-0.2">最后</div>
+        <div class="p07-title anim" data-in="-0.1" data-y="30">安慰不是说服<br>是<span class="accent-orange">靠近</span></div>
+
+        <div class="p07-ring anim" data-in="0.0" data-scale="0.92">
+          <div class="p07-pair">
+            <div class="avatar-big cyan"></div>
+            <div class="avatar-big orange"></div>
+          </div>
+        </div>
+
+        <div class="p07-note anim" data-in="0.35">先接住，再讲<b>道理</b>。</div>
+        <div class="p07-end anim" data-in="0.6">关系里，靠近比正确更重要</div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="progress"><i id="progressFill"></i></div>
+      <div class="time" id="time">00:00 / 00:30</div>
+    </footer>
+  </div>
+</div>
+
+<script>
+(() => {
+  const stage = document.getElementById('stage');
+  const scenes = [...document.querySelectorAll('.scene')];
+  const DURATION = 30;
+  const capture = new URLSearchParams(location.search).has('capture');
+  const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+  const easeOut = x => 1 - Math.pow(1 - x, 3);
+  const easeInOut = x => x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3) / 2;
+
+  // fit stage to window when previewing (capture is always 1920x1080)
+  function fit(){
+    if (capture) { stage.style.transform = 'none'; return; }
+    const k = Math.min(innerWidth / 1920, innerHeight / 1080);
+    stage.style.transform = `scale(${k})`;
+  }
+  addEventListener('resize', fit);
+  fit();
+
+  function render(t){
+    t = clamp(t, 0, DURATION);
+    const sec = Math.floor(t);
+    const mm = String(Math.floor(sec / 60)).padStart(2, '0');
+    const ss = String(sec % 60).padStart(2, '0');
+    document.getElementById('time').textContent = `${mm}:${ss} / 00:30`;
+    document.getElementById('progressFill').style.width = `${(t / DURATION) * 100}%`;
+
+    let active = null;
+    for (const scene of scenes){
+      const start = +scene.dataset.start, end = +scene.dataset.end;
+      // hard cut, no overlap: this format reads better as cards cutting on the beat
+      const op = t < start || t >= end ? 0 : 1;
+      scene.style.opacity = op.toFixed(4);
+      if (op > 0.001){ scene.classList.add('on'); active = scene; } else { scene.classList.remove('on'); }
+      if (op > 0.001){
+        const lt = t - start;
+        for (const el of scene.querySelectorAll('.anim')){
+          const inAt = +(el.dataset.in || 0);
+          const dur = +(el.dataset.dur || .55);
+          const outAt = el.dataset.out ? +el.dataset.out : Infinity;
+          const outDur = +(el.dataset.outDur || .35);
+          const pin = clamp((lt - inAt) / dur);
+          const pout = outAt === Infinity ? 0 : clamp((lt - outAt) / outDur);
+          const o = easeOut(pin) * (1 - easeInOut(pout));
+          const y = (1 - easeOut(pin)) * +(el.dataset.y || 22) - easeInOut(pout) * +(el.dataset.outY || 14);
+          const x = (1 - easeOut(pin)) * +(el.dataset.x || 0);
+          const sc = 1 + (1 - easeOut(pin)) * (+(el.dataset.scale || 1) - 1) * 0.55;
+          el.style.opacity = o.toFixed(4);
+          el.style.translate = `${x.toFixed(2)}px ${y.toFixed(2)}px`;
+          el.style.scale = `${sc.toFixed(4)}`;
+        }
+        // continuous life: tiny breathing, so a still frame feels alive
+        const pulse = 1 + Math.sin(lt * 1.25) * .008;
+        const kv = scene.querySelector('.p05-heart, .p07-ring, .heart-wrap');
+        if (kv) kv.style.transform = `scale(${pulse.toFixed(4)})`;
+      }
+    }
+    if (active){
+      document.getElementById('chapterNo').textContent = active.dataset.chapter;
+      document.getElementById('chapterName').textContent = active.dataset.name;
+    }
+  }
+
+  window.__seek = t => { render(t); };
+  window.__duration = DURATION;
+
+  if (capture){
+    render(0);
+  } else {
+    let start = performance.now();
+    let paused = false;
+    addEventListener('click', () => { paused = !paused; if (!paused) start = performance.now() - (window.__t || 0) * 1000; });
+    const loop = now => {
+      if (!paused){
+        let t = ((now - start) / 1000) % (DURATION + .8);
+        if (t > DURATION) t = DURATION;
+        window.__t = t;
+        render(t);
+      }
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+  }
+})();
+</script>
+</body>
+</html>

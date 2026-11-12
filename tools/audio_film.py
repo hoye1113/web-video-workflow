@@ -49,16 +49,23 @@ def main(argv):
     ap.add_argument("--page-chars", type=int, default=33)
     ap.add_argument("--page-sec", type=float, default=6.2)
     ap.add_argument("--max-cue", type=int, default=20)
+    ap.add_argument("--style", default="warm-emotion",
+                    help="套版 id（默认 warm-emotion；night-insight 走深色心理图解）")
+    ap.add_argument("--kit", default=None,
+                    help="组件文件；默认 engine/styles/<style>/kit.js")
     ap.add_argument("--voice-only", action="store_true",
                     help="只重切音频并重写 voice.js（不动 script.js / page-spec）")
     a = ap.parse_args(argv[1:])
+    style = a.style or "warm-emotion"
+    kit = a.kit or f"engine/styles/{style}/kit.js"
+    night = style == "night-insight"
 
     proj = a.project
     d = ROOT / "projects" / proj
     if not d.exists():
         sys.exit(f"没有工程目录：{d}（先 tools/new_film.py {proj}）")
 
-    tr = json.loads(pathlib.Path(a.transcript).read_text(encoding="utf-8"))
+    tr = json.loads(pathlib.Path(a.transcript).read_text(encoding="utf-8-sig"))
     segs = [s for s in tr.get("segments", []) if tidy(s.get("text"))]
     if not segs:
         sys.exit("转写里没有可用段落")
@@ -146,13 +153,20 @@ def main(argv):
         f"/* {proj} · 由 tools/audio_film.py 从用户音频生成（不要手改） */",
         "(function (root) {",
         "  const META = {",
-        "    style: 'warm-emotion',",
+        f"    style: {json.dumps(style)},",
         f"    title: {json.dumps(title, ensure_ascii=False)},",
         f"    name: {json.dumps(proj)},",
         "    gap: 0,",
         "    voice: { speaker: 'audio', provider: 'audio' },",
-        "    extras: ['engine/styles/warm-emotion/kit.js'],",
+        f"    extras: [{json.dumps(kit)}],",
         "    pace: { lead: 0, gap: 0, maxHold: 0, comma: 0, stop: 0, pageEnd: 0, tail: 1.0 },",
+    ]
+    if night:
+        lines += [
+            "    fadeDelay: 0.05,",
+            "    pageMotion: false,",
+        ]
+    lines += [
         "  };",
         "  const PAGES = [",
     ]
@@ -173,13 +187,49 @@ def main(argv):
                                         "pages": voice_pages}, ensure_ascii=False) + ";\n",
         encoding="utf-8")
 
-    (d / "page-spec.json").write_text(json.dumps(spec_pages, ensure_ascii=False, indent=1),
-                                     encoding="utf-8")
+    if night:
+        # 深色套版：先给一版可跑的 list 页，之后按 night-spec.js 改成 hook/split/...
+        night_spec = {}
+        for pi, p in enumerate(src_pages, 1):
+            cues = p["cues"]
+            night_spec[p["id"]] = {
+                "layout": "list",
+                "chapter": f"{pi:02d}",
+                "name": p["section"],
+                "kicker": p["section"],
+                "title": [p["title"]],
+                "items": cues[1:4] if len(cues) > 1 else cues,
+                "caption": cues[-1] if len(cues) > 4 else "",
+            }
+        (d / "night-spec.js").write_text(
+            "window.NIGHT_SPEC = " + json.dumps(night_spec, ensure_ascii=False, indent=1) + ";\n",
+            encoding="utf-8")
+        idx = d / "index.html"
+        if idx.exists():
+            html = idx.read_text(encoding="utf-8")
+            if "night-spec.js" not in html:
+                html = html.replace('<script src="script.js"></script>',
+                                    '<script src="night-spec.js"></script>\n<script src="script.js"></script>', 1)
+                if "night-spec.js" not in html:   # 兜底：不同模板的写法
+                    html = html.replace('<script src="engine/boot.js"></script>',
+                                        '<script src="night-spec.js"></script>\n<script src="engine/boot.js"></script>', 1)
+                idx.write_text(html, encoding="utf-8")
+        pdir = d / "pages"
+        pdir.mkdir(exist_ok=True)
+        for pid in night_spec:
+            (pdir / f"{pid}.js").write_text(
+                f"ENGINE.visual('{pid}', (P) => NIGHT.render(P, NIGHT_SPEC.{pid}));\n",
+                encoding="utf-8")
+        print(f"  写好：night-spec.js + pages/*.js（{len(night_spec)} 页，深色 draft）")
+    else:
+        (d / "page-spec.json").write_text(json.dumps(spec_pages, ensure_ascii=False, indent=1),
+                                         encoding="utf-8")
 
     chars = sum(len(c["text"]) for pg in pages for c in pg)
     print(f"  页数 {len(pages)} · cue {len(cues)} · 字数 {chars} · 音频 {total:.1f}s")
     print(f"  每页字数：{[sum(len(c['text']) for c in pg) for pg in pages][:10]} …")
-    print(f"  写好：script-source.json / script.js / voice.js / page-spec.json（{proj}）")
+    tail = "night-spec.js" if night else "page-spec.json"
+    print(f"  写好：script-source.json / script.js / voice.js / {tail}（{proj}）")
 
 
 if __name__ == "__main__":
