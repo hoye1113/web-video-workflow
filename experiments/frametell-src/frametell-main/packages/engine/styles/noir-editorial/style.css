@@ -1,0 +1,82 @@
+/* Noir editorial · type, grain, hairline HUD and a subtitle that is part of the layout. */
+:root {
+  --ink: #E9E4D8;
+  --soft: #B8BFBA;
+  --muted: #7E8A87;
+  --band-color: rgba(6, 10, 11, 0.97);
+  --hand: 'SimSun', 'Songti SC', 'Noto Serif SC', 'Source Han Serif SC', serif;
+  --sans: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+  --latin: 'Georgia', 'Times New Roman', serif;
+  --mono: 'JetBrains Mono', 'SF Mono', 'Cascadia Mono', monospace;
+}
+
+#frame {
+  background: #060A0B;
+  color: var(--ink);
+  font-family: var(--hand);
+}
+
+/* the grain lives under the page: it textures the ground without fuzzing the type */
+#bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('grain.png');
+  background-size: 512px 512px;
+  opacity: 0.05;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+#vignette {
+  background:
+    radial-gradient(ellipse 78% 72% at 50% 46%, transparent 42%, rgba(0, 0, 0, 0.62) 100%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.34), transparent 17%, transparent 79%, rgba(0, 0, 0, 0.42));
+}
+
+/* this style is printed, not painted: no watercolour edge on fills */
+svg.ink [filter="url(#wc)"] { filter: none; }
+
+.tx { letter-spacing: 0.03em; }
+.tx.serif { font-family: var(--hand); }
+.tx.sans { font-family: var(--sans); }
+.tx.mono { font-family: var(--mono); }
+.tx.latin {
+  font-family: var(--latin);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.045em;
+}
+.tx.narration {
+  color: var(--ink);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.85);
+}
+.tx.ghost {
+  color: var(--faint);
+  opacity: 0.22;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+}
+.tx .line { display: block; white-space: pre; }
+
+/* a real subtitle, if a film asks for the burned-in version: no pill, no card */
+.subs { bottom: 44px; }
+.subs::before {
+  content: '';
+  display: block;
+  width: 220px;
+  height: 1px;
+  margin: 0 auto 10px;
+  background: rgba(233, 228, 216, 0.2);
+}
+.subs span {
+  color: var(--ink);
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  font-family: var(--hand);
+  font-weight: 400;
+  font-size: 38px;
+  letter-spacing: 0.045em;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.86);
+}
