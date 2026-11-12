@@ -1,0 +1,10 @@
+engine
+engine_modules
+out/
+.studio/
+
+audio/
+voice.js
+agent-session.json
+
+voice.cache.json

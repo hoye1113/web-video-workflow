@@ -1,0 +1,18 @@
+{
+  "name": "裂痕之后",
+  "subtitle": "婚姻信任重建 · 源音频 1112",
+  "slug": "noir-1112",
+  "style": "noir-editorial",
+  "source_audio": "E:\\音频素材\\1112.mp4",
+  "duration_sec": 377.3,
+  "chapters": 7,
+  "pages": 39,
+  "cues": 235,
+  "created": "2026-11-12",
+  "outputs": {
+    "with_subtitles": "out/noir-1112-有字幕.mp4",
+    "master": "out/noir-1112-无字幕.mp4",
+    "720p": "out/noir-1112-720p.mp4"
+  },
+  "notes": "User audio is the only timeline; subtitles are burned from the same cues. No BGM added."
+}

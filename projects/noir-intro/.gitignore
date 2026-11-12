@@ -6,3 +6,5 @@ out/
 audio/
 voice.js
 agent-session.json
+
+voice.cache.json
