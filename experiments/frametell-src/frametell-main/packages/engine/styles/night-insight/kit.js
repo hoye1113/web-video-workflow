@@ -13,6 +13,8 @@
   const { h, clamp, ease } = PV;
   let uid = 0;
   const nid = (p) => p + (++uid);
+  // 4:3：页面按 1440×1080 设计，外层按 STAGE 宽度等比放大（1920×1440 → 1.333）
+  const R43 = () => STAGE.w / STAGE.h < 1.5;
 
   const abs = (e, x, y, w, hh) => {
     e.style.left = x + 'px';
@@ -51,7 +53,8 @@
     `<span class="icon" style="color:${color}">${ICONS[name] || ICONS.eye}</span>`;
 
   function hud(P, root, chapter, name, at) {
-    const box = abs(add(P, 'div', 'hud', '', root), 72, 48, 1776, null);
+    const r = R43();
+    const box = abs(add(P, 'div', 'hud', '', root), r ? 54 : 72, r ? 32 : 48, r ? 1332 : 1776, null);
     box.innerHTML = `<div class="chapter"><b>${chapter || '01'}</b><i></i><span>${name || ''}</span></div><div class="brand">心理图解 · 夜读</div>`;
     fade(P, box, at ?? 0, { dy: 0, dur: 0.45 });
     return box;
@@ -79,7 +82,9 @@
   }
 
   function caption(P, root, html, at, o = {}) {
-    const e = abs(add(P, 'div', 'caption' + (o.cyan ? ' cyan' : ''), html, root), 120, o.y || 936, 1680, null);
+    const r = R43();
+    const e = abs(add(P, 'div', 'caption' + (o.cyan ? ' cyan' : ''), html, root),
+      r ? 70 : 120, o.y || (r ? 930 : 936), r ? 1300 : 1680, null);
     return fade(P, e, at, { dy: 16, dur: 0.45 });
   }
 
@@ -291,6 +296,123 @@
     }
     return root;
   }
+
+  // 4:3：页面按 1440×1080 排；外层等比放大到目标 STAGE（1920×1440 → 1.333）
+  function render43(P, s) {
+    const root = add(P, 'div', 'ni ni43', '', P.html);
+    const S = STAGE.w / 1440;
+    root.style.inset = 'auto';
+    root.style.left = '0';
+    root.style.top = '0';
+    root.style.width = '1440px';
+    root.style.height = '1080px';
+    root.style.transformOrigin = 'top left';
+    root.style.transform = `scale(${S})`;
+
+    const cue = (i, dt = 0) => Math.max(0, P.c(Math.min(i, P.page.cues.length - 1)) + dt);
+    const t0 = cue(0);
+    const t1 = cue(1);
+    hud(P, root, s.chapter, s.name, t0 - 0.2);
+
+    switch (s.layout) {
+      case 'hook': {
+        kicker(P, root, s.kicker || '', 500, 150, t0 - 0.1);
+        title(P, root, s.title || [], 500, 200, t0, { cls: 'h1', big: true, w: 820 });
+        if (s.lead) lead(P, root, s.lead, 500, 480, t0 + 0.35, { w: 440 });
+        if (s.phone) phone(P, root, 60, 180, 360, 520, s.phone, t0 - 0.05);
+        heart(P, root, 960, 520, 300, t0 + 0.35);
+        if (s.note) { const n = abs(add(P, 'div', 'heart-note', s.note, root), 1010, 850, null, null); fade(P, n, t0 + 1.2, { dy: 10, dur: 0.4 }); }
+        break;
+      }
+      case 'split': {
+        kicker(P, root, s.kicker || '', 60, 90, t0 - 0.2);
+        title(P, root, s.title || [], 60, 140, t0, { cls: 'h2', w: 1050 });
+        if (s.left) card(P, root, 60, 300, 540, 360, s.left, t0 + 0.05);
+        if (s.right) card(P, root, 840, 300, 540, 360, s.right, t0 + 0.16);
+        if (s.wall) wall(P, root, 620, 280, 120, 400, s.wall, t0 + 0.28);
+        if (s.caption) caption(P, root, s.caption, t1 + 0.15);
+        break;
+      }
+      case 'translate': {
+        kicker(P, root, s.kicker || '', 60, 90, t0 - 0.2);
+        title(P, root, s.title || [], 60, 140, t0, { cls: 'h2', w: 900 });
+        const left = abs(add(P, 'div', 'panel said-card', '', root), 90, 320, 380, 180);
+        left.innerHTML = `<div class="label">${s.saidLabel || '你的安慰'}</div><div class="said">${s.said || ''}</div>`;
+        fade(P, left, t0 + 0.05, { dy: 26, dur: 0.45 });
+        arrow(P, root, 500, 390, 160, t0 + 0.25);
+        const right = abs(add(P, 'div', 'panel red heard-card', '', root), 700, 300, 650, 200);
+        right.innerHTML = `<div class="label">${s.heardLabel || '她听到的'}</div><div class="heard">${s.heard || ''}</div><div class="strike"></div>`;
+        fade(P, right, t0 + 0.35, { dy: 26, dur: 0.45 });
+        const strike = right.querySelector('.strike');
+        strike.style.top = '70px';
+        growX(P, strike, t0 + 0.75, 0.4);
+        if (s.caption) caption(P, root, s.caption, t1 + 0.15);
+        break;
+      }
+      case 'wall': {
+        kicker(P, root, s.kicker || '', 60, 90, t0 - 0.2);
+        title(P, root, s.title || [], 60, 140, t0, { cls: 'h2', w: 1000 });
+        const floor = abs(add(P, 'div', 'floor', '', root), 160, 590, 1120, 1);
+        growX(P, floor, t0 + 0.1, 0.5);
+        avatar(P, root, 300, 470, 100, 'cyan', s.leftName || '你', t0 + 0.05);
+        avatar(P, root, 1040, 470, 100, 'orange', s.rightName || '她', t0 + 0.15);
+        dash(P, root, 400, 530, 640, t0 + 0.25);
+        wall(P, root, 650, 300, 130, 360, s.wall || '道理', t0 + 0.32, 'orange');
+        if (s.caption) caption(P, root, s.caption, t1 + 0.15);
+        break;
+      }
+      case 'heart': {
+        kicker(P, root, s.kicker || '', 60, 90, t0 - 0.2);
+        title(P, root, s.title || [], 60, 140, t0, { cls: 'h2', w: 900 });
+        const ring = abs(add(P, 'div', 'ring', '', root), 740, 280, 440, 440);
+        fade(P, ring, t0 + 0.05, { dy: 20, dur: 0.6, scale: 0.92 });
+        heart(P, root, 790, 330, 340, t0 + 0.12, { a: '#35E0D0', b: '#FFA23A', c: '#FF7A45', fill: 'rgba(255,162,58,.08)', sw: 4 });
+        if (s.quote) quote(P, root, 90, 340, 520, 260, s.quote, t0 + 0.25, true);
+        if (s.tool) { const t = abs(add(P, 'div', 'panel tool', `<div class="t">${s.tool.title || '方案'}</div><div class="l">${s.tool.sub || '先放一边'}</div>`, root), 1120, 650, 220, 90); fade(P, t, t0 + 0.65, { dy: 18, dur: 0.4 }); }
+        if (s.caption) caption(P, root, s.caption, t1 + 0.15);
+        break;
+      }
+      case 'choice': {
+        kicker(P, root, s.kicker || '', 60, 90, t0 - 0.2);
+        title(P, root, s.title || [], 60, 140, t0, { cls: 'h2', w: 1000 });
+        if (s.left) choice(P, root, 80, 300, 600, 300, s.left, t0 + 0.05);
+        if (s.right) choice(P, root, 760, 300, 600, 300, s.right, t0 + 0.16);
+        switchEl(P, root, 674, 410, t0 + 0.35);
+        if (s.quote) {
+          const q = abs(add(P, 'div', 'panel choice-quote', s.quote, root), 120, 720, 1200, 100);
+          fade(P, q, t0 + 0.5, { dy: 22, dur: 0.45 });
+        }
+        break;
+      }
+      case 'list': {
+        kicker(P, root, s.kicker || '', 60, 90, t0 - 0.2);
+        title(P, root, s.title || [], 60, 140, t0, { cls: 'h2', w: 1320 });
+        const box = abs(add(P, 'div', 'panel list', '', root), 60, 300, 1320, 420);
+        (s.items || []).slice(0, 4).forEach((text, i) => {
+          const row = add(P, 'div', 'list-item', `<span class="list-no">0${i + 1}</span><span>${text}</span>`, box);
+          fade(P, row, t0 + 0.1 + i * 0.22, { dy: 18, dur: 0.4 });
+        });
+        fade(P, box, t0 + 0.05, { dy: 24, dur: 0.5 });
+        if (s.caption) caption(P, root, s.caption, t1 + 0.15);
+        break;
+      }
+      case 'end': {
+        end(P, root, s, t0);
+        break;
+      }
+      default: {
+        kicker(P, root, s.kicker || '', 60, 90, t0 - 0.2);
+        title(P, root, s.title || [], 60, 140, t0, { cls: 'h2', w: 1000 });
+        if (s.caption) caption(P, root, s.caption, t1 + 0.15);
+        break;
+      }
+    }
+    return root;
+  }
+
+  // 4:3 dispatch：1920×1440 也走这里，外层按 1.333 放大
+  const render0 = render;
+  render = function (P, s) { return R43() ? render43(P, s) : render0(P, s); };
 
   window.NIGHT = { render, hud, kicker, title, lead, caption, panel, phone, heart, card, wall, avatar, dash, arrow, quote, choice, switchEl, end, icon, growX };
 })();

@@ -209,3 +209,83 @@
 .ni .end-note { margin-top: 22px; font-size: 25px; letter-spacing: 0.08em; color: #7E8D97; }
 .ni .end-note b { color: var(--cyan); font-weight: 700; }
 .ni .end-sub { margin-top: 28px; font-size: 17px; letter-spacing: 0.24em; color: #48545D; }
+
+/* ── 4:3 变体 ─────────────────────────────────────────────
+ * 页面按 1440×1080 设计，外层按 STAGE 宽度等比放大（1920×1440 → 1.333）。
+ * 这里只改字号/间距，不改组件结构。
+ */
+.ni.ni43 { left: 0; top: 0; width: 1440px; height: 1080px; inset: auto; transform-origin: top left; }
+.ni.ni43 .hud { top: 32px; left: 54px; right: 54px; height: 44px; }
+.ni.ni43 .chapter { font-size: 16px; gap: 10px; }
+.ni.ni43 .chapter b { font-size: 17px; }
+.ni.ni43 .chapter i { width: 32px; }
+.ni.ni43 .brand { font-size: 13px; letter-spacing: 0.16em; }
+.ni.ni43 .kicker { font-size: 15px; letter-spacing: 0.18em; }
+.ni.ni43 .h1 { font-size: 68px; }
+.ni.ni43 .h1.big { font-size: 76px; }
+.ni.ni43 .h2 { font-size: 56px; }
+.ni.ni43 .lead { font-size: 28px; }
+.ni.ni43 .caption { left: 70px; right: 70px; bottom: 56px; font-size: 24px; }
+.ni.ni43 .panel { border-radius: 20px; }
+.ni.ni43 .tag { height: 32px; padding: 0 12px; gap: 7px; font-size: 13px; }
+.ni.ni43 .tag .dot { width: 6px; height: 6px; }
+.ni.ni43 .card { padding: 26px 30px; }
+.ni.ni43 .card .tag { top: 22px; right: 22px; }
+.ni.ni43 .card .icon { width: 64px; height: 64px; border-radius: 18px; }
+.ni.ni43 .card .icon svg, .ni.ni43 .icon > svg { width: 38px; height: 38px; }
+.ni.ni43 .card h3 { font-size: 32px; margin-top: 10px; }
+.ni.ni43 .card p { font-size: 19px; line-height: 1.8; margin-top: 16px; }
+.ni.ni43 .wall { border-radius: 20px; }
+.ni.ni43 .wall span { font-size: 24px; letter-spacing: 0.18em; }
+.ni.ni43 .said-card { padding: 24px 28px; }
+.ni.ni43 .said-card .label { font-size: 14px; margin-bottom: 10px; }
+.ni.ni43 .said-card .said { font-size: 46px; }
+.ni.ni43 .heard-card { padding: 24px 28px; }
+.ni.ni43 .heard-card .label { font-size: 14px; margin-bottom: 12px; }
+.ni.ni43 .heard-card .heard { font-size: 40px; }
+.ni.ni43 .strike { left: 28px; right: 28px; height: 2px; }
+.ni.ni43 .avatar::before { width: 24px; height: 24px; transform: translateY(-9px); }
+.ni.ni43 .avatar::after { width: 46px; height: 27px; bottom: 13px; }
+.ni.ni43 .avatar .name { font-size: 13px; bottom: -28px; }
+.ni.ni43 .quote { padding: 20px 24px; }
+.ni.ni43 .quote .label { font-size: 13px; margin-bottom: 10px; }
+.ni.ni43 .quote .q { font-size: 32px; line-height: 1.45; }
+.ni.ni43 .quote.tail::after { top: 64px; width: 30px; height: 30px; }
+.ni.ni43 .tool { padding: 16px 18px; }
+.ni.ni43 .tool .t { font-size: 15px; }
+.ni.ni43 .tool .l { font-size: 12px; margin-top: 5px; }
+.ni.ni43 .choice { padding: 26px 30px; }
+.ni.ni43 .choice .icon { width: 64px; height: 64px; border-radius: 18px; }
+.ni.ni43 .choice .icon svg { width: 36px; height: 36px; }
+.ni.ni43 .choice h3 { font-size: 32px; }
+.ni.ni43 .choice p { font-size: 17px; }
+.ni.ni43 .switch { width: 70px; height: 34px; }
+.ni.ni43 .switch::after { width: 24px; height: 24px; top: 4px; left: calc(50% - 12px); }
+.ni.ni43 .choice-quote { padding: 20px 24px; font-size: 26px; }
+.ni.ni43 .end-kicker { font-size: 15px; margin-bottom: 14px; }
+.ni.ni43 .end-title { font-size: 64px; }
+.ni.ni43 .end-ring { width: 330px; height: 330px; margin-top: 26px; }
+.ni.ni43 .end-ring::before { inset: 24px; }
+.ni.ni43 .end-pair { width: 190px; height: 100px; }
+.ni.ni43 .end-pair .avatar { width: 84px; height: 84px; top: 8px; }
+.ni.ni43 .end-pair .avatar::before { width: 21px; height: 21px; }
+.ni.ni43 .end-pair .avatar::after { width: 38px; height: 22px; bottom: 10px; }
+.ni.ni43 .end-note { font-size: 18px; margin-top: 16px; }
+.ni.ni43 .end-sub { font-size: 13px; margin-top: 16px; }
+.ni.ni43 .phone { padding: 16px; border-radius: 32px; }
+.ni.ni43 .phone::before { width: 90px; height: 20px; top: 10px; }
+.ni.ni43 .phone-head { margin: 10px 4px 0; padding-bottom: 12px; gap: 8px; }
+.ni.ni43 .avatar-sm { width: 28px; height: 28px; }
+.ni.ni43 .avatar-sm::before { width: 9px; height: 9px; top: 7px; }
+.ni.ni43 .avatar-sm::after { width: 20px; height: 15px; bottom: -4px; }
+.ni.ni43 .phone-head .who { font-size: 16px; }
+.ni.ni43 .phone-head .status { font-size: 12px; }
+.ni.ni43 .chat { padding: 16px 4px 0; gap: 10px; }
+.ni.ni43 .bubble { padding: 11px 14px; border-radius: 16px; font-size: 18px; }
+.ni.ni43 .read { font-size: 11px; }
+.ni.ni43 .typing { left: 20px; bottom: 22px; gap: 6px; font-size: 11px; }
+.ni.ni43 .typing i { width: 5px; height: 5px; }
+.ni.ni43 .heart-note { font-size: 13px; letter-spacing: 0.12em; }
+.ni.ni43 .list { padding: 24px 30px; }
+.ni.ni43 .list-item { gap: 14px; padding: 12px 0; font-size: 24px; }
+.ni.ni43 .list-no { font-size: 16px; min-width: 32px; }
