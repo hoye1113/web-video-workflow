@@ -192,6 +192,7 @@
 
   function render(P, s) {
     const root = add(P, 'div', 'ni', '', P.html);
+    if (window.SCRIPT && SCRIPT.META && SCRIPT.META.cream) root.classList.add('ni-cream');
     const cue = (i, dt = 0) => Math.max(0, P.c(Math.min(i, P.page.cues.length - 1)) + dt);
     const t0 = cue(0);
     const t1 = cue(1);
@@ -300,6 +301,7 @@
   // 4:3：页面按 1440×1080 排；外层等比放大到目标 STAGE（1920×1440 → 1.333）
   function render43(P, s) {
     const root = add(P, 'div', 'ni ni43', '', P.html);
+    if (window.SCRIPT && SCRIPT.META && SCRIPT.META.cream) root.classList.add('ni-cream');
     const S = STAGE.w / 1440;
     root.style.inset = 'auto';
     root.style.left = '0';
