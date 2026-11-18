@@ -1,0 +1,1138 @@
+[
+ {
+  "id": "p01",
+  "title": "彻底失望离开的女生",
+  "asset": "f1118-p01.png",
+  "theme": "night",
+  "cam": "openpush",
+  "reveal": [
+   0.9,
+   1,
+   0,
+   0.4
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p02",
+  "title": "攒够失望决绝地转身推开你时",
+  "asset": "f1118-p02.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p03",
+  "title": "也不是你低姿态的苦苦哀求",
+  "asset": "f1118-p03.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p04",
+  "title": "这份心意就会悄悄传到她身边",
+  "asset": "f1118-p04.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p05",
+  "title": "你拼命解释自己的过错",
+  "asset": "f1118-p05.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p06",
+  "title": "可她不仅没有半分动容",
+  "asset": "f1118-p06.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p07",
+  "title": "她越想彻底摆脱你",
+  "asset": "f1118-p07.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p08",
+  "title": "难道认错不对吗",
+  "asset": "f1118-p08.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p09",
+  "title": "为什么她连一次机会都不肯给",
+  "asset": "f1118-p09.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p10",
+  "title": "到底还有没有用",
+  "asset": "f1118-p10.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p11",
+  "title": "失望从来不是突然爆发",
+  "asset": "f1118-p11.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p12",
+  "title": "一连串的控诉",
+  "asset": "f1118-p12.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p13",
+  "title": "你根本就从来没懂过我",
+  "asset": "f1118-p13.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p14",
+  "title": "但你有没有静下心来想过",
+  "asset": "f1118-p14.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p15",
+  "title": "而是漫长时间里",
+  "asset": "f1118-p15.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p16",
+  "title": "而是她发现自己",
+  "asset": "f1118-p16.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p17",
+  "title": "她从满怀期待到慢慢失望",
+  "asset": "f1118-p17.png",
+  "theme": "night",
+  "cam": "hold",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p18",
+  "title": "所以你分手后",
+  "asset": "f1118-p18.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p19",
+  "title": "不是因为真的意识到自己错了",
+  "asset": "f1118-p19.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p20",
+  "title": "你以为自己是在",
+  "asset": "f1118-p20.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p21",
+  "title": "你们从始至终",
+  "asset": "f1118-p21.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p22",
+  "title": "很多人分手后的",
+  "asset": "f1118-p22.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p23",
+  "title": "听上去主动又诚恳",
+  "asset": "f1118-p23.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p24",
+  "title": "焦虑和愧疚",
+  "asset": "f1118-p24.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p25",
+  "title": "抓狂自救",
+  "asset": "f1118-p25.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p26",
+  "title": "却是你又开始了",
+  "asset": "f1118-p26.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p27",
+  "title": "解释你情绪激动的",
+  "asset": "f1118-p27.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p28",
+  "title": "在她眼里",
+  "asset": "f1118-p28.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p29",
+  "title": "强加在她身上",
+  "asset": "f1118-p29.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p30",
+  "title": "她越想逃",
+  "asset": "f1118-p30.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p31",
+  "title": "她拒绝的",
+  "asset": "f1118-p31.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p32",
+  "title": "不肯接受你的道歉",
+  "asset": "f1118-p32.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p33",
+  "title": "为什么要走",
+  "asset": "f1118-p33.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p34",
+  "title": "她要分手的结果",
+  "asset": "f1118-p34.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p35",
+  "title": "闹过情绪",
+  "asset": "f1118-p35.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p36",
+  "title": "其实都是她在",
+  "asset": "f1118-p36.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p37",
+  "title": "在没事找事",
+  "asset": "f1118-p37.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p38",
+  "title": "她慢慢把你",
+  "asset": "f1118-p38.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p39",
+  "title": "她想听的",
+  "asset": "f1118-p39.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p40",
+  "title": "没说出口的委屈和挣扎",
+  "asset": "f1118-p40.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p41",
+  "title": "挽回失败的核心原因",
+  "asset": "f1118-p41.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p42",
+  "title": "我肯定改这些话",
+  "asset": "f1118-p42.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p43",
+  "title": "你都照旧",
+  "asset": "f1118-p43.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p44",
+  "title": "她不想再听你保证什么",
+  "asset": "f1118-p44.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p45",
+  "title": "以前的方式求她回来",
+  "asset": "f1118-p45.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p46",
+  "title": "不是去说服她原谅你",
+  "asset": "f1118-p46.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p47",
+  "title": "换句话说",
+  "asset": "f1118-p47.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p48",
+  "title": "最好的挽回",
+  "asset": "f1118-p48.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p49",
+  "title": "从来不是",
+  "asset": "f1118-p49.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p50",
+  "title": "用成长重新吸引",
+  "asset": "f1118-p50.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p51",
+  "title": "给你添了很多麻烦对不起",
+  "asset": "f1118-p51.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p52",
+  "title": "变得很不理智",
+  "asset": "f1118-p52.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p53",
+  "title": "我们之间的问题",
+  "asset": "f1118-p53.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p54",
+  "title": "是我太在意自己的情绪",
+  "asset": "f1118-p54.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p55",
+  "title": "也不逼你立刻原谅",
+  "asset": "f1118-p55.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p56",
+  "title": "你也能记得",
+  "asset": "f1118-p56.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p57",
+  "title": "而是我终于懂你了不施压",
+  "asset": "f1118-p57.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p58",
+  "title": "只为关系铺一条",
+  "asset": "f1118-p58.png",
+  "theme": "night",
+  "cam": "hold",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p59",
+  "title": "你要明白",
+  "asset": "f1118-p59.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p60",
+  "title": "一定要复合的执念",
+  "asset": "f1118-p60.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p61",
+  "title": "而是真的把自己的改变",
+  "asset": "f1118-p61.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p62",
+  "title": "怎么去爱一个人了",
+  "asset": "f1118-p62.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p63",
+  "title": "就是你们重建",
+  "asset": "f1118-p63.png",
+  "theme": "night",
+  "cam": "hold",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p64",
+  "title": "你越怕失去",
+  "asset": "f1118-p64.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p65",
+  "title": "是没看见她委屈的道歉才没用",
+  "asset": "f1118-p65.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p66",
+  "title": "而是你真的接住过她的情绪",
+  "asset": "f1118-p66.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p67",
+  "title": "修好自己才是根本",
+  "asset": "f1118-p67.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p68",
+  "title": "你也不会再犯同样的错",
+  "asset": "f1118-p68.png",
+  "theme": "night",
+  "cam": "hold",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p69",
+  "title": "永远读不懂她的你",
+  "asset": "f1118-p69.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p70",
+  "title": "更值得被爱的人别急别缠",
+  "asset": "f1118-p70.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p71",
+  "title": "也值得成为更好的自己",
+  "asset": "f1118-p71.png",
+  "theme": "night",
+  "cam": "hold",
+  "reveal": [
+   0.6,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ }
+]

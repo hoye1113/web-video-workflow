@@ -154,7 +154,8 @@ async function generateOne(page, task) {
   if (!fresh.length) throw new Error('300 秒内没等到新图');
   await page.waitForTimeout(8000);
   const raws = await page.evaluate(FETCH.replace('%s', JSON.stringify(fresh.slice(0, 4))));
-  const pick = raws.filter(r => r.w >= 900).sort((a, b) => b.w * b.h - a.w * a.h)[0];
+  // Flow 会把新图放在网格最前面；取第一张够大的，避免捡到上一批没收走的备选图
+  const pick = raws.filter(r => r.w >= 900)[0];
   if (!pick) throw new Error('新图取不回来（尺寸不够）');
   const out = path.resolve(task.out);
   fs.mkdirSync(path.dirname(out), { recursive: true });

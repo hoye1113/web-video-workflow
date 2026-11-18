@@ -30,7 +30,7 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parent.parent
 ENGINE = ROOT / "experiments" / "frametell-src" / "frametell-main" / "packages" / "engine"
 SCENE_LIB = ROOT / "projects" / "scene-library"
-STAGE_W, STAGE_H = 1440, 1080
+STAGE_W, STAGE_H = (int(x) for x in os.environ.get("VF_STAGE", "1440x1080").lower().split("x", 1))
 TARGET_LUFS = -14.0
 LUFS_TOL = 1.5
 
@@ -300,7 +300,7 @@ def main():
     add("FAIL" if missing else "PASS", "pre", "图片齐全",
         f"缺 {len(missing)} 张" + ("：" + "、".join(missing[:6]) if missing else ""))
     add("WARN" if wrong_size else "PASS", "pre", "图片尺寸",
-        f"{len(wrong_size)} 张不是 1440×1080" + ("：" + "、".join(wrong_size[:6]) if wrong_size else "") +
+        f"{len(wrong_size)} 张不是 {STAGE_W}×{STAGE_H}" + ("：" + "、".join(wrong_size[:6]) if wrong_size else "") +
         ("；渲染时会放大" if wrong_size else ""))
     add("FAIL" if no_cam else "PASS", "pre", "每页有运镜",
         f"{len(no_cam)} 页没写 cam" + ("：" + "、".join(no_cam) if no_cam else ""))
@@ -402,7 +402,7 @@ def main():
             info = probe(film)
             add("PASS", "post", "可解码", f'{info["frames"]} 帧 / {info["duration"]:.2f}s')
             ok_size = (info["w"], info["h"]) == (STAGE_W, STAGE_H)
-            add("PASS" if ok_size else "FAIL", "post", "尺寸", f'{info["w"]}×{info["h"]}（期望 1440×1080）')
+            add("PASS" if ok_size else "FAIL", "post", "尺寸", f'{info["w"]}×{info["h"]}（期望 {STAGE_W}×{STAGE_H}）')
             ok_fps = abs(info["fps"] - 60) < 0.01
             add("PASS" if ok_fps else "FAIL", "post", "帧率", f'{info["fps"]:.2f}fps（期望 60）')
             if times:
@@ -546,7 +546,7 @@ def main():
     advice = []
     names = {r["name"] for r in warns} | {r["name"] for r in infos}
     if "图片尺寸" in names:
-        advice.append("图片先放大到 1440×1080 再渲染（Lanczos 或 Real-ESRGAN），不要在浏览器里直接放大。")
+        advice.append(f"图片先放大到 {STAGE_W}×{STAGE_H} 再渲染（Lanczos 或 Real-ESRGAN），不要在浏览器里直接放大。")
     if "页间亮度起点" in names:
         advice.append("中间页 reveal 起点从 0.3 提到 0.65；只有段落切换保留 0.3，避免每 6 秒暗一下。")
     if "开场 1 秒" in names:
