@@ -6,8 +6,8 @@ CAST = json.loads((ROOT / "cast.json").read_text(encoding="utf-8"))
 SCENES = json.loads((ROOT / "tests" / "scene-prompts.json").read_text(encoding="utf-8"))
 
 STYLE = CAST["style"]
-YIER = "一二：白色圆润熊猫，黑色耳朵与眼圈，脸颊粉色腮红，颈间深棕色小领结；身体和四肢都是白色，不要黑色手脚。"
-BUBU = "布布：浅焦糖棕色小熊，圆耳，杏黄色腮红，身后一颗小圆尾巴。"
+YIER = "1布布（一二，女）：白色圆润熊猫，黑色实心圆耳朵，脸部纯白、没有黑眼圈，深棕色小圆眼，粉色腮红，颈间黑色小领结，白色小短手，黑色小圆脚；女性。"
+BUBU = "2布布（布布，男）：暖棕色小熊，圆耳朵，内耳深棕，脸部纯棕、没有黑眼圈，深棕色小圆眼，杏黄色腮红，身后一颗小圆尾巴；男性，比1布布略大一点。"
 
 def build(item):
     individual = item["id"] in {"yier-hero", "bubu-hero"}
