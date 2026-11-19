@@ -1,0 +1,14 @@
+/* p11 · 而负面情绪必然会引发负面的行为
+ * 图：../scene-library/f1119-p11.png（处境图库，图不复制）
+ */
+ENGINE.visual('p11', (P) => {
+  STYLE.setTheme('night');
+  const T = P.endT;
+
+  P.scene('../scene-library/f1119-p11.png', {
+    at: 0,
+    reveal: { from: 0.65, to: 1, at: 0.1, dur: 1.0 },
+    cam: [[0, 1.09], [T * 0.34, 1.09], [T * 0.34 + 0.9, 1], [T, 1]].map(([t, z]) => ({ t, z })),
+  });
+
+});

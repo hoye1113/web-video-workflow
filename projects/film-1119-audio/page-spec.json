@@ -1,0 +1,1138 @@
+[
+ {
+  "id": "p01",
+  "title": "接纳了犯错的伴侣",
+  "asset": "f1119-p01.png",
+  "theme": "night",
+  "cam": "openpush",
+  "reveal": [
+   0.9,
+   1,
+   0,
+   0.4
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p02",
+  "title": "把真心毫无保留地交给他",
+  "asset": "f1119-p02.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p03",
+  "title": "燕哥告诉你",
+  "asset": "f1119-p03.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p04",
+  "title": "也是他必须承担的破坏信任的代价",
+  "asset": "f1119-p04.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p05",
+  "title": "其实就是失去了对感情的确定性",
+  "asset": "f1119-p05.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p06",
+  "title": "在你眼里都会变得危险重重",
+  "asset": "f1119-p06.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p07",
+  "title": "然后在心里无限放大",
+  "asset": "f1119-p07.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p08",
+  "title": "想象里有多丰富",
+  "asset": "f1119-p08.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p09",
+  "title": "从来不是事情本身",
+  "asset": "f1119-p09.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p10",
+  "title": "就会瞬间怒火中烧",
+  "asset": "f1119-p10.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p11",
+  "title": "而负面情绪必然会引发负面的行为",
+  "asset": "f1119-p11.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p12",
+  "title": "一段因为过错而失去信用的亲密关系",
+  "asset": "f1119-p12.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p13",
+  "title": "让你不得不时刻保持警惕",
+  "asset": "f1119-p13.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p14",
+  "title": "本质上都是在渴望得到一些能让你安心的信号",
+  "asset": "f1119-p14.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p15",
+  "title": "想要相信生活并没有变得那么糟糕",
+  "asset": "f1119-p15.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p16",
+  "title": "一遍又一遍的索要道歉",
+  "asset": "f1119-p16.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p17",
+  "title": "在努力修复你们之间已经破碎的信任",
+  "asset": "f1119-p17.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p18",
+  "title": "不想让多年的感情彻底崩盘那么",
+  "asset": "f1119-p18.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p19",
+  "title": "对于失去信任的夫妻",
+  "asset": "f1119-p19.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p20",
+  "title": "是谁破坏了两个人之间的信任",
+  "asset": "f1119-p20.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p21",
+  "title": "首先必须拿出十足的诚意",
+  "asset": "f1119-p21.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p22",
+  "title": "过错方可以试图解释当时的情况",
+  "asset": "f1119-p22.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p23",
+  "title": "完完全全地认错",
+  "asset": "f1119-p23.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p24",
+  "title": "接下来你可能会处处猜疑他",
+  "asset": "f1119-p24.png",
+  "theme": "night",
+  "cam": "hold",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p25",
+  "title": "下一秒就因为一件小事爆发",
+  "asset": "f1119-p25.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p26",
+  "title": "尽自己最大的努力去安抚你的情绪",
+  "asset": "f1119-p26.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p27",
+  "title": "调整好心态",
+  "asset": "f1119-p27.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p28",
+  "title": "坦然接受你的监督",
+  "asset": "f1119-p28.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p29",
+  "title": "及时向你汇报他的行踪",
+  "asset": "f1119-p29.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p30",
+  "title": "让你慢慢放下心来",
+  "asset": "f1119-p30.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p31",
+  "title": "比如一起去旅游",
+  "asset": "f1119-p31.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p32",
+  "title": "两个人单独待在家里的时候",
+  "asset": "f1119-p32.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p33",
+  "title": "会更有我们是一起的感觉",
+  "asset": "f1119-p33.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p34",
+  "title": "这是伤害方需要做的努力",
+  "asset": "f1119-p34.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p35",
+  "title": "心态，陷入无端的受迫害妄想中",
+  "asset": "f1119-p35.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p36",
+  "title": "不再像以前那样失联",
+  "asset": "f1119-p36.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p37",
+  "title": "你要试着理性的分析当下的情况",
+  "asset": "f1119-p37.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p38",
+  "title": "不要纵容自己一直陷在极端的负面情绪里",
+  "asset": "f1119-p38.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p39",
+  "title": "当然在事情刚发生的初期",
+  "asset": "f1119-p39.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p40",
+  "title": "但你要清楚的知道",
+  "asset": "f1119-p40.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p41",
+  "title": "就算他再努力",
+  "asset": "f1119-p41.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p42",
+  "title": "你起码不能去故意破坏",
+  "asset": "f1119-p42.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p43",
+  "title": "会让你完全丧失风险意识",
+  "asset": "f1119-p43.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p44",
+  "title": "则会让你一直活在焦虑和痛苦中",
+  "asset": "f1119-p44.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p45",
+  "title": "知道感情中可能存在风险",
+  "asset": "f1119-p45.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p46",
+  "title": "这样防患于未然",
+  "asset": "f1119-p46.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p47",
+  "title": "当然正常的警觉和神经过敏是两回事",
+  "asset": "f1119-p47.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p48",
+  "title": "只是叫异性朋友一声哥哥妹妹",
+  "asset": "f1119-p48.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p49",
+  "title": "就认定对方又犯了错",
+  "asset": "f1119-p49.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p50",
+  "title": "就很难真正信任别人",
+  "asset": "f1119-p50.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p51",
+  "title": "没办法让对方对自己死心塌地",
+  "asset": "f1119-p51.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p52",
+  "title": "如果你是这样的人",
+  "asset": "f1119-p52.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p53",
+  "title": "尽管感情中确实出现过",
+  "asset": "f1119-p53.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p54",
+  "title": "就等于你在不断给这段婚姻设置障碍",
+  "asset": "f1119-p54.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p55",
+  "title": "就需要你做事尽量坦荡透明",
+  "asset": "f1119-p55.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p56",
+  "title": "同时也要多赞美他肯定他",
+  "asset": "f1119-p56.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p57",
+  "title": "这样他才能慢慢学会信任你",
+  "asset": "f1119-p57.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p58",
+  "title": "我们都会本能的要求另一半",
+  "asset": "f1119-p58.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p59",
+  "title": "没有信任就不可能有真正的安全感",
+  "asset": "f1119-p59.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p60",
+  "title": "如果夫妻之间互相不信任",
+  "asset": "f1119-p60.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p61",
+  "title": "工作生活中那些真正有意义",
+  "asset": "f1119-p61.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p62",
+  "title": "更谈不上家庭的幸福美满",
+  "asset": "f1119-p62.png",
+  "theme": "night",
+  "cam": "hold",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p63",
+  "title": "但一旦失去它",
+  "asset": "f1119-p63.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p64",
+  "title": "随时都可能倒塌",
+  "asset": "f1119-p64.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p65",
+  "title": "其实恰恰是重建感情的好时机",
+  "asset": "f1119-p65.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p66",
+  "title": "因为这场危机",
+  "asset": "f1119-p66.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p67",
+  "title": "同时这场危机",
+  "asset": "f1119-p67.png",
+  "theme": "night",
+  "cam": "push40",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p68",
+  "title": "化解彼此之间的误解",
+  "asset": "f1119-p68.png",
+  "theme": "night",
+  "cam": "push55",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p69",
+  "title": "这份感情就会像久旱之后",
+  "asset": "f1119-p69.png",
+  "theme": "night",
+  "cam": "pull",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p70",
+  "title": "燕哥始终是劝和不劝离的",
+  "asset": "f1119-p70.png",
+  "theme": "night",
+  "cam": "hold",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ },
+ {
+  "id": "p71",
+  "title": "我会用心倾听你的故事",
+  "asset": "f1119-p71.png",
+  "theme": "night",
+  "cam": "hold",
+  "reveal": [
+   0.65,
+   1,
+   0.1,
+   1.0
+  ],
+  "lights": [],
+  "texts": [],
+  "layout": "full"
+ }
+]
