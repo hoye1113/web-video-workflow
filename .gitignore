@@ -56,3 +56,6 @@ projects/exports/
 # 角色资产拆分时的临时探测图
 projects/character-assets/_probe-*.png
 projects/character-assets/_check-*.png
+
+# 1108-12bubu 备选图：主图进 scene-library，alt 只留本地
+projects/scene-library/f1108b-p*-alt.png

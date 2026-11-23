@@ -103,3 +103,10 @@ chrome.exe --user-data-dir="$env:LOCALAPPDATA\Google\Chrome\User Data" `
 - 丰富不等于堆满：情绪越重的页道具越少；右下角 15% 仍留空；所有平面物体仍空白无字。
 - 缺图页单独补跑；Flow 的备选图可以救细节（1119 p25 主图是 w 嘴，选平嘴备选）。
 - 1119 结果：71 页 / 6:15.1 / 1920×1080 / 60fps / 73.0MB；体检 20 PASS / 2 WARN / 0 FAIL。
+
+## 11. 旧音频重制 + 不新增儿童角色（2026-11-23 `1108-12bubu`）
+
+- 旧版 1108 的音频、转写、48 页分页、`voice.js`、`audio/` 切片都可以复用；只重做 `page-spec` / `pages` / 图片。
+- 新项目做法：复制旧 `script-source.json` / `voice.js` / `script.js` / `audio/`，只改 `META.name/title`、加暗蓝 look、重写 page-spec/pages。
+- 孩子不画第三个角色：用小书包、小鞋、毛绒玩具、小椅子、空白画纸、小饭盒来暗示；既保留 12布布“两只角色”的规则，也能讲清离婚对孩子的伤害。
+- 48 页 / 4:57.5 / 1920×1080 / 60fps / 54.6MB；响度 -14.0 LUFS / -2.6 dBTP；体检 20 PASS / 2 WARN / 0 FAIL。
