@@ -110,3 +110,11 @@ chrome.exe --user-data-dir="$env:LOCALAPPDATA\Google\Chrome\User Data" `
 - 新项目做法：复制旧 `script-source.json` / `voice.js` / `script.js` / `audio/`，只改 `META.name/title`、加暗蓝 look、重写 page-spec/pages。
 - 孩子不画第三个角色：用小书包、小鞋、毛绒玩具、小椅子、空白画纸、小饭盒来暗示；既保留 12布布“两只角色”的规则，也能讲清离婚对孩子的伤害。
 - 48 页 / 4:57.5 / 1920×1080 / 60fps / 54.6MB；响度 -14.0 LUFS / -2.6 dBTP；体检 20 PASS / 2 WARN / 0 FAIL。
+
+## 12. 3:4 封面模板（2026-11-23 定稿）
+
+- 尺寸 **1080×1440**；排版固定：顶部 **李安老师 · <栏目>**、两行主标题、两行副标题、黄色短线，下半部 **1080×840 满宽场景图**（y=600 到 1440），**底部不留任何文字**。
+- 图可以按内容换、标题/副标题按当期文案换，但版式不动。
+- 用 `tools/cover_3x4.py` 本地排版，中文字不让 AI 写；场景图从当期成片原图里选。
+- 示例：`E:\video-factory\1108-12bubu\封面A-3x4-李安老师.png` / `封面B-3x4-李安老师.png`。
+- 规则文档：`projects/12bubu/COVER-TEMPLATE.md`。
